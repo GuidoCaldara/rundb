@@ -10,12 +10,13 @@ gem 'rails', '5.1.5'
 gem 'redis'
 
 gem 'autoprefixer-rails'
-gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.0.0'
 gem 'font-awesome-sass'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'jquery-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
