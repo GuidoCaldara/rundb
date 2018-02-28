@@ -10,10 +10,91 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180228085756) do
+ActiveRecord::Schema.define(version: 20180228095611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "race_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["race_id"], name: "index_favorites_on_race_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "amount"
+    t.bigint "user_id"
+    t.bigint "race_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["race_id"], name: "index_orders_on_race_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "organisations", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.text "description"
+    t.string "phone_number"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_organisations_on_user_id"
+  end
+
+  create_table "races", force: :cascade do |t|
+    t.string "name"
+    t.integer "distance"
+    t.integer "elevation"
+    t.datetime "date"
+    t.string "category"
+    t.string "location"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "starting_time"
+    t.integer "discount_fee"
+    t.integer "fee"
+    t.datetime "discount_fee_finish"
+    t.datetime "subscription_start"
+    t.datetime "subscription_end"
+    t.string "photos"
+    t.text "goodies"
+    t.integer "capacity"
+    t.text "description"
+    t.boolean "bookable", default: true
+    t.string "website"
+    t.string "subscription_link"
+    t.bigint "organisation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organisation_id"], name: "index_races_on_organisation_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "race_id"
+    t.text "description"
+    t.integer "route_rate"
+    t.integer "organization_rate"
+    t.integer "value_for_money"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["race_id"], name: "index_reviews_on_race_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.float "lat"
+    t.float "lng"
+    t.bigint "race_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["race_id"], name: "index_routes_on_race_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,8 +109,21 @@ ActiveRecord::Schema.define(version: 20180228085756) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "birthday"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favorites", "races"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "orders", "races"
+  add_foreign_key "orders", "users"
+  add_foreign_key "organisations", "users"
+  add_foreign_key "races", "organisations"
+  add_foreign_key "reviews", "races"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "routes", "races"
 end

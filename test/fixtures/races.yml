@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  distance: 1
+  date: 2018-02-28 17:37:52
+  category: MyString
+  location: MyString
+  starting_time: 2018-02-28 17:37:52
+  early_fee: 1
+  fee: 1
+  early_fee_finish: 2018-02-28 17:37:52
+  subscription_start: 2018-02-28 17:37:52
+  subscription_end: 2018-02-28 17:37:52
+  photos: MyString
+  goodies: MyText
+  capacity: 1
+  description: MyText
+  bookable: false
+  website: MyString
+  subscription_link: MyString
+  latitude: 1.5
+  longitude: 1.5
+  organisation: one
+
+two:
+  name: MyString
+  distance: 1
+  date: 2018-02-28 17:37:52
+  category: MyString
+  location: MyString
+  starting_time: 2018-02-28 17:37:52
+  early_fee: 1
+  fee: 1
+  early_fee_finish: 2018-02-28 17:37:52
+  subscription_start: 2018-02-28 17:37:52
+  subscription_end: 2018-02-28 17:37:52
+  photos: MyString
+  goodies: MyText
+  capacity: 1
+  description: MyText
+  bookable: false
+  website: MyString
+  subscription_link: MyString
+  latitude: 1.5
+  longitude: 1.5
+  organisation: two
