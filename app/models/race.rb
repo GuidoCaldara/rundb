@@ -9,4 +9,13 @@ class Race < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
+  include AlgoliaSearch
+
+  algoliasearch do
+
+  attributesForFaceting [:location, :date, :category, :distance]
+
+  end
+
+
 end
