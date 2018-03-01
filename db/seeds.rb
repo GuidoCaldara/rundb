@@ -192,7 +192,7 @@ location = ["Milan, italy",
 "Scandicci, italy"]
 
 puts "///   Creating races"
-1000.times do
+100.times do
   race = Race.new(
     name: "Race #{Faker::Hipster.word.capitalize}",
     distance: rand(1..5)*10,
