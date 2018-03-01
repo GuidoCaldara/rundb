@@ -1,0 +1,39 @@
+.banner {
+  min-height: 60vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-image: url('http://res.cloudinary.com/dxkimzdwk/image/upload/v1519890272/david-marcu-69433-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  box-shadow: 1px 1px 46px #8080808a;
+  margin-bottom: 20px;
+  z-index: 2;
+}
+
+.banner-content {
+  text-align: center;
+  display: block;
+  margin-bottom: 120px;
+  width: 300px;
+
+}
+
+
+.logo-banner {
+  width: 300px;
+  opacity: 1;
+}
+
+.banner {
+
+  h2 {
+    font-size: 17px;
+    opacity: 0.9;
+    text-shadow: 0 1px 18px rgb(0, 0, 0);
+    text-align: justify;
+  }
+
+}

@@ -1,1 +1,186 @@
 // Specific CSS for your home-page
+
+
+
+// BOUNCING ARROW
+.arrow_down {
+  height: 10px;
+  margin: auto;
+}
+
+
+.bounce {
+  -moz-animation: bounce 3s infinite;
+  -webkit-animation: bounce 3s infinite;
+  animation: bounce 3s infinite;
+  display: flex;
+  justify-content: space-around;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-6px);
+  }
+}
+
+#map {
+  height: 400px;
+  width: 400px;
+}
+
+.aisdemo--left-column {
+  height: 400px; }
+
+.aisdemo--right-column {
+  padding-right: 0;
+  padding-left: 0; }
+
+/* HEADER
+// ------------------------- */
+
+/* FILTERS
+// ------------------------- */
+.aisdemo-filters .aisdemo-filter {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #DCE0E0; }
+
+.aisdemo-filters .aisdemo-filter-title {
+  font-size: 1em;
+  font-weight: normal;
+  padding-top: 9px;
+  padding-left: 30px; }
+
+.aisdemo-filters .date, .aisdemo-filters #guests select {
+  font-size: .8em;
+  padding: 8px 10px;
+  border: 1px solid #DCE0E0; }
+
+.aisdemo-filters #guests select {
+  width: 100%;
+  padding-right: 20px;
+  border-radius: 0;
+  background: transparent;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; }
+  .aisdemo-filters #guests select:focus {
+    outline: none; }
+
+.aisdemo-filters .guests-caret::before {
+  line-height: 1;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  width: 2em;
+  padding-top: .8em;
+  content: '\25bc';
+  text-align: center;
+  pointer-events: none;
+  color: #82888A; }
+
+.aisdemo-filters #categories .ais-refinement-list--count {
+  display: none; }
+
+.aisdemo-filters #categories .ais-refinement-list--item {
+  display: inline-block;
+  cursor: pointer; }
+  .aisdemo-filters #categories .ais-refinement-list--item label {
+    font-size: .8em;
+    font-weight: normal;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 100%;
+    padding: 9px 10px 7px;
+    background: #EDEFED; }
+
+.aisdemo-filters #categories .ais-refinement-list--checkbox {
+  position: relative;
+  bottom: 3px;
+  float: right;
+  width: 1.25em;
+  height: 1.25em;
+  margin-left: 20px;
+  vertical-align: top;
+  border: 1px solid #DCE0E0;
+  background: #FFFFFF;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; }
+  .aisdemo-filters #categories .ais-refinement-list--checkbox:focus {
+    outline: none; }
+
+.aisdemo-filters #categories .ais-refinement-list--item__active .ais-refinement-list--checkbox::before {
+  font-size: .85em;
+  position: absolute;
+  width: 1.25em;
+  content: '\2713';
+  text-align: center;
+  color: #FF5A5F; }
+
+.aisdemo-filters #distance .ais-range-slider--target {
+  margin: 30px 9px 18px; }
+
+.aisdemo-filters #distance .ais-range-slider--handle {
+  border-color: #FF585B; }
+
+.aisdemo-filters #distance .rheostat-progress {
+  background-color: #FF585B !important; }
+
+.aisdemo-filters #distance .ais-range-slider--tooltip:last-child {
+  right: 0; }
+
+.aisdemo-filters #distance .ais-range-slider--connect {
+  background-color: #FF585B; }
+
+/* STATS
+// ------------------------- */
+#stats {
+  font-size: 1em;
+  font-weight: normal;
+  position: absolute;
+  bottom: 0;
+  padding: 5px 15px; }
+
+/* MAP
+// ------------------------- */
+
+/* RESULTS
+// ------------------------- */
+#results {
+  padding: 40px 20px;
+  background: #EDEFED; }
+
+#hits .hit .pictures-wrapper {
+  position: relative; }
+  #hits .hit .pictures-wrapper .picture {
+    width: 100%; }
+  #hits .hit .pictures-wrapper .profile {
+    position: absolute;
+    bottom: -16px;
+    right: 12px;
+    width: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px; }
+
+#hits .hit .infos {
+  height: 90px;
+  padding: 16px 20px; }
+  #hits .hit .infos h4 {
+    font-size: 1em;
+    font-weight: normal; }
+  #hits .hit .infos p {
+    font-size: .8em;
+    color: #949697; }
+  #hits .hit .infos em {
+    font-style: normal;
+    color: #FF585B; }
+

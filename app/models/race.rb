@@ -6,7 +6,16 @@ class Race < ApplicationRecord
   has_many :reviews
   has_many :users, through: :orders
   has_many :routes
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 
+  include AlgoliaSearch
+
+  algoliasearch do
+
+  attributesForFaceting [:location, :date, :category, :distance]
+
+  end
   monetize :fee_cents
   monetize :discount_fee_cents
 

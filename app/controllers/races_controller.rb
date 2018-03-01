@@ -14,6 +14,7 @@ class RacesController < ApplicationController
     @race = Race.new(race_params)
     @organisation = Organisation.find_by(user_id: current_user)
     @race.organisation_id = @organisation.id
+    @race.sku = sku_generator
     if @race.save
       redirect_to root_path
     else
@@ -37,6 +38,7 @@ end
 
   def destroy
    if self.has_order?
+  def destroy
     redirect_to race_path(@race.id)
   else
     @race.destroy

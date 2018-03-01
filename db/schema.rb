@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20180301080610) do
     t.bigint "race_id"
     t.text "description"
     t.integer "route_rate"
-    t.integer "organization_rate"
+    t.integer "organisation_rate"
     t.integer "value_for_money"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
