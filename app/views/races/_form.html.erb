@@ -1,0 +1,50 @@
+<%= simple_form_for @race do |f| %>
+<%= f.input :name, label: 'Insert The race Name', error: 'Username is mandatory, please specify one' %>
+<%= f.input :category, priority: [ "---" ], collection: [ "Trail", "Road", "Skyrace", "VerticalKM"], label: "Select the race category" %>
+
+<%= f.input :distance, label: "Insert the race distance", input_html: { value: '0', min: '0', step: 'any' }%>
+
+
+<%= f.input :elevation, label: "Insert the positive elevation (Not required for road races)", input_html: { value: '0', min: '0', step: '100' }%>
+<%= f.input :location, label: "Race Location?"%>
+
+<%= f.input :date, label: "Insert the race date", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year]%>
+
+<%=  f.input :description, label: "Tell something about your race", as: :text %>
+<%=  f.input :goodies, label: "Wich goodies are included in the race pack?", as: :text %>
+
+
+<%= f.input :first_edition, label: "Fist edition year", as: :date, start_year: Date.today.year-20, end_year: Date.today.year, order: [:year] %>
+<%= f.input :website, label: "You have a website?", placeholder: 'https://yoursite.com'  %>
+
+
+<%= f.input :starting_point, label: "Wher will be the starting point?"%>
+
+<%= f.input :starting_time, as: :time, minute_step: 30, label: "Insert the starting time" %>
+
+<%= f.input :fee_cents, label: "Insert the race price", input_html: { value: '0', min: '0', step: 'any' }%>
+
+
+
+
+<h3> Do u wana propost a discount price for the early subscription?</h3>
+
+<%= f.input :discount_fee_cents, label: "Insert the secial price", input_html: { value: '0', min: '0', step: 'any' } %>
+<%= f.input :discount_fee_finish, as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year], label: "If yes, untill wich date u wana propose the special price?" %>
+<h3> Subscription</h3>
+
+
+<%= f.input :subscription_start, label: "When the subscription period start?", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year] %>
+<%= f.input :subscription_end, label: "When the subscription period end?", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year] %>
+<%= f.input :capacity, label: "You have a maximum number of subscription? If yes, how many?" %>
+<h3> Do you wana Run Db manage your subscription sistem? <a href="">LINK_TO</a> </h3>
+<%=   f.collection_radio_buttons :bookable, [[false, 'No'] ,[true, 'Yes']], :first, :last %>
+
+
+
+<h3> If not, please provide a link to redirect the user to subscription page</h3>
+<%=  f.input :subscription_link,  placeholder: 'https://yoursite.com/subsctiption' %>
+
+<%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
+

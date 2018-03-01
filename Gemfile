@@ -17,6 +17,9 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'jquery-rails'
+gem 'money-rails'
+gem 'stripe'
+
 gem 'faker'
 gem "geocoder"
 
