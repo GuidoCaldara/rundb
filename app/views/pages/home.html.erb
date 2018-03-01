@@ -1,4 +1,48 @@
-<h1>Pages#home</h1>
 
-<%= image_tag "rundb_logo_grey.png", style: "height: 20px;" %>
+
+<div class="banner">
+  <div class="banner-content">
+    <%= image_tag "rundb_logo_white_shad.png", class: "logo-banner" %>
+    <div class="fixed-block">
+      <h2>Build your unique race experience</h2>
+    </div>
+  </div>
+</div>
+
+<p style="text-align: center; color: grey;">Dicover races near you</p>
+
+<!-- bouncing arrow
+-->
+
+<div class="arrow bounce">
+  <%= image_tag "arrow_down.png", class: "arrow_down"%>
+
+</div>
+
+<div class="card-wrapper">
+  <div class="container">
+    <div class="row">
+      <% 10.times do %>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+
+        <div class="card">
+          <div class="card-header" style="background-image: url('http://res.cloudinary.com/dxkimzdwk/image/upload/v1519895648/suuntoutmb.jpg')">
+            <p class="card-title">Race name</p>
+            <i class="fas fa-map-marker-alt card-marker"></i>
+            <p class="card-location">race location</p>
+
+          </div>
+
+
+          <div class="card-body">
+            <p class="element">category</p>
+            <p class="element">fee</p>
+            <p class="element last">10 reviews</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  </div>
+</div>
 
