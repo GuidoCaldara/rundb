@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h1 class="lead"><%= @organisation.name %></h1>
+      <p> <strong>Address: </strong> <%= @organisation.address %></p>
+      <p> <strong>Email: </strong><%= @organisation.email %></p>
+      <p> <strong>Description</strong><%= @organisation.description %></p>
+      <p> <strong>Phone numbers</strong><%= @organisation.phone_number %></p>
+      <p><strong> Races:</strong></p>
+      <ul>
+        <% @races.each do |race| %>
+        <li>
+          <%= link_to race_path(race.id) do %>
+          <%= race.name %>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+      <%= link_to "Edit your organisation", edit_organisation_path(@organisation.id)  %>
+
+      <%= link_to "Delete Your organisation", organisation_path(@organisation.id), method: :delete, data: {confirm: 'Are you really wanna delete your organisation? If u have some races in the database u will not able to complete the cancellation?'} %>
+
+    </div>
+  </div>
+</div>
+

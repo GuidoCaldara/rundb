@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180228095611) do
+ActiveRecord::Schema.define(version: 20180301080610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,12 +25,14 @@ ActiveRecord::Schema.define(version: 20180228095611) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "amount"
     t.bigint "user_id"
     t.bigint "race_id"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount_cents", default: 0, null: false
+    t.string "state"
+    t.string "race_sku"
+    t.jsonb "payment"
     t.index ["race_id"], name: "index_orders_on_race_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -43,6 +45,7 @@ ActiveRecord::Schema.define(version: 20180228095611) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
     t.index ["user_id"], name: "index_organisations_on_user_id"
   end
 
@@ -56,8 +59,6 @@ ActiveRecord::Schema.define(version: 20180228095611) do
     t.float "latitude"
     t.float "longitude"
     t.datetime "starting_time"
-    t.integer "discount_fee"
-    t.integer "fee"
     t.datetime "discount_fee_finish"
     t.datetime "subscription_start"
     t.datetime "subscription_end"
@@ -71,6 +72,11 @@ ActiveRecord::Schema.define(version: 20180228095611) do
     t.bigint "organisation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "first_edition"
+    t.string "starting_point"
+    t.string "sku"
+    t.integer "fee_cents", default: 0, null: false
+    t.integer "discount_fee_cents", default: 0, null: false
     t.index ["organisation_id"], name: "index_races_on_organisation_id"
   end
 
