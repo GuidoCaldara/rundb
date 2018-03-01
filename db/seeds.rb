@@ -16,7 +16,7 @@ User.destroy_all
 # CREATING USERS
 
 puts "///   Creating users"
-30.times do
+60.times do
   user = User.new(
     email: Faker::Internet.free_email,
     password: Faker::Internet.password(8),
@@ -208,6 +208,45 @@ puts "///   Creating races"
 end
 
 puts "///   #{Race.count} races in the database!"
+
+# CREATING ORDERS
+
+puts "///   Creating orders"
+
+Race.all.each do |race|
+  x = rand (10..100)
+  x.times do
+    order = Order.new
+    order.race_id = race.id
+    order.user_id = User.all.sample.id
+    order.status = "Confirmed"
+    if order.save
+      puts "1 order just created for #{race.name}"
+    else
+      puts "!!! order not save"
+    end
+  end
+end
+puts "///  #{Order.count} order created!"
+
+
+# CREATING REVIEWS
+puts "///   Creating reviews"
+
+Order.all.each do |order|
+  review = Review.new
+  review.race_id = order.race_id
+  review.user_id = order.user_id
+  review.description = Faker::Lorem.sentence(60, true, 20)
+  review.route_rate = rand(1..5)
+  review.organisation_rate = rand(1..5)
+  review.value_for_money = rand(1..5)
+  review.save
+  puts "1 review created for race #{Race.find(order.race_id).name}"
+end
+puts "///   #{Review.count} reviews created!"
+
+
 
 
 
