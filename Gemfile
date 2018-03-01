@@ -18,6 +18,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'jquery-rails'
 gem 'faker'
+gem "geocoder"
 
 
 group :development do
