@@ -4,17 +4,19 @@ class CreateRaces < ActiveRecord::Migration[5.1]
       t.string :name
       t.integer :distance
       t.integer :elevation
-      t.datetime :date
+      t.date :date
+      t.integer :date_stamp
       t.string :category
+      t.jsonb :_geoloc, default: {}
       t.string :location
       t.float :latitude
       t.float :longitude
-      t.datetime :starting_time
+      t.date :starting_time
       t.integer :discount_fee
       t.integer :fee
-      t.datetime :discount_fee_finish
-      t.datetime :subscription_start
-      t.datetime :subscription_end
+      t.date :discount_fee_finish
+      t.date :subscription_start
+      t.date :subscription_end
       t.string :photos
       t.text :goodies
       t.integer :capacity

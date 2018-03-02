@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301080610) do
+ActiveRecord::Schema.define(version: 20180302015134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,15 +53,17 @@ ActiveRecord::Schema.define(version: 20180301080610) do
     t.string "name"
     t.integer "distance"
     t.integer "elevation"
-    t.datetime "date"
+    t.date "date"
+    t.integer "date_stamp"
     t.string "category"
+    t.jsonb "_geoloc", default: {}
     t.string "location"
     t.float "latitude"
     t.float "longitude"
-    t.datetime "starting_time"
-    t.datetime "discount_fee_finish"
-    t.datetime "subscription_start"
-    t.datetime "subscription_end"
+    t.date "starting_time"
+    t.date "discount_fee_finish"
+    t.date "subscription_start"
+    t.date "subscription_end"
     t.string "photos"
     t.text "goodies"
     t.integer "capacity"
@@ -119,6 +121,7 @@ ActiveRecord::Schema.define(version: 20180301080610) do
     t.string "last_name"
     t.datetime "birthday"
     t.boolean "admin", default: false
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
