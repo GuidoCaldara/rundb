@@ -16,7 +16,7 @@ User.destroy_all
 # CREATING USERS
 
 puts "///   Creating users"
-6.times do
+10.times do
   user = User.new(
     email: Faker::Internet.free_email,
     password: Faker::Internet.password(8),
@@ -192,7 +192,7 @@ location = ["Milan, italy",
   "Scandicci, italy"]
 
   puts "///   Creating races"
-  10.times do
+  50.times do
     race = Race.new(
       name: "Race #{Faker::Hipster.word.capitalize}",
       distance: rand(1..5)*10,
@@ -204,15 +204,15 @@ location = ["Milan, italy",
       fee: rand(10..50),
       organisation_id: Organisation.all.sample.id
       )
-    if race.save
-      if race.latitude && race.longitude
-        race._geoloc = {"lng": race.longitude, "lat": race.latitude}
-      else
-        race._geoloc = {}
-      end
+    race.save
+    if race.latitude && race.longitude
+      race._geoloc = {"lat" => race.latitude, "lng" => race.longitude}
       race.save
-      puts race.name + " " + " created!"
+    else
+      race._geoloc = {}
     end
+    puts race.name + " " + " created!"
+  end
 
 
   puts "///   #{Race.count} races in the database!"
@@ -222,7 +222,7 @@ location = ["Milan, italy",
 puts "///   Creating orders"
 
 Race.all.each do |race|
-  x = rand (10..100)
+  x = rand (3..7)
   x.times do
     order = Order.new
     order.race_id = race.id

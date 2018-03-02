@@ -49,9 +49,9 @@ search.addWidget(
     instantsearch.widgets.googleMaps({
       container: document.querySelector('#map'),
       prepareMarkerData: function(hit, index, hits) {
-        return {
-          title: hit.name
-        };
+        // return {
+        //   title: hit.name
+        // };
       }
     })
   );

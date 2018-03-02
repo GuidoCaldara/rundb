@@ -57,7 +57,7 @@ private
   end
 
   def race_params
-    params.require(:race).permit(:starting_point, :name, :distance, :elevation, :date, :category, :location, :latitude, :longitude, :starting_time, :discount_fee_cents, :fee_cents, :discount_fee_finish, :subscription_start, :subscription_end, :photos, :goodies, :capacity, :description, :bookable,:website, :subscription_link, :organisation_id, :first_edition)
+    params.require(:race).permit(:starting_point, :name, :distance, :elevation, :date, :category, :location, :latitude, :longitude, :_geoloc, :starting_time, :discount_fee_cents, :fee_cents, :discount_fee_finish, :subscription_start, :subscription_end, :photos, :goodies, :capacity, :description, :bookable,:website, :subscription_link, :organisation_id, :first_edition)
   end
 
 end
