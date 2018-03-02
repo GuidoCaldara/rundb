@@ -3,42 +3,61 @@
 <div class="banner">
   <div class="banner-content">
     <%= image_tag "rundb_logo_white_shad.png", class: "logo-banner" %>
-    <div class="fixed-block">
+   <!--  <div class="fixed-block">
       <h2>Build your unique race experience</h2>
-    </div>
+    </div> -->
     <%= link_to "Start now", races_path, class: "button-start" %>
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="banner-slide"><p>some textergregrg</p></div>
+
+
+    <div id="text-carousel" class="carousel slide" data-ride="carousel">
+    <!-- Wrapper for slides -->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="carousel-content">
+                        <div>
+                            <p>Browse an extensive race database, and find the perfect one for you</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-content">
+                        <div>
+                            <p> Make sure you don't miss races near you, or while you are traveling</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-content">
+                        <div>
+                            <p>Race organiser? List your race on our platform. We can also manage race registration for you</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="carousel-item">
-          <div class="banner-slide"><p>some textergregrg</p></div>
-        </div>
-        <div class="carousel-item">
-          <div class="banner-slide"><p>some textergregrg</p></div>
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
+    <!-- Controls -->
+    <a class="left carousel-control" href="#text-carousel" data-slide="prev">
+    <%= image_tag "arrow_right.png", class: "arrow-carrousel", style:"transform: rotate(180deg)"%>
+  </a>
+ <a class="right carousel-control" href="#text-carousel" data-slide="next">
+    <%= image_tag "arrow_right.png", class: "arrow-carrousel"%>
+  </a>
+
+</div>
+
+
+
+
     </div>
   </div>
 
 
 
-<p class="discover">Discover races near you</p>
+<p class="discover">Discover popular races near you</p>
 
 <!-- bouncing arrow
 -->

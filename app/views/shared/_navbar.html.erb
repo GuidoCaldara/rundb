@@ -18,13 +18,7 @@
 
 
     <!-- Profile picture with dropdown list -->
-    <div class="navbar-rundb-item">
-      <div class="dropdown">
-        <% if user_signed_in? && current_user.photo %>
-        <img src="<%= image_path current_user.photo %>" class="avatar dropdown-toggle" id="navbar-rundb-menu" data-toggle="dropdown">
-        <% end %>
-      </div>
-    </div>
+
   </div>
 
   <!-- Dropdown appearing on mobile only -->

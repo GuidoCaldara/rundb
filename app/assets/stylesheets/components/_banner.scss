@@ -18,17 +18,51 @@
   display: block;
 
   // margin-bottom: 90px;
-  width: 300px;
+  width: 500px;
 
 }
 
-.banner-slide {
-  width: 600px;
-  height: 300px;
+
+// CARROUSSEL
+
+
+#text-carousel {
+  width: 100%;
+  height: auto;
+  padding: 50px;
+}
+
+.carousel p {
+  font-size: 20px;
+  opacity: 0.9;
+  text-shadow: 0 1px 18px rgb(0, 0, 0);
+
+}
+
+
+.carousel-content {
+    color:white;
+    display:flex;
+    align-items:center;
+    height: 120px;
+
+}
+
+.carousel-control {
+  background-image: none !important;
+  opacity: 1 !important;
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
 }
+
+
+.arrow-carrousel {
+  height: 28px;
+
+  opacity: 1;
+}
+
 
 
 .logo-banner {
