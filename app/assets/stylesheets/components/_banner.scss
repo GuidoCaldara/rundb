@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-image: url('http://res.cloudinary.com/dxkimzdwk/image/upload/v1519890272/david-marcu-69433-unsplash.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.19), rgba(0, 0, 0, 0.2)), url('http://res.cloudinary.com/dxkimzdwk/image/upload/v1519974511/pexels-photo-531596.jpg');
   background-size: cover;
   background-position: center;
   color: white;
@@ -17,14 +17,17 @@
   text-align: center;
   display: block;
 
-  margin-bottom: 90px;
+  // margin-bottom: 90px;
   width: 300px;
 
 }
 
 .banner-slide {
-  width: 300px;
-  height: 200px;
+  width: 600px;
+  height: 300px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 
