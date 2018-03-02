@@ -19,7 +19,8 @@ gem 'webpacker'
 gem 'jquery-rails'
 gem 'money-rails'
 gem 'stripe'
-
+gem 'omniauth'
+gem 'omniauth-facebook', '~> 4.0'
 gem 'faker'
 gem "geocoder"
 

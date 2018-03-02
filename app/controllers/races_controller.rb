@@ -13,6 +13,8 @@ class RacesController < ApplicationController
   def create
     @race = Race.new(race_params)
     @organisation = Organisation.find_by(user_id: current_user)
+    @race._geoloc = {lat: @race.latitude, lng: @race.longitude}
+    @race.date_stamp = @race.date.to_time.to_i
     @race.organisation_id = @organisation.id
     @race.sku = sku_generator
     if @race.save
@@ -38,11 +40,10 @@ end
 
   def destroy
    if self.has_order?
-  def destroy
     redirect_to race_path(@race.id)
   else
     @race.destroy
-    redirect_to race_path(@race.id)
+    redirect_to root_path
   end
   end
 
