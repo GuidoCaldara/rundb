@@ -213,7 +213,7 @@ location = ["Milan, italy",
       race.save
       puts race.name + " " + " created!"
     end
-  end
+
 
   puts "///   #{Race.count} races in the database!"
 
@@ -228,7 +228,6 @@ Race.all.each do |race|
     order.race_id = race.id
     order.user_id = User.all.sample.id
     order.state = "Confirmed"
-
     if order.save
       puts "1 order just created for #{race.name}"
     else
