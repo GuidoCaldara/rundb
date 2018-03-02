@@ -192,6 +192,7 @@ location = ["Milan, italy",
 "Scandicci, italy"]
 
 puts "///   Creating races"
+i = 0
 100.times do
   race = Race.new(
     name: "Race #{Faker::Hipster.word.capitalize}",
@@ -202,8 +203,9 @@ puts "///   Creating races"
     location: location.sample,
     fee: rand(10..50),
     organisation_id: Organisation.all.sample.id)
+    i += 1
   if race.save
-    puts race.name + " " + " created!"
+    puts "Race #{i} - " + race.name + " " + " created!"
   end
 end
 
@@ -219,7 +221,7 @@ Race.all.each do |race|
     order = Order.new
     order.race_id = race.id
     order.user_id = User.all.sample.id
-    order.status = "Confirmed"
+    order.state = "Confirmed"
     if order.save
       puts "1 order just created for #{race.name}"
     else
