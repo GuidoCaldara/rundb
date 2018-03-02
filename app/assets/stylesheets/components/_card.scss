@@ -1,81 +1,101 @@
 // MAIN CARDS
 
-.card-wrapper {
-  margin: 0 10px;
+.card-race-wrapper {
+  margin: 20px 0px;
 }
-.card {
+.card-race {
   background-color: white;
-  padding: 14px;
-  box-shadow: 0 20px 20px rgba(0,0,0,.08);
-  margin-bottom: 20px;
-  border-radius: 4px;
-  min-height: 300px;
-  min-width: 250px;
-  transition: all 0.4s cubic-bezier(0.06, 0.76, 0.25, 1);
-}
-
-.card:hover {
-  box-shadow: 0 10px 10px rgba(0,0,0,.08);
-}
-
-.card-header {
+  padding: 0;
+  box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0 2px 0 0 rgba(0, 0, 0, 0.03);
+  margin-bottom: 30px;
+  border-radius: 8px;
   min-height: 230px;
+
+
+
+  transition: all 200ms ease-in;
+
+}
+
+.card-race:hover {
+  z-index: 2;
+  transform: scale(1.06);
+  transform: translateY(-6px);
+}
+
+.card-race-header {
+  min-height: 180px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 4px;
   position: relative;
-  top: -12px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
-.card-body {
+.card-race-body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border-top: 1px solid #dadada;
+  height: 50px;
 }
 
-.card-body p {
-  margin-bottom: 0;
+.card-race-body p {
+  margin-bottom: 10px;
   margin-top: 10px;
   color: grey;
 }
 
-.card-title {
+.card-race-title {
   max-width: 200px;
+  font-family: "Poppins", "sans-serif";
+  font-size: 20px;
+  color: #fffffff0;
+  position: absolute;
+  top: 8px;
+  left: 14px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
 }
 
-.card-location {
-  font-size: 12px;
+.card-race-location {
+  font-size: 16px;
   color: #fffffff0;
   position: absolute;
-  top: 30px;
+  top: 38px;
   left: 30px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.64);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
 }
-.card-marker {
-  font-size: 12px;
+.card-race-marker {
+  font-size: 16px;
   color: #fffffff0;
   position: absolute;
-  top: 31px;
+  top: 40px;
   left: 14px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.64);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
+}
+
+.card-race-favorite {
+  font-size: 22px;
+  color: #fffffff0;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
 }
 
 .star-container {
   position: absolute;
-  top: 44px;
+  top: 64px;
   left: 14px;
 }
 
-.card-star {
+.card-race-star {
   font-size: 12px;
   color: #fffffff0;
-
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.64);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
 }
 
-.card-body .element {
+.card-race-body .element {
   flex: 1 1 auto;
   border-right: 1px solid #dadada;
   min-width: 80px;
@@ -87,7 +107,7 @@
 }
 
 
-.card-header a {
+.card-race-header a {
   font-size: 20px;
   text-decoration: none;
   color: white;
