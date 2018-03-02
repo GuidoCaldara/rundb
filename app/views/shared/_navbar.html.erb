@@ -6,6 +6,9 @@
 
   <!-- Right Navigation -->
   <div class="navbar-rundb-right hidden-xs hidden-sm">
+      <div class="orga-call">Race Organizer? </div>
+      <%= link_to "List your Race", races_path, class: "button-orga-start" %>
+
        <% if user_signed_in?%>
     <%= link_to "Logout", destroy_user_session_path,  :method=>'delete', class: "navbar-rundb-item navbar-rundb-link" %>
     <% else %>

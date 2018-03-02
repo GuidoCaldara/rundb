@@ -1,12 +1,12 @@
 // MAIN CARDS
 
 .card-race-wrapper {
-  margin: 20px 10px;
+  margin: 20px 0px;
 }
 .card-race {
   background-color: white;
   padding: 0;
-  box-shadow: 0 20px 20px rgba(64, 64, 64, 0.08), 0px 4px 1px rgba(60, 60, 60, 0.05);
+  box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0 2px 0 0 rgba(0, 0, 0, 0.03);
   margin-bottom: 30px;
   border-radius: 8px;
   min-height: 230px;
@@ -74,17 +74,25 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
 }
 
+.card-race-favorite {
+  font-size: 22px;
+  color: #fffffff0;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
+}
+
 .star-container {
   position: absolute;
-  top: 44px;
+  top: 64px;
   left: 14px;
 }
 
 .card-race-star {
   font-size: 12px;
   color: #fffffff0;
-
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.64);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
 }
 
 .card-race-body .element {

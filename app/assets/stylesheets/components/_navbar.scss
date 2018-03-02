@@ -47,13 +47,24 @@
 
 /* Navbar link */
 .navbar-rundb-link {
-  color: #616668;
-  font-size: 14px;
+  font-family: "Poppins", "sans-serif";
+  font-size: 12px;
+  padding: 0 10px;
+  color: #6f6f6f;
 }
 .navbar-rundb-link:hover {
-  color: #da552f;
+
+  color: black;
   text-decoration: none;
 }
+
+.orga-call {
+  font-family: "Poppins", "sans-serif";
+  font-size: 12px;
+  padding: 0 10px;
+  color: #6f6f6f;
+}
+
 
 /* Dropdown menu */
 .navbar-rundb-dropdown-menu {

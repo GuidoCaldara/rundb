@@ -28,9 +28,24 @@
 
         <div class="card-race">
           <div class="card-race-header" style="background-image: url('http://res.cloudinary.com/dxkimzdwk/image/upload/v1519895648/suuntoutmb.jpg')">
+
             <p class="card-race-title">Race name</p>
+
             <i class="fas fa-map-marker-alt card-race-marker"></i>
+
             <p class="card-race-location">race location</p>
+
+            <div class="star-container">
+                <% 3.times do %>
+                  <i class="fas fa-star card-race-star"></i>
+                <% end %>
+                <% (5 - 3).times do %>
+                  <i class="far fa-star card-race-star"></i>
+                <% end %>
+              </div>
+
+            <i class="far fa-heart card-race-favorite"></i>
+
 
           </div>
 
