@@ -7,62 +7,59 @@
   <!-- Right Navigation -->
   <div class="navbar-rundb-right hidden-xs hidden-sm">
 
-      <div class="orga-call">Race Organizer? </div>
-      <%= link_to "List your Race", races_path, class: "button-orga-start" %>
+    <div class="orga-call">Race Organizer? </div>
+    <%= link_to "List your Race", races_path, class: "button-orga-start" %>
 
-       <% if user_signed_in?%>
-    <%= link_to "Logout", destroy_user_session_path,  :method=>'delete', class: "navbar-rundb-item navbar-rundb-link" %>
-    <% else %>
-    <%= link_to "SignIn", new_user_session_path, class: "navbar-rundb-item navbar-rundb-link" %>
-    <%= link_to "SignUP", new_user_registration_path, class: "navbar-rundb-item navbar-rundb-link" %>
-    <% end %>
 
 
     <!-- Profile picture with dropdown list -->
-
-
-
-   <% if user_signed_in?%>
-   <%= link_to "Logout", destroy_user_session_path,  :method=>'delete', class: "navbar-rundb-item navbar-rundb-link" %>
-   <% else %>
-   <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
-   <%= link_to "Logout", destroy_user_session_path,  :method=>'delete', class: "navbar-rundb-item navbar-rundb-link" %>
-
-   <button type="button" class="btn btn-primary mr-3" data-toggle="modal" data-target="#signUp">
-    Sign Up
-  </button>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signIn">
-    Sign In
-  </button>
-
-
-
-  <% end %>
-
-
-
-  <!-- Profile picture with dropdown list -->
-  <div class="navbar-rundb-item">
-    <div class="dropdown">
-      <% if user_signed_in? && current_user.avatar %>
-      <img src="<%= image_path current_user.avatar %>" class="avatar dropdown-toggle" id="navbar-rundb-menu" data-toggle="dropdown">
-      <% end %>
+    <div class="navbar-wagon-item">
+      <div class="dropdown">
+        <% if user_signed_in? %>
+        <img src="http://res.cloudinary.com/dxkimzdwk/image/upload/v1519720241/w2m3mpadakagaim0uf30.jpg" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+        <ul class="dropdown-menu dropdown-menu-right navbar-rundb-dropdown-menu">
+        <li><%= link_to "Profile", class: "" %>
+        </li>
+        <li><%= link_to "Your races", class: "" %>
+        </li>
+        <li>
+          <% if user_signed_in?%>
+            <%= link_to "Logout", destroy_user_session_path,  :method=>'delete', class: "" %>
+          <% end %>
+          </li>
+      </ul>
+        <% end %>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- Dropdown appearing on mobile only -->
- <!--  <div class="navbar-rundb-item hidden-md hidden-lg">
+
+    <% if !user_signed_in?%>
+      <a class="navbar-rundb-link" data-toggle="modal" data-target="#signUp">
+        Sign Up
+      </a>
+
+      <a class="navbar-rundb-link" data-toggle="modal" data-target="#signIn">
+        Sign In
+      </a>
+
+    <% end %>
+
+  </div>
+
+  <!-- Dropdown appearing on mobile only -->
+  <div class="navbar-rundb-item hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-rundb-dropdown-menu">
         <li><a href="#">Host</a></li>
         <li><a href="#">Trips</a></li>
-        <li><a href="#">Messages</a></li>
+        <li><a href="#">Logout</a></li>
       </ul>
     </div>
-  </div> -->
+  </div>
 </div>
+
+
 
 <!-- Button trigger modal -->
 
@@ -74,7 +71,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -90,7 +87,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

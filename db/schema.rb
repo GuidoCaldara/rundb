@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20180302051624) do
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,17 +53,15 @@ ActiveRecord::Schema.define(version: 20180302051624) do
     t.string "name"
     t.integer "distance"
     t.integer "elevation"
-    t.date "date"
-    t.integer "date_stamp"
+    t.datetime "date"
     t.string "category"
-    t.jsonb "_geoloc", default: {}
     t.string "location"
     t.float "latitude"
     t.float "longitude"
-    t.date "starting_time"
-    t.date "discount_fee_finish"
-    t.date "subscription_start"
-    t.date "subscription_end"
+    t.datetime "starting_time"
+    t.datetime "discount_fee_finish"
+    t.datetime "subscription_start"
+    t.datetime "subscription_end"
     t.string "photos"
     t.text "goodies"
     t.integer "capacity"
