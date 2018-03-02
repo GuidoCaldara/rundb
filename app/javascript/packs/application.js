@@ -2,6 +2,7 @@ import "bootstrap";
 
 window.addEventListener('load', function() {
 
+
 const search = instantsearch({
   appId: 'MP37CKD4Q3',
   apiKey: '136ef84efd2cef33f59cda19d45384db',
@@ -36,6 +37,69 @@ search.addWidget(
     })
   );
 
+  const datePicker = instantsearch.connectors.connectRange(
+  (options, isFirstRendering) => {
+    if (!isFirstRendering) return;
+
+    const { refine } = options;
+
+    new Calendar({
+      element: $('#calendar'),
+      callback: function() {
+        const start = new Date(this.start_date).getTime();
+        const end = new Date(this.end_date).getTime();
+
+        refine([start, end]);
+      }
+      // Some good parameters based on our dataset:
+      // start_date: new Date(),
+      // end_date: new Date('01/01/2020'),
+      // earliest_date: new Date('01/01/2008'),
+      // latest_date: new Date('01/01/2020'),
+    });
+  }
+);
+
+  search.addWidget(
+  datePicker({
+    attributeName: 'date_stamp',
+  })
+);
+  // Race.where("date_stamp >= :start_date AND date_stamp <= :end_date", start_date: 1519142400, end_date: 1553788800)
+
+
+
+  // const makeRangeWidget = instantsearch.connectors.connectRange(
+  // (options, isFirstRendering) => {
+  //   if (!isFirstRendering) return;
+
+  //   const { refine } = options;
+
+  //   new Calendar({
+  //     element: $('#calendar'),
+  //     same_day_range: true,
+  //     callback: function() {
+  //       const start = new Date(this.start_date).getTime();
+  //       const end = new Date(this.end_date).getTime();
+  //       const actualEnd = start === end ? end + ONE_DAY_IN_MS - 1 : end;
+
+  //       refine([start, actualEnd]);
+  //     },
+  //     // Some good parameters based on our dataset:
+  //     start_date: new Date(),
+  //     end_date: new Date('01/01/2020'),
+  //     earliest_date: new Date('01/01/2008'),
+  //     latest_date: new Date('01/01/2020'),
+  //   });
+  // }
+  // );
+
+  // const dateRangeWidget = makeRangeWidget({
+  //   attributeName: 'date_stamp',
+  // });
+
+// search.addWidget(dateRangeWidget);
+
 search.addWidget(
     instantsearch.widgets.rangeSlider({
       container: '#distance',
@@ -49,9 +113,9 @@ search.addWidget(
     instantsearch.widgets.googleMaps({
       container: document.querySelector('#map'),
       prepareMarkerData: function(hit, index, hits) {
-        // return {
-        //   title: hit.name
-        // };
+        return {
+          title: hit.name
+        };
       }
     })
   );

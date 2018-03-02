@@ -192,13 +192,13 @@ location = ["Milan, italy",
   "Scandicci, italy"]
 
   puts "///   Creating races"
-  50.times do
+  10.times do
     race = Race.new(
       name: "Race #{Faker::Hipster.word.capitalize}",
       distance: rand(1..5)*10,
       elevation: rand(100..2000),
       date: (Date.today + (rand(1..200)).days),
-      date_stamp: (Date.today + (rand(1..200)).days).to_time.to_i,
+      date_stamp: ((Date.today + (rand(1..200)).days).to_time.to_i * 1000),
       category: category.sample,
       location: location.sample,
       fee: rand(10..50),
@@ -209,7 +209,7 @@ location = ["Milan, italy",
       race._geoloc = {"lat" => race.latitude, "lng" => race.longitude}
       race.save
     else
-      race._geoloc = {}
+      race._geoloc = {"lat" => 41.2027767, "lng" => 16.5987187}
     end
     puts race.name + " " + " created!"
   end

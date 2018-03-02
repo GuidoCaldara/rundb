@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302015134) do
+ActiveRecord::Schema.define(version: 20180302091205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20180302015134) do
     t.integer "distance"
     t.integer "elevation"
     t.date "date"
-    t.integer "date_stamp"
     t.string "category"
     t.string "location"
     t.float "latitude"
@@ -79,6 +78,7 @@ ActiveRecord::Schema.define(version: 20180302015134) do
     t.string "sku"
     t.integer "fee_cents", default: 0, null: false
     t.integer "discount_fee_cents", default: 0, null: false
+    t.float "date_stamp"
     t.index ["organisation_id"], name: "index_races_on_organisation_id"
   end
 

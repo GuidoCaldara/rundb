@@ -13,8 +13,8 @@ class Race < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch do
-    attribute :name, :location, :category, :distance, :date_stamp, :_geoloc
-    attributesForFaceting [:category, :distance, :date_stamp, :_geoloc]
+    attribute :name, :location, :category, :distance, :date_stamp, :_geoloc, :id
+    attributesForFaceting [:category, :distance, :date_stamp, :_geoloc, :name, :location, :id]
 
   end
   monetize :fee_cents
