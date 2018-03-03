@@ -1,13 +1,13 @@
 
-
-
 #map {
-  height: 400px;
-  width: 400px;
+  width: 480px;
+  height: 100%;
 }
 
+
 .aisdemo--left-column {
-  height: 400px; }
+
+}
 
 .aisdemo--right-column {
   padding-right: 0;
@@ -102,7 +102,7 @@
   margin: 30px 9px 18px; }
 
 .aisdemo-filters #distance .ais-range-slider--handle {
-  border-color: #FF585B; }
+  border-color: black; }
 
 .aisdemo-filters #distance .rheostat-progress {
   background-color: #FF585B !important; }
