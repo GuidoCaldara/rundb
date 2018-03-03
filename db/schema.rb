@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302051624) do
-
+ActiveRecord::Schema.define(version: 20180302091730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,10 +71,7 @@ ActiveRecord::Schema.define(version: 20180302051624) do
     t.date "discount_fee_finish"
     t.date "subscription_start"
     t.date "subscription_end"
-    t.datetime "starting_time"
-    t.datetime "discount_fee_finish"
-    t.datetime "subscription_start"
-    t.datetime "subscription_end"
+    t.string "photos"
     t.text "goodies"
     t.integer "capacity"
     t.text "description"
