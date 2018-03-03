@@ -3,14 +3,21 @@
    <input id="search-input" placeholder="Search for races">
    <!-- We use a specific placeholder in the input to guides users in their search. -->
     <div class="row aisdemo-filter">
-          <div class="col-sm-2 aisdemo-filter-title">Race Categories</div>
-          <div id="race_categories"></div>
-        </div>
+      <div class="col-sm-2 aisdemo-filter-title">Race Categories</div>
+      <div id="race_categories"></div>
+    </div>
 
     <div class="row aisdemo-filter">
-          <div class="col-sm-2 aisdemo-filter-title">Distance Range</div>
-          <div class="col-sm-9" id="distance"></div>
-        </div>
+      <div class="col-sm-2 aisdemo-filter-title">Distance Range</div>
+      <div class="col-sm-9" id="distance"></div>
+    </div>
+
+       <main class="wrapper">
+    <aside class="left">
+      <div id="refinement-list">
+        <h3>Dates</h3>
+        <div id="calendar" class="daterange"></div>
+      </div>
 
  </div>
 </header>
@@ -24,9 +31,11 @@
 
 <script type="text/html" id="hit-template">
   <div class="hit">
-
-    <p class="hit-name">{{{_highlightResult.name.value}}}</p>
-    <p class="hit-name">{{{_highlightResult.category.value}}}</p>
+    <a href="/races/{{id}}">
+      <p class="hit-name">{{{_highlightResult.name.value}}}</p>
+      <p class="hit-name">{{{_highlightResult.category.value}}}</p>
+      <p class="hit-name">{{{_highlightResult.location.value}}}</p>
+    </a>
     <!-- <p class="hit-name">{{{_highlightResult.distance.value}}}</p> -->
     <!-- can not display distance because it is an integer so we should some how convert it to a string -->
    </div>
