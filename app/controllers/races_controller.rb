@@ -13,11 +13,16 @@ end
 def create
   @race = Race.new(race_params)
   @organisation = Organisation.find_by(user_id: current_user)
-  @race._geoloc = { “lat”: 41.1078251, “lng”: 16.6910569}
+  @race._geoloc = { "lat": 41.1078251, "lng": 16.6910569}
  @race.date_stamp = (@race.date.to_time.to_i) * 1000
  @race.organisation_id = @organisation.id
- if @race.save
+ if @race.save && @race.longitude && @race.latitude
+  @race._geoloc = { "lat": @race.latitude, "lng": @race.longitude}
+  @race.save
   redirect_to new_race_photo_path(@race.id)
+ elsif @race.save
+    redirect_to new_race_photo_path(@race.id)
+    flash[:alert]
 else
   render action: 'new'
 end
