@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180302051624) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,15 +54,27 @@ ActiveRecord::Schema.define(version: 20180302051624) do
     t.string "name"
     t.integer "distance"
     t.integer "elevation"
+<<<<<<< HEAD
+    t.date "date"
+=======
     t.datetime "date"
+>>>>>>> master
     t.string "category"
     t.string "location"
     t.float "latitude"
     t.float "longitude"
+<<<<<<< HEAD
+    t.jsonb "_geoloc", default: {}
+    t.date "starting_time"
+    t.date "discount_fee_finish"
+    t.date "subscription_start"
+    t.date "subscription_end"
+=======
     t.datetime "starting_time"
     t.datetime "discount_fee_finish"
     t.datetime "subscription_start"
     t.datetime "subscription_end"
+>>>>>>> master
     t.string "photos"
     t.text "goodies"
     t.integer "capacity"
@@ -77,6 +90,7 @@ ActiveRecord::Schema.define(version: 20180302051624) do
     t.string "sku"
     t.integer "fee_cents", default: 0, null: false
     t.integer "discount_fee_cents", default: 0, null: false
+    t.float "date_stamp"
     t.index ["organisation_id"], name: "index_races_on_organisation_id"
   end
 

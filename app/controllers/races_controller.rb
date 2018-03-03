@@ -14,7 +14,7 @@ class RacesController < ApplicationController
     @race = Race.new(race_params)
     @organisation = Organisation.find_by(user_id: current_user)
     @race._geoloc = {lat: @race.latitude, lng: @race.longitude}
-    @race.date_stamp = @race.date.to_time.to_i
+    @race.date_stamp = (@race.date.to_time.to_i * 1000)
     @race.organisation_id = @organisation.id
     @race.sku = sku_generator
     if @race.save
@@ -57,7 +57,7 @@ private
   end
 
   def race_params
-    params.require(:race).permit(:starting_point, :name, :distance, :elevation, :date, :category, :location, :latitude, :longitude, :starting_time, :discount_fee_cents, :fee_cents, :discount_fee_finish, :subscription_start, :subscription_end, :photos, :goodies, :capacity, :description, :bookable,:website, :subscription_link, :organisation_id, :first_edition)
+    params.require(:race).permit(:starting_point, :name, :distance, :elevation, :date, :category, :location, :latitude, :longitude, :_geoloc, :starting_time, :discount_fee_cents, :fee_cents, :discount_fee_finish, :subscription_start, :subscription_end, :photos, :goodies, :capacity, :description, :bookable,:website, :subscription_link, :organisation_id, :first_edition)
   end
 
 end
