@@ -25,6 +25,8 @@ gem 'faker'
 gem "geocoder"
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
+gem 'gmaps-autocomplete-rails'
+gem 'coffee-rails'
 
 
 gem "algoliasearch-rails"
