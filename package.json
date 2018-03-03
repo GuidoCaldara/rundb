@@ -5,6 +5,7 @@
     "@rails/webpacker": "^3.2.2",
     "algoliasearch": "^3.24.12",
     "bootstrap": "3",
+    "gmaps": "^0.4.24",
     "instantsearch.js": "^2.5.2",
     "jquery": "^3.3.1"
   },
