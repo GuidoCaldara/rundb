@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302091205) do
+ActiveRecord::Schema.define(version: 20180302051624) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,16 +54,27 @@ ActiveRecord::Schema.define(version: 20180302091205) do
     t.string "name"
     t.integer "distance"
     t.integer "elevation"
+<<<<<<< HEAD
     t.date "date"
+=======
+    t.datetime "date"
+>>>>>>> master
     t.string "category"
     t.string "location"
     t.float "latitude"
     t.float "longitude"
+<<<<<<< HEAD
     t.jsonb "_geoloc", default: {}
     t.date "starting_time"
     t.date "discount_fee_finish"
     t.date "subscription_start"
     t.date "subscription_end"
+=======
+    t.datetime "starting_time"
+    t.datetime "discount_fee_finish"
+    t.datetime "subscription_start"
+    t.datetime "subscription_end"
+>>>>>>> master
     t.string "photos"
     t.text "goodies"
     t.integer "capacity"
@@ -122,6 +134,11 @@ ActiveRecord::Schema.define(version: 20180302091205) do
     t.datetime "birthday"
     t.boolean "admin", default: false
     t.string "avatar"
+    t.string "provider"
+    t.string "uid"
+    t.string "facebook_picture_url"
+    t.string "token"
+    t.datetime "token_expiry"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

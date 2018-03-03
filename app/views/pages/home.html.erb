@@ -3,13 +3,61 @@
 <div class="banner">
   <div class="banner-content">
     <%= image_tag "rundb_logo_white_shad.png", class: "logo-banner" %>
-    <div class="fixed-block">
+   <!--  <div class="fixed-block">
       <h2>Build your unique race experience</h2>
+    </div> -->
+    <%= link_to "Start now", races_path, class: "button-start" %>
+
+
+    <div id="text-carousel" class="carousel slide" data-ride="carousel">
+    <!-- Wrapper for slides -->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="carousel-content">
+                        <div>
+                            <p>Browse an extensive races database, and find the one that fits your expectations</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-content">
+                        <div>
+                            <p> Make sure you don't miss races around you, or while you are traveling</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-content">
+                        <div>
+                            <p>Race organiser? List your race on our platform. Rundb also manages race registration for you</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-  </div>
+    <!-- Controls -->
+    <a class="left carousel-control" href="#text-carousel" data-slide="prev">
+    <%= image_tag "arrow_right.png", class: "arrow-carrousel", style:"transform: rotate(180deg)"%>
+  </a>
+ <a class="right carousel-control" href="#text-carousel" data-slide="next">
+    <%= image_tag "arrow_right.png", class: "arrow-carrousel"%>
+  </a>
+
 </div>
 
-<p style="text-align: center; color: grey;">Dicover races near you</p>
+
+
+
+    </div>
+  </div>
+
+
+
+<p class="discover">Discover popular races near you</p>
 
 <!-- bouncing arrow
 -->
@@ -19,30 +67,45 @@
 
 </div>
 
-<div class="card-wrapper">
+<div class="card-race-wrapper">
   <div class="container">
     <div class="row">
       <% 10.times do %>
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 
-        <div class="card">
-          <div class="card-header" style="background-image: url('http://res.cloudinary.com/dxkimzdwk/image/upload/v1519895648/suuntoutmb.jpg')">
-            <p class="card-title">Race name</p>
-            <i class="fas fa-map-marker-alt card-marker"></i>
-            <p class="card-location">race location</p>
+        <div class="card-race">
+          <div class="card-race-header" style="background-image: url('http://res.cloudinary.com/dxkimzdwk/image/upload/v1519895648/suuntoutmb.jpg')">
+
+            <p class="card-race-title">Race name</p>
+
+            <i class="fas fa-map-marker-alt card-race-marker"></i>
+
+            <p class="card-race-location">race location</p>
+
+            <div class="star-container">
+                <% 3.times do %>
+                  <i class="fas fa-star card-race-star"></i>
+                <% end %>
+                <% (5 - 3).times do %>
+                  <i class="far fa-star card-race-star"></i>
+                <% end %>
+              </div>
+
+            <i class="far fa-heart card-race-favorite"></i>
+
 
           </div>
 
 
-          <div class="card-body">
+          <div class="card-race-body">
             <p class="element">category</p>
-            <p class="element">fee</p>
+            <p class="element">100 km</p>
             <p class="element last">10 reviews</p>
           </div>
         </div>
+      </div>
       <% end %>
     </div>
-  </div>
   </div>
 </div>
 

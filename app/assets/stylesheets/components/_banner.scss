@@ -1,10 +1,10 @@
 .banner {
-  min-height: 60vh;
+  min-height: 70vh;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-image: url('http://res.cloudinary.com/dxkimzdwk/image/upload/v1519890272/david-marcu-69433-unsplash.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.19), rgba(0, 0, 0, 0.2)), url('http://res.cloudinary.com/dxkimzdwk/image/upload/v1519974511/pexels-photo-531596.jpg');
   background-size: cover;
   background-position: center;
   color: white;
@@ -16,10 +16,53 @@
 .banner-content {
   text-align: center;
   display: block;
-  margin-bottom: 120px;
-  width: 300px;
+
+  // margin-bottom: 90px;
+  width: 500px;
 
 }
+
+
+// CARROUSSEL
+
+
+#text-carousel {
+  width: 100%;
+  height: auto;
+  padding: 50px;
+}
+
+.carousel p {
+  font-size: 20px;
+  opacity: 0.9;
+  text-shadow: 0 1px 18px rgb(0, 0, 0);
+
+}
+
+
+.carousel-content {
+    color:white;
+    display:flex;
+    align-items:center;
+    height: 120px;
+
+}
+
+.carousel-control {
+  background-image: none !important;
+  opacity: 1 !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+.arrow-carrousel {
+  height: 28px;
+
+  opacity: 1;
+}
+
 
 
 .logo-banner {

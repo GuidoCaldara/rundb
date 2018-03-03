@@ -9,11 +9,13 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'b31dd8367408e5c27293387d4bcd88cf334fc46d240b4a02d337bc5a2c92404650ae4902a4b8d162aabe075f857c8d1e1e217256476f3195f4be8722b24b656d'
-
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
+
+  config.omniauth :facebook, ENV['APP_ID'], ENV['APP_SECRET'], scope: 'email', info_fields: 'email,name'
+
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
@@ -253,7 +255,6 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
@@ -263,7 +264,8 @@ Devise.setup do |config|
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
 
-  # ==> Mountable engine configurations
+
+    # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
   # is mountable, there are some extra configurations to be taken into account.
   # The following options are available, assuming the engine is mounted as:

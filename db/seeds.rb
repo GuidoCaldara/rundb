@@ -1,27 +1,29 @@
-puts "///   Deleting all orders"
-Order.destroy_all
-puts "///   Deleting all favorites"
-Favorite.destroy_all
-puts "///   Deleting all reviews"
-Review.destroy_all
-puts "///   Deleting all route data"
-Route.destroy_all
-puts "///   Deleting all races"
-Race.destroy_all
-puts "///   Deleting all organizations"
-Organisation.destroy_all
-puts "///   Deleting all users"
-User.destroy_all
+# puts "///   Deleting all orders"
+# Order.destroy_all
+# puts "///   Deleting all favorites"
+# Favorite.destroy_all
+# puts "///   Deleting all reviews"
+# Review.destroy_all
+# puts "///   Deleting all route data"
+# Route.destroy_all
+# puts "///   Deleting all races"
+# Race.destroy_all
+# puts "///   Deleting all organizations"
+# Organisation.destroy_all
+# puts "///   Deleting all users"
+# User.destroy_all
 
-# CREATING USERS
+# # CREATING USERS
+
 
 puts "///   Creating users"
-10.times do
+6.times do
   user = User.new(
     email: Faker::Internet.free_email,
     password: Faker::Internet.password(8),
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name)
+
 
   if user.save
     puts user.first_name + " " + user.last_name + " created!"
@@ -30,7 +32,7 @@ end
 
 puts "///   #{User.count} users in the database!"
 
-# CREATING ORGANISATION
+# # CREATING ORGANISATION
 
 puts "///   Creating organisations"
 10.times do
@@ -44,7 +46,7 @@ end
 
 puts "///   #{Organisation.count} organisations in the database!"
 
-# CREATING RACES
+# # CREATING RACES
 
 category = ["trail", "road", "vertical", "skyrace"]
 location = ["Milan, italy",
@@ -191,6 +193,7 @@ location = ["Milan, italy",
   "Rho, italy",
   "Scandicci, italy"]
 
+
   puts "///   Creating races"
   10.times do
     race = Race.new(
@@ -217,7 +220,7 @@ location = ["Milan, italy",
 
   puts "///   #{Race.count} races in the database!"
 
-# CREATING ORDERS
+# # CREATING ORDERS
 
 puts "///   Creating orders"
 
@@ -238,7 +241,7 @@ end
 puts "///  #{Order.count} order created!"
 
 
-# CREATING REVIEWS
+# # CREATING REVIEWS
 puts "///   Creating reviews"
 
 Order.all.each do |order|
