@@ -50,32 +50,32 @@ ActiveRecord::Schema.define(version: 20180302051624) do
     t.index ["user_id"], name: "index_organisations_on_user_id"
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.string "photo"
+    t.bigint "race_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["race_id"], name: "index_photos_on_race_id"
+  end
+
   create_table "races", force: :cascade do |t|
     t.string "name"
     t.integer "distance"
     t.integer "elevation"
-<<<<<<< HEAD
     t.date "date"
-=======
-    t.datetime "date"
->>>>>>> master
     t.string "category"
     t.string "location"
     t.float "latitude"
     t.float "longitude"
-<<<<<<< HEAD
     t.jsonb "_geoloc", default: {}
     t.date "starting_time"
     t.date "discount_fee_finish"
     t.date "subscription_start"
     t.date "subscription_end"
-=======
     t.datetime "starting_time"
     t.datetime "discount_fee_finish"
     t.datetime "subscription_start"
     t.datetime "subscription_end"
->>>>>>> master
-    t.string "photos"
     t.text "goodies"
     t.integer "capacity"
     t.text "description"
@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(version: 20180302051624) do
   add_foreign_key "orders", "races"
   add_foreign_key "orders", "users"
   add_foreign_key "organisations", "users"
+  add_foreign_key "photos", "races"
   add_foreign_key "races", "organisations"
   add_foreign_key "reviews", "races"
   add_foreign_key "reviews", "users"
