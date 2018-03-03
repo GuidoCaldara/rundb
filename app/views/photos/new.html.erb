@@ -15,10 +15,12 @@
       <div class="form-group py-auto">
        <%= simple_form_for ([@race, @photo]) do |f| %>
        <%= f.input :photo, class: "form-control-file mx-auto"%>
-       <%= f.submit "Upload!", class: "btn btn-primary" %>
+                <%= f.submit "Upload!", class: "btn btn-primary" %>
        <% end %>
        <p>or </p>
-       <button class="btn btn-secondary"> Go to the last step</button>
+       <%= link_to new_race_route_path(@race.id) do %>
+       <button class="btn btn-primary btn-lg"> Go to the last step And Upload your route</button>
+       <% end %>
      </div>
    </div>
  </div>

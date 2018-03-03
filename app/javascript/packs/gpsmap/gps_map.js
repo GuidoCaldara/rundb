@@ -10,7 +10,7 @@ btn.addEventListener("click", function() {
   arr = link.split("/")
   route_id = arr[4];
   console.log(route_id)
-  fetch(`https://www.strava.com/api/v3/activities/${route_id}/streams/latlng?access_token=66868bd1b99a6143fb4bb28cd50993175b5028cd`)
+  fetch(`https://www.strava.com/api/v3/activities/${route_id}/streams/latlng?access_token=XXXXX`)
    .then(response => response.json())
   .then((data) => {
     let cord = (data[0].data);
@@ -26,7 +26,7 @@ btn.addEventListener("click", function() {
 }
 
 
-function generate_route(array){
+function generateRoute(array){
 
  var map = L.map('map',{
     center: [43.64701, -79.39425],

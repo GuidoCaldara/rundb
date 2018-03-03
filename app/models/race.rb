@@ -1,6 +1,6 @@
 class Race < ApplicationRecord
   before_create :set_sku, :define_fee
-
+  has_one :route
   belongs_to :organisation
   has_many :orders
   has_many :reviews

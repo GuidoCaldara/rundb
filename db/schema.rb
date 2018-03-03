@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302051624) do
-
+ActiveRecord::Schema.define(version: 20180303093756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,18 +63,15 @@ ActiveRecord::Schema.define(version: 20180302051624) do
     t.integer "elevation"
     t.date "date"
     t.string "category"
+    t.jsonb "_geoloc", default: {}
     t.string "location"
     t.float "latitude"
     t.float "longitude"
-    t.jsonb "_geoloc", default: {}
     t.date "starting_time"
     t.date "discount_fee_finish"
     t.date "subscription_start"
     t.date "subscription_end"
-    t.datetime "starting_time"
-    t.datetime "discount_fee_finish"
-    t.datetime "subscription_start"
-    t.datetime "subscription_end"
+    t.string "photos"
     t.text "goodies"
     t.integer "capacity"
     t.text "description"
@@ -108,11 +104,10 @@ ActiveRecord::Schema.define(version: 20180302051624) do
   end
 
   create_table "routes", force: :cascade do |t|
-    t.float "lat"
-    t.float "lng"
     t.bigint "race_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "pathfile"
     t.index ["race_id"], name: "index_routes_on_race_id"
   end
 

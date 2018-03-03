@@ -57,6 +57,7 @@
   <script src="https://cdn.jsdelivr.net/instantsearch-googlemaps/1/instantsearch-googlemaps.min.js" async></script>
 
   <%= javascript_pack_tag 'application' %>
+  <%= yield(:after_js) %>
 </body>
 
 </html>

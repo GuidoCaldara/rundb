@@ -15,20 +15,29 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.new(photo_params)
-    @race = Race.find(params[:race_id])
-    @photo.race_id = @race.id
-    if @photo.save
-      redirect_to new_race_photo_path
+    if params[:photo]
+      @photo = Photo.new(photo_params)
+      @race = Race.find(params[:race_id])
+      @photo.race_id = @race.id
+      if @photo.save
+        redirect_to new_race_photo_path
+      else
+        flash[:alert] = "There are some problem on the Upload. Please try Again"
+        redirect_to new_race_photo_path
+      end
     else
-      render action: 'new'
+      flash[:alert] = "Select a photo clicking on the button Upload"
+      redirect_to new_race_photo_path
+
     end
+
   end
 
   def destroy
     @photo = Photo.find(params[:id])
+    @race = Race.find(@photo_race.id)
     @photo.delete
-    redirect_to new_race_photo_path
+    redirect_to new_race_photo_path(@race.id)
   end
 
   private
