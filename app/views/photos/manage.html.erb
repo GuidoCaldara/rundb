@@ -1,0 +1,46 @@
+
+<div class="container py-5">
+  <div class="row py-4">
+    <div class="col-sm-12 text-center">
+      <h1>Add Photos to "<%= @race.name %>"</h1>
+      <p><%= link_to "Bak to your organisation page", organisation_path(@organisation.id) %></p>
+      <p><%= link_to "Bak the race page", race_path(@race.id) %></p>
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="col-md-2 my-5 mx-auto text-center">
+      <div class="form-group py-auto">
+       <%= simple_form_for ([@race, @photo]) do |f| %>
+       <%= f.input :photo,  label: false, class: "form-control-file mx-auto"%>
+       <%= f.submit "Upload!", class: "btn btn-primary" %>
+       <% end %>
+     </div>
+   </div>
+ </div>
+
+  <% if @race.photos %>
+ <div class="row">
+  <div class="col-md-6 mx-auto text-center">
+    <h2 class= "display-4 mb-4"> Manage your photos</h2>
+  </div>
+</div>
+<% end %>
+
+<div class="row d-flex justify-content-start">
+    <% @photos.each do |photo| %>
+    <div class= "p-2 mb-3">
+      <%= cl_image_tag photo.photo.url(:preview), crop: :fill, class: "img-fluid"%>
+      <%= link_to race_photo_path(@race.id, photo.id), method: :delete, class: "d-block" do%>
+      <i class="fas fa-trash mt-3" style= "font-size: 20px"></i>
+          <% end %>
+
+    </div>
+    <% end %>
+
+</div>
+
+
+
+</div>
+

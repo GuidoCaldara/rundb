@@ -23,6 +23,8 @@ gem 'omniauth'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'faker'
 gem "geocoder"
+gem 'cloudinary'
+gem 'carrierwave', '~> 1.2'
 
 
 gem "algoliasearch-rails"

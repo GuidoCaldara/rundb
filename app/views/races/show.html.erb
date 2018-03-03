@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8 mx-auto">
+
       <h1 class="display-1"><%= @race.name %></h1>
       <p> <strong>Category: </strong> <%= @race.category %></p>
       <p> <strong>Distance: </strong> <%= @race.distance %></p>
@@ -22,11 +23,11 @@
       <%= form_tag race_orders_path(@race.id) do %>
       <%= hidden_field_tag 'race_id', @race.id %>
       <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+         <%= link_to "Manage your photo", new_race_photo_path(@race.id) %>
 
 
     </div>
 
     <% end %>
-
   </div>
 </div>

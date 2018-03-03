@@ -1,11 +1,12 @@
 class Race < ApplicationRecord
-  before_create :sku_generator, :define_fee
+  before_create :set_sku, :define_fee
 
   belongs_to :organisation
   has_many :orders
   has_many :reviews
   has_many :users, through: :orders
   has_many :routes
+  has_many :photos
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
@@ -39,10 +40,10 @@ class Race < ApplicationRecord
     end
   end
 
-  def sku_generator
+  def set_sku
     self.sku = loop do
-    random_token = SecureRandom.urlsafe_base64(5)
-    break random_token unless Race.exists?(sku: random_token)
+      random_token = SecureRandom.urlsafe_base64(5)
+      break random_token unless Race.exists?(sku: random_token)
     end
   end
 

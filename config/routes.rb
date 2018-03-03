@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create]
     resources :orders, except: [:edit, :update]
     resources :favorites, only: [:create]
+    resources :photos, only: [:new, :create, :destroy]
   end
   resources :favorites, only: [:destroy]
   resources :reviews, only: [:destroy, :edit, :update]
@@ -17,6 +18,9 @@ Rails.application.routes.draw do
   resources :orders, only: [:show, :create] do
     resources :payments, only: [:new, :create]
   end
+
+  get '/races/:race_id/photos/manage', to: 'photos#manage', as: "manage_photo"
+
 
 
 end
