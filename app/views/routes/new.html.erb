@@ -1,0 +1,34 @@
+
+
+
+
+
+<p>Insert the link of your ativity</p>
+<input id ="link" style="width:500px;"> Submit</input>
+<button id="bottone">Test</button>
+
+
+<p id="p"></p>
+ <div id="map" style="height:400px; width: 400px;"></div>
+
+<script>
+    btn = document.getElementById("bottone")
+
+btn.addEventListener("click", function() {
+  let array = []
+  link = document.getElementById("link").value
+  arr = link.split("/")
+  route_id = arr[4];
+  console.log(route_id)
+  fetch(`https://www.strava.com/api/v3/activities/1321659020/streams/latlng?access_token=b063ad38ec33d8f7a791295c012d574f2ba36dc2`)
+   .then(response => response.json())
+  .then((data) => {
+    let cord = (data[0].data);
+    cord.forEach(function (element){
+      array.push(element)
+    })
+    generate_route(array)
+  });
+})
+
+</script>
