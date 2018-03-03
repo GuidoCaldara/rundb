@@ -1,0 +1,29 @@
+.main-container {
+  display: block;
+  justify-content: space-between;
+}
+
+.card-wrapper {
+  flex: 1 0 66%;
+  margin-top: 10px;
+}
+
+.map-container {
+  height: 100vh;
+  position: sticky !important;
+  top: 0 !important;
+}
+
+
+#map {
+  width: 100vh !important;
+  height: 100vh !important;
+}
+
+
+@media (min-width: 768px) {
+  .main-container {
+    display: flex;
+  }
+}
+
