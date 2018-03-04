@@ -11,10 +11,10 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-2 my-5 mx-auto text-center">
+    <div class="col-md-6 my-5 mx-auto text-center">
       <div class="form-group py-auto">
        <%= simple_form_for ([@race, @photo]) do |f| %>
-       <%= f.input :photo, class: "form-control-file mx-auto"%>
+       <%= f.input :photo, class: "form-control-file mx-auto", style: "margin: 0 auto;" %>
                 <%= f.submit "Upload!", class: "btn btn-primary" %>
        <% end %>
        <p>or </p>

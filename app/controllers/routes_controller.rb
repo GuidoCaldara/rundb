@@ -20,6 +20,8 @@ class RoutesController < ApplicationController
     @route.pathfile = params[:array]
     @route.race = @race
     @route.save
+    alert[:success] ="The track has been successfully uploaded!"
+    redirect_to race_path(@race.id)
   end
 
   def destroy

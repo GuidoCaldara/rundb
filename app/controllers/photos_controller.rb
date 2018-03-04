@@ -15,6 +15,7 @@ class PhotosController < ApplicationController
   end
 
   def create
+    byebug
     if params[:photo]
       @photo = Photo.new(photo_params)
       @race = Race.find(params[:race_id])

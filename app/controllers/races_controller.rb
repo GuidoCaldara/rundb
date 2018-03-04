@@ -14,8 +14,8 @@ def create
   @race = Race.new(race_params)
   @organisation = Organisation.find_by(user_id: current_user)
   @race._geoloc = { “lat”: 41.1078251, “lng”: 16.6910569}
- @race.date_stamp = @race.date.to_time.to_i
- @race.organisation_id = @organisation.id
+  @race.date_stamp = @race.date.to_time.to_i
+  @race.organisation_id = @organisation.id
  if @race.save
   redirect_to new_race_photo_path(@race.id)
 else
