@@ -16,11 +16,11 @@
     </div>
 
 
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-4">
      <!-- Search by category -->
       <div class="category-search-container">
         <div class="row aisdemo-filter">
-          <div class="col-sm-2 aisdemo-filter-title">
+          <div class="aisdemo-filter-title">
             Race Categories
           </div>
           <div id="race_categories">
@@ -31,11 +31,11 @@
 
 
 
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2">
+    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-2">
       <!-- Search by distance -->
       <div class="distance-search-container">
         <div class="row aisdemo-filter">
-          <div class="col-sm-2 aisdemo-filter-title">
+          <div class="aisdemo-filter-title">
             Distance Range
           </div>
           <div class="col-sm-9" id="distance">
@@ -46,12 +46,12 @@
 
 
 
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2">
+    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-2">
       <!-- Search by date -->
       <div class="date-search-container">
         <aside class="left">
           <div id="refinement-list">
-            <h3>Dates</h3>
+            Dates
             <div id="calendar" class="daterange">
             </div>
           </div>
@@ -78,6 +78,8 @@
         <div class="row">
 
           <script type="text/html" id="hit-template">
+
+
             <div class="hit">
              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
               <a href="/races/{{id}}">
@@ -87,13 +89,13 @@
                     <p class="hit-name card-race-title">{{{_highlightResult.name.value}}}</p>
                     <i class="fas fa-map-marker-alt card-race-marker"></i>
                     <p class="hit-name card-race-location">{{{_highlightResult.location.value}}}</p>
-                    <!-- <p class="hit-name">{{{_highlightResult.distance.value}}}</p> -->
-                    <!-- can not display distance because it is an integer so we should some how convert it to a string -->
+
                     <div class="star-container">
-                      <% 3.times do %>
+                      <p class="hit-name card-race-star">Rating: {{race_avg_rate}} / 10</p>
+                      <% 0.times do %>
                         <i class="fas fa-star card-race-star"></i>
                       <% end %>
-                      <% (5 - 3).times do %>
+                      <% 0.times do %>
                         <i class="far fa-star card-race-star"></i>
                       <% end %>
                     </div>

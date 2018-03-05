@@ -4,9 +4,10 @@
 
 .search-container {
 
-  padding: 0 10px;
   color: grey;
   font-size: 16px !important;
+  font-weight: 100 !important;
+  padding-top: 10px;
 
   .ais-search-box--input {
     border-radius: 10px;
@@ -16,25 +17,85 @@
 
 }
 
+
+// SEARCH BY NAME
 .main-search-container {
-  border: 1px solid black;
-  padding: 6px;
+  // border: 1px solid black;
+
   min-width: 300px;
+
+  input {
+    padding-left: 40px;
+    font-size: 14px;
+  }
+
+  ::placeholder {
+    color: gray;
+    // padding-left: 30px;
+  }
 }
+
+
+
+// SEARCH BY CATEGORY
 
 .category-search-container {
-  border: 1px solid black;
-  padding: 6px;
+  // border: 1px solid black;
+
+
+    .ais-refinement-list--list {
+      display: flex !important;
+    }
+    .ais-refinement-list--label {
+      color: gray;
+      margin-right: 30px;
+      font-weight: 100 !important;
+      position: relative;
+    }
+    .ais-refinement-list--label:hover {
+      color: gray;
+    }
+    .ais-refinement-list--count {
+      position: absolute;
+      top: -2px;
+      left: -8px;
+      background-color: #96C04D;
+      color: white;
+    }
+    .ais-refinement-list--checkbox {
+      opacity: 0;
+    }
+
+    .aisdemo-filter-title {
+      font-size: 14px;
+      width: 100%;
+    }
 }
 
+
+
+// SEARCH BY DISTANCE
 .distance-search-container {
-  border: 1px solid black;
-  padding: 6px;
+  // border: 1px solid black;
+
+  .rheostat-background {
+    border: 0 solid white;
+  }
+
+  .rheostat-progress {
+    background-color: #96C04D;
+  }
+
 }
+
+
+
+
+// SEARCH BY DATE
 
 .date-search-container {
-  border: 1px solid black;
-  padding: 6px;
+  // border: 1px solid black;
+
 
 
   .daterange {

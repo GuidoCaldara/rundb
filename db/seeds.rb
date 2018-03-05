@@ -250,16 +250,18 @@ Order.all.each do |order|
   review.race_id = order.race_id
   review.user_id = order.user_id
   review.description = Faker::Lorem.sentence(60, true, 20)
-  review.route_rate = rand(1..5)
-  review.organisation_rate = rand(1..5)
-  review.value_for_money = rand(1..5)
+  review.route_rate = rand(1..10)
+  review.organisation_rate = rand(1..10)
+  review.value_for_money = rand(1..10)
   review.save
   puts "1 review created for race #{Race.find(order.race_id).name}"
 end
 puts "///   #{Review.count} reviews created!"
 
 
+## REINDEX ALGOLIA
 
+Race.algolia_reindex!
 
 
 
