@@ -7,7 +7,7 @@ window.addEventListener('load', function() {
 
 const search = instantsearch({
   appId: 'MP37CKD4Q3',
-  apiKey: '136ef84efd2cef33f59cda19d45384db',
+  apiKey: '6a1098bae7556066297966e90caef0d6',
   indexName: 'Race',
   urlSync: true
 });
