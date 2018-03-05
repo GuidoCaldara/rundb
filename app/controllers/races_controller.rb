@@ -30,6 +30,9 @@ end
 
 def show
   @organizer = Organisation.find(@race.organisation_id)
+  @race = Race.find(params[:id])
+  @review = Review.new
+  @reviews = @race.reviews
 end
 
 def edit
@@ -51,9 +54,8 @@ else
   redirect_to root_path
 end
 end
+
 private
-
-
 
 
 def set_race
