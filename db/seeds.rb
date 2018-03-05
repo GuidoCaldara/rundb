@@ -1,17 +1,17 @@
-# puts "///   Deleting all orders"
-# Order.destroy_all
-# puts "///   Deleting all favorites"
-# Favorite.destroy_all
-# puts "///   Deleting all reviews"
-# Review.destroy_all
-# puts "///   Deleting all route data"
-# Route.destroy_all
-# puts "///   Deleting all races"
-# Race.destroy_all
-# puts "///   Deleting all organizations"
-# Organisation.destroy_all
-# puts "///   Deleting all users"
-# User.destroy_all
+puts "///   Deleting all orders"
+Order.destroy_all
+puts "///   Deleting all favorites"
+Favorite.destroy_all
+puts "///   Deleting all reviews"
+Review.destroy_all
+puts "///   Deleting all route data"
+Route.destroy_all
+puts "///   Deleting all races"
+Race.destroy_all
+puts "///   Deleting all organizations"
+Organisation.destroy_all
+puts "///   Deleting all users"
+User.destroy_all
 
 # # CREATING USERS
 
@@ -213,6 +213,7 @@ location = ["Milan, italy",
       race.save
     else
       race._geoloc = {"lat" => 41.2027767, "lng" => 16.5987187}
+      race.save
     end
     puts race.name + " " + " created!"
   end
