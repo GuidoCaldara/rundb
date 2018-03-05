@@ -1,19 +1,54 @@
+  @media (min-width: 576px) {
+  .container {
+    max-width: 560px;
+  }
+}
+  @media (min-width: 768px) {
+  .container {
+    max-width: 760px;
+  }
+}
+  @media (min-width: 992px) {
+  .container {
+    max-width: 980px;
+  }
+}
+  @media (min-width: 1200px) {
+  .container {
+    max-width: 1180px;
+  }
+}
+
+
 
 
 // SEARCH BAR
 
 .search-container {
-
   color: grey;
   font-size: 16px !important;
   font-weight: 100 !important;
   padding-top: 10px;
+  padding-bottom: 16px;
+
+
+  .container {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+
 
   .ais-search-box--input {
     border-radius: 10px;
     border: 1px solid #d4d8e3;
     box-shadow: 0 0 4px #0000002b !important;
   }
+
+  .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
 
 }
 
@@ -33,6 +68,11 @@
     color: gray;
     // padding-left: 30px;
   }
+
+  .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
 }
 
 
@@ -41,6 +81,9 @@
 
 .category-search-container {
   // border: 1px solid black;
+  margin-top: 12px;
+
+
 
 
     .ais-refinement-list--list {
@@ -48,27 +91,40 @@
     }
     .ais-refinement-list--label {
       color: gray;
-      margin-right: 30px;
+      margin-right: 58px;
       font-weight: 100 !important;
       position: relative;
+      text-align: left;
     }
     .ais-refinement-list--label:hover {
       color: gray;
     }
+
+
+
     .ais-refinement-list--count {
       position: absolute;
-      top: -2px;
-      left: -8px;
+      top: 1px;
+      right: -30px;
       background-color: #96C04D;
       color: white;
+      font-size: 10px;
+      padding: 0;
+      text-align: center;
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+      box-shadow: 1px 1px 4px #0000002b !important;
     }
     .ais-refinement-list--checkbox {
-      opacity: 0;
+      // display: none;
+
     }
 
     .aisdemo-filter-title {
       font-size: 14px;
       width: 100%;
+      margin-bottom: 10px !important;
     }
 }
 
@@ -86,6 +142,41 @@
     background-color: #96C04D;
   }
 
+  // KM indicators
+  .ais-range-slider--tooltip {
+    background-color: #96C04D;
+    color: white;
+    padding: 4px 10px;
+    min-width: 60px;
+    border-radius: 20px;
+    top:-32px;
+    right: -20px;
+  }
+
+  // rounded handlers
+  .ais-range-slider--handle {
+    border: 1px solid #96C04D;
+    box-shadow: 1px 1px 4px #0000002b !important;
+  }
+
+  // progress bar (inside of handlers)
+  .ais-range-slider .rheostat-progress {
+    background-color: #96C04D !important;
+  }
+
+  // progress bar inactive (outside of handlers)
+  .ais-range-slider .rheostat-horizontal .rheostat-progress {
+    height: 6px;
+    top: 0;
+  }
+  .ais-range-slider .rheostat-background {
+    border: 0 solid white;
+    background-color: #c5c5c5;
+  }
+  .ais-range-slider .rheostat {
+      margin-top: 58px;
+      margin-bottom: 0;
+    }
 }
 
 
@@ -108,6 +199,24 @@
     border: 0 solid #d4d8e3;
     box-shadow: none !important;
   }
+
+  .dr-date {
+    font-size: 12px !important;
+  }
+
+  h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 100;
+  }
+
+  .dr-day, .dr-day-of-week, .dr-range-switcher, .dr-list-item {
+    font-size: 14px !important;
+  }
+
+  .dr-item-aside {
+    display: none;
+  }
 }
 
 
@@ -125,7 +234,7 @@
 }
 
 .card-wrapper {
-  flex: 1 0 66%;
+  flex: 1 0 auto;
   margin-top: 10px;
 
   a:hover {
