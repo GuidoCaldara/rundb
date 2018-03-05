@@ -1,0 +1,93 @@
+
+
+// SEARCH BAR
+
+.search-container {
+
+  padding: 0 10px;
+  color: grey;
+  font-size: 16px !important;
+
+  .ais-search-box--input {
+    border-radius: 10px;
+    border: 1px solid #d4d8e3;
+    box-shadow: 0 0 4px #0000002b !important;
+  }
+
+}
+
+.main-search-container {
+  border: 1px solid black;
+  padding: 6px;
+  min-width: 300px;
+}
+
+.category-search-container {
+  border: 1px solid black;
+  padding: 6px;
+}
+
+.distance-search-container {
+  border: 1px solid black;
+  padding: 6px;
+}
+
+.date-search-container {
+  border: 1px solid black;
+  padding: 6px;
+
+
+  .daterange {
+    border-radius: 10px;
+    border: 1px solid #d4d8e3;
+    box-shadow: 0 0 4px #0000002b !important;
+  }
+  .dr-input {
+    border-radius: 10px;
+    border: 0 solid #d4d8e3;
+    box-shadow: none !important;
+  }
+}
+
+
+
+
+
+
+
+
+// CARDS AND MAP
+
+.main-container {
+  display: block;
+  justify-content: space-between;
+}
+
+.card-wrapper {
+  flex: 1 0 66%;
+  margin-top: 10px;
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.map-container {
+  height: 100vh;
+  position: sticky !important;
+  top: 0 !important;
+}
+
+
+#map {
+  // width: 100vh !important;
+  // height: 100vh !important;
+}
+
+
+@media (min-width: 768px) {
+  .main-container {
+    display: flex;
+  }
+}
+

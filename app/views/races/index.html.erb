@@ -1,43 +1,132 @@
-<header>
-  <div>
-   <input id="search-input" placeholder="Search for races">
-   <!-- We use a specific placeholder in the input to guides users in their search. -->
-    <div class="row aisdemo-filter">
-      <div class="col-sm-2 aisdemo-filter-title">Race Categories</div>
-      <div id="race_categories"></div>
-    </div>
 
-    <div class="row aisdemo-filter">
-      <div class="col-sm-2 aisdemo-filter-title">Distance Range</div>
-      <div class="col-sm-9" id="distance"></div>
-    </div>
 
-       <main class="wrapper">
-    <aside class="left">
-      <div id="refinement-list">
-        <h3>Dates</h3>
-        <div id="calendar" class="daterange"></div>
+
+<div class="search-container">
+
+<div class="container">
+  <div class="row">
+
+
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+      <!-- Right search input form -->
+      <div class="main-search-container">
+      <input id="search-input" placeholder="Search for races">
+      <!-- We use a specific placeholder in the input to guides users in their search. -->
       </div>
+    </div>
 
- </div>
-</header>
-<main>
-  <div id="hits"></div>
 
-  <div class="col-sm-5 aisdemo--right-column">
-    <div id="map"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+     <!-- Search by category -->
+      <div class="category-search-container">
+        <div class="row aisdemo-filter">
+          <div class="col-sm-2 aisdemo-filter-title">
+            Race Categories
+          </div>
+          <div id="race_categories">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2">
+      <!-- Search by distance -->
+      <div class="distance-search-container">
+        <div class="row aisdemo-filter">
+          <div class="col-sm-2 aisdemo-filter-title">
+            Distance Range
+          </div>
+          <div class="col-sm-9" id="distance">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2">
+      <!-- Search by date -->
+      <div class="date-search-container">
+        <aside class="left">
+          <div id="refinement-list">
+            <h3>Dates</h3>
+            <div id="calendar" class="daterange">
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
   </div>
-</main>
+</div>
 
-<script type="text/html" id="hit-template">
-  <div class="hit">
-    <a href="/races/{{id}}">
-      <p class="hit-name">{{{_highlightResult.name.value}}}</p>
-      <p class="hit-name">{{{_highlightResult.category.value}}}</p>
-      <p class="hit-name">{{{_highlightResult.location.value}}}</p>
-    </a>
-    <!-- <p class="hit-name">{{{_highlightResult.distance.value}}}</p> -->
-    <!-- can not display distance because it is an integer so we should some how convert it to a string -->
-   </div>
-</script>
+
+</div>
+
+
+
+
+<div class="main-container">
+
+  <!-- CARD WRAPPER -->
+
+  <div class="card-wrapper">
+    <div id="hits">
+    </div>
+      <div class="container">
+        <div class="row">
+
+          <script type="text/html" id="hit-template">
+            <div class="hit">
+             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+              <a href="/races/{{id}}">
+                <div class="card-race">
+
+                  <div class="card-race-header" style="background-image: url('http://res.cloudinary.com/dxkimzdwk/image/upload/v1519895648/suuntoutmb.jpg')">
+                    <p class="hit-name card-race-title">{{{_highlightResult.name.value}}}</p>
+                    <i class="fas fa-map-marker-alt card-race-marker"></i>
+                    <p class="hit-name card-race-location">{{{_highlightResult.location.value}}}</p>
+                    <!-- <p class="hit-name">{{{_highlightResult.distance.value}}}</p> -->
+                    <!-- can not display distance because it is an integer so we should some how convert it to a string -->
+                    <div class="star-container">
+                      <% 3.times do %>
+                        <i class="fas fa-star card-race-star"></i>
+                      <% end %>
+                      <% (5 - 3).times do %>
+                        <i class="far fa-star card-race-star"></i>
+                      <% end %>
+                    </div>
+
+                    <i class="far fa-heart card-race-favorite"></i>
+                  </div>
+                  <div class="card-race-body">
+                    <p class="hit-name element">{{category}}</p>
+                    <p class="hit-name element">{{distance}} km</p>
+                    <p class="hit-name element last">{{reviews.length}} reviews</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </script>
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MAP CONTAINER -->
+
+  <div class="map-container">
+
+    <div id="map">
+    </div>
+  </div>
+
+
+</div>
+
+
 

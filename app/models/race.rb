@@ -14,7 +14,7 @@ class Race < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch do
-    attribute :name, :location, :category, :distance, :date_stamp, :_geoloc, :id
+    attribute :name, :location, :category, :distance, :date_stamp, :_geoloc, :id, :reviews
     attributesForFaceting [:category, :distance, :date_stamp, :_geoloc, :name, :location, :id]
 
   end

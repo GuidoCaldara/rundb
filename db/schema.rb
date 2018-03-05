@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 20180304114438) do
     t.integer "value_for_money"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "avg_rate"
     t.index ["race_id"], name: "index_reviews_on_race_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
