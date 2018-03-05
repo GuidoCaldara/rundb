@@ -16,7 +16,7 @@
       <p> <strong>Date: </strong> <%= @race.date.strftime("%e %b %Y ") %></p>
       <p> <strong>Starting Point: </strong> <%= @race.starting_point %></p>
       <p> <strong> Price </strong>: <%= humanized_money_with_symbol(@race.fee) %></p>
-      <% if @race.discount_fee_cents && @race.discount_fee_finish > Date.today %>
+      <% if @race.discount_fee_cents %>
       <p> <strong> DISCOUNT PRICE AVAIBLE!</strong> Untill the <%= @race.discount_fee_finish%> is possible register at <%= @race.name %> just paying <%= humanized_money_with_symbol(@race.discount_fee_cents) %></p>
       <% end %>
 
