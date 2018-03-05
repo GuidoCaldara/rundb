@@ -1,0 +1,7 @@
+<%= simple_form_for([race, review], remote: true) do |f| %>
+  <%= f.input :description, as: :text %>
+  <%= f.input :route_rate, as: :integer %>
+  <%= f.input :organisation_rate, as: :integer %>
+  <%= f.input :value_for_money, as: :integer %>
+  <%= f.button :submit %>
+<% end %>

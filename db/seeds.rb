@@ -200,12 +200,24 @@ location = ["Milan, italy",
       name: "Race #{Faker::Hipster.word.capitalize}",
       distance: rand(1..5)*10,
       elevation: rand(100..2000),
-      date: (Date.today + (rand(1..200)).days),
+      date: (Date.today + (rand(155..200)).days),
       date_stamp: ((Date.today + (rand(1..200)).days).to_time.to_i * 1000),
       category: category.sample,
       location: location.sample,
-      fee: rand(10..50),
-      organisation_id: Organisation.all.sample.id
+      fee_cents: rand(50..100),
+      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum inventore hic doloremque, sint voluptas sit molestiae quod odit, et atque ipsum aliquam odio debitis blanditiis enim. Vitae, officiis, quam! Doloribus odit animi eum aliquam amet minima, harum repellat pariatur cumque labore, nostrum modi, dicta eligendi praesentium perferendis dignissimos nam. Atque!",
+      discount_fee_cents: rand(30..49),
+      capacity: rand(100...200),
+      discount_fee_finish: (Date.today + (rand(1..49)).days),
+      subscription_start: (Date.today + (rand(1..49)).days),
+      subscription_end: (Date.today + (rand(60..149)).days),
+      organisation_id: Organisation.all.sample.id,
+      first_edition: (Date.today - (rand(1..20)).years),
+      starting_time: Date.today,
+      website: "www.google.it",
+      subscription_link: "www.google.it",
+      starting_point: "Colossemum",
+      goodies: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab possimus vel, temporibus distinctio magnam, maiores cum unde tempore illum tempora deleniti."
       )
     race.save
     if race.latitude && race.longitude
