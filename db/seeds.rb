@@ -259,7 +259,9 @@ end
 puts "///   #{Review.count} reviews created!"
 
 
+## REINDEX ALGOLIA
 
+Race.algolia_reindex!
 
 
 
