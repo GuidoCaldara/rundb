@@ -23,8 +23,20 @@
       <h2>Organized By</h2>
       <p> <%= @race.organisation.name %></p>
       <p> <%= @race.organisation.email %></p>
-      <div id="map" style="height:400px; width: 100%;"></div>
+      <!-- <div id="map" style="height:400px; width: 100%;"></div> -->
 
+      <div id="reviews">
+      <% @reviews.each do |review| %>
+      <div>
+      <p><%= review.description %></p>
+      <p><%= review.route_rate %></p>
+      <p><%= review.organisation_rate %></p>
+      <p><%= review.value_for_money %></p>
+      </div>
+      <% end %>
+      </div>
+
+       <%= render 'reviews/form', race: @race, review: @review %>
 
       <%= link_to "Edit your race", edit_race_path(@race.id)  %>
       <%= link_to "Delete Your Race", race_path(@race.id), method: :delete, data: {confirm: 'Are you really wanna delete your Race? If u have some subscription for the race u will not able to complete the cancellation'} %>
