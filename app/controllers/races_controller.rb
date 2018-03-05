@@ -29,6 +29,7 @@ end
 end
 
 def show
+  @organizer = Organisation.find(@race.organisation_id)
 end
 
 def edit

@@ -48,3 +48,5 @@ class Race < ApplicationRecord
   end
 
 end
+
+
