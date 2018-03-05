@@ -46,7 +46,7 @@ class Race < ApplicationRecord
     end
   end
 
-  def race_avg_rate
+  def set_race_avg_rate
     # self.race_avg_rate = self.reviews.pluck(:avg_rate).compact.sum / self.reviews.size
     # self.save
     if self.reviews.size > 0
@@ -55,8 +55,7 @@ class Race < ApplicationRecord
       self.reviews.each do |review|
        rate_sum += review.avg_rate
       end
-      race_average = (rate_sum / self.reviews.size)
-      return race_average.to_i
+      self.race_avg_rate = (rate_sum / self.reviews.size)
       self.save
     end
   end
