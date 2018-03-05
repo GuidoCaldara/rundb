@@ -17,6 +17,11 @@ class Race < ApplicationRecord
     attributesForFaceting [:category, :distance, :date_stamp, :_geoloc, :name, :location, :id]
 
   end
+
+  def extra_attr
+    self.photos.first
+  end
+
   monetize :fee_cents
   monetize :discount_fee_cents
 
