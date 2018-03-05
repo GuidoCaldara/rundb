@@ -15,24 +15,27 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @race = Race.find(@order.race_id)
   end
 
 
   def create
     @race = Race.find(params[:race_id])
-    # if @race.discount_fee_cents
-    #   @order  = Order.create!(race_sku: @race.sku, amount: @race.discount_fee_cents, state: "pending", user_id: current_user.id, race_id: @race.id)
-    #  redirect_to new_order_payment_path(@order.id)
-    # else
+    if @race.discount_fee_cents
+     if @race.discount_fee_finish > Date.today
+      @order  = Order.create!(race_sku: @race.sku, amount: @race.discount_fee_cents, state: "pending", user_id: current_user.id, race_id: @race.id)
+      redirect_to new_order_payment_path(@order.id)
+    end
+  else
     @order  = Order.create!(race_sku: @race.sku, amount: @race.fee_cents, state: "pending", user_id: current_user.id, race_id: @race.id)
-     redirect_to new_order_payment_path(@order.id)
-    # end
+    redirect_to new_order_payment_path(@order.id)
   end
+end
 
- def destroy
-    @order = Order.find(params[:id])
-    @order.delete
-    redirect_to profile_path(current_user.id)
- end
+def destroy
+  @order = Order.find(params[:id])
+  @order.delete
+  redirect_to profile_path(current_user.id)
+end
 
 end

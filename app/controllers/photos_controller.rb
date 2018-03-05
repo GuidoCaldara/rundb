@@ -15,7 +15,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    byebug
+
     if params[:photo]
       @photo = Photo.new(photo_params)
       @race = Race.find(params[:race_id])
@@ -36,7 +36,7 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo = Photo.find(params[:id])
-    @race = Race.find(@photo_race.id)
+    @race = Race.find(@photo.race_id)
     @photo.delete
     redirect_to new_race_photo_path(@race.id)
   end
