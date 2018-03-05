@@ -18,9 +18,9 @@ class Race < ApplicationRecord
 
   end
 
-  def extra_attr
-    self.photos.first
-  end
+  # def extra_attr
+  #   self.photos.first
+  # end
 
   monetize :fee_cents
   monetize :discount_fee_cents
