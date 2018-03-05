@@ -14,7 +14,7 @@ def create
   charge = Stripe::Charge.create(
     customer:     customer.id,   # You should store this customer id and re-use it.
     amount:       @order.amount_cents,
-    description:  "Payment for teddy #{@order.race_sku} for order #{@order.id}",
+    description:  "Payment for race #{@order.race_sku} for order #{@order.id}",
     currency:     @order.amount.currency
   )
 

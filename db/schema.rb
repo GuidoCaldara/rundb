@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180303102504) do
+ActiveRecord::Schema.define(version: 20180304114438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,11 +105,10 @@ ActiveRecord::Schema.define(version: 20180303102504) do
   end
 
   create_table "routes", force: :cascade do |t|
-    t.float "lat"
-    t.float "lng"
     t.bigint "race_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "pathfile"
     t.index ["race_id"], name: "index_routes_on_race_id"
   end
 
@@ -136,6 +135,8 @@ ActiveRecord::Schema.define(version: 20180303102504) do
     t.string "facebook_picture_url"
     t.string "token"
     t.datetime "token_expiry"
+    t.string "gender"
+    t.string "group"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row py-5">
+  <div class="col-lg-3 col-md-4 hide-sm">
+    <% if @user.facebook_picture_url %>
+  <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/100x100" %>
+<%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown", heigth: "100"%>
+<% end %>
+
+  </div>
+    <div class="col-lg-9 col-md-8 col-sm-12">
+      <div>
+    <% if @user.first_name %>
+    <h1> <%= @user.first_name %></h1>
+    <% else %>
+    <%= @user.email %>
+    <% end %>
+    <%= link_to "Editeeee Your Profile", edit_user_registration_path %>
+    <% if @user.organisation %>
+    <%= link_to "Your organisation", organisation_path(@user.organisation.id) %>
+
+    <% end %>
+    </div>
+  </div>
+</div>
+
+
+<% if @next_races %>
+  <div class="row py-4">
+    <div class="col-sm-12">
+          <h1>Your Next Races</h1>
+    </div>
+  <% @next_races.each do |race| %>
+  <div class="col-lg-3 col-md-4">
+    <div class="card" style="width: 20rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-block">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text"></p>
+        <%= link_to "Race Page", race_path(race.id) %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+<% end %>
+
+<% if @old_races %>
+  <div class="row py-4">
+    <div class="col-sm-12">
+          <h1>Your Past Races</h1>
+    </div>
+  <% @old_races.each do |race| %>
+  <div class="col-lg-3 col-md-4">
+    <div class="card" style="width: 20rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-block">
+        <h4 class="card-title"><%= race.name %></h4>
+        <p class="card-text">???????</p>
+        <%= link_to "Race Page", race_path(race.id) %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+<% end %>
+
+
+
+
+</div>

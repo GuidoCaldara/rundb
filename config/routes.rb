@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  get "/exchange_token", to: "application#strava"
+  devise_for :users, :controllers => { registrations: "registrations", omniauth_callbacks: "users/omniauth_callbacks" }
+  get "/exchange_token", to: "routes#callback"
 
   resources :races do
     resources :reviews, only: [:create]
@@ -15,14 +15,15 @@ Rails.application.routes.draw do
   resources :favorites, only: [:destroy]
   resources :reviews, only: [:destroy, :edit, :update]
   resources :organisations, except: [:index]
-
+  resources :users, only: [:show]
   resources :orders, only: [:show, :create] do
     resources :payments, only: [:new, :create]
   end
 
   get '/races/:race_id/photos/manage', to: 'photos#manage', as: "manage_photo"
-
+  get '/races/:id/subscriptions', to: 'orders#race_subscriptions', as: 'race_subscriptions'
 
 
 end
+
 
