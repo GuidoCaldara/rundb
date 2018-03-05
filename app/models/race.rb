@@ -10,11 +10,10 @@ class Race < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
-
   include AlgoliaSearch
 
   algoliasearch do
-    attribute :name, :location, :category, :distance, :date_stamp, :_geoloc, :id, :reviews
+    attribute :name, :location, :category, :distance, :date_stamp, :_geoloc, :id, :reviews, :race_avg_rate
     attributesForFaceting [:category, :distance, :date_stamp, :_geoloc, :name, :location, :id]
 
   end
@@ -44,6 +43,21 @@ class Race < ApplicationRecord
     self.sku = loop do
       random_token = SecureRandom.urlsafe_base64(5)
       break random_token unless Race.exists?(sku: random_token)
+    end
+  end
+
+  def race_avg_rate
+    # self.race_avg_rate = self.reviews.pluck(:avg_rate).compact.sum / self.reviews.size
+    # self.save
+    if self.reviews.size > 0
+      rate_sum = 0
+      race_average = 0
+      self.reviews.each do |review|
+       rate_sum += review.avg_rate
+      end
+      race_average = (rate_sum / self.reviews.size)
+      return race_average.to_i
+      self.save
     end
   end
 
