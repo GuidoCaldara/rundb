@@ -15,6 +15,7 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-4 no-padding">
                 <div class="header-element">
+                  <span class="cat-icon">cat</span>
                   <%=@race.category.upcase%>
                 </div>
               </div>
@@ -22,12 +23,14 @@
                 <div class="header-element">
                   <%= @race.distance%> km
                   <% if @race.elevation %>
+                    <i class="fas fa-map"></i>
                     <%= @race.elevation%>D+
                   <% end %>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-4 no-padding">
                 <div class="header-element last">
+                  <i class="fas fa-map-marker-alt"></i>
                   <%=@race.location%>
                 </div>
               </div>
@@ -45,7 +48,12 @@
           <div class="race-info-header">
             Race info
           </div>
-          <p class ="race-text-description"> <%= @race.description%></p>
+          <div class="container-race-descr">
+          <p class ="race-text-description"> <%= @race.description%>
+          </p>
+            <i class="fas fa-angle-up"></i>
+            <i class="fas fa-angle-down"></i>
+          </div>
 
           <div class="race-organizer">
             <p >Organizer: <span class="green-highlight"><%= link_to organisation_path(@organizer.id) do%> <%= @organizer.name %> <% end %></span></p>
@@ -80,17 +88,21 @@
 
         <!-- PRICNG -->
         <div class="pricing-container">
-          <p class="race-fee-logo">Race fee: <%= humanized_money_with_symbol(@race.fee_cents/100)%></p>
+          <p class="race-fee-logo">Race fee: <%= humanized_money_with_symbol(@race.fee_cents)%></p>
           <% if @race.discount_fee_cents %>
-          <p class="alert alert-success"> Enjoy an early bird fee subscription rate of <%= humanized_money_with_symbol(@race.discount_fee_cents)%> until <%= @race.discount_fee_finish %>!</p>
+          <div class="promo-alert-wrapper">
+            <div class="promo-alert"> Enjoy an early bird fee </div>
+            <div class="promo-alert">subscription rate of </div>
+            <div class="promo-alert"><%= humanized_money_with_symbol(@race.discount_fee_cents)%> until <%= @race.discount_fee_finish %>!</div>
+          </div>
           <% end %>
-          <p>The subscription for <%= @race.name %> are opened from the <%= @race.subscription_start.strftime("%e %b %Y ") %> and will close on the <%= @race.subscription_end.strftime("%e %b %Y ") %>. The maximum race capacity is <%= @race.capacity %> participants</p>
+          <p class="price-details">The subscription for <%= @race.name %> are opened from the <span style="font-weight: bolder"><%= @race.subscription_start.strftime("%e %b %Y ") %></span> and will close on the <span style="font-weight: bolder"><%= @race.subscription_end.strftime("%e %b %Y ") %></span>. The maximum race capacity is <span style="font-weight: bolder"><%= @race.capacity %> participants</span></p>
 
           <% if user_signed_in? %>
-            <%= link_to "subscribe online", new_race_order_path(@race.id) %>
+            <%= link_to "Subscribe online", new_race_order_path(@race.id), class: "button-register" %>
 
           <% else %>
-            <button type="button" class="button-start" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="button-register" data-toggle="modal" data-target="#exampleModal">
             Launch demo modal
             </button>
           <% end %>
@@ -98,19 +110,25 @@
 
       </div>
     </div>
+
   </div>
+
+  <!-- Race path map -->
+  <% if @race.route %>
+    <div id="map" style="height:400px; width: 100%;">
+    </div>
+  <% end %>
 </div>
+
+
 
   <%= link_to "Edit your race", edit_race_path(@race.id)  %>
   <%= link_to "Delete Your Race", race_path(@race.id), method: :delete, data: {confirm: 'Are you really wanna delete your Race? If u have some subscription for the race u will not able to complete the cancellation'} %>
   <%= link_to "Manage your photo", new_race_photo_path(@race.id) %>
 
 
-<% if @race.route %>
 
-  <div id="map" style="height:400px; width: 100%;">
-  </div>
-<% end %>
+
 
 
 
