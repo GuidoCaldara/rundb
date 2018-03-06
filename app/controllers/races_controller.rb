@@ -33,6 +33,7 @@ def show
   @race = Race.find(params[:id])
   @review = Review.new
   @reviews = @race.reviews
+  @all_reviews = Review.all
 end
 
 def edit

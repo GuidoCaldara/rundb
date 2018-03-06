@@ -1,10 +1,15 @@
 class ReviewsController < ApplicationController
 
+  def show
+    @reviews = Review.all
+  end
+
   def create
     @race = Race.find(params[:race_id])
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.race_id = @race.id
+
      if @review.save
       respond_to do |format|
         format.html { redirect_to race_path(@race) }
@@ -16,7 +21,6 @@ class ReviewsController < ApplicationController
         format.js
       end
     end
-
   end
 
   def update
