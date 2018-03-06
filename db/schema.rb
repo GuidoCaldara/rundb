@@ -70,10 +70,10 @@ ActiveRecord::Schema.define(version: 20180306053531) do
     t.integer "elevation"
     t.date "date"
     t.string "category"
+    t.jsonb "_geoloc", default: {}
     t.string "location"
     t.float "latitude"
     t.float "longitude"
-    t.jsonb "_geoloc", default: {}
     t.datetime "starting_time"
     t.date "discount_fee_finish"
     t.date "subscription_start"
