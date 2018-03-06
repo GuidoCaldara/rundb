@@ -1,0 +1,44 @@
+.info-popup {
+  height: 250px;
+  width: 200px;
+  a {
+    text-decoration: none;
+  }
+}
+
+.card-header-popup {
+  height: 100px;
+  width: 100%;
+  margin-bottom: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-body-popup {
+  .title {
+    font-size: 20px;
+    color: black;
+  }
+}
+
+.popup-rate {
+  font-size: 14px;
+  color: gray;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
+}
+
+.inlined {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  .last {
+  border-right: 0px solid #dadada !important;
+}
+}
+
+.inlined .element {
+  flex: 1 1 auto;
+  border-right: 1px solid #dadada;
+  width: 190px;
+  text-align: center;
+}

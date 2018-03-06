@@ -3,62 +3,62 @@
 
 <div class="search-container">
 
-<div class="container">
-  <div class="row">
+  <div class="container">
+    <div class="row">
 
 
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-      <!-- Right search input form -->
-      <div class="main-search-container">
-      <input id="search-input" placeholder="Search for races">
-      <!-- We use a specific placeholder in the input to guides users in their search. -->
-      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <!-- Right search input form -->
+        <div class="main-search-container">
+          <input id="search-input" placeholder="Search for races">
+          <!-- We use a specific placeholder in the input to guides users in their search. -->
+        </div>
 
 
 
 
-     <!-- Search by category -->
-      <div class="category-search-container">
-        <div class="row aisdemo-filter">
-          <div class="aisdemo-filter-title">
+        <!-- Search by category -->
+        <div class="category-search-container">
+          <div class="row aisdemo-filter">
+            <div class="aisdemo-filter-title">
 <!--             Race Categories
- -->          </div>
-          <div id="race_categories">
-          </div>
-        </div>
+-->          </div>
+<div id="race_categories">
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+  <!-- Search by distance -->
+  <div class="distance-search-container">
+    <div class="row aisdemo-filter">
+      <div class="aisdemo-filter-title">
+        Distance range
       </div>
-    </div>
-
-
-
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-      <!-- Search by distance -->
-      <div class="distance-search-container">
-        <div class="row aisdemo-filter">
-          <div class="aisdemo-filter-title">
-            Distance range
-          </div>
-          <div class="col-sm-9" id="distance">
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-      <!-- Search by date -->
-      <div class="date-search-container">
-        <aside class="left">
-          <div id="refinement-list">
-            <h3>Date range</h3>
-            <div id="calendar" class="daterange">
-            </div>
-          </div>
-        </aside>
+      <div class="col-sm-9" id="distance">
       </div>
     </div>
   </div>
+</div>
+
+
+
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+  <!-- Search by date -->
+  <div class="date-search-container">
+    <aside class="left">
+      <div id="refinement-list">
+        <h3>Date range</h3>
+        <div id="calendar" class="daterange">
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+</div>
 </div>
 
 
@@ -74,56 +74,56 @@
   <div class="card-wrapper">
     <div id="hits">
     </div>
-      <div class="container">
-        <div class="row">
+    <div class="container">
+      <div class="row">
 
-          <script type="text/html" id="hit-template">
+        <script type="text/html" id="hit-template">
 
 
-            <div class="hit">
-             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-              <a href="/races/{{id}}">
-                <div class="card-race">
+          <div class="hit">
+           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <a href="/races/{{id}}">
+              <div class="card-race">
 
-                  <div class="card-race-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url({{extra_attr.photo.url}})">
-                    <p class="hit-name card-race-title">{{{_highlightResult.name.value}}}</p>
-                    <i class="fas fa-map-marker-alt card-race-marker"></i>
-                    <p class="hit-name card-race-location">{{{_highlightResult.location.value}}}</p>
-                    <div class="star-container">
-                      <p class="hit-name card-race-star">Rating: {{race_avg_rate}} / 10</p>
-                      <% 0.times do %>
-                        <i class="fas fa-star card-race-star"></i>
-                      <% end %>
-                      <% 0.times do %>
-                        <i class="far fa-star card-race-star"></i>
-                      <% end %>
-                    </div>
-
-                    <i class="far fa-heart card-race-favorite"></i>
+                <div class="card-race-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url({{extra_attr.photo.url}}), url('https://media.istockphoto.com/photos/sunrise-on-yosemite-valley-picture-id505872990?k=6&m=505872990&s=612x612&w=0&h=XcdHhkC9PF9-saYT6n_GQD-0Hf8dbI_Q4wfYlZZGpNk=')">
+                  <p class="hit-name card-race-title">{{{_highlightResult.name.value}}}</p>
+                  <i class="fas fa-map-marker-alt card-race-marker"></i>
+                  <p class="hit-name card-race-location">{{{_highlightResult.location.value}}}</p>
+                  <div class="star-container">
+                    <p class="hit-name card-race-star">Rating: {{race_avg_rate}} / 10</p>
+                    <% 0.times do %>
+                    <i class="fas fa-star card-race-star"></i>
+                    <% end %>
+                    <% 0.times do %>
+                    <i class="far fa-star card-race-star"></i>
+                    <% end %>
                   </div>
-                  <div class="card-race-body">
-                    <p class="hit-name element">{{category}}</p>
-                    <p class="hit-name element">{{distance}} km</p>
-                    <p class="hit-name element last">{{reviews.length}} reviews</p>
-                  </div>
+
+                  <i class="far fa-heart card-race-favorite"></i>
                 </div>
-              </a>
-            </div>
+                <div class="card-race-body">
+                  <p class="hit-name element">{{category}}</p>
+                  <p class="hit-name element">{{distance}} km</p>
+                  <p class="hit-name element last">{{reviews.length}} reviews</p>
+                </div>
+              </div>
+            </a>
           </div>
-        </script>
+        </div>
+      </script>
 
 
-      </div>
     </div>
   </div>
+</div>
 
 
-  <!-- MAP CONTAINER -->
+<!-- MAP CONTAINER -->
 
-  <div class="map-container">
+<div class="map-container">
 
-    <div id="map">
-    </div>
+  <div id="map">
+  </div>
   </div>
 
 
