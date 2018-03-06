@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   end
 
   def new
+    @race = Race.find(params[:race_id])
     @order = Order.new
   end
 
@@ -21,21 +22,37 @@ class OrdersController < ApplicationController
 
   def create
     @race = Race.find(params[:race_id])
+    @order = Order.create!(user_id: current_user.id, race_id: @race.id)
+    @order.race_sku = @race.sku
+    @order.state = "pending"
     if @race.discount_fee_cents
-     if @race.discount_fee_finish > Date.today
-      @order  = Order.create!(race_sku: @race.sku, amount: @race.discount_fee_cents, state: "pending", user_id: current_user.id, race_id: @race.id)
-      redirect_to new_order_payment_path(@order.id)
+     if @race.discount_fee_finish >= Date.today
+      @order.amount_cents = @race.discount_fee_cents
+      @order.save!
+    else
+      @order.amount_cents = @race.fee_cents
+      @order.save!
     end
   else
-    @order  = Order.create!(race_sku: @race.sku, amount: @race.fee_cents, state: "pending", user_id: current_user.id, race_id: @race.id)
-    redirect_to new_order_payment_path(@order.id)
+    @order.amount_cents = @race.fee_cents
+    @order.save!
   end
+  @order.update(order_params)
+  redirect_to new_order_payment_path(@order.id)
 end
+
+
 
 def destroy
   @order = Order.find(params[:id])
   @order.delete
   redirect_to profile_path(current_user.id)
+end
+
+private
+
+def order_params
+  params.require(:order).permit(:first_name, :last_name, :group, :gender, :city, :date_of_birth)
 end
 
 end
