@@ -1,5 +1,6 @@
 class Race < ApplicationRecord
-  before_create :set_sku, :define_fee
+  before_create :set_sku
+  # before_create :define_fee,
   has_one :route
   belongs_to :organisation
   has_many :orders
@@ -9,6 +10,70 @@ class Race < ApplicationRecord
   has_many :photos
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
+  #validation form
+  validates :name, :location, :category , :website, :subscription_link, :starting_point, :video, length: { maximum: 100 }
+  validates :description, :goodies, length: {maximum: 700}
+  validates :distance, :elevation, :fee_cents, :discount_fee_cents, numericality: { less_than_or_equal_to: 15000,  only_integer: true }
+  validates :name, :distance, :date, :category, :location, :description, :first_edition, :starting_point, :fee_cents, presence: true
+  validate :race_date_in_the_future?
+  validate :elevation_check
+  validate :special_price_check
+  validate :special_price_date_check
+  validate :check_price
+  validate :check_subscription_link
+
+def race_date_in_the_future?
+  if date < Date.today
+    errors.add :date, "Race Date must be in the future!"
+  end
+end
+
+def special_price_check
+  if discount_fee_cents && discount_fee_cents == 0
+    discount_fee_cents == nil
+  end
+end
+
+def elevation_check
+   if category != "Road" && !elevation
+    errors.add :elevation, "Elevation must be present for outdoor running"
+   end
+end
+
+def special_price_check
+  if discount_fee_cents
+  if discount_fee_cents == true && !discount_fee_finish
+    errors.add :discount_fee_finish, "Please insert the last day of your special price"
+  end
+ end
+end
+
+def special_price_date_check
+  if discount_fee_finish
+    if discount_fee_finish > subscription_end
+      errors.add :discount_fee_finish, "The discount fee finish can't be after the subscription end date!"
+    elsif discount_fee_finish < subscription_start
+      errors.add :discount_fee_finish, "The discount fee finish can't be before the start of the subscription!"
+    end
+  end
+end
+
+def check_price
+  if discount_fee_cents
+  if discount_fee_cents >= fee_cents
+    errors.add :discount_fee_cents, "The discount price can't be bigger or equal than the normal price"
+  end
+end
+end
+
+def check_subscription_link
+  if !bookable && subscription_start < Date.today
+    if !subscription_link
+      errors.add :subscription_link, "The subscription for your race seems open! Please provide a valid link for the registration process"
+    end
+  end
+end
+
 
   include AlgoliaSearch
 
@@ -28,20 +93,16 @@ class Race < ApplicationRecord
 
   # validates :name, :distance, :category, :date, :location, presence: true
 
-  def define_fee
-    self.fee_cents = self.fee_cents * 100
-    if self.discount_fee_cents
-      self.discount_fee_cents = self.discount_fee_cents * 100
-  end
+  # def define_fee
+  #   self.fee_cents = self.fee_cents * 100
+  #   if self.discount_fee_cents
+  #     self.discount_fee_cents = self.discount_fee_cents * 100
+  # end
 
-  end
+  # end
 
   def has_order?
-    if Order.where(race_id:self.id)
-       true
-    else
-       false
-    end
+     Order.where(race_id:self.id).any?
   end
 
   def set_sku
@@ -64,6 +125,7 @@ class Race < ApplicationRecord
       self.save
     end
   end
+
 
 end
 

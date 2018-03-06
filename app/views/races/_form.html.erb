@@ -1,47 +1,118 @@
-
-<%= simple_form_for @race do |f| %>
-<%= f.input :name, label: 'Insert The race Name', error: 'Username is mandatory, please specify one' %>
-<%= f.input :category, priority: [ "---" ], collection: [ "Trail", "Road", "Skyrace", "VerticalKM"], label: "Select the race category" %>
-
-<%= f.input :distance, label: "Insert the race distance", input_html: { value: '0', min: '0', step: 'any' }%>
-
-
-<%= f.input :elevation, label: "Insert the positive elevation (Not required for road races)", input_html: { value: '0', min: '0', step: '100' }%>
-<%= f.input :location, id: "race_location", label: "Race Location?"%>
-
-<%= f.input :date, label: "Insert the race date", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year]%>
-
-<%=  f.input :description, label: "Tell something about your race", as: :text %>
-<%=  f.input :goodies, label: "Wich goodies are included in the race pack?", as: :text %>
+<!--   impossible to import style. here for the moment after ticket
+ -->
+ <style>
+ .form-title
+ {
+  text-decoration:none;
+  color: black !important;
+}
+#form-title:hover {
+  color:black !important;
+  text-decoration: none !important;
+}
+</style>
 
 
-<%= f.input :first_edition, label: "Fist edition year", as: :date, start_year: Date.today.year-20, end_year: Date.today.year, order: [:year] %>
-<%= f.input :website, label: "Race Website", placeholder: 'https://yoursite.com'  %>
+<div class="col-md-10 mx-auto">
+  <div id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="card">
+      <%= simple_form_for @race do |f| %>
+      <div class="card-header" role="tab" id="headingOne">
+        <h5 class="mb-0">
+          <a class="form-title" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="">
+            Race Informations <i class="fas fa-caret-down"></i>
 
 
-<%= f.input :starting_point, label: "Wher will be the starting point?"%>
+          </a>
+        </h5>
+      </div>
 
-<%= f.input :starting_time, as: :time, minute_step: 30, label: "Insert the starting time" %>
+      <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+        <div class="card-block py-4 px-5 ">
+          <%= f.input :name, label: 'Insert The race Name', error: 'Username is mandatory, please specify one', html: { autocomplete: 'off' } %>
+          <%= f.input :category, priority: [ "---" ], collection: [ "Trail", "Road", "Skyrace", "VerticalKM"], label: "Select the race category" %>
+          <%= f.input :distance, label: "Insert the race distance in Km", input_html: {  min: '0', step: 'any' }%>
+          <%= f.input :elevation, label: "Insert the positive elevation in meters (Not required for road races)", input_html: { min: '0', step: '100' }%>
+          <%= f.input :location, id: "race_location", label: "Race Location?" %>
+          <%= f.input :date, label: "Insert the race date", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year]%>
+          <%= f.input :first_edition, label: "Fist edition year", as: :date, start_year: Date.today.year-20, end_year: Date.today.year, order: [:year] %>
+          <%= f.input :website, label: "Race Website", placeholder: 'ex: https://yoursite.com', html: { autocomplete: 'off' }  %>
 
-<%= f.input :fee_cents, label: "Insert the race price", input_html: { min: '0', step: 'any' }%>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" role="tab" id="headingTwo">
+        <h5 class="mb-0">
+          <a class="form-title collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Race Description <i class="fas fa-caret-down"></i>
+
+          </a>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="card-block py-4 px-5">
+          <%=  f.input :description, label: "Tell something about your race", as: :text, :input_html => { 'rows' => 9, autocomplete: 'off'} %>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" role="tab" id="headingThree">
+        <h5 class="mb-0">
+          <a class="form-title collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Extra Information <i class="fas fa-caret-down"></i>
+
+          </a>
+        </h5>
+      </div>
+      <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div class="card-block py-4 px-5">
+          <%=  f.input :goodies, label: "Wich goodies are included in the race pack?", as: :text, html: { autocomplete: 'off' }%>
+          <%= f.input :starting_point, label: "Wher will be the starting point?"%>
+
+          <%= f.input :starting_time, as: :time, minute_step: 30, label: "Insert the starting time", html: { autocomplete: 'off' }%>
+          <%=  f.input :video, label: "Do you have a video of the race on youtube? Copy and paste the link!", placeholder: 'ex: https://www.youtube.com/embed/tgbNymZ7vqY', as: :string%>
+
+        </div>
+      </div>
+    </div>
+    <% if @race.orders %>
+    <div class="card">
+      <div class="card-header" role="tab" id="headingFour">
+        <h5 class="mb-0">
+          <a class="form-title collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Subscription And payment <i class="fas fa-caret-down"></i>
 
 
-<h3> Do u wana propost a discount price for the early subscription?</h3>
+          </a>
+        </h5>
+      </div>
+      <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+        <div class="card-block py-4 px-5">
+          <h2> Do you wana Run Db manage your subscription sistem? </h2>
+          <%#= f.input :bookable, as: :radio_buttons, item_wrapper_class: 'inline'%>
+          <p> If not, please provide a link to redirect the user to subscription page. If you don't have it yet dont'worry, you can insert it later or choose to let Run-db manage your subscription</p>
+          <%=  f.input :subscription_link, label:false,  placeholder: 'ex: https://yoursite.com/subsctiption' %>
+          <%= f.input :fee_cents, label: "Insert the race price in €", input_html: {step: 'any', autocomplete: "off" }%>
+          <h3> Do u wana propost a discount price for the early subscription?</h3>
 
-<%= f.input :discount_fee_cents, label: "Insert the secial price", input_html: { value: '0', min: '0', step: 'any' } %>
-<%= f.input :discount_fee_finish, as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year], label: "If yes, untill wich date u wana propose the special price?" %>
-<h3> Subscription</h3>
+          <%= f.input :discount_fee_cents, label: "Insert the secial price in €", input_html: {  step: 'any' } %>
+          <%= f.input :discount_fee_finish, as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year], label: "If yes, untill wich date u wana propose the special price?" %>
+          <%= f.input :subscription_start, label: "When the subscription period start?", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year] %>
+          <%= f.input :subscription_end, label: "When the subscription period end?", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year] %>
+          <%= f.input :capacity, label: "You have a maximum number of subscription? If yes, how many?" %>
+          <%= f.button :submit, class: "btn btn-primary" %>
 
 
-<%= f.input :subscription_start, label: "When the subscription period start?", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year] %>
-<%= f.input :subscription_end, label: "When the subscription period end?", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year] %>
-<%= f.input :capacity, label: "You have a maximum number of subscription? If yes, how many?" %>
-<h3> Do you wana Run Db manage your subscription sistem? <a href="">LINK_TO</a> </h3>
-<%=   f.collection_radio_buttons :bookable, [[false, 'No'] ,[true, 'Yes']], :first, :last %>
+        </div>
+      </div>
+    </div>
+    <% end %>
 
 
-<h3> If not, please provide a link to redirect the user to subscription page</h3>
-<%=  f.input :subscription_link,  placeholder: 'https://yoursite.com/subsctiption' %>
+  </div>
 
-<%= f.button :submit, class: "btn btn-primary" %>
+</div>
+</div>
 <% end %>
+
