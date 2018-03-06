@@ -3,7 +3,7 @@ class Race < ApplicationRecord
   has_one :route
   belongs_to :organisation
   has_many :orders
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :users, through: :orders
   has_many :routes
   has_many :photos
@@ -22,11 +22,15 @@ class Race < ApplicationRecord
   #   self.photos.first
   # end
 
+
   monetize :fee_cents
   monetize :discount_fee_cents
 
 
   # validates :name, :distance, :category, :date, :location, presence: true
+  def has_reviewed?(current_user)
+    self.reviews.where(user: current_user).any?
+  end
 
   def define_fee
     self.fee_cents = self.fee_cents * 100
