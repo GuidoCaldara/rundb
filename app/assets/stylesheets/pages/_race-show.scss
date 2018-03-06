@@ -1,0 +1,90 @@
+div {
+  // border: 1px solid #d8d8d8;
+}
+
+.race-show-container{
+  // border: 1px solid grey;
+  padding-top: 35px;
+  color: grey;
+
+  p, h4, h5 {
+    font-family: "Roboto", "sans-serif";
+  }
+
+  h1 {
+    font-family: "Poppins", "sans-serif";
+  }
+}
+
+.show-right {
+  padding: 0 10px;
+}
+
+
+.show-left {
+  padding: 0 10px;
+}
+
+
+//HEADER
+.show-left-header, .race-info {
+  background-color: white;
+  box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0 2px 0 0 rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  position: relative;
+
+  h1 {
+    margin-left: 20px;
+  }
+
+}
+
+.header-element {
+  color: #96C04D;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+
+  position: relative;
+
+  .last {
+    border: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .header-element {
+    border-right: 1px solid #96C04D;
+  }
+
+  .last {
+    border: none;
+  }
+}
+
+
+// GREEN MARKER
+.race-date-header, .race-info-header {
+  position: absolute;
+  min-width: 150px;
+  top: -17px;
+  right: 48px;
+  color: white;
+  padding: 6px 14px;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  background-color: #96C04D;
+  border-radius: 20px;
+}
+
+.basic-info-row{
+  margin-bottom: 40px
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
