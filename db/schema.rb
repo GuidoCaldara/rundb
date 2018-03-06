@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305042408) do
+ActiveRecord::Schema.define(version: 20180306023158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(version: 20180305042408) do
     t.string "state"
     t.string "race_sku"
     t.jsonb "payment"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "group"
+    t.string "gender"
+    t.string "city"
+    t.date "date_of_birth"
     t.index ["race_id"], name: "index_orders_on_race_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -67,11 +73,10 @@ ActiveRecord::Schema.define(version: 20180305042408) do
     t.string "location"
     t.float "latitude"
     t.float "longitude"
-    t.date "starting_time"
+    t.datetime "starting_time"
     t.date "discount_fee_finish"
     t.date "subscription_start"
     t.date "subscription_end"
-    t.string "photos"
     t.text "goodies"
     t.integer "capacity"
     t.text "description"
@@ -88,6 +93,7 @@ ActiveRecord::Schema.define(version: 20180305042408) do
     t.integer "discount_fee_cents", default: 0, null: false
     t.float "date_stamp"
     t.integer "race_avg_rate"
+    t.string "video"
     t.index ["organisation_id"], name: "index_races_on_organisation_id"
   end
 

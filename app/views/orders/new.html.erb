@@ -1,0 +1,11 @@
+<%= simple_form_for @order do |f| %>
+<%= hidden_field_tag 'race_id', @race.id %>
+<%= f.input :first_name%>
+<%= f.input :last_name%>
+<%= f.input :group%>
+<%= f.input :gender %>
+<%= f.input :city %>
+<%= f.input :date_of_birth %>
+<%= f.button :submit, class: "btn btn-primary" %>
+
+<% end %>

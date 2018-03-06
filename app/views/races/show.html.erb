@@ -1,67 +1,65 @@
-<div class="container">
+<div class="container race-show-container">
   <div class="row">
-    <div class="col-md-6">
-     <h1 class="display-1"><%= @race.name %></h1>
+    <div class="col-md-6 mr-5">
+     <h1 class="display-3"><%= @race.name %></h1>
      <div class="row px-4 basic-info-row">
       <% if @race.elevation %>
-      <p><%=@race.category.upcase%> &ensp;&ensp;&ensp;<%= @race.distance%>Km/<%= @race.elevation%>m d+ &ensp;&ensp;&ensp; <p><%=@race.location%>/<%=@race.date%></p>
+      <p class="race-info-text"><%=@race.category.upcase%>&ensp;|&ensp;<%= @race.distance%>/<%= @race.elevation%>D+ &ensp;|&ensp;<%=@race.location%> &ensp;|&ensp;<i class="fas fa-calendar-alt"></i>&ensp;<%=@race.date%>
+      </p>
       <% else %>
-      <p><%=@race.category.upcase%> &ensp;&ensp;&ensp;<%= @race.distance%>Km &ensp;&ensp;&ensp; <p><%=@race.location%>/<%=@race.date%></p>
+      <p><%=@race.category.upcase%> &ensp;|&ensp;<%= @race.distance%>Km &ensp;|&ensp; <p><%=@race.location%>&ensp;|&ensp;<%=@race.date%></p>
       <% end %>
     </div>
-    <div class="row">
-      <div class="col-md-10 mb-5">
-        <%= @race.description%>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-10">
-       <p>Organizer: <%= link_to organisation_path(@organizer.id) do%> <%= @organizer.name %> <% end %></p>
-       <p>Website <a href="<%= @race.website %>"> <%=@race.website%></a></p>
-       <p>Starting Point: <%= @race.starting_point %></p>
-       <p>Starting time: <%= @race.starting_time %></p>
-       <p>Goodies: <%= @race.goodies %></p>
-       <p>Price: <%= humanized_money_with_symbol(@race.fee_cents)%></p>
-       <% if @race.discount_fee_cents %>
-       <p class="alert alert-success"> This race has a special price for early subscription. Untill the <%= @race.discount_fee_finish %> yuo can subscribe and pay just <%= humanized_money_with_symbol(@race.discount_fee_cents)%></p>
-       <% end %>
-       <p>The subscription for <%= @race.name %> open the <%= @race.subscription_start.strftime("%e %b %Y ") %> and will <%= @race.subscription_end.strftime("%e %b %Y ") %>. The maximum race capacity is <%= @race.capacity %> </p>
+    <div class="row px-0">
+      <div class="col-md-12 mb-5">
+       <p class ="text-justify"> <%= @race.description%></p>
      </div>
    </div>
-   <% if @race.route %>
    <div class="row">
     <div class="col-md-10">
-       <div id="map" style="height:400px; width: 400px;"></div>
-     </div>
+     <p ><strong>Organizer</strong>: <%= link_to organisation_path(@organizer.id) do%> <%= @organizer.name %> <% end %></p>
+     <p><strong>Website</strong> <a href="<%= @race.website %>"> <%=@race.website%></a></p>
+     <p>Starting Point: <%= @race.starting_point %></p>
+     <p>Starting time: <%= @race.starting_time %></p>
+     <p class="">Goodies: <%= @race.goodies %></p>
+     <p>Price: <%= humanized_money_with_symbol(@race.fee_cents)%></p>
+     <% if @race.discount_fee_cents %>
+     <p class="alert alert-success"> This race has a special price for early subscription. Untill the <%= @race.discount_fee_finish %> yuo can subscribe and pay just <%= humanized_money_with_symbol(@race.discount_fee_cents)%></p>
+     <% end %>
+     <p>The subscription for <%= @race.name %> open the <%= @race.subscription_start.strftime("%e %b %Y ") %> and will <%= @race.subscription_end.strftime("%e %b %Y ") %>. The maximum race capacity is <%= @race.capacity %> </p>
    </div>
-   <% end %>
  </div>
+ <% if @race.route %>
+ <div class="row">
+  <div class="col-md-10">
+   <div id="map" style="height:400px; width: 400px;"></div>
+ </div>
+</div>
+<% end %>
+</div>
 
- <% if @race.photos %>
- <div class="col-md-6">
+<% if @race.photos %>
+<div class="col-md-5">
 
   <div id="carouselExampleControls" class="mt-5 carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item-active">
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+    <div class="carousel-inner">
+      <div class="carousel-item-active">
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
 
       <%= link_to "Edit your race", edit_race_path(@race.id)  %>
       <%= link_to "Delete Your Race", race_path(@race.id), method: :delete, data: {confirm: 'Are you really wanna delete your Race? If u have some subscription for the race u will not able to complete the cancellation'} %>
 
 
       <% if user_signed_in? %>
-      <%= form_tag race_orders_path(@race.id) do %>
-      <%= hidden_field_tag 'race_id', @race.id %>
-      <%= submit_tag 'Register at the Race and pay online', class: 'btn btn-primary' %>
-      <% end %>
+      <%= link_to "subscribe online", new_race_order_path(@race.id) %>
 
       <% else %>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -96,8 +94,8 @@
 </div>
 
 
- </div>
- <% end %>
+</div>
+<% end %>
 
 
 </div>
