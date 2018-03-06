@@ -7,22 +7,22 @@
   <div class="row">
 
 
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
       <!-- Right search input form -->
       <div class="main-search-container">
       <input id="search-input" placeholder="Search for races">
       <!-- We use a specific placeholder in the input to guides users in their search. -->
       </div>
-    </div>
 
 
-    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-4">
+
+
      <!-- Search by category -->
       <div class="category-search-container">
         <div class="row aisdemo-filter">
           <div class="aisdemo-filter-title">
-            Race Categories
-          </div>
+<!--             Race Categories
+ -->          </div>
           <div id="race_categories">
           </div>
         </div>
@@ -31,12 +31,12 @@
 
 
 
-    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-2">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
       <!-- Search by distance -->
       <div class="distance-search-container">
         <div class="row aisdemo-filter">
           <div class="aisdemo-filter-title">
-            Distance Range
+            Distance range
           </div>
           <div class="col-sm-9" id="distance">
           </div>
@@ -46,12 +46,12 @@
 
 
 
-    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-2">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
       <!-- Search by date -->
       <div class="date-search-container">
         <aside class="left">
           <div id="refinement-list">
-            Dates
+            <h3>Date range</h3>
             <div id="calendar" class="daterange">
             </div>
           </div>
@@ -85,7 +85,7 @@
               <a href="/races/{{id}}">
                 <div class="card-race">
 
-                  <div class="card-race-header" style="background-image: url('http://res.cloudinary.com/dxkimzdwk/image/upload/v1519895648/suuntoutmb.jpg')">
+                  <div class="card-race-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url(http://res.cloudinary.com/dxkimzdwk/image/upload/v1519895648/suuntoutmb.jpg)">
                     <p class="hit-name card-race-title">{{{_highlightResult.name.value}}}</p>
                     <i class="fas fa-map-marker-alt card-race-marker"></i>
                     <p class="hit-name card-race-location">{{{_highlightResult.location.value}}}</p>
