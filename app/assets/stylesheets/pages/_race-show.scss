@@ -2,10 +2,12 @@ div {
   // border: 1px solid #d8d8d8;
 }
 
-.race-show-container{
+.race-show-container {
   // border: 1px solid grey;
   padding-top: 35px;
   color: grey;
+  font-weight: 300;
+  font-size: 14px;
 
   p, h4, h5 {
     font-family: "Roboto", "sans-serif";
@@ -13,28 +15,34 @@ div {
 
   h1 {
     font-family: "Poppins", "sans-serif";
+    margin-bottom: 26px;
   }
 }
 
-.show-right {
+.show-right, .show-left {
   padding: 0 10px;
+  display: flex;
+  flex-direction:column;
+  min-height: 70vh;
+
 }
 
 
-.show-left {
-  padding: 0 10px;
-}
 
 
-//HEADER
-.show-left-header, .race-info {
+.show-left-header, .race-info, .photo-container, .pricing-container {
   background-color: white;
   box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0 2px 0 0 rgba(0, 0, 0, 0.03);
   border-radius: 8px;
   padding: 20px;
+  flex: 1;
+
+}
+
+//LEFT PART
+.show-left-header, .race-info {
   margin-bottom: 30px;
   position: relative;
-
   h1 {
     margin-left: 20px;
   }
@@ -44,7 +52,6 @@ div {
 .header-element {
   color: #96C04D;
   font-weight: 400;
-  font-size: 14px;
   text-align: center;
 
   position: relative;
@@ -65,6 +72,38 @@ div {
 }
 
 
+.race-text-description {
+  text-align: justify;
+  font-size: 14px;
+}
+
+.race-organizer, .race-venue, .race-goodies {
+  min-height: 60px;
+  text-align: center;
+  padding-top: 10px;
+  border-top: 1px solid #dedede;
+}
+
+.race-goodies {
+  text-align: justify;
+}
+
+.green-highlight {
+  color: #96C04D;
+  font-weight: 400;
+
+
+  a {
+    color: #96C04D;
+    transition: all 0.3s ease;
+  }
+  a:hover {
+    text-decoration: none;
+    color: #7a9e3a;
+  }
+}
+
+
 // GREEN MARKER
 .race-date-header, .race-info-header {
   position: absolute;
@@ -73,7 +112,6 @@ div {
   right: 48px;
   color: white;
   padding: 6px 14px;
-  font-weight: 400;
   font-size: 14px;
   text-align: center;
   background-color: #96C04D;
@@ -86,5 +124,23 @@ div {
 
 .no-padding {
   padding: 0 !important;
+}
+
+
+// PHOTO CONTAINER
+
+.photo-container {
+  margin-bottom: 30px;
+  position: relative;
+  min-height: 300px;
+  background-color: #bebebe;
+}
+
+// PRICING CONTAINER
+
+.pricing-container {
+  margin-bottom: 30px;
+  position: relative;
+
 }
 
