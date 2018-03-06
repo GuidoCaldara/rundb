@@ -2,7 +2,7 @@
   "name": "RunDB",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^3.2.2",
+    "@rails/webpacker": "^3.3.0",
     "algoliasearch": "^3.24.12",
     "bootstrap": "3",
     "gmaps": "^0.4.24",
@@ -10,6 +10,7 @@
     "jquery": "^3.3.1"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.1.0"
+    "webpack-cli": "^2.0.10",
+    "webpack-dev-server": "^2.11.1"
   }
 }

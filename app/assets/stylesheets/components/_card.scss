@@ -104,8 +104,9 @@
 
 .card-race-body .element {
   flex: 1 1 auto;
+  display: inline-block;
   border-right: 1px solid #dadada;
-  min-width: 80px;
+  min-width: 60px;
   text-align: center;
 }
 

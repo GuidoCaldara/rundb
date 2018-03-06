@@ -75,6 +75,7 @@
 
 <!-- RIGHT PART -->
 
+
     <div class="col-xs-12 col-sm-12 col-md-6">
       <div class="show-right">
 
@@ -135,18 +136,18 @@
 
 <!-- modal for signup
 -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <%= render "devise/registrations/new", resource: User.new %>
-        </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-login" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render "devise/sessions/new", resource: User.new %>
       </div>
     </div>
   </div>
@@ -156,6 +157,16 @@
 
 
 
+
+<%= render 'reviews/form', race: @race, review: @review unless @race.has_reviewed?(current_user) %>
+<div id="reviews">
+  <% @reviews.each do |review| %>
+  <p><%= review.description %></p>
+  <p><%= review.route_rate %></p>
+  <p><%= review.organisation_rate %></p>
+  <p><%= review.value_for_money %></p>
+  <% end %>
+</div>
 
 <script>
   <% if @race.route  %>

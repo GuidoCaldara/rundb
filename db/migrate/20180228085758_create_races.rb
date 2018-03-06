@@ -21,7 +21,7 @@ class CreateRaces < ActiveRecord::Migration[5.1]
       t.text :goodies
       t.integer :capacity
       t.text :description
-      t.boolean :bookable, default:true
+      t.boolean :bookable, default: true
       t.string :website
       t.string :subscription_link
       t.references :organisation, foreign_key: true
