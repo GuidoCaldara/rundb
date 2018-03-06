@@ -14,13 +14,14 @@ class Race < ApplicationRecord
 
   algoliasearch do
     attribute :name, :location, :category, :distance, :date_stamp, :_geoloc, :id, :reviews, :race_avg_rate
+    add_attribute :extra_attr
     attributesForFaceting [:category, :distance, :date_stamp, :_geoloc, :name, :location, :id]
 
   end
 
-  # def extra_attr
-  #   self.photos.first
-  # end
+  def extra_attr
+     self.photos.first
+  end
 
 
   monetize :fee_cents

@@ -85,11 +85,10 @@
               <a href="/races/{{id}}">
                 <div class="card-race">
 
-                  <div class="card-race-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url(http://res.cloudinary.com/dxkimzdwk/image/upload/v1519895648/suuntoutmb.jpg)">
+                  <div class="card-race-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url({{extra_attr.photo.url}})">
                     <p class="hit-name card-race-title">{{{_highlightResult.name.value}}}</p>
                     <i class="fas fa-map-marker-alt card-race-marker"></i>
                     <p class="hit-name card-race-location">{{{_highlightResult.location.value}}}</p>
-
                     <div class="star-container">
                       <p class="hit-name card-race-star">Rating: {{race_avg_rate}} / 10</p>
                       <% 0.times do %>
