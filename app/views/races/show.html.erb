@@ -23,8 +23,8 @@
                 <div class="header-element">
                   <%= @race.distance%> km
                   <% if @race.elevation %>
-                    <i class="fas fa-map"></i>
-                    <%= @race.elevation%>D+
+                  <i class="fas fa-map"></i>
+                  <%= @race.elevation%>D+
                   <% end %>
                 </div>
               </div>
@@ -35,12 +35,12 @@
                 </div>
               </div>
               <div class="race-date-header">
-                  <i class="fas fa-calendar-alt"></i> <%=@race.date%>
+                <i class="fas fa-calendar-alt"></i> <%=@race.date%>
               </div>
             </div>
           </div>
 
-        <!-- RACE INFOS -->
+          <!-- RACE INFOS -->
 
         </div>
         <div class="race-info">
@@ -49,8 +49,8 @@
             Race info
           </div>
           <div class="container-race-descr">
-          <p class ="race-text-description"> <%= @race.description%>
-          </p>
+            <p class ="race-text-description"> <%= @race.description%>
+            </p>
             <i class="fas fa-angle-up"></i>
             <i class="fas fa-angle-down"></i>
           </div>
@@ -73,7 +73,7 @@
     </div>
 
 
-<!-- RIGHT PART -->
+    <!-- RIGHT PART -->
 
 
     <div class="col-xs-12 col-sm-12 col-md-6">
@@ -81,8 +81,53 @@
 
         <!-- PHOTOS -->
         <div class="photo-container">
-          <% if @race.photos %>
-            <!-- IMPORT HERE PHOTOS CARROUSEL -->
+
+
+
+          <% if @race.photo %>
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" style=" text-align:center">
+              <div class="carousel-item active text-center mx-auto">
+                <%= cl_image_tag @race.photo.url, crop: :fill, class: "  img-fluid carousel-img", style: "display: inline-block"%>
+              </div>
+            <% if @race.photos %>
+               <% @race.photos.each do |photo| %>
+
+              <div class="carousel-item" style=" text-align:center">
+                <%= cl_image_tag photo.photo.url, crop: :fill, class: " img-fluid carousel-img", style: "display: inline-block"%>
+              </div>
+              <% end %>
+              <% end %>
+
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           <% end %>
         </div>
 
@@ -100,12 +145,12 @@
           <p class="price-details">The subscription for <%= @race.name %> are opened from the <span style="font-weight: bolder"><%= @race.subscription_start.strftime("%e %b %Y ") %></span> and will close on the <span style="font-weight: bolder"><%= @race.subscription_end.strftime("%e %b %Y ") %></span>. The maximum race capacity is <span style="font-weight: bolder"><%= @race.capacity %> participants</span></p>
 
           <% if user_signed_in? %>
-            <%= link_to "Subscribe online", new_race_order_path(@race.id), class: "button-register" %>
+          <%= link_to "Subscribe online", new_race_order_path(@race.id), class: "button-register" %>
 
           <% else %>
-            <button type="button" class="button-register" data-toggle="modal" data-target="#exampleModal">
+          <button type="button" class="button-register" data-toggle="modal" data-target="#exampleModal">
             Launch demo modal
-            </button>
+          </button>
           <% end %>
         </div>
 
@@ -116,16 +161,16 @@
 
   <!-- Race path map -->
   <% if @race.route %>
-    <div id="map" style="height:400px; width: 100%;">
-    </div>
+  <div id="map" style="height:400px; width: 100%;">
+  </div>
   <% end %>
 </div>
 
 
 
-  <%= link_to "Edit your race", edit_race_path(@race.id)  %>
-  <%= link_to "Delete Your Race", race_path(@race.id), method: :delete, data: {confirm: 'Are you really wanna delete your Race? If u have some subscription for the race u will not able to complete the cancellation'} %>
-  <%= link_to "Manage your photo", new_race_photo_path(@race.id) %>
+<%= link_to "Edit your race", edit_race_path(@race.id)  %>
+<%= link_to "Delete Your Race", race_path(@race.id), method: :delete, data: {confirm: 'Are you really wanna delete your Race? If u have some subscription for the race u will not able to complete the cancellation'} %>
+<%= link_to "Manage your photo", new_race_photo_path(@race.id) %>
 
 
 
@@ -158,37 +203,37 @@
 
 
 
-<%= render 'reviews/form', race: @race, review: @review unless @race.has_reviewed?(current_user) %>
-<div id="reviews">
-  <% @reviews.each do |review| %>
-  <p><%= review.description %></p>
-  <p><%= review.route_rate %></p>
-  <p><%= review.organisation_rate %></p>
-  <p><%= review.value_for_money %></p>
-  <% end %>
-</div>
+  <%= render 'reviews/form', race: @race, review: @review unless @race.has_reviewed?(current_user) %>
+  <div id="reviews">
+    <% @reviews.each do |review| %>
+    <p><%= review.description %></p>
+    <p><%= review.route_rate %></p>
+    <p><%= review.organisation_rate %></p>
+    <p><%= review.value_for_money %></p>
+    <% end %>
+  </div>
 
-<script>
-  <% if @race.route  %>
-  var data =  <%= raw @race.route.pathfile %>;
-  <% end %>
-  console.log(data);
-  generate_route(data);
+  <script>
+    <% if @race.route  %>
+    var data =  <%= raw @race.route.pathfile %>;
+    <% end %>
+    console.log(data);
+    generate_route(data);
 
-  function generate_route(array){
-    var map = L.map('map',{
-      center: [43.64701, -79.39425],
-      zoom: 15
-    });
+    function generate_route(array){
+      var map = L.map('map',{
+        center: [43.64701, -79.39425],
+        zoom: 15
+      });
 
-    var latlngs = array
-    var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
-    map.fitBounds(polyline.getBounds());
-    console.log(array);
+      var latlngs = array
+      var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+      map.fitBounds(polyline.getBounds());
+      console.log(array);
 
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-  }
-</script>
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+    }
+  </script>
 

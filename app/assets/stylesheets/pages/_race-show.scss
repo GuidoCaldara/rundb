@@ -181,7 +181,8 @@ div {
   margin-bottom: 30px;
   position: relative;
   min-height: 400px;
-  background-color: #bebebe;
+  background-color: #FBFBFB;
+  padding: 0px;
 }
 
 // PRICING CONTAINER
@@ -215,8 +216,15 @@ div {
 
 .price-details {
   margin-top: 12px;
-  }
+}
 
+
+
+.carousel-img {
+  width: auto;
+  height: 375px;
+  max-height: 375px;
+}
 
 
 
