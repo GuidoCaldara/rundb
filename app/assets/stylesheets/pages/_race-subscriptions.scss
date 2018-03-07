@@ -1,0 +1,36 @@
+.go-back-button{
+  background-color: #39A9CD;
+  color: white;
+  box-shadow: 0 5px 40px #30b2e473;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-top: 40px;
+  font-family: "Poppins", "sans-serif";
+  font-weight: 300;
+  display: block;
+  background-image: linear-gradient(190deg, #34b0d8, #30a6cc);
+  transition: all 0.3s cubic-bezier(0.12, 0.64, 0.25, 1);
+
+}
+
+.go-back-button:hover {
+  text-decoration: none !important;
+  color: white;
+  transform: scale(1.02);
+
+}
+
+.subscription-table{
+  tr{
+    th{
+          font-weight: 500
+
+    }
+    td{
+      font-weight: 300
+    }
+  }
+}
+
+

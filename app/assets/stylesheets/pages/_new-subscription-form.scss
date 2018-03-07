@@ -1,0 +1,76 @@
+
+.form-subscription-title{
+  color: #808080 !important;
+}
+
+
+.subscription-form{
+  background-color: white;
+  box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0 2px 0 0 rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+  padding: 30px 30px;
+  margin: 20px 0px;
+}
+
+
+.subscription-form{
+  label{
+    font-weight: 400;
+    font-family: "Roboto", "sans-serif";
+    color: #808080
+  }
+  input{
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 300;
+  }
+  select{
+    border-radius: 8px
+  }
+}
+
+.submit-registration{
+  background-color: #39A9CD;
+  color: white;
+  box-shadow: 0 5px 40px #30b2e473;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-family: "Poppins", "sans-serif";
+  font-weight: 300;
+  display: block;
+  padding: 8px;
+  background-image: linear-gradient(190deg, #34b0d8, #30a6cc);
+  transition: all 0.3s cubic-bezier(0.12, 0.64, 0.25, 1);
+
+}
+
+.submit-registration:hover {
+  text-decoration: none !important;
+  color: white;
+  transform: scale(1.02);
+
+}
+
+
+
+.go-back-race-button{
+    background-color: #f1121c;
+    color: white;
+    box-shadow: 0 5px 40px #30b2e473;
+    font-size: 16px;
+    width: 300px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: "Poppins", "sans-serif";
+    font-weight: 300;
+    background-image: linear-gradient(190deg, #f70d0d, #f70c0c);
+    transition: all 0.3s cubic-bezier(0.12, 0.64, 0.25, 1);
+}
+
+.go-back-race-button:hover {
+  text-decoration: none !important;
+  color: white;
+  transform: scale(1.02);
+
+}

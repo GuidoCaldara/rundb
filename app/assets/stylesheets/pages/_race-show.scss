@@ -1,5 +1,5 @@
 div {
-  // border: 1px solid #d8d8d8;
+  border: 1px solid #d8d8d8;
 }
 
 .race-show-container {
@@ -181,7 +181,8 @@ div {
   margin-bottom: 30px;
   position: relative;
   min-height: 400px;
-  background-color: #bebebe;
+  background-color: #FBFBFB;
+  padding: 0px;
 }
 
 // PRICING CONTAINER
@@ -215,9 +216,32 @@ div {
 
 .price-details {
   margin-top: 12px;
-  }
+}
 
 
+// FOOTER CONTAINER
+
+.carousel-img {
+  width: auto;
+  height: 375px;
+  max-height: 375px;
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// MAP
+
+.map-route {
+  // padding: 0 10px;
+  z-index: 0;
+  box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0 2px 0 0 rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+}
+ 
 
 
 
