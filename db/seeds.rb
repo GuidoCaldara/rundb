@@ -38,7 +38,10 @@ puts "///   Creating organisations"
 10.times do
   organisation = Organisation.new(
     user_id: User.all.sample.id,
-    name: Faker::SiliconValley.company)
+    name: Faker::SiliconValley.company,
+    address: "10 rue Montaigne",
+    email: "organisation@gmail.com",
+    description: "We organize amazing races around the world!")
   if organisation.save
     puts organisation.name + " " + " created!"
   end
@@ -217,6 +220,7 @@ location = ["Milan, italy",
       website: "www.google.it",
       subscription_link: "www.google.it",
       starting_point: "Colossemum",
+      remote_photo_url: "http://res.cloudinary.com/dxkimzdwk/image/upload/v1520389349/race#{rand(1..4)}.jpg",
       goodies: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab possimus vel, temporibus distinctio magnam, maiores cum unde tempore illum tempora deleniti."
       )
     race.save
@@ -232,6 +236,8 @@ location = ["Milan, italy",
 
 
   puts "///   #{Race.count} races in the database!"
+
+
 
 # # CREATING ORDERS
 
@@ -275,6 +281,25 @@ puts "///   #{Review.count} reviews created!"
 
 Race.algolia_reindex!
 
+
+## CREATING ROUTE MAP
+
+puts "///   Creating route map"
+
+Race.all.each do |race|
+  route = Route.new(
+    pathfile: [[-8.646154, 115.134085],
+               [-8.646144, 115.133982],
+               [-8.646159, 115.133877],
+               [-8.646198, 115.133781],
+               [-8.646256, 115.133701],
+               [-8.663, 115.133617],
+               [-8.646368, 115.133536],
+               [-8.64643, 115.133439]])
+
+  route.race_id = race.id
+  route.save
+end
 
 
 

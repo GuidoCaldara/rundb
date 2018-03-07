@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   has_one :organisation
 
-  validates :first_name, :last_name, :group, length: { maximum: 100 }
+  # validates :first_name, :last_name, :group, length: { maximum: 100 }
 
   def self.from_omniauth(auth)
 

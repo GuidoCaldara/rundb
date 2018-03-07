@@ -9,22 +9,22 @@ class Race < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :users, through: :orders
   has_many :routes
-  has_many :photos
+  has_many :photos, dependent: :destroy
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
   #validation form
-  validates :name, uniqueness: true
-  validates :name, :location, :category , :website, :subscription_link, :starting_point, :video, length: { maximum: 100 }
-  validates :description, :goodies, length: {maximum: 700}
-  validates :photo, presence: true, on: :create
-  validates :distance, :elevation, :fee_cents, :discount_fee_cents, numericality: { less_than_or_equal_to: 15000,  only_integer: true }
-  validates :name, :distance, :date, :category, :location, :description, :first_edition, :starting_point, :fee_cents, presence: true
-  validate :race_date_in_the_future?
-  validate :elevation_check
-  validate :special_price_check
-  validate :special_price_date_check
-  validate :check_price
-  validate :check_subscription_link
+  # validates :name, uniqueness: true
+  # validates :name, :location, :category , :website, :subscription_link, :starting_point, :video, length: { maximum: 100 }
+  # validates :description, :goodies, length: {maximum: 700}
+  # validates :photo, presence: true, on: :create
+  # validates :distance, :elevation, :fee_cents, :discount_fee_cents, numericality: { less_than_or_equal_to: 15000,  only_integer: true }
+  # validates :name, :distance, :date, :category, :location, :description, :first_edition, :starting_point, :fee_cents, presence: true
+  # validate :race_date_in_the_future?
+  # validate :elevation_check
+  # validate :special_price_check
+  # validate :special_price_date_check
+  # validate :check_price
+  # validate :check_subscription_link
 
   def race_date_in_the_future?
     if date < Date.today
@@ -160,7 +160,7 @@ end
         self.reviews.each do |review|
          value_for_money_sum += review.value_for_money
         end
-        self.value_for_money_avg = (value_for_money_sum..to_f / self.reviews.size.to_f)
+        self.value_for_money_avg = (value_for_money_sum.to_f / self.reviews.size.to_f)
         self.save
       end
   end
