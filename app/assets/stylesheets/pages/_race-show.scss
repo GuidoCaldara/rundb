@@ -1,6 +1,8 @@
-// div {
-//   border: 1px solid #d8d8d8;
-// }
+
+div {
+  // border: 1px solid #d8d8d8;
+}
+
 
 .race-show-container {
   // border: 1px solid grey;
@@ -128,7 +130,7 @@
 
 
 // CARDS MARKER
-.race-date-header, .race-info-header {
+.race-date-header, .race-info-header, .race-rating-header {
   position: absolute;
   min-width: 150px;
   top: -17px;
@@ -140,6 +142,13 @@
   background-color: #96C04D;
   border-radius: 20px;
   box-shadow: 0px 8px 56px #98c74673;
+}
+
+.race-rating-header {
+  position: absolute;
+  min-width: 150px;
+  top: -17px;
+  right: 32px;
 }
 
 .race-fee-logo {
@@ -231,16 +240,223 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 10px;
+}
+
+// RATES
+
+.rates-container {
+  flex: 0 0 200px;
+  background-color: white;
+  box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0 2px 0 0 rgba(0, 0, 0, 0.03);
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  height: 400px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  .race-rates {
+    width: 200px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 6px;
+  }
+}
+
+.rates-wrapper {
+  .progress {
+    height: 20px;
+    border-radius: 10px;
+  }
+  .progress-bar {
+    background-color: #96C04D;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
 }
 
 // MAP
 
 .map-route {
   // padding: 0 10px;
+  flex: 1 1 auto;
   z-index: 0;
   box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0 2px 0 0 rgba(0, 0, 0, 0.03);
-  border-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
+
+#map {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+
+// ORGANIZER ACTIONS
+
+.organizer-actions {
+  padding: 12px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// REVIEWS
+
+
+.race-reviews-container {
+  padding: 0 10px;
+}
+
+// DIVIDER LINE
+
+.hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: 1;
+  font-size: 30px;
+  margin: 50px 0;
+  &:before {
+    content: '';
+    // use the linear-gradient for the fading effect
+    // use a solid background color for a solid bar
+    background: linear-gradient(to right, transparent, #96C04D, transparent);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+  }
+  &:after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: #96C04D;
+
+    padding: 0 .5em;
+    line-height: 1.5em;
+    // this is really the only tricky part, you need to specify the background color of the container element...
+    color: #96C04D;
+    background-color: #fcfcfa;
+  }
+}
+
+
+.new-review-container {
+    display: block;
+    align-items: top;
+    justify-content: center;
+    height: 234px;
+    margin-bottom: 40px;
+
+    label {
+      font-weight: 400;
+    }
+}
+
+@media (min-width: 768px) {
+  .new-review-container {
+  display: flex;
+  }
+}
+.new-review-description {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+
+  #review_description {
+    height: 182px;
+    border-radius: 8px;
+    border: 1px solid #e2e2e2;
+  }
+}
+
+.new-review-rates {
+  flex: 0 1 300px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+
+}
+.new-review-button-container {
+  flex: 0 1 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#review_route_rate, #review_organisation_rate, #review_value_for_money {
+
+border: 1px solid #e2e2e2;
+}
+
+
+// EXISTING REVIEW
+
+.existing-review {
+  border-bottom: 1px solid #dadada;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.existing-review-user {
+  flex: 0 0 auto;
+  padding: 0 10px;
+  p {
+    text-align: center;
+    font-weight: 400;
+  }
+}
+
+.existing-review-rate {
+  flex: 0 0 200px;
+  padding: 0 16px;
+}
+
+.review-rates-wrapper {
+  .progress {
+    height: 14px;
+    border-radius: 10px;
+  }
+  .progress-bar {
+    background-color: #96C04D;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+}
+
+.existing-review-content {
+  flex: 1 1 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -9,10 +9,11 @@ class Race < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :users, through: :orders
   has_many :routes
-  has_many :photos
+  has_many :photos, dependent: :destroy
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
   #validation form
+
   validates :name, uniqueness: true
   validates :name, :location, :category , :website, :subscription_link, :starting_point, :video, length: { maximum: 100 }
   validates :description, :goodies, length: {maximum: 700}
@@ -25,6 +26,7 @@ class Race < ApplicationRecord
   validate :special_price_date_check
   validate :check_price
   validate :check_subscription_link
+
 
   def race_date_in_the_future?
     if date < Date.today
@@ -148,17 +150,19 @@ end
 
 # Computation of the value for money average rate
 
-def set_value_for_money_avg
-  if self.reviews.size > 0
-    value_for_money_sum = 0
-    value_for_money_avg = 0
-    self.reviews.each do |review|
-     value_for_money_sum += review.value_for_money
-   end
-   self.value_for_money_avg = (value_for_money_sum..to_f / self.reviews.size.to_f)
-   self.save
- end
-end
+
+  def set_value_for_money_avg
+    if self.reviews.size > 0
+        value_for_money_sum = 0
+        value_for_money_avg = 0
+        self.reviews.each do |review|
+         value_for_money_sum += review.value_for_money
+        end
+        self.value_for_money_avg = (value_for_money_sum.to_f / self.reviews.size.to_f)
+        self.save
+      end
+  end
+
 
 
 # computation of the race OVERALL average rate
