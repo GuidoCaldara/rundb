@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     location_data = Geocoder.search(request.ip).first
-    @races = Race.near([location_data.latitude, location_data.longitude], 15000)
+    @nearby_races = Race.near([location_data.latitude, location_data.longitude], 15000)
   end
+
 end
