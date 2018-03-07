@@ -4,7 +4,7 @@
   <div class="col-lg-6 mx-auto">
     <%= simple_form_for @organisation do |f| %>
     <%= f.input :name, label: "Insert the name of your sport-group" %>
-    <%= f.input :address, label: "Insert the address of your association" %>
+    <%= f.input :address, input_html: {id: "location"}, label: "Insert the address of your association" %>
     <%= f.input :description, label: "A small history of the group" %>
     <%= f.input :email, label: "Insert the e-mail adress this is the email where users can contact tou for race info"%>
     <%= f.input :phone_number, label: "Insert the phone number" %>

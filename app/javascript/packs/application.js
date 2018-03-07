@@ -32,6 +32,17 @@ search.addWidget(
 );
 
   search.addWidget(
+    instantsearch.widgets.pagination({
+      container: '#pagination',
+      scrollTo: '#results',
+      cssClasses: {
+        root: 'pagination',
+        active: 'active'
+      }
+    })
+  );
+
+  search.addWidget(
     instantsearch.widgets.refinementList({
       container: '#race_categories',
       attributeName: 'category',
@@ -253,6 +264,8 @@ search.addWidget(
     this._map.fitBounds(bounds);
   }
 };
+
+
 
 search.addWidget(customMapWidget);
 

@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20180307040511) do
     t.integer "race_avg_rate"
     t.string "video"
     t.string "photo"
+
     t.float "route_rate_avg"
     t.float "organisation_rate_avg"
     t.float "value_for_money_avg"
