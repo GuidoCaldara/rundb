@@ -97,3 +97,49 @@
 
 
 }
+
+
+// ORGANIZER ACTIONS ON RACE SHOW PAGE
+
+.organizer-actions-button {
+  padding: 6px 10px;
+  margin: 0 6px;
+  text-decoration: none;
+  color: #a9a9a9;
+  background-color: white;
+  border: 1px solid #a9a9a9;
+  font-family: "Roboto", "sans-serif";
+  border-radius: 30px;
+}
+.organizer-actions-button:hover {
+  text-decoration: none;
+  color: grey;
+
+}
+
+// ADD A REVIEW
+
+.add-review-button {
+  padding: 6px 10px;
+  margin: 0 auto;
+  text-decoration: none;
+  color: #58ACD2;
+  background-color: white;
+  border: 1px solid #58ACD2;
+  font-family: "Roboto", "sans-serif";
+  font-weight: 100;
+  border-radius: 30px;
+  box-shadow: none;
+}
+.add-review-button:hover {
+  text-decoration: none;
+  color: grey;
+
+}
+
+
+
+
+
+
+
