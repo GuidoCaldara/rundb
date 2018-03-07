@@ -117,6 +117,51 @@ end
     end
   end
 
+# Computation of the route average rate
+
+  def set_route_rate_avg
+    if self.reviews.size > 0
+        route_rate_sum = 0
+        route_rate_avg = 0
+        self.reviews.each do |review|
+         route_rate_sum += review.route_rate
+        end
+        self.route_rate_avg = (route_rate_sum.to_f / self.reviews.size.to_f)
+        self.save
+      end
+  end
+
+
+# Computation of the organisation average rate
+
+  def set_organisation_rate_avg
+    if self.reviews.size > 0
+        organisation_rate_sum = 0
+        organisation_rate_avg = 0
+        self.reviews.each do |review|
+         organisation_rate_sum += review.organisation_rate
+        end
+        self.organisation_rate_avg = (organisation_rate_sum.to_f / self.reviews.size.to_f)
+        self.save
+      end
+  end
+
+# Computation of the value for money average rate
+
+  def set_value_for_money_avg
+    if self.reviews.size > 0
+        value_for_money_sum = 0
+        value_for_money_avg = 0
+        self.reviews.each do |review|
+         value_for_money_sum += review.value_for_money
+        end
+        self.value_for_money_avg = (value_for_money_sum..to_f / self.reviews.size.to_f)
+        self.save
+      end
+  end
+
+
+# computation of the race OVERALL average rate
   def set_race_avg_rate
     # self.race_avg_rate = self.reviews.pluck(:avg_rate).compact.sum / self.reviews.size
     # self.save

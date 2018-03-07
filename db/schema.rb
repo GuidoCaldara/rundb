@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180306053531) do
+ActiveRecord::Schema.define(version: 20180307014719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,9 @@ ActiveRecord::Schema.define(version: 20180306053531) do
     t.float "date_stamp"
     t.integer "race_avg_rate"
     t.string "video"
+    t.float "route_rate_avg"
+    t.float "organisation_rate_avg"
+    t.float "value_for_money_avg"
     t.index ["organisation_id"], name: "index_races_on_organisation_id"
   end
 
