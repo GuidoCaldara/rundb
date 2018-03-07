@@ -11,10 +11,13 @@
 
 <% if @race.route %>
 <div class="row">
-  <div class="col-md-8 my-5 mx-auto text-center">
-   <h1> Looks like u already have a gps track for your race. U can delete it and update another one</h1>
-   <%= link_to "DELETE ROUTE", race_route_path(@race, @race.route), method: :delete %>
-      <div id="map" style="height:400px; width: 400px;"></div>
+  <div class="col-md-8 my-5 mx-auto text-center strava-box">
+    <p class="lead my-4"> This is the gps track of your race!<br> If you want you can <%= link_to "delete it", race_route_path(@race, @race.route), method: :delete %> it and update another one or <%= link_to "go back to the race page", race_path(@race.id) %></p>
+  </div>
+  <div class="col-md-10 mx-auto mapbox">
+      <div id="map" style="height:400px; width: 100%;" margin-bottom="0px"></div>
+ </div>
+</div>
 
    <script>
   var data =  <%= raw @race.route.pathfile %>;
@@ -36,26 +39,32 @@
     }
 </script>
 
- </div>
-</div>
 
 <% elsif !@condition %>
 <div class="row">
-  <div class="col-md-2 my-5 mx-auto text-center">
-    <p>In this page you can upload the gps track of yuor race directly from strava. Please alowed Run-db to acces your strava profile in order to import the data</p>
+  <div class="col-md-8 my-5 mx-auto text-center strava-box">
+    <p class="lead my-4">In this page you can upload the gps track of yuor race directly from STRAVA. Please alowed Run-db to acces your STRAVA profile in order to import the data</p>
     <a href="http://www.strava.com/oauth/authorize?client_id=23523&response_type=code&redirect_uri=http://localhost:3000/exchange_token&approval_prompt=force&scope=view_private">
       <%= image_tag "strava", width: "200"%>
     </a>
   </div>
 </div>
+
+
 <% elsif @condition %>
 <div class="row">
-  <div class="col-md-6 my-5 mx-auto text-center">
-   <h3>Copy and paste the link of your ativity as in the image below</h3>
-   <input id ="link" style="width:500px;", class= "form-control"> </input>
-   <button id="bottone" class ="btn btn-primary my-4">Generate Route</button>
+  <div class="col-md-8 my-5 mx-auto px-5 text-center strava-box">
+           <h3>Copy and paste the link of your ativity as in the image below</h3>
+        <%= image_tag "stravainstruction.gif" %>
+       <input id ="link", class= "ml-5 form-control link-form", placeholder="ex: https://www.strava.com/activities/123456789">
+       </input>
+       <button id="bottone" class ="btn btn-primary mt-4">Generate Route</button> <br>
+       <button id= "send" class ="btn btn-success my-1"> Send</button>
+
+  </div>
+</div>
+  <div class="col-md-10 mx-auto">
    <div id="map" style="height:400px; width: 400px;"></div>
-   <button id= "send" class ="btn btn-success my-4"> Send</button>
  </div>
 </div>
 <% end %>
@@ -68,7 +77,6 @@
 
 <% if @auth %>
   <% if @auth.access_token %>
-    <%= @auth.access_token %>
     <%= content_for(:after_js) do %>
 
   <script>
@@ -129,7 +137,7 @@
       console.log(data.hits); // Look at local_names.default
       // after you get a return, change the button!
     });
-    window.location = "/races/<%=@race.id%>";
+    window.location = "/races/<%=@race.id%>/routes/new";
 
   }
 

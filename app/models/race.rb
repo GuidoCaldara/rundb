@@ -1,6 +1,8 @@
 class Race < ApplicationRecord
   before_create :set_sku
   # before_create :define_fee,
+  mount_uploader :photo, PhotoUploader
+
   has_one :route
   belongs_to :organisation
   has_many :orders
@@ -11,8 +13,10 @@ class Race < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
   #validation form
+  validates :name, uniqueness: true
   validates :name, :location, :category , :website, :subscription_link, :starting_point, :video, length: { maximum: 100 }
   validates :description, :goodies, length: {maximum: 700}
+  validates :photo, presence: true, on: :create
   validates :distance, :elevation, :fee_cents, :discount_fee_cents, numericality: { less_than_or_equal_to: 15000,  only_integer: true }
   validates :name, :distance, :date, :category, :location, :description, :first_edition, :starting_point, :fee_cents, presence: true
   validate :race_date_in_the_future?
@@ -22,30 +26,30 @@ class Race < ApplicationRecord
   validate :check_price
   validate :check_subscription_link
 
-def race_date_in_the_future?
-  if date < Date.today
-    errors.add :date, "Race Date must be in the future!"
+  def race_date_in_the_future?
+    if date < Date.today
+      errors.add :date, "Race Date must be in the future!"
+    end
   end
-end
 
-def special_price_check
-  if discount_fee_cents && discount_fee_cents == 0
-    discount_fee_cents == nil
+  def special_price_check
+    if discount_fee_cents && discount_fee_cents == 0
+      discount_fee_cents == nil
+    end
   end
-end
 
-def elevation_check
+  def elevation_check
    if category != "Road" && !elevation
     errors.add :elevation, "Elevation must be present for outdoor running"
-   end
+  end
 end
 
 def special_price_check
   if discount_fee_cents
-  if discount_fee_cents == true && !discount_fee_finish
-    errors.add :discount_fee_finish, "Please insert the last day of your special price"
+    if discount_fee_cents == true && !discount_fee_finish
+      errors.add :discount_fee_finish, "Please insert the last day of your special price"
+    end
   end
- end
 end
 
 def special_price_date_check
@@ -60,10 +64,10 @@ end
 
 def check_price
   if discount_fee_cents
-  if discount_fee_cents >= fee_cents
-    errors.add :discount_fee_cents, "The discount price can't be bigger or equal than the normal price"
+    if discount_fee_cents >= fee_cents
+      errors.add :discount_fee_cents, "The discount price can't be bigger or equal than the normal price"
+    end
   end
-end
 end
 
 def check_subscription_link
@@ -75,22 +79,22 @@ def check_subscription_link
 end
 
 
-  include AlgoliaSearch
+include AlgoliaSearch
 
-  algoliasearch do
-    attribute :name, :location, :category, :distance, :date_stamp, :_geoloc, :id, :reviews, :race_avg_rate
-    add_attribute :extra_attr
-    attributesForFaceting [:category, :distance, :date_stamp, :_geoloc, :name, :location, :id]
+algoliasearch do
+  attribute :name, :location, :category, :distance, :date_stamp, :_geoloc, :id, :reviews, :race_avg_rate
+  add_attribute :extra_attr
+  attributesForFaceting [:category, :distance, :date_stamp, :_geoloc, :name, :location, :id]
 
-  end
+end
 
-  def extra_attr
-     self.photos.first
-  end
+def extra_attr
+ self.photos.first
+end
 
 
-  monetize :fee_cents
-  monetize :discount_fee_cents
+monetize :fee_cents
+monetize :discount_fee_cents
 
 
   # validates :name, :distance, :category, :date, :location, presence: true
@@ -107,17 +111,17 @@ end
   # end
 
   def has_order?
-     Order.where(race_id:self.id).any?
-  end
+   Order.where(race_id:self.id).any?
+ end
 
-  def set_sku
-    self.sku = loop do
-      random_token = SecureRandom.urlsafe_base64(5)
-      break random_token unless Race.exists?(sku: random_token)
-    end
+ def set_sku
+  self.sku = loop do
+    random_token = SecureRandom.urlsafe_base64(5)
+    break random_token unless Race.exists?(sku: random_token)
   end
+end
 
-  def set_race_avg_rate
+def set_race_avg_rate
     # self.race_avg_rate = self.reviews.pluck(:avg_rate).compact.sum / self.reviews.size
     # self.save
     if self.reviews.size > 0
@@ -125,11 +129,11 @@ end
       race_average = 0
       self.reviews.each do |review|
        rate_sum += review.avg_rate
-      end
-      self.race_avg_rate = (rate_sum / self.reviews.size)
-      self.save
-    end
-  end
+     end
+     self.race_avg_rate = (rate_sum / self.reviews.size)
+     self.save
+   end
+ end
 
 
 end

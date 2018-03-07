@@ -1,22 +1,12 @@
 <!--   impossible to import style. here for the moment after ticket
  -->
- <style>
- .form-title
- {
-  text-decoration:none;
-  color: black !important;
-}
-#form-title:hover {
-  color:black !important;
-  text-decoration: none !important;
-}
-</style>
+
 
 
 <div class="col-md-10 mx-auto">
   <div id="accordion" role="tablist" aria-multiselectable="true">
     <div class="card">
-      <%= simple_form_for @race do |f| %>
+      <%= simple_form_for @race, html: { class: "race-form-box"} do |f| %>
       <div class="card-header" role="tab" id="headingOne">
         <h5 class="mb-0">
           <a class="form-title" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="">
@@ -37,7 +27,7 @@
           <%= f.input :date, label: "Insert the race date", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year]%>
           <%= f.input :first_edition, label: "Fist edition year", as: :date, start_year: Date.today.year-20, end_year: Date.today.year, order: [:year] %>
           <%= f.input :website, label: "Race Website", placeholder: 'ex: https://yoursite.com', html: { autocomplete: 'off' }  %>
-
+           <%= f.input :photo, class: "form-control-file mx-auto", style: "margin: 0 auto;", label: "A photo is mandatory for every race. You can add other photo to gallery later"%>
         </div>
       </div>
     </div>
@@ -50,7 +40,7 @@
           </a>
         </h5>
       </div>
-      <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div id="collapseTwo" class="race-form-box collapse" role="tabpanel" aria-labelledby="headingTwo">
         <div class="card-block py-4 px-5">
           <%=  f.input :description, label: "Tell something about your race", as: :text, :input_html => { 'rows' => 9, autocomplete: 'off'} %>
         </div>
@@ -65,7 +55,7 @@
           </a>
         </h5>
       </div>
-      <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div id="collapseThree" class="race-form-box collapse" role="tabpanel" aria-labelledby="headingThree">
         <div class="card-block py-4 px-5">
           <%=  f.input :goodies, label: "Wich goodies are included in the race pack?", as: :text, html: { autocomplete: 'off' }%>
           <%= f.input :starting_point, label: "Wher will be the starting point?"%>
@@ -87,10 +77,10 @@
           </a>
         </h5>
       </div>
-      <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+      <div id="collapseFour" class="race-form-box collapse" role="tabpanel" aria-labelledby="headingFour">
         <div class="card-block py-4 px-5">
           <h2> Do you wana Run Db manage your subscription sistem? </h2>
-          <%#= f.input :bookable, as: :radio_buttons, item_wrapper_class: 'inline'%>
+          <%= f.input :bookable, as: :radio_buttons, item_wrapper_class: 'inline', label: false%>
           <p> If not, please provide a link to redirect the user to subscription page. If you don't have it yet dont'worry, you can insert it later or choose to let Run-db manage your subscription</p>
           <%=  f.input :subscription_link, label:false,  placeholder: 'ex: https://yoursite.com/subsctiption' %>
           <%= f.input :fee_cents, label: "Insert the race price in €", input_html: {step: 'any', autocomplete: "off" }%>
