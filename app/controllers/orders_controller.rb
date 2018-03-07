@@ -22,23 +22,36 @@ class OrdersController < ApplicationController
 
   def create
     @race = Race.find(params[:race_id])
-    @order = Order.create!(user_id: current_user.id, race_id: @race.id)
+    @order = Order.new(order_params)
+    @order.user_id = current_user.id
+    @order.race_id = @race.id
     @order.race_sku = @race.sku
     @order.state = "pending"
+    @order.amount_cents = 1000
     if @race.discount_fee_cents
-     if @race.discount_fee_finish >= Date.today
-      @order.amount_cents = @race.discount_fee_cents
-      @order.save!
+      if @race.discount_fee_finish >= Date.today
+       @order.amount_cents = @race.discount_fee_cents
+       if @order.save
+        redirect_to new_order_payment_path(@order.id)
+      else
+        render action: 'new'
+      end
     else
       @order.amount_cents = @race.fee_cents
-      @order.save!
+      if @order.save
+        redirect_to new_order_payment_path(@order.id)
+      else
+        render action: 'new'
+      end
     end
   else
-    @order.amount_cents = @race.fee_cents
-    @order.save!
-  end
-  @order.update(order_params)
-  redirect_to new_order_payment_path(@order.id)
+    @race.amount_cents = @race_fee_cents
+    if @order.save
+     redirect_to new_order_payment_path(@order.id)
+    else
+     render action: 'new'
+    end
+ end
 end
 
 

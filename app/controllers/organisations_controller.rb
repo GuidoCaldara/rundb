@@ -61,7 +61,7 @@ def set_organization
 end
 
 def organisation_params
-  params.require(:organisation).permit(:logo, :name, :address, :description, :phone_number, :user_id)
+  params.require(:organisation).permit(:email, :logo, :name, :address, :description, :phone_number, :user_id)
 end
 
 

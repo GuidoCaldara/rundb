@@ -1,31 +1,43 @@
 
-<div class="container payment-container">
+<div class="container payment-container ">
   <div class="row mt-5 pt-5">
     <div class="col-md-6 py-5 mx-auto text-center order-confirm">
-      <h1>Congratulstions! </h1>
-      <h2> You are going to register to
-       <%= @race.name %> </h2>
-      <%= form_tag order_payments_path(@order), class: "mb-5" do %>
-      <article>
-        <h4>Order review</h4>
-          <p><strong>Race Name:</strong> <%=@race.name  %></p>
-          <p><strong>Race Date:</strong> <%=@race.date %></p>
-          <p><strong>Race Location:</strong> <%=@race.location  %></p>
-          <p><strong>Race Distance:</strong> <%=@race.distance %>Km</p>
-        <label class="amount mb-1">
-          <span class="h3">Amount: <p class="my-2"><%= humanized_money_with_symbol(@order.amount)%></p></span>
-        </label>
-      </article>
-      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-      data-name=" Pagamento per l'iscrizione ad <%= @race.name %>"
-      data-email="<%= current_user.email %>"
-      data-description=" Payment"
-      data-amount="<%= @order.amount_cents %>"
-      data-currency="<%= @order.amount.currency %>"></script>
-      <% end %>
-      <%= link_to "Go back to the race page", race_path(@race.id), class: "f-left"%>
+      <div class="row">
+        <div class="col-lg-12">
+          <h3>Congratulations! </h3>
+          <p class ="lead"> Youa are going to register to the <%= @race.name %> </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 mx-auto text-center">
+          <article>
+            <h4>Order review</h4>
+            <p class ="lead"><strong>Race Name:</strong> <%=@race.name  %></p>
+            <p class ="lead"><strong>Race Date:</strong> <%=@race.date %></p>
+            <p class ="lead"><strong>Race Location:</strong> <%=@race.location  %></p>
+            <p class ="lead"><strong>Race Distance:</strong> <%=@race.distance %>Km</p>
+            <label class="amount mb-1">
+              <span class="h3">Total amount: <p class="my-2"><%= humanized_money_with_symbol(@order.amount)%></p></span>
+            </label>
+          </article>
+
+          <%= form_tag order_payments_path(@order), class: "mb-2" do %>
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-name=" Pagamento per l'iscrizione ad <%= @race.name %>"
+            data-email="<%= current_user.email %>"
+            data-description="Payment"
+            data-amount="<%= @order.amount_cents %>"
+            data-currency="<%= @order.amount.currency %>"></script>
+          <% end %>
+
+
+
+
+          <%= link_to "Go back to the race page", race_path(@race.id), class: "btn go-back-race-button mt-5" %>
+
+        </div>
+      </div>
+
     </div>
-  </div>
-</div>
 

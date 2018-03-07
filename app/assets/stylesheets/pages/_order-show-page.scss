@@ -1,0 +1,18 @@
+.show-order-buttons{
+  background-color: #f1121c;
+  color: white;
+  box-shadow: 0 5px 40px #30b2e473;
+  font-size: 16px;
+  background-image: linear-gradient(190deg, #34b0d8, #30a6cc);
+  transition: all 0.3s cubic-bezier(0.12, 0.64, 0.25, 1);
+
+
+}
+
+
+.show-order-buttons:hover {
+  text-decoration: none !important;
+  color: white;
+  transform: scale(1.02);
+
+}
