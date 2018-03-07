@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307012401) do
+ActiveRecord::Schema.define(version: 20180307040511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,14 +66,13 @@ ActiveRecord::Schema.define(version: 20180307012401) do
 
   create_table "races", force: :cascade do |t|
     t.string "name"
-    t.integer "distance"
     t.integer "elevation"
     t.date "date"
     t.string "category"
-    t.jsonb "_geoloc", default: {}
     t.string "location"
     t.float "latitude"
     t.float "longitude"
+    t.jsonb "_geoloc", default: {}
     t.datetime "starting_time"
     t.date "discount_fee_finish"
     t.date "subscription_start"
@@ -96,6 +95,7 @@ ActiveRecord::Schema.define(version: 20180307012401) do
     t.integer "race_avg_rate"
     t.string "video"
     t.string "photo"
+    t.integer "race_distance"
     t.index ["organisation_id"], name: "index_races_on_organisation_id"
   end
 
@@ -146,6 +146,9 @@ ActiveRecord::Schema.define(version: 20180307012401) do
     t.datetime "token_expiry"
     t.string "gender"
     t.string "group"
+    t.string "ip"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

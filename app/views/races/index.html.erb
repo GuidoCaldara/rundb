@@ -85,7 +85,7 @@
             <a href="/races/{{id}}">
               <div class="card-race">
 
-                <div class="card-race-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url({{extra_attr.photo.url}}), url('https://media.istockphoto.com/photos/sunrise-on-yosemite-valley-picture-id505872990?k=6&m=505872990&s=612x612&w=0&h=XcdHhkC9PF9-saYT6n_GQD-0Hf8dbI_Q4wfYlZZGpNk=')">
+                <div class="card-race-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url({{photo.url}}), url('https://media.istockphoto.com/photos/sunrise-on-yosemite-valley-picture-id505872990?k=6&m=505872990&s=612x612&w=0&h=XcdHhkC9PF9-saYT6n_GQD-0Hf8dbI_Q4wfYlZZGpNk=')">
                   <p class="hit-name card-race-title">{{{_highlightResult.name.value}}}</p>
                   <i class="fas fa-map-marker-alt card-race-marker"></i>
                   <p class="hit-name card-race-location">{{{_highlightResult.location.value}}}</p>
@@ -103,7 +103,7 @@
                 </div>
                 <div class="card-race-body">
                   <p class="hit-name element">{{category}}</p>
-                  <p class="hit-name element">{{distance}} km</p>
+                  <p class="hit-name element">{{race_distance}} km</p>
                   <p class="hit-name element last">{{reviews.length}} reviews</p>
                 </div>
               </div>

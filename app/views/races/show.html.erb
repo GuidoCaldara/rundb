@@ -21,7 +21,7 @@
               </div>
               <div class="col-xs-12 col-sm-12 col-md-4 no-padding">
                 <div class="header-element">
-                  <%= @race.distance%> km
+                  <%= @race.race_distance%> km
                   <% if @race.elevation %>
                     <i class="fas fa-map"></i>
                     <%= @race.elevation%>D+
@@ -83,6 +83,8 @@
         <div class="photo-container">
           <% if @race.photos %>
             <!-- IMPORT HERE PHOTOS CARROUSEL -->
+            <% else %>
+            <%= @race.photo %>
           <% end %>
         </div>
 
