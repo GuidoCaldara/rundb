@@ -21,7 +21,7 @@
               </div>
               <div class="col-xs-12 col-sm-12 col-md-4 no-padding">
                 <div class="header-element">
-                  <%= @race.distance%> km
+                  <%= @race.race_distance%> km
                   <% if @race.elevation %>
                   <i class="fas fa-map"></i>
                   <%= @race.elevation%>D+
@@ -83,6 +83,9 @@
         <div class="photo-container">
 
 
+            <!-- IMPORT HERE PHOTOS CARROUSEL -->
+
+
 
           <% if @race.photo %>
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -114,20 +117,6 @@
               <span class="sr-only">Next</span>
             </a>
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           <% end %>
         </div>
 

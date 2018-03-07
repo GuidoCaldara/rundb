@@ -17,8 +17,8 @@ class Race < ApplicationRecord
   validates :name, :location, :category , :website, :subscription_link, :starting_point, :video, length: { maximum: 100 }
   validates :description, :goodies, length: {maximum: 700}
   validates :photo, presence: true, on: :create
-  validates :distance, :elevation, :fee_cents, :discount_fee_cents, numericality: { less_than_or_equal_to: 15000,  only_integer: true }
-  validates :name, :distance, :date, :category, :location, :description, :first_edition, :starting_point, :fee_cents, presence: true
+  validates :race_distance, :elevation, :fee_cents, :discount_fee_cents, numericality: { less_than_or_equal_to: 15000,  only_integer: true }
+  validates :name, :race_distance, :date, :category, :location, :description, :first_edition, :starting_point, :fee_cents, presence: true
   validate :race_date_in_the_future?
   validate :elevation_check
   validate :special_price_check
@@ -82,14 +82,9 @@ end
 include AlgoliaSearch
 
 algoliasearch do
-  attribute :name, :location, :category, :distance, :date_stamp, :_geoloc, :id, :reviews, :race_avg_rate
-  add_attribute :extra_attr
-  attributesForFaceting [:category, :distance, :date_stamp, :_geoloc, :name, :location, :id]
+  attribute :name, :location, :category, :race_distance, :date_stamp, :_geoloc, :id, :reviews, :race_avg_rate, :photo
+  attributesForFaceting [:category, :race_distance, :date_stamp, :_geoloc, :name, :location, :id]
 
-end
-
-def extra_attr
- self.photos.first
 end
 
 
@@ -97,7 +92,7 @@ monetize :fee_cents
 monetize :discount_fee_cents
 
 
-  # validates :name, :distance, :category, :date, :location, presence: true
+  # validates :name, :race_distance, :category, :date, :location, presence: true
   def has_reviewed?(current_user)
     self.reviews.where(user: current_user).any?
   end

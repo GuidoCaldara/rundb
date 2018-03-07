@@ -1,8 +1,5 @@
 <!--   impossible to import style. here for the moment after ticket
 -->
-
-
-
 <div class="col-md-10 mx-auto">
   <div id="accordion" role="tablist" aria-multiselectable="true">
     <div class="card">
@@ -15,7 +12,7 @@
             <div class="card-block py-4 px-5 ">
               <%= f.input :name, label: 'Insert The race Name', error: 'Username is mandatory, please specify one', html: { autocomplete: 'off' } %>
               <%= f.input :category, priority: [ "---" ], collection: [ "Trail", "Road", "Skyrace", "VerticalKM"], label: "Select the race category" %>
-              <%= f.input :distance, label: "Insert the race distance in Km", input_html: {  min: '0', step: 'any' }%>
+              <%= f.input :race_distance, label: "Insert the race distance in Km", input_html: {  min: '0', step: 'any' }%>
               <%= f.input :elevation, label: "Insert the positive elevation in meters (Not required for road races)", input_html: { min: '0', step: '100' }%>
               <%= f.input :location, id: "race_location", label: "Race Location?" %>
               <%= f.input :date, label: "Insert the race date", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year]%>
@@ -24,7 +21,6 @@
               <%= f.input :photo, class: "form-control-file mx-auto", style: "margin: 0 auto;", label: "A photo is mandatory for every race. You can add other photo to gallery later"%>
             </div>
           </div>
-
       <div class="card race-form-box">
         <div class="card-header" role="tab" id="headingOne">
           <h5 class="mb-0">
@@ -35,7 +31,6 @@
                 <%=  f.input :description, label: "Tell something about your race", as: :text, :input_html => { 'rows' => 9, autocomplete: 'off'} %>
               </div>
               </div>
-
       <div class="card race-form-box">
         <div class="card-header" role="tab" id="headingOne">
           <h5 class="mb-0">
@@ -45,7 +40,6 @@
               <div class="card-block py-4 px-5">
                 <%=  f.input :goodies, label: "Wich goodies are included in the race pack?", as: :text, html: { autocomplete: 'off' }%>
                 <%= f.input :starting_point, label: "Wher will be the starting point?"%>
-
                 <%= f.input :starting_time, as: :time, minute_step: 30, label: "Insert the starting time", html: { autocomplete: 'off' }%>
                 <%=  f.input :video, label: "Do you have a video of the race on youtube? Copy and paste the link!", placeholder: 'ex: https://www.youtube.com/embed/tgbNymZ7vqY', as: :string%>
               </div>
@@ -65,7 +59,6 @@
                 <%=  f.input :subscription_link, label:false,  placeholder: 'ex: https://yoursite.com/subsctiption' %>
                 <%= f.input :fee_cents, label: "Insert the race price in €", input_html: {step: 'any', autocomplete: "off" }%>
                 <h3> Do u wana propost a discount price for the early subscription?</h3>
-
                 <%= f.input :discount_fee_cents, label: "Insert the secial price in €", input_html: {  step: 'any' } %>
                 <%= f.input :discount_fee_finish, as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year], label: "If yes, untill wich date u wana propose the special price?" %>
                 <%= f.input :subscription_start, label: "When the subscription period start?", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year] %>
@@ -78,4 +71,5 @@
   </div>
 </div>
 <% end %>
+
 
