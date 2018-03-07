@@ -8,8 +8,8 @@ autocomplete();
 window.addEventListener('load', function() {
 
 const search = instantsearch({
-  appId: 'MP37CKD4Q3',
-  apiKey: '6a1098bae7556066297966e90caef0d6',
+  appId: '869L3DD13H',
+  apiKey: '14d7338a984685e0f99ca9b9ffe2e78e',
   indexName: 'Race',
   urlSync: true
 });
@@ -30,6 +30,17 @@ search.addWidget(
     }
   })
 );
+
+  search.addWidget(
+    instantsearch.widgets.pagination({
+      container: '#pagination',
+      scrollTo: '#results',
+      cssClasses: {
+        root: 'pagination',
+        active: 'active'
+      }
+    })
+  );
 
   search.addWidget(
     instantsearch.widgets.refinementList({
@@ -73,7 +84,7 @@ search.addWidget(
 search.addWidget(
     instantsearch.widgets.rangeSlider({
       container: '#distance',
-      attributeName: 'distance',
+      attributeName: 'race_distance',
       pips: false,
       tooltips: {format: function(rawValue) {return 'km' + parseInt(rawValue)}}
     })
@@ -122,7 +133,7 @@ search.addWidget(
                 <p class="popup-rate">Rating: ${hit.race_avg_rate} / 10</p>
                 <div class="inlined">
                 <p class="element">${hit.category}</p>
-                <p class="element">${hit.distance} km</p>
+                <p class="element">${hit.race_distance} km</p>
                 <p class="element last">${hit.reviews.length} reviews</p>
                 </div>
               </div>
@@ -132,7 +143,7 @@ search.addWidget(
     });
 
     // PUT THIS BACK WHILE IN PRODUCTION WHERE EVERY RACE HAS A PHOTO
-    // <div class="card-header-popup" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url(${hit.extra_attr.photo.url})">
+    // <div class="card-header-popup" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url(${hit.photo.url})">
     // </div>
 
 
@@ -253,6 +264,8 @@ search.addWidget(
     this._map.fitBounds(bounds);
   }
 };
+
+
 
 search.addWidget(customMapWidget);
 

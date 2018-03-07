@@ -1,6 +1,8 @@
+
 div {
   // border: 1px solid #d8d8d8;
 }
+
 
 .race-show-container {
   // border: 1px solid grey;
@@ -188,7 +190,8 @@ div {
   margin-bottom: 30px;
   position: relative;
   min-height: 400px;
-  background-color: #bebebe;
+  background-color: #FBFBFB;
+  padding: 0px;
 }
 
 // PRICING CONTAINER
@@ -222,9 +225,16 @@ div {
 
 .price-details {
   margin-top: 12px;
-  }
+}
+
 
 // FOOTER CONTAINER
+
+.carousel-img {
+  width: auto;
+  height: 375px;
+  max-height: 375px;
+}
 
 .footer-container {
   display: flex;
@@ -429,6 +439,7 @@ border: 1px solid #e2e2e2;
 .existing-review-content {
   flex: 1 1 auto;
 }
+
 
 
 

@@ -1,11 +1,27 @@
-<%= simple_form_for @order do |f| %>
-<%= hidden_field_tag 'race_id', @race.id %>
-<%= f.input :first_name%>
-<%= f.input :last_name%>
-<%= f.input :group%>
-<%= f.input :gender %>
-<%= f.input :city %>
-<%= f.input :date_of_birth %>
-<%= f.button :submit, class: "btn btn-primary" %>
 
-<% end %>
+<div class="container pt-2">
+  <div class="row py-0">
+    <div class="col-lg-6 mx-auto  subscription-form">
+      <div class="col-lg-12 text-center px-0">
+        <h2 class ="form-subscription-title">Registration form for <%= @race.name %></h2>
+        <p class ="lead form-subscription-title"> Fill the form with the subscription datas, before to be redirect to the payment page</p>
+      </div>
+      <%= simple_form_for @order do |f| %>
+      <%= hidden_field_tag 'race_id', @race.id %>
+      <%= f.input :first_name%>
+      <%= f.input :last_name%>
+      <%= f.input :group%>
+      <%= f.input :gender, priority: [ "---" ], collection: [ "Man", "Woman"], label: "Gender" %>
+      <%= f.input :city %>
+      <%= f.input :date_of_birth, label: "Date of birth", as: :date, start_year: Date.today.year-90, end_year: Date.today.year-18, order: [:day, :month, :year], class:"mb-4" %>
+      <div class="col-lg-12 text-center">
+      <%= f.button :submit, class: "btn btn-primary submit-registration mt-5 mb-3 mx-auto" %>
+      <% end %>
+      <%= link_to "Go back to the race page", race_path(@race.id), class: "btn go-back-race-button mx-auto" %>
+     </div>
+    </div>
+
+
+  </div>
+</div>
+

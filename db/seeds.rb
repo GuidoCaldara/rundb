@@ -38,6 +38,7 @@ puts "///   Creating organisations"
 10.times do
   organisation = Organisation.new(
     user_id: User.all.sample.id,
+
     name: Faker::SiliconValley.company,
     address: "10 rue Montaigne",
     email: "organisation@gmail.com",
@@ -201,7 +202,7 @@ location = ["Milan, italy",
   16.times do
     race = Race.new(
       name: "Race #{Faker::Hipster.word.capitalize}",
-      distance: rand(1..5)*10,
+      race_distance: rand(1..5)*10,
       elevation: rand(100..2000),
       date: (Date.today + (rand(155..200)).days),
       date_stamp: ((Date.today + (rand(1..200)).days).to_time.to_i * 1000),

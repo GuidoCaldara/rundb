@@ -11,8 +11,10 @@ class User < ApplicationRecord
   mount_uploader :avatar, PhotoUploader
 
   has_one :organisation
+  validates :first_name, :last_name, :group, length: { maximum: 100 }
+  geocoded_by :ip       # can also be an IP address
+  after_validation :geocode
 
-  # validates :first_name, :last_name, :group, length: { maximum: 100 }
 
   def self.from_omniauth(auth)
 
@@ -65,6 +67,10 @@ def old_races
     end
   end
   @races
+end
+
+def current_location
+  Geocoder.search(request.ip)
 end
 
 
