@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :races, through: :orders
   has_many :favorites
   has_many :reviews
+  mount_uploader :avatar, PhotoUploader
 
   has_one :organisation
 

@@ -2,6 +2,7 @@ class Organisation < ApplicationRecord
   mount_uploader :logo, PhotoUploader
   belongs_to :user
   has_many :races
+  validates :name, uniqueness: true
   validates :name, :address, length: { maximum: 20 }
   validates :description, length: { maximum: 500 }
   validates :name, :description, :email, presence: true
