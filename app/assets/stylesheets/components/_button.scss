@@ -25,13 +25,27 @@
 
 // LOGIN BUTTON
 .button-login {
-    margin-top: 16px;
-    width: 112px;
-    margin-bottom: 23px;
-    padding-top: 5px;
-    height: 41px;
+  margin-top: 25px;
+  width: 112px;
+  margin-bottom: 23px;
+  padding-top: 5px;
+  height: 41px;
 }
 
+.fb-login-button{
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 16px;
+}
+
+.password-recovery-btn{
+  color: rgb(45, 44, 44);
+}
+
+.password-recovery-btn:hover{
+  text-decoration:none;
+  text-color: rgb(45, 44, 44);
+}
 // REGISTRATION BUTTON
 
 .button-register {

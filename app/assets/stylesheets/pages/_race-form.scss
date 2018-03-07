@@ -1,2 +1,30 @@
+ .form-title
+ {
+  text-decoration:none;
+  color: #424141 !important;
+  font-weight: 300
+}
+.form-title:hover{
+  color:#424141 !important;
+  text-decoration: none !important;
+}
 
 
+
+.race-form-box{
+  color: rgb(93, 91, 91);
+  box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0 2px 0 0 rgba(0, 0, 0, 0.03);
+  border-radius: 5px
+}
+
+.race-insert-bar{
+  background-color: #30a7cc;
+}
+
+.race-form-box{
+  label{
+      color: #424141 !important;
+  font-weight: 400
+
+  }
+}
