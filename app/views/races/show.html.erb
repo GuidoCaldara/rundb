@@ -148,9 +148,10 @@
           <%= link_to "Subscribe online", new_race_order_path(@race.id), class: "button-register" %>
 
           <% else %>
-          <button type="button" class="button-register" data-toggle="modal" data-target="#exampleModal">
-            Launch demo modal
-          </button>
+
+            <button type="button" class="button-register" data-toggle="modal" data-target="#exampleModal">
+            Subscribe online
+            </button>
           <% end %>
         </div>
 
@@ -164,6 +165,24 @@
   <div id="map" style="height:400px; width: 100%;">
   </div>
   <% end %>
+
+  <div class="footer-container">
+    <!-- rates container -->
+
+    <div class="rates-container">
+
+    </div>
+
+
+    <!-- Race path map -->
+    <div class="map-route">
+      <% if @race.route %>
+        <div id="map" style="height:400px; width: 100%;z-index: 1;">
+        </div>
+      <% end %>
+    </div>
+  </div>
+
 </div>
 
 
@@ -196,6 +215,7 @@
       </div>
     </div>
   </div>
+</div>
 
 
 
