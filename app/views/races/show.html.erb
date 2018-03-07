@@ -104,7 +104,7 @@
 
           <% else %>
             <button type="button" class="button-register" data-toggle="modal" data-target="#exampleModal">
-            Launch demo modal
+            Subscribe online
             </button>
           <% end %>
         </div>
@@ -114,11 +114,24 @@
 
   </div>
 
-  <!-- Race path map -->
-  <% if @race.route %>
-    <div id="map" style="height:400px; width: 100%;">
+
+  <div class="footer-container">
+    <!-- rates container -->
+
+    <div class="rates-container">
+
     </div>
-  <% end %>
+
+
+    <!-- Race path map -->
+    <div class="map-route">
+      <% if @race.route %>
+        <div id="map" style="height:400px; width: 100%;z-index: 1;">
+        </div>
+      <% end %>
+    </div>
+  </div>
+
 </div>
 
 
@@ -151,6 +164,7 @@
       </div>
     </div>
   </div>
+</div>
 
 
 

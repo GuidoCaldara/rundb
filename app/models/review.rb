@@ -12,6 +12,9 @@ class Review < ApplicationRecord
 
   def set_avg_rate
     self.avg_rate = ((self.route_rate.to_f + self.organisation_rate.to_f + self.value_for_money.to_f) / 3)
+    self.race.set_route_rate_avg
+    self.race.set_organisation_rate_avg
+    self.race.set_value_for_money_avg
     self.race.set_race_avg_rate
   end
 
