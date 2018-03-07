@@ -52,10 +52,10 @@ def destroy
   redirect_to race_path(@race.id)
   flash[:danger] = "You can't destroy a race that have already registration"
 else
-  @race.destroy
   if @race.photos
   @race.photos.each do |photo|
     photo.destroy!
+  @race.destroy!
   end
   end
   redirect_to root_path

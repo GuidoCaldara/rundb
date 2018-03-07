@@ -8,8 +8,8 @@ autocomplete();
 window.addEventListener('load', function() {
 
 const search = instantsearch({
-  appId: 'MP37CKD4Q3',
-  apiKey: '6a1098bae7556066297966e90caef0d6',
+  appId: '869L3DD13H',
+  apiKey: '14d7338a984685e0f99ca9b9ffe2e78e',
   indexName: 'Race',
   urlSync: true
 });
