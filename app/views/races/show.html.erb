@@ -161,7 +161,7 @@
         </div>
 
           <div class="rates-wrapper">
-
+            <% if @race.route_rate_avg && @race.organisation_rate_avg && @race.value_for_money_avg %>
             <div class="race-rates">Route <br><span class="green-highlight"><%= @race.route_rate_avg.round(1) %> / 10</span>
             </div>
             <div class="progress">
@@ -182,6 +182,7 @@
               <div class="progress-bar" style="width:<%= @race.value_for_money_avg*10 %>%">
               </div>
           </div>
+          <% end %>
         </div>
       </div>
     <% end %>

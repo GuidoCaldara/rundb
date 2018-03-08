@@ -31,21 +31,21 @@ class OrdersController < ApplicationController
     if @race.discount_fee_cents != 0
       if @race.discount_fee_finish >= Date.today
        @order.amount_cents = @race.discount_fee_cents
-       if @order.save
+       if @order.save!
         redirect_to new_order_payment_path(@order.id)
       else
         render action: 'new'
       end
     else
       @order.amount_cents = @race.fee_cents
-      if @order.save
+      if @order.save!
         redirect_to new_order_payment_path(@order.id)
       else
         render action: 'new'
       end
     end
   else
-    @order.amount_cents = @race_fee_cents
+    @order.amount_cents = @race.fee_cents
     if @order.save
      redirect_to new_order_payment_path(@order.id)
     else
