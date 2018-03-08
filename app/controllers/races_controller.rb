@@ -2,33 +2,33 @@ class RacesController < ApplicationController
 
  before_action :set_race, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @races = Race.all
-  end
+ def index
+  @races = Race.all
+end
 
-  def new
-    @race = Race.new
-  end
+def new
+  @race = Race.new
+end
 
-  def create
-   @race = Race.new(race_params)
-   @organisation = Organisation.find_by(user_id: current_user)
-   @race._geoloc = { "lat": 41.1078251, "lng": 16.6910569}
-   @race.date_stamp = (@race.date.to_time.to_i) * 1000
-   @race.organisation_id = @organisation.id
-   if @race.save && @race.longitude && @race.latitude
-    @race._geoloc = { "lat": @race.latitude, "lng": @race.longitude}
-    @race.save
-    Race.algolia_reindex!
-    redirect_to new_race_photo_path(@race.id)
-    elsif @race.save
-      Race.algolia_reindex!
-      redirect_to new_race_photo_path(@race.id)
-      flash[:alert]
-    else
-    render action: 'new'
-    end
-  end
+def create
+ @race = Race.new(race_params)
+ @organisation = Organisation.find_by(user_id: current_user)
+ @race._geoloc = { "lat": 41.1078251, "lng": 16.6910569}
+ @race.date_stamp = (@race.date.to_time.to_i) * 1000
+ @race.organisation_id = @organisation.id
+ if @race.save && @race.longitude && @race.latitude
+  @race._geoloc = { "lat": @race.latitude, "lng": @race.longitude}
+  @race.save
+  Race.algolia_reindex!
+  redirect_to new_race_photo_path(@race.id)
+elsif @race.save
+  Race.algolia_reindex!
+  redirect_to new_race_photo_path(@race.id)
+  flash[:alert]
+else
+  render action: 'new'
+end
+end
 
 def show
   @organizer = Organisation.find(@race.organisation_id)
@@ -43,6 +43,7 @@ end
 
 def update
  if @race.update(race_params)
+  Race.algolia_reindex!
   redirect_to race_path(@race.id)
 else
   render :edit
@@ -51,21 +52,22 @@ end
 
 def destroy
  if @race.has_order?
-    redirect_to race_path(@race.id)
-    flash[:danger] = "You can't destroy a race that have already registration"
-  else
-    if @race.photos
-      @race.photos.each do |photo|
+  redirect_to race_path(@race.id)
+  flash[:danger] = "You can't destroy a race that have already registration"
+else
+  if @race.photos
+    @race.photos.each do |photo|
       photo.destroy!
     end
     if @race.route
-    @race.route.destroy!
+      @race.route.destroy!
     end
     @race.destroy!
+    Race.algolia_reindex!
     redirect_to root_path
-  flash[:success] = "the race has been successfully deleted from the database"
+    flash[:success] = "the race has been successfully deleted from the database"
   end
-  end
+end
 end
 
 
