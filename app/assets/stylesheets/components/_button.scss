@@ -140,8 +140,30 @@
 
 }
 
+// EDIT ACTIONS ON PROFILE
 
+.profil-button {
+  padding: 2px 10px;
+  text-decoration: none;
+  margin-right: 10px;
+  margin-top: 10px;
+  color: #a9a9a9;
+  background-color: white;
+  border: 1px solid #a9a9a9;
+  font-family: "Roboto", "sans-serif";
+  font-size: 14px;
+  border-radius: 30px;
+}
 
+.profil-button:hover {
+  text-decoration: none !important;
+  color: #a9a9a9;
+
+}
+
+a:hover {
+  text-decoration: none;
+}
 
 
 
