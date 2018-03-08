@@ -90,7 +90,11 @@
     transition: all 0.3s cubic-bezier(0.12, 0.64, 0.25, 1);
 }
 
-
+.button-orga-start:hover {
+  text-decoration: underline;
+  text-decoration-color: #f8f9fa;
+  color: #f8f9fa;
+}
 
 
 // ORGANIZER ACTIONS ON RACE SHOW PAGE

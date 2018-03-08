@@ -27,7 +27,6 @@ class OrdersController < ApplicationController
     @order.race_id = @race.id
     @order.race_sku = @race.sku
     @order.state = "pending"
-    byebug
     if @race.discount_fee_cents != 0
       if @race.discount_fee_finish >= Date.today
        @order.amount_cents = @race.discount_fee_cents
