@@ -80,40 +80,39 @@
       <div class="show-right">
 
         <!-- PHOTOS -->
-        <div class="photo-container">
 
 
-            <!-- IMPORT HERE PHOTOS CARROUSEL -->
+          <!-- IMPORT HERE PHOTOS CARROUSEL -->
 
 
 
           <% if @race.photo %>
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner" style=" text-align:center">
-              <div class="carousel-item active text-center mx-auto">
-                <%= cl_image_tag @race.photo.url, crop: :fill, class: "  img-fluid carousel-img", style: "display: inline-block"%>
-              </div>
-            <% if @race.photos %>
-               <% @race.photos.each do |photo| %>
+            <div id="carouselExampleIndicators" class="carousel slide photo-container" data-ride="carousel">
+              <div class="carousel-inner" style=" text-align:center">
+                <div class="carousel-item active text-center mx-auto">
+                  <%= cl_image_tag @race.photo.url, crop: :fill, class: "  img-fluid carousel-img", style: "display: inline-block"%>
+                </div>
+              <% if @race.photos %>
+                 <% @race.photos.each do |photo| %>
 
-              <div class="carousel-item" style=" text-align:center">
-                <%= cl_image_tag photo.photo.url, crop: :fill, class: " img-fluid carousel-img", style: "display: inline-block"%>
-              </div>
-              <% end %>
-              <% end %>
+                <div class="carousel-item" style=" text-align:center">
+                  <%= cl_image_tag photo.photo.url, crop: :fill, class: " img-fluid carousel-img", style: "display: inline-block"%>
+                </div>
+                <% end %>
+                <% end %>
 
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
           <% end %>
-        </div>
+
 
 
         <!-- PRICNG -->
@@ -198,6 +197,7 @@
   <%= link_to "Delete Your Race", race_path(@race.id), method: :delete, data: {confirm: 'Are you really wanna delete your Race? If u have some subscription for the race u will not able to complete the cancellation'}, class: "organizer-actions-button" %>
   <%= link_to "Manage your photo", new_race_photo_path(@race.id), class: "organizer-actions-button" %>
 </div>
+
 
 
 
