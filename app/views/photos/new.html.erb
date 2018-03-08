@@ -5,21 +5,22 @@
       <div class="progress" style="height: 25px">
         <div class="progress-bar" role="progressbar" style=" width: 66%;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"> Step 2/3 - Insert some photo of your race  </div>
       </div>
-
-      <h1>Insert Your Race Photos</h1>
-      <p> You can come back and add some photos later</p>
+      <h1 class="step-title">Insert Your Race Photos</h1>
+      <p class ="lead"> You can come back and add some photos later</p>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6 mx-auto text-center foto-form-box">
       <div class="form-group py-auto">
+
+
        <%= simple_form_for  ([@race, @photo]), html: { class: "form-horizontal"} do |f| %>
        <%= f.input :photo, class: "form-control-file mx-auto", style: "margin: 0 auto;" %>
-       <%= f.submit "Upload!", class: "btn btn-primary" %>
+       <%= f.submit "Upload!", class: "btn upload-button" %>
        <% end %>
        <p>or </p>
        <%= link_to new_race_route_path(@race.id) do %>
-       <button class="btn btn-primary"> Go to the last step And Upload your route</button>
+       <button class="btn go-to-route"> Go to the last step And Upload your route</button>
        <% end %>
      </div>
    </div>
@@ -30,26 +31,24 @@
  <% if @race.photos %>
  <div class="row">
   <div class="col-md-6 mx-auto text-center">
-    <h2 class= "display-4 mb-4"> Manage your photos</h2>
+    <h1 class="step-title">Manage yours photos</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="card-deck">
+    <% @photos.each do |photo| %>
+    <div class="card card-photo">
+      <%= cl_image_tag photo.photo.url(:preview), crop: :fill, class: "card-img-top mb-3", width: "170", height: "170"%>
+      <div class="card-block">
+        <%= link_to race_photo_path(@race.id, photo.id), method: :delete, class: "mt-4" do%>
+        <button class="delete-button btn btn-small btn-danger mb-0">    <i class="fas fa-trash mt-0 mr-3" style= "font-size: 20px"> </i>Delete it!</button>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>
 <% end %>
-
-<div class="row d-flex justify-content-start">
-  <% @photos.each do |photo| %>
-  <div class= "col-md-3 flex-column align-items-end text-center photo-managment-box">
-    <%= cl_image_tag photo.photo.url(:preview), crop: :fill, class: "img-fluid"%>
-    <%= link_to race_photo_path(@race.id, photo.id), method: :delete, class: "d-block" do%>
-
-    <button class="delete-button btn btn-small btn-danger mb-0">    <i class="fas fa-trash mt-0 mr-3" style= "font-size: 20px"> </i>Delete it!</button>
-
-    <% end %>
-
-  </div>
-  <% end %>
-
-</div>
-
 
 
 </div>

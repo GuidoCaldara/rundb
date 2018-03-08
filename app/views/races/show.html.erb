@@ -89,11 +89,6 @@
 
           <% if @race.photo %>
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
             <div class="carousel-inner" style=" text-align:center">
               <div class="carousel-item active text-center mx-auto">
                 <%= cl_image_tag @race.photo.url, crop: :fill, class: "  img-fluid carousel-img", style: "display: inline-block"%>
@@ -155,13 +150,42 @@
   </div>
   <% end %>
 
+<!-- RATES and ROUTE MAP -->
   <div class="footer-container">
     <!-- rates container -->
+    <% if @race.reviews %>
 
-    <div class="rates-container">
+      <div class="rates-container">
+        <div class="race-rating-header">
+            Rating
+        </div>
 
-    </div>
+          <div class="rates-wrapper">
+            <% if @race.route_rate_avg && @race.organisation_rate_avg && @race.value_for_money_avg %>
+            <div class="race-rates">Route <br><span class="green-highlight"><%= @race.route_rate_avg.round(1) %> / 10</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width:<%= @race.route_rate_avg*10 %>%">
+              </div>
+            </div>
 
+            <div class="race-rates">Organisation <br><span class="green-highlight"><%= @race.organisation_rate_avg.round(1) %> / 10</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width:<%= @race.organisation_rate_avg*10 %>%">
+              </div>
+            </div>
+
+            <div class="race-rates">Value for money <br><span class="green-highlight"><%= @race.value_for_money_avg.round(1) %> / 10</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width:<%= @race.value_for_money_avg*10 %>%">
+              </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
 
     <!-- Race path map -->
     <div class="map-route">
@@ -172,13 +196,78 @@
     </div>
   </div>
 
+<!-- ORGANISER ACTIONS -->
+<div class="organizer-actions">
+  <%= link_to "Edit your race", edit_race_path(@race.id), class: "organizer-actions-button"  %>
+  <%= link_to "Delete Your Race", race_path(@race.id), method: :delete, data: {confirm: 'Are you really wanna delete your Race? If u have some subscription for the race u will not able to complete the cancellation'}, class: "organizer-actions-button" %>
+  <%= link_to "Manage your photo", new_race_photo_path(@race.id), class: "organizer-actions-button" %>
 </div>
 
 
 
-<%= link_to "Edit your race", edit_race_path(@race.id)  %>
-<%= link_to "Delete Your Race", race_path(@race.id), method: :delete, data: {confirm: 'Are you really wanna delete your Race? If u have some subscription for the race u will not able to complete the cancellation'} %>
-<%= link_to "Manage your photo", new_race_photo_path(@race.id) %>
+<!-- REVIEWS -->
+
+  <div class="race-reviews-container">
+
+
+    <hr class="hr-text" data-content="Leave a review">
+
+    <%= render 'reviews/form', race: @race, review: @review unless @race.has_reviewed?(current_user) %>
+
+    <hr class="hr-text" data-content="What people say about this race">
+
+    <div id="reviews">
+      <% @reviews.each do |review| %>
+
+      <div class="existing-review">
+
+<!-- AVATAR -->
+        <div class="existing-review-user">
+
+          <div class="avatar-review" style="background-image: url('<%= image_path "http://res.cloudinary.com/dxkimzdwk/image/upload/v1520413859/fakeprofile#{rand(1..4)}.jpg"%>')">
+          </div>
+
+
+          <p><%= review.user.first_name %> <br> <%=  review.user.last_name %></p>
+        </div>
+<!-- RATES  -->
+        <div class="existing-review-rate">
+          <div class="review-rates-wrapper">
+
+            <div class="race-rates">Route <span class="green-highlight"><%= review.route_rate.round(0) %> / 10</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" style="width:<%= review.route_rate*10 %>%">
+                </div>
+              </div>
+              <div class="race-rates">Organisation <span class="green-highlight"><%= review.organisation_rate.round(0) %> / 10</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" style="width:<%= review.organisation_rate*10 %>%">
+                </div>
+              </div>
+              <div class="race-rates">Value for money <span class="green-highlight"><%= review.value_for_money.round(0) %> / 10</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" style="width:<%= review.value_for_money*10 %>%">
+                </div>
+              </div>
+            </div>
+
+        </div>
+        <div class="existing-review-content">
+          <p><%= review.description %></p>
+        </div>
+      </div>
+
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
+
+
 
 
 
@@ -210,6 +299,7 @@
 
 
 
+
   <%= render 'reviews/form', race: @race, review: @review unless @race.has_reviewed?(current_user) %>
   <div id="reviews">
     <% @reviews.each do |review| %>
@@ -219,6 +309,7 @@
     <p><%= review.value_for_money %></p>
     <% end %>
   </div>
+
 
   <script>
     <% if @race.route  %>

@@ -2,10 +2,10 @@
 <div class="container">
   <div class="row">
   <div class="col-lg-6 mx-auto">
-    <%= simple_form_for @organisation do |f| %>
+    <%= simple_form_for @organisation, html: { class: "organisation-form-container"} do |f| %>
     <%= f.input :name, label: "Insert the name of your sport-group" %>
-    <%= f.input :address, label: "Insert the address of your association" %>
-    <%= f.input :description, label: "A small history of the group" %>
+    <%= f.input :address, input_html: {id: "location"}, label: "Insert the address of your association" %>
+    <%= f.input :description, label: "A small history of the group", :input_html => { 'rows' => 9, autocomplete: 'off'}%>
     <%= f.input :email, label: "Insert the e-mail adress this is the email where users can contact tou for race info"%>
     <%= f.input :phone_number, label: "Insert the phone number" %>
     <%= f.input :logo, class: "form-control-file mx-auto", style: "margin: 0 auto;" %>

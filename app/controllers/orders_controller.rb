@@ -27,25 +27,25 @@ class OrdersController < ApplicationController
     @order.race_id = @race.id
     @order.race_sku = @race.sku
     @order.state = "pending"
-    @order.amount_cents = 1000
-    if @race.discount_fee_cents
+    byebug
+    if @race.discount_fee_cents != 0
       if @race.discount_fee_finish >= Date.today
        @order.amount_cents = @race.discount_fee_cents
-       if @order.save
+       if @order.save!
         redirect_to new_order_payment_path(@order.id)
       else
         render action: 'new'
       end
     else
       @order.amount_cents = @race.fee_cents
-      if @order.save
+      if @order.save!
         redirect_to new_order_payment_path(@order.id)
       else
         render action: 'new'
       end
     end
   else
-    @race.amount_cents = @race_fee_cents
+    @order.amount_cents = @race.fee_cents
     if @order.save
      redirect_to new_order_payment_path(@order.id)
     else

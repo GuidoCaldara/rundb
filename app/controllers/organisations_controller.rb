@@ -20,7 +20,7 @@ def create
 end
 
 def show
-  @races = Race.where(organisation_id: @organisation.id)
+  @races = @organisation.races
 end
 
 def edit

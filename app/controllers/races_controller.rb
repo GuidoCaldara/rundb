@@ -19,8 +19,10 @@ def create
  if @race.save && @race.longitude && @race.latitude
   @race._geoloc = { "lat": @race.latitude, "lng": @race.longitude}
   @race.save
+  Race.algolia_reindex!
   redirect_to new_race_photo_path(@race.id)
  elsif @race.save
+    Race.algolia_reindex!
     redirect_to new_race_photo_path(@race.id)
     flash[:alert]
 else
@@ -52,10 +54,10 @@ def destroy
   redirect_to race_path(@race.id)
   flash[:danger] = "You can't destroy a race that have already registration"
 else
-  @race.destroy
   if @race.photos
   @race.photos.each do |photo|
     photo.destroy!
+  @race.destroy!
   end
   end
   redirect_to root_path

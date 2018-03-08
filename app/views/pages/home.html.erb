@@ -83,12 +83,15 @@
               <p class="card-race-location"><%= race.location %></p>
 
               <div class="star-container">
+                <% if race.race_avg_rate %>
                   <% (race.race_avg_rate/2).round(0).times do %>
                     <i class="fas fa-star card-race-star"></i>
                   <% end %>
                   <% (5 - race.race_avg_rate/2).round(0).times do %>
                     <i class="far fa-star card-race-star"></i>
                   <% end %>
+              <% end %>
+
                 </div>
 
               <i class="far fa-heart card-race-favorite"></i>
