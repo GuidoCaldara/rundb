@@ -1,24 +1,18 @@
-.userlabel{
-    font-weight: bold;
-    font-size: 19px
-}
-
-.user-page-link{
-  font-size: 15px;
-  text-color: red;
-}
 
 .profile-wrapper {
 
   background-color: #e8e8e8;
   padding-top: 80px;
+  padding-bottom: 30px;
   color: grey;
+  height: 100%;
 
 }
 
 .profile-content {
   background-color: white;
-  border-radius: 90px;
+  border-radius: 14px;
+  border-top-left-radius: 90px;
 }
 
 .profile-top-part {
@@ -33,4 +27,23 @@
 
   .profile-top-right {
     flex: 1 1 auto;
+    padding-left: 30px;
   }
+
+.user-name {
+  font-size: 50px;
+  font-weight:100;
+  line-height: 100%;
+}
+
+.user-group {
+  font-size: 20px;
+  font-weight:100;
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
