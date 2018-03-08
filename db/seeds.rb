@@ -1,5 +1,5 @@
 puts "///   Creating users"
-15.times do
+25.times do
   user = User.new(
     email: Faker::Internet.free_email,
     password: "password",
@@ -158,7 +158,7 @@ orgloc = ["Milan, italy",
   "Scandicci, italy"]
 
   puts "///   Creating organisations"
-  10.times do
+  12.times do
     organisation = Organisation.new(
       user_id: User.all.sample.id,
 
