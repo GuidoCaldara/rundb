@@ -1,19 +1,19 @@
-# puts "///   Creating users"
-# 25.times do
-#   user = User.new(
-#     email: Faker::Internet.free_email,
-#     password: "password",
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     remote_avatar_url: "http://res.cloudinary.com/guidocld/image/upload/v1520479304/user#{rand(1..6)}.jpg",
+puts "///   Creating users"
+25.times do
+  user = User.new(
+    email: Faker::Internet.free_email,
+    password: "password",
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    remote_avatar_url: "http://res.cloudinary.com/guidocld/image/upload/v1520479304/user#{rand(1..6)}.jpg",
 
-#     )
+    )
 
 
-#   if user.save
-#     puts user.first_name + " " + user.last_name + " created!"
-#   end
-# end
+  if user.save
+    puts user.first_name + " " + user.last_name + " created!"
+  end
+end
 
 
 puts "///   #{User.count} users in the database!"
@@ -167,7 +167,7 @@ location = ["Milan, italy",
 
 
 puts "///   Creating organisations"
-10.times do
+15.times do
   organisation = Organisation.new(
     user_id: User.all.sample.id,
     name: Faker::SiliconValley.company,
@@ -185,81 +185,81 @@ puts "///   #{Organisation.count} organisations in the database!"
 
 
 
-  puts "///   Creating races"
-  16.times do
-    race = Race.new(
-      name: "Race #{Faker::Hipster.word.capitalize}",
-      race_distance: rand(1..5)*10,
-      elevation: rand(100..2000),
-      date: (Date.today + (rand(155..200)).days),
-      date_stamp: ((Date.today + (rand(1..200)).days).to_time.to_i * 1000),
-      category: category.sample,
-      location: location.sample,
-      fee_cents: rand(50..100),
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum inventore hic doloremque, sint voluptas sit molestiae quod odit, et atque ipsum aliquam odio debitis blanditiis enim. Vitae, officiis, quam! Doloribus odit animi eum aliquam amet minima, harum repellat pariatur cumque labore, nostrum modi, dicta eligendi praesentium perferendis dignissimos nam. Atque!",
-      discount_fee_cents: rand(30..49),
-      capacity: rand(100...200),
-      discount_fee_finish: (Date.today + (rand(1..49)).days),
-      subscription_start: (Date.today + (rand(1..49)).days),
-      subscription_end: (Date.today + (rand(60..149)).days),
-      organisation_id: Organisation.all.sample.id,
-      first_edition: (Date.today - (rand(1..20)).years),
-      starting_time: Date.today,
-      website: "www.google.it",
-      subscription_link: "www.google.it",
-      starting_point: "Colossemum",
-      remote_photo_url: "http://res.cloudinary.com/dxkimzdwk/image/upload/v1520389349/race#{rand(1..4)}.jpg",
-      goodies: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab possimus vel, temporibus distinctio magnam, maiores cum unde tempore illum tempora deleniti."
-      )
-    race.save
-    if race.latitude && race.longitude
-      race._geoloc = {"lat" => race.latitude, "lng" => race.longitude}
-      race.save
-    else
-      race._geoloc = {"lat" => 41.2027767, "lng" => 16.5987187}
-      race.save
-    end
-    puts race.name + " " + " created!"
-  end
+#   puts "///   Creating races"
+#   16.times do
+#     race = Race.new(
+#       name: "Race #{Faker::Hipster.word.capitalize}",
+#       race_distance: rand(1..5)*10,
+#       elevation: rand(100..2000),
+#       date: (Date.today + (rand(155..200)).days),
+#       date_stamp: ((Date.today + (rand(1..200)).days).to_time.to_i * 1000),
+#       category: category.sample,
+#       location: location.sample,
+#       fee_cents: rand(50..100),
+#       description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum inventore hic doloremque, sint voluptas sit molestiae quod odit, et atque ipsum aliquam odio debitis blanditiis enim. Vitae, officiis, quam! Doloribus odit animi eum aliquam amet minima, harum repellat pariatur cumque labore, nostrum modi, dicta eligendi praesentium perferendis dignissimos nam. Atque!",
+#       discount_fee_cents: rand(30..49),
+#       capacity: rand(100...200),
+#       discount_fee_finish: (Date.today + (rand(1..49)).days),
+#       subscription_start: (Date.today + (rand(1..49)).days),
+#       subscription_end: (Date.today + (rand(60..149)).days),
+#       organisation_id: Organisation.all.sample.id,
+#       first_edition: (Date.today - (rand(1..20)).years),
+#       starting_time: Date.today,
+#       website: "www.google.it",
+#       subscription_link: "www.google.it",
+#       starting_point: "Colossemum",
+#       remote_photo_url: "http://res.cloudinary.com/dxkimzdwk/image/upload/v1520389349/race#{rand(1..4)}.jpg",
+#       goodies: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab possimus vel, temporibus distinctio magnam, maiores cum unde tempore illum tempora deleniti."
+#       )
+#     race.save
+#     if race.latitude && race.longitude
+#       race._geoloc = {"lat" => race.latitude, "lng" => race.longitude}
+#       race.save
+#     else
+#       race._geoloc = {"lat" => 41.2027767, "lng" => 16.5987187}
+#       race.save
+#     end
+#     puts race.name + " " + " created!"
+#   end
 
- puts "///   Creating orders"
-
-
- Race.all.each do |race|
-  x = rand (10..27)
-  x.times do
-    order = Order.new
-    order.race_id = race.id
-    order.user_id = User.all.sample.id  
-    order.state = "paid"
-    order.first_name = Faker::Name.first_name
-    order.last_name = Faker::Name.last_name
-    order.gender = "Gender"
-    if order.save
-      puts "1 order just created for #{race.name}"
-    else
-      puts "!!! order not save"
-    end
-  end
-end
-puts "///  #{Order.count} order created!"
+#  puts "///   Creating orders"
 
 
-# # CREATING REVIEWS
-puts "///   Creating reviews"
+#  Race.all.each do |race|
+#   x = rand (10..27)
+#   x.times do
+#     order = Order.new
+#     order.race_id = race.id
+#     order.user_id = User.all.sample.id
+#     order.state = "paid"
+#     order.first_name = Faker::Name.first_name
+#     order.last_name = Faker::Name.last_name
+#     order.gender = "Gender"
+#     if order.save
+#       puts "1 order just created for #{race.name}"
+#     else
+#       puts "!!! order not save"
+#     end
+#   end
+# end
+# puts "///  #{Order.count} order created!"
 
-Order.all.each do |order|
-  review = Review.new
-  review.race_id = order.race_id
-  review.user_id = order.user_id
-  review.description = Faker::Lorem.sentence(60, true, 20)
-  review.route_rate = rand(1..10)
-  review.organisation_rate = rand(1..10)
-  review.value_for_money = rand(1..10)
-  review.save
-  puts "1 review created for race #{Race.find(order.race_id).name}"
-end
-puts "///   #{Review.count} reviews created!"
+
+# # # CREATING REVIEWS
+# puts "///   Creating reviews"
+
+# Order.all.each do |order|
+#   review = Review.new
+#   review.race_id = order.race_id
+#   review.user_id = order.user_id
+#   review.description = Faker::Lorem.sentence(60, true, 20)
+#   review.route_rate = rand(1..10)
+#   review.organisation_rate = rand(1..10)
+#   review.value_for_money = rand(1..10)
+#   review.save
+#   puts "1 review created for race #{Race.find(order.race_id).name}"
+# end
+# puts "///   #{Review.count} reviews created!"
 
 
 
