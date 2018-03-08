@@ -318,181 +318,181 @@ orgloc = ["Milan, italy",
     "Scandicci, italy"]
 
 
-    puts "///   Creating races"
-    10.times do
-      race = Race.new(
-        name: "Race #{Faker::Hipster.word.capitalize}",
-        race_distance: rand(1..15)*10,
-        elevation: rand(100..3000),
-        date: (Date.today + (rand(155..200)).days),
-        date_stamp: ((Date.today + (rand(1..200)).days).to_time.to_i * 1000),
-        category: category.sample,
-        location: location.sample,
-        fee_cents: rand(50..100),
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum inventore hic doloremque, sint voluptas sit molestiae quod odit, et atque ipsum aliquam odio debitis blanditiis enim. Vitae, officiis, quam! Doloribus odit animi eum aliquam amet minima, harum repellat pariatur cumque labore, nostrum modi, dicta eligendi praesentium perferendis dignissimos nam. Atque!",
-        discount_fee_cents: rand(30..40),
-        capacity: rand(100...400),
-        bookable: true,
-        discount_fee_finish: (Date.today + (rand(55..85)).days),
-        subscription_start: (Date.today + (rand(1..49)).days),
-        subscription_end: (Date.today + (rand(60..149)).days),
-        organisation_id: Organisation.all.sample.id,
-        first_edition: (Date.today - (rand(1..20)).years),
-        starting_time: Date.today,
-        website: "www.amazingrace.it",
-        subscription_link: "www.amazingrace.it/subscription",
-        starting_point: "Colossemum",
-        goodies: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab possimus vel, temporibus distinctio magnam, maiores cum unde tempore illum tempora deleniti.",
-        video: "https://www.youtube.com/watch?v=gF0rrpMH-Jo"
+#     puts "///   Creating races"
+#     10.times do
+#       race = Race.new(
+#         name: "Race #{Faker::Hipster.word.capitalize}",
+#         race_distance: rand(1..15)*10,
+#         elevation: rand(100..3000),
+#         date: (Date.today + (rand(155..200)).days),
+#         date_stamp: ((Date.today + (rand(1..200)).days).to_time.to_i * 1000),
+#         category: category.sample,
+#         location: location.sample,
+#         fee_cents: rand(50..100),
+#         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum inventore hic doloremque, sint voluptas sit molestiae quod odit, et atque ipsum aliquam odio debitis blanditiis enim. Vitae, officiis, quam! Doloribus odit animi eum aliquam amet minima, harum repellat pariatur cumque labore, nostrum modi, dicta eligendi praesentium perferendis dignissimos nam. Atque!",
+#         discount_fee_cents: rand(30..40),
+#         capacity: rand(100...400),
+#         bookable: true,
+#         discount_fee_finish: (Date.today + (rand(55..85)).days),
+#         subscription_start: (Date.today + (rand(1..49)).days),
+#         subscription_end: (Date.today + (rand(60..149)).days),
+#         organisation_id: Organisation.all.sample.id,
+#         first_edition: (Date.today - (rand(1..20)).years),
+#         starting_time: Date.today,
+#         website: "www.amazingrace.it",
+#         subscription_link: "www.amazingrace.it/subscription",
+#         starting_point: "Colossemum",
+#         goodies: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab possimus vel, temporibus distinctio magnam, maiores cum unde tempore illum tempora deleniti.",
+#         video: "https://www.youtube.com/watch?v=gF0rrpMH-Jo"
 
-        )
+#         )
 
-      race.save
-      if race.latitude && race.longitude
-        race._geoloc = {"lat" => race.latitude, "lng" => race.longitude}
-        race.save
-      else
-        race._geoloc = {"lat" => 41.2027767, "lng" => 16.5987187}
-        race.save
-      end
-      if race.bookable
-       race.subscription_link = nil
-       race.save
-     end
-     puts race.name + " " + " created!"
-   end
-
-
-   puts "///   #{Race.count} races in the database!"
+#       race.save
+#       if race.latitude && race.longitude
+#         race._geoloc = {"lat" => race.latitude, "lng" => race.longitude}
+#         race.save
+#       else
+#         race._geoloc = {"lat" => 41.2027767, "lng" => 16.5987187}
+#         race.save
+#       end
+#       if race.bookable
+#        race.subscription_link = nil
+#        race.save
+#      end
+#      puts race.name + " " + " created!"
+#    end
 
 
-   puts "creating maga skyrace"
-
-   user = User.new(
-    email: "magaskyrace@gmail.com",
-    password: "password",
-    first_name: "Davide",
-    last_name: "Scolari")
+#    puts "///   #{Race.count} races in the database!"
 
 
-   if user.save
-    puts user.first_name + " " + user.last_name + " created!"
-  end
+#    puts "creating maga skyrace"
 
-  puts "///   Creating organisations"
-  organisation = Organisation.new(
-    user_id: User.last.id,
-
-    name: "Maga Sky Marathon" ,
-    address: "Oltre il colle",
-    email: "magaskyrace@gmail.com",
-    description: "We are a group of running lovers and we  organize amazing races around the world! Skyrace, road race and trail running race for all the runner We are a group of running lovers and we  organize amazing races around the world! Skyrace, road race and trail running race for all the runner. ")
-  if organisation.save
-    puts organisation.name + " " + " created!"
-  end
+#    user = User.new(
+#     email: "magaskyrace@gmail.com",
+#     password: "password",
+#     first_name: "Davide",
+#     last_name: "Scolari")
 
 
-  puts "///   Creating teh Maga Race"
-  race = Race.new(
-    name: "Maga Skymarathon",
-    race_distance: 40,
-    elevation: 3000,
-    date: Date.today + 200.days,
-    date_stamp: ((Date.today + 200.days).to_time.to_i * 1000),
-    category: "skyrace",
-    location: "Oltre il Colle",
-    fee_cents: 50,
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum inventore hic doloremque, sint voluptas sit molestiae quod odit, et atque ipsum aliquam odio debitis blanditiis enim. Vitae, officiis, quam! Doloribus odit animi eum aliquam amet minima, harum repellat pariatur cumque labore, nostrum modi, dicta eligendi praesentium perferendis dignissimos nam. Atque!",
-    discount_fee_cents: 40,
-    capacity: 300,
-    bookable: true,
-    discount_fee_finish: (Date.today + 100.days),
-    subscription_start: Date.today,
-    subscription_end: (Date.today + 180.days),
-    organisation_id: Organisation.last.id,
-    first_edition: (Date.today - 10.years),
-    starting_time: Date.today,
-    website: "http://www.magaskymarathon.it/",
-    starting_point: "Serina, Palazzetto dello sport",
-    goodies: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab possimus vel, temporibus distinctio magnam, maiores cum unde tempore illum tempora deleniti.",
-    video: "https://www.youtube.com/watch?v=wbLvK4DCA6Y"
+#    if user.save
+#     puts user.first_name + " " + user.last_name + " created!"
+#   end
 
-    )
-  race.save
-  if race.latitude && race.longitude
-    race._geoloc = {"lat" => race.latitude, "lng" => race.longitude}
-    race.save
-  else
-    race._geoloc = {"lat" => 41.2027767, "lng" => 16.5987187}
-    race.save
-  end
-  if race.bookable
-   race.subscription_link = nil
-   race.save
- end
- puts race.name + " " + " created!"
+#   puts "///   Creating organisations"
+#   organisation = Organisation.new(
+#     user_id: User.last.id,
+
+#     name: "Maga Sky Marathon" ,
+#     address: "Oltre il colle",
+#     email: "magaskyrace@gmail.com",
+#     description: "We are a group of running lovers and we  organize amazing races around the world! Skyrace, road race and trail running race for all the runner We are a group of running lovers and we  organize amazing races around the world! Skyrace, road race and trail running race for all the runner. ")
+#   if organisation.save
+#     puts organisation.name + " " + " created!"
+#   end
 
 
+#   puts "///   Creating teh Maga Race"
+#   race = Race.new(
+#     name: "Maga Skymarathon",
+#     race_distance: 40,
+#     elevation: 3000,
+#     date: Date.today + 200.days,
+#     date_stamp: ((Date.today + 200.days).to_time.to_i * 1000),
+#     category: "skyrace",
+#     location: "Oltre il Colle",
+#     fee_cents: 50,
+#     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum inventore hic doloremque, sint voluptas sit molestiae quod odit, et atque ipsum aliquam odio debitis blanditiis enim. Vitae, officiis, quam! Doloribus odit animi eum aliquam amet minima, harum repellat pariatur cumque labore, nostrum modi, dicta eligendi praesentium perferendis dignissimos nam. Atque!",
+#     discount_fee_cents: 40,
+#     capacity: 300,
+#     bookable: true,
+#     discount_fee_finish: (Date.today + 100.days),
+#     subscription_start: Date.today,
+#     subscription_end: (Date.today + 180.days),
+#     organisation_id: Organisation.last.id,
+#     first_edition: (Date.today - 10.years),
+#     starting_time: Date.today,
+#     website: "http://www.magaskymarathon.it/",
+#     starting_point: "Serina, Palazzetto dello sport",
+#     goodies: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab possimus vel, temporibus distinctio magnam, maiores cum unde tempore illum tempora deleniti.",
+#     video: "https://www.youtube.com/watch?v=wbLvK4DCA6Y"
 
- puts "///   #{Race.count} races in the database!"
-
-
- puts "///   Creating orders"
-
- Race.all.each do |race|
-  x = rand (10..27)
-  x.times do
-    order = Order.new
-    order.race_id = race.id
-    order.user_id = User.all.sample.id
-    order.state = "paid"
-    if order.save
-      puts "1 order just created for #{race.name}"
-    else
-      puts "!!! order not save"
-    end
-  end
-end
-puts "///  #{Order.count} order created!"
-
-
-# # CREATING REVIEWS
-puts "///   Creating reviews"
-
-Order.all.each do |order|
-  review = Review.new
-  review.race_id = order.race_id
-  review.user_id = order.user_id
-  review.description = Faker::Lorem.sentence(60, true, 20)
-  review.route_rate = rand(1..10)
-  review.organisation_rate = rand(1..10)
-  review.value_for_money = rand(1..10)
-  review.save
-  puts "1 review created for race #{Race.find(order.race_id).name}"
-end
-puts "///   #{Review.count} reviews created!"
-
-
-## REINDEX ALGOLIA
+#     )
+#   race.save
+#   if race.latitude && race.longitude
+#     race._geoloc = {"lat" => race.latitude, "lng" => race.longitude}
+#     race.save
+#   else
+#     race._geoloc = {"lat" => 41.2027767, "lng" => 16.5987187}
+#     race.save
+#   end
+#   if race.bookable
+#    race.subscription_link = nil
+#    race.save
+#  end
+#  puts race.name + " " + " created!"
 
 
-## CREATING ROUTE MAP
 
-puts "///   Creating route map"
+#  puts "///   #{Race.count} races in the database!"
 
-Race.pop.all.each do |race|
-  route = Route.new(
-    pathfile: [[-8.646154, 115.134085],
-    [-8.646144, 115.133982],
-    [-8.646159, 115.133877],
-    [-8.646198, 115.133781],
-    [-8.646256, 115.133701],
-    [-8.663, 115.133617],
-    [-8.646368, 115.133536],
-    [-8.64643, 115.133439]])
 
-  route.race_id = race.id
-  route.save
-end
+#  puts "///   Creating orders"
+
+#  Race.all.each do |race|
+#   x = rand (10..27)
+#   x.times do
+#     order = Order.new
+#     order.race_id = race.id
+#     order.user_id = User.all.sample.id
+#     order.state = "paid"
+#     if order.save
+#       puts "1 order just created for #{race.name}"
+#     else
+#       puts "!!! order not save"
+#     end
+#   end
+# end
+# puts "///  #{Order.count} order created!"
+
+
+# # # CREATING REVIEWS
+# puts "///   Creating reviews"
+
+# Order.all.each do |order|
+#   review = Review.new
+#   review.race_id = order.race_id
+#   review.user_id = order.user_id
+#   review.description = Faker::Lorem.sentence(60, true, 20)
+#   review.route_rate = rand(1..10)
+#   review.organisation_rate = rand(1..10)
+#   review.value_for_money = rand(1..10)
+#   review.save
+#   puts "1 review created for race #{Race.find(order.race_id).name}"
+# end
+# puts "///   #{Review.count} reviews created!"
+
+
+# ## REINDEX ALGOLIA
+
+
+# ## CREATING ROUTE MAP
+
+# puts "///   Creating route map"
+
+# Race.pop.all.each do |race|
+#   route = Route.new(
+#     pathfile: [[-8.646154, 115.134085],
+#     [-8.646144, 115.133982],
+#     [-8.646159, 115.133877],
+#     [-8.646198, 115.133781],
+#     [-8.646256, 115.133701],
+#     [-8.663, 115.133617],
+#     [-8.646368, 115.133536],
+#     [-8.64643, 115.133439]])
+
+#   route.race_id = race.id
+#   route.save
+# end
 
 
