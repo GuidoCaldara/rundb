@@ -1,43 +1,82 @@
 <div class="container">
-  <div class="row py-5">
-    <div class="col-lg-3 col-md-4 hide-sm">
-      <% if !@organisation.logo %>
-      <img src="http://lorempixel.com/200/200/sports/" class="avatar-org-showpage  float-left">
-      <% else %>
-      <%= cl_image_tag @organisation.logo.url, crop: :fill, class: "avatar-org-showpage  float-left"%>
 
-      <% end %>
-    </div>
-
-    <div class="col-lg-9 col-md-8 col-sm-12">
-      <div>
-        <h1 class="display-2"> <%= @organisation.name %></h1>
-        <p class="userlabel"><strong class="h3">Address </strong><%=@organisation.address%></p>
-        <p class="userlabel"><strong class="h3">Phone Number:  </strong><%=@organisation.phone_number %></p>
-        <p class="userlabel"><strong class="h3">Contact Email:  </strong><%=@organisation.email %></p>
-        <p class="userlabel"><strong class="h3">A brief history: <br> </strong><%=@organisation.description %></p>
-
-
-        <%= link_to edit_organisation_path(@organisation.id) do %>
-        <p class="user-page-link mt-4"><i class="fas fa-edit"></i> Edit Your Organization</p>
-        <% end %>
-        <%= link_to organisation_path(@organisation.id), method: :delete, data: {confirm: 'Are you really wanna delete your organisation? If u have some races in the database u will not able to complete the cancellation?'} do %>
-        <p class="user-page-link"><i class="fas fa-exclamation-triangle"></i>
-        Delete Your organisation</p>
-        <% end %>
-
-
+  <div class="row pt-5">
+  <!-- Column left with logo
+  -->
+  <div class="col-md-3 hide-sm d-flex justify-content-center">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="align-self-start d-block">
+          <% if !@organisation.logo %>
+          <img src="http://lorempixel.com/200/200/sports/" class="avatar-org-showpage">
+          <% else %>
+          <%= cl_image_tag @organisation.logo.url, crop: :fill, class: "avatar-org-showpage  float-left"%>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
+<!-- Close Column left with logo
+-->
 
+<!-- Column right with info
+-->
+<div class="col-lg-9 col-md-8 col-sm-12">
+  <div class="jumbotron organisation-info mb-2">
+    <h2> <%= @organisation.name %></h2>
+    <p><strong>Address </strong><%=@organisation.address%></p>
+    <p><strong>Phone Number:</strong><%=@organisation.phone_number %></p>
+    <p><strong>Contact Email:  </strong><%=@organisation.email %></p>
+    <p><strong>A brief history: <br> </strong><%=@organisation.description %></p>
+  </div>
+</div>
+<!-- Column right with info
+-->
+
+</div>
+
+<!-- First ROW closed
+-->
+
+<!-- Start Second ROW -->
+<div class="row">
+  <div class="col-md-3 hide-sm"></div>
+  <div class="col-lg-9 col-md-8 col-sm-12 d-flex justify-content-start">
+    <div  class="col-md-4">
+      <%= link_to edit_organisation_path(@organisation.id) do %>
+      <p><i class="fas fa-edit"></i> Edit Your Organization</p><% end %>
+    </div>
+    <div class="col-md-4">
+     <%= link_to organisation_path(@organisation.id), method: :delete, data: {confirm: 'Are you really wanna delete your organisation? If u have some races in the database u will not able to complete the cancellation?'} do %>
+     <p><i class="fas fa-exclamation-triangle"></i>Delete Your organisation</p><% end %>
+   </div>
+   <div class="col-md-4">
+    <%= link_to new_race_path do %>
+    <p><i class="fas fa-plus"></i>Add a new race</p>
+    <% end %>
+
+  </div>
+
+</div>
+</div>
+<!-- finish row with link -->
+
+</div>
+
+<div class="container">
+<% if  !@organisation.races.any? %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="jumbotron text-center">
+       <h1>You didn't add any race yet. Click and ad your first one!</h1>
+    </div>
+  </div>
 </div>
 
 
 
-
-<% if @races %>
-<div class="container">
+<!-- Display all the races of an organizer just if he has some race -->
+<% elsif @organisation.races.any? %>
   <h1 class= "lead-2 my-4"> Your Races</h1>
   <div class="row">
     <% @races.each do |race| %>

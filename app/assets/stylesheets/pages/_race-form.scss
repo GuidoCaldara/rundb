@@ -1,30 +1,104 @@
- .form-title
- {
+ .progress-bar{
+  background-color: #30a6cc;
+}
+
+.step-title{
+ color: rgb(75, 76, 79);
+ margin-bottom: 15px;
+ font-weight: 300
+}
+
+
+.form-title
+{
   text-decoration:none;
   color: #424141 !important;
-  font-weight: 300
+  font-weight: 200;
+  background-color: #B1D07B;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius:8px !important;
+
 }
+
+.form-wrap{
+  label{
+    color: #4B4C4F !important;
+    font-weight: 300;
+    font-size: 14px;
+  }
+  h2{
+    font-weight: 400;
+    font-size: 28px
+  }
+  p{
+    font-weight: 300;
+    font-size: 20px
+
+  }
+}
+
+
 .form-title:hover{
   color:#424141 !important;
   text-decoration: none !important;
 }
 
+.race-form-box{
 
+  input{
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 300;
+  }
+  select{
+    border-radius: 8px
+  }
+}
+
+.form-title{
+  h5{
+    font-weight: 300;
+  }
+}
+
+.form-wrap{
+  border:none;
+  border-top-left-radius: 8px;
+  border-top-right-radius:8px
+
+}
 
 .race-form-box{
   color: rgb(93, 91, 91);
   box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0 2px 0 0 rgba(0, 0, 0, 0.03);
-  border-radius: 5px
+  border-radius: 10px;
+  border: none;
 }
 
 .race-insert-bar{
   background-color: #30a7cc;
 }
 
-.race-form-box{
-  label{
-      color: #424141 !important;
-  font-weight: 400
+.race-button{
+  box-shadow: 0 5px 40px #30b2e473;
+  font-size: 20px;
+  text-decoration: none;
+  width: 220px;
+  border-radius: 32px;
+  padding: 15px 25px 13px;
+  margin: auto;
+  // margin-top: 40px;
+  color: white;
+  font-family: "Poppins", "sans-serif";
+  display: block;
+  background-image: linear-gradient(190deg, #34b0d8, #30a6cc);
+  transition: all 0.3s cubic-bezier(0.12, 0.64, 0.25, 1);
+}
 
-  }
+.race-button:hover{
+  text-decoration:none;
+  color: white;
+    background-image: linear-gradient(190deg, #34b0d8, #30a6cc);
+  transition: all 0.3s cubic-bezier(0.12, 0.64, 0.25, 1);
+
 }

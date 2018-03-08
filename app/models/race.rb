@@ -16,9 +16,9 @@ class Race < ApplicationRecord
 
   validates :name, uniqueness: true
   validates :name, :location, :category , :website, :subscription_link, :starting_point, :video, length: { maximum: 100 }
-  validates :description, :goodies, length: {maximum: 700}
+  validates :description, :goodies, length: {maximum: 1200}
   validates :photo, presence: true, on: :create
-  validates :race_distance, :elevation, :fee_cents, :discount_fee_cents, numericality: { less_than_or_equal_to: 15000,  only_integer: true }
+  validates :race_distance, :elevation, :fee_cents, numericality: { less_than_or_equal_to: 15000,  only_integer: true }
   validates :name, :race_distance, :date, :category, :location, :description, :first_edition, :starting_point, :fee_cents, presence: true
   validate :race_date_in_the_future?
   validate :elevation_check
