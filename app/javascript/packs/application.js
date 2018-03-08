@@ -3,6 +3,7 @@ import { autocomplete } from '../components/autocomplete';
 import GMaps from 'gmaps/gmaps.js';
 
 
+
 autocomplete();
 
 window.addEventListener('load', function() {

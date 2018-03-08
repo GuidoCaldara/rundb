@@ -1,20 +1,8 @@
-<div class="container">
-  <div class="row py-5">
-    <div class="col-lg-3 col-md-4 hide-sm">
-      <% if @user.facebook_picture_url %>
-      <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/100x100" %>
-      <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown", heigth: "100"%>
-      <% end %>
-      <%= link_to edit_user_registration_path do %>
-      <p class="user-page-link mt-4"><i class="fas fa-edit"></i> Edit Your Profile</p>
-      <% end %>
-      <% if @user.organisation %>
-      <%= link_to organisation_path(@user.organisation.id) do %>
-      <p class="user-page-link"><i class="mr-2 fas fa-edit"></i> Manage your organisation and your races</p>
-      <% end %>
 
-    </div>
-
+<div class="profile-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-offset-1 col-sm-10 profile-content">
     <div class="col-lg-9 col-md-8 col-sm-12">
       <div>
         <% if @user.first_name %>
@@ -55,17 +43,85 @@
             <% end %>
             <% (5 - 3).times do %>
             <i class="far fa-star card-race-star"></i>
+
+
+        <div class="profile-top-part">
+          <div class="avatar-left-part">
+        <!-- if user has signed in with facebook -->
+            <% if @user.facebook_picture_url %>
+              <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/100x100" %>
+              <div class="avatar-profile-page" style="background-image: url('<%= cl_image_path avatar_url %>')">
+              </div>
+
+              <% else %>
+              <!-- else we show normal user avatar -->
+                <div class="avatar-profile-page" style="background-image: url('<%= cl_image_path @user.avatar %>')">
+                </div>
+
             <% end %>
           </div>
+          <div class="profile-top-right">
 
-          <i class="far fa-heart card-race-favorite"></i>
+              <% if @user.first_name && @user.last_name %>
+                <p class="h1"><%=@user.first_name%> <%=@user.last_name%></p>
+              <% else %>
+                <%= @user.email %>
+              <% end %>
+              <% if @user.group %>
+                <p class="userlabel"><strong class="h3">Group: </strong><%=@user.group%></p>
+              <% end %>
+              <% if @user.birthday %>
+                <p class="userlabel"><strong class="h3">Date of Birth:  </strong><%=(@user.birthday).strftime(" %b %d, %Y")%></p>
+              <% end %>
+          </div>
         </div>
-        <div class="card-race-body">
-          <p class="hit-name element"><%= race.category %></p>
-          <p class="hit-name element"><%= race.race_distance %> km</p>
-          <p class="hit-name element last"><%= race.date %></p>
+
+
+
+        <%= link_to edit_user_registration_path do %>
+          <p class="user-page-link mt-4"><i class="fas fa-edit"></i> Edit Your Profile</p>
+        <% end %>
+        <% if @user.organisation %>
+          <%= link_to organisation_path(@user.organisation.id) do %>
+            <p class="user-page-link"><i class="mr-2 fas fa-edit"></i> Manage your organisation and your races</p>
+          <% end %>
+        <% end %>
+
+
+
+
+
+
+  <% if @next_races %>
+
+    <h1 class= "lead-2 my-4"> Your coming Races</h1>
+
+      <% @next_races.each do |race| %>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+        <div class="card-race">
+          <div class="card-race-header" style="background-image: url('http://res.cloudinary.com/dxkimzdwk/image/upload/v1519895648/suuntoutmb.jpg')">
+            <p class="hit-name card-race-title"><%= race.name %></p>
+            <i class="fas fa-map-marker-alt card-race-marker"></i>
+            <p class="hit-name card-race-location"><%= race.location %></p>
+            <div class="star-container">
+              <% 3.times do %>
+              <i class="fas fa-star card-race-star"></i>
+              <% end %>
+              <% (5 - 3).times do %>
+              <i class="far fa-star card-race-star"></i>
+              <% end %>
+            </div>
+
+            <i class="far fa-heart card-race-favorite"></i>
+          </div>
+          <div class="card-race-body">
+            <p class="hit-name element"><%= race.category %></p>
+            <p class="hit-name element"><%= race.race_distance %> km</p>
+            <p class="hit-name element last"><%= race.date %></p>
+          </div>
         </div>
       </div>
+
     </div>
     <% end %>
   </div>
@@ -92,21 +148,47 @@
             <i class="far fa-star card-race-star"></i>
             <% end %>
           </div>
+      <% end %>
 
-          <i class="far fa-heart card-race-favorite"></i>
-        </div>
-        <div class="card-race-body">
-          <p class="hit-name element"><%= race.category %></p>
-          <p class="hit-name element"><%= race.race_distance %> km</p>
-          <p class="hit-name element last"><%= race.date %></p>
+
+  <% end %>
+
+  <% if @old_races %>
+
+    <h1 class= "lead-2 my-4"> Your previous Races</h1>
+
+      <% @old_races.each do |race| %>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+        <div class="card-race">
+          <div class="card-race-header" style="background-image: url('http://res.cloudinary.com/dxkimzdwk/image/upload/v1519895648/suuntoutmb.jpg')">
+            <p class="hit-name card-race-title"><%= race.name %></p>
+            <i class="fas fa-map-marker-alt card-race-marker"></i>
+            <p class="hit-name card-race-location"><%= race.location %></p>
+            <div class="star-container">
+              <% 3.times do %>
+              <i class="fas fa-star card-race-star"></i>
+              <% end %>
+              <% (5 - 3).times do %>
+              <i class="far fa-star card-race-star"></i>
+              <% end %>
+            </div>
+
+            <i class="far fa-heart card-race-favorite"></i>
+          </div>
+          <div class="card-race-body">
+            <p class="hit-name element"><%= race.category %></p>
+            <p class="hit-name element"><%= race.race_distance %> km</p>
+            <p class="hit-name element last"><%= race.date %></p>
+          </div>
         </div>
       </div>
-    </div>
-    <% end %>
-  </div>
-</div>
-<% end %>
+      <% end %>
+  <% end %>
 
 
+       </div> <!-- closing col -->
+    </div> <!-- closing row -->
+  </div> <!-- closing container -->
+</div> <!-- closing profile wrapper -->
 
 

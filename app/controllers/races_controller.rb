@@ -2,7 +2,7 @@ class RacesController < ApplicationController
 
  before_action :set_race, only: [:show, :edit, :update, :destroy]
 
-def index
+ def index
   @races = Race.all
 end
 
@@ -21,10 +21,10 @@ def create
   @race.save
   Race.algolia_reindex!
   redirect_to new_race_photo_path(@race.id)
- elsif @race.save
-    Race.algolia_reindex!
-    redirect_to new_race_photo_path(@race.id)
-    flash[:alert]
+elsif @race.save
+  Race.algolia_reindex!
+  redirect_to new_race_photo_path(@race.id)
+  flash[:alert]
 else
   render action: 'new'
 end
@@ -43,6 +43,7 @@ end
 
 def update
  if @race.update(race_params)
+  Race.algolia_reindex!
   redirect_to race_path(@race.id)
 else
   render :edit
@@ -50,18 +51,22 @@ end
 end
 
 def destroy
- if self.has_order?
+ if @race.has_order?
   redirect_to race_path(@race.id)
   flash[:danger] = "You can't destroy a race that have already registration"
 else
   if @race.photos
-  @race.photos.each do |photo|
-    photo.destroy!
-  @race.destroy!
+    @race.photos.each do |photo|
+      photo.destroy!
+    end
+    if @race.route
+      @race.route.destroy!
+    end
+    @race.destroy!
+    Race.algolia_reindex!
+    redirect_to root_path
+    flash[:success] = "the race has been successfully deleted from the database"
   end
-  end
-  redirect_to root_path
-  flash[:success] = "the race has been successfully deleted from the database"
 end
 end
 
