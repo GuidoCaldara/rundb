@@ -1,19 +1,19 @@
-puts "///   Creating users"
-25.times do
-  user = User.new(
-    email: Faker::Internet.free_email,
-    password: "password",
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    remote_avatar_url: "http://res.cloudinary.com/guidocld/image/upload/v1520479304/user#{rand(1..6)}.jpg",
+# puts "///   Creating users"
+# 25.times do
+#   user = User.new(
+#     email: Faker::Internet.free_email,
+#     password: "password",
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     remote_avatar_url: "http://res.cloudinary.com/guidocld/image/upload/v1520479304/user#{rand(1..6)}.jpg",
 
-    )
+#     )
 
 
-  if user.save
-    puts user.first_name + " " + user.last_name + " created!"
-  end
-end
+#   if user.save
+#     puts user.first_name + " " + user.last_name + " created!"
+#   end
+# end
 
 
 puts "///   #{User.count} users in the database!"
@@ -232,6 +232,9 @@ puts "///   #{Organisation.count} organisations in the database!"
     order.race_id = race.id
     order.user_id = User.all.sample.id  
     order.state = "paid"
+    order.first_name = Faker::Name.first_name
+    order.last_name = Faker::Name.last_name
+    order.gender = "Gender"
     if order.save
       puts "1 order just created for #{race.name}"
     else
