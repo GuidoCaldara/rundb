@@ -4,3 +4,4 @@ class AddCoordinatesToOrganisations < ActiveRecord::Migration[5.1]
     add_column :organisations, :longitude, :float
   end
 end
+
