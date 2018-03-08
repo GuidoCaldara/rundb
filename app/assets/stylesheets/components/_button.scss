@@ -163,6 +163,64 @@ a:hover {
   text-decoration: none;
 }
 
+// ORGA DASHBOARD BUTTON
+
+.edit-orga-button, .add-orga-button, .delete-orga-button {
+  padding: 4px 10px;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  font-family: "Roboto", "sans-serif";
+  font-size: 14px;
+  border-radius: 30px;
+  margin: 0 6px;
+  box-shadow: 0 8px 30px #dadada;
+}
+
+.edit-orga-button {
+  background-color: #30a6cc;
+}
+
+.edit-orga-button:hover {
+  text-decoration: none !important;
+  color: white;
+}
+
+.add-orga-button {
+  background-color: #96C04D;
+
+}
+
+.add-orga-button:hover {
+  text-decoration: none !important;
+  color: white;
+}
 
 
+.delete-orga-button {
+
+  background-color: #ff6f6f;
+}
+
+.delete-orga-button:hover {
+  text-decoration: none !important;
+  color: white;
+}
+
+.orga-race-action-button {
+  padding: 2px 10px;
+  text-decoration: none;
+  color: #a9a9a9;
+  background-color: white;
+  border: 1px solid #a9a9a9;
+  font-family: "Roboto", "sans-serif";
+  font-size: 14px;
+  border-radius: 30px;
+}
+
+.orga-race-action-button:hover {
+  text-decoration: none !important;
+  color: #a9a9a9;
+
+}
 

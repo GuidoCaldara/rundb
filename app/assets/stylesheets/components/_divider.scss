@@ -93,7 +93,7 @@
     content: '';
     // use the linear-gradient for the fading effect
     // use a solid background color for a solid bar
-    background: linear-gradient(to right, transparent, #96C04D, transparent);
+    background: linear-gradient(to right, transparent, #9e9e9e, transparent);
     position: absolute;
     left: 0;
     top: 50%;
@@ -109,8 +109,8 @@
     padding: 0 .5em;
     line-height: 1.5em;
     // this is really the only tricky part, you need to specify the background color of the container element...
-    color: #96C04D;
-    background-color: white;
+    color: #9e9e9e;
+    background-color: #f7f7f7;
   }
 }
 
