@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307040511) do
+ActiveRecord::Schema.define(version: 20180307094206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20180307040511) do
     t.text "goodies"
     t.integer "capacity"
     t.text "description"
-    t.boolean "bookable", default: true
+    t.boolean "bookable", default: false
     t.string "website"
     t.string "subscription_link"
     t.bigint "organisation_id"

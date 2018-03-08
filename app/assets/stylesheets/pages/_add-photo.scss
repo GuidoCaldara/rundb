@@ -12,7 +12,6 @@
 
 .foto-form-box{
   background-color: white;
-  border: 1px solid rgb(221, 221, 221);
     box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0 2px 0 0 rgba(0, 0, 0, 0.03);
  border-radius: 5px;
  padding: 18px 5px;
@@ -20,12 +19,60 @@
 
 }
 
-.photo-managment-box{
+
+.card-photo{
   background-color: white;
-  border: 1px solid rgb(221, 221, 221);
-    box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0 2px 0 0 rgba(0, 0, 0, 0.03);
- border-radius: 5px;
- padding: 18px 5px;
- margin: 20px 0px;
+  box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0 2px 0 0 rgba(0, 0, 0, 0.03);
+ border-radius: 8px;
+ padding: 5px 5px;
+ margin: auto;
 }
 
+.delete-button{
+ font-size: 14px
+}
+
+
+.upload-button{
+  box-shadow: 0 5px 40px #30b2e473;
+  font-size: 16px;
+  text-decoration: none;
+  width: 220px;
+  border-radius: 10px;
+  margin: auto;
+  color: white;
+  font-family: "Poppins", "sans-serif";
+  display: block;
+  background-image: linear-gradient(190deg, #34b0d8, #30a6cc);
+}
+
+.upload-button:hover{
+  text-decoration:none;
+  color: white;
+  background-image: linear-gradient(190deg, #34b0d8, #30a6cc);
+  transition: all 0.3s cubic-bezier(0.12, 0.64, 0.25, 1);
+    transform: scale(1.02);
+
+}
+
+.go-to-route{
+    box-shadow: 0 5px 40px #67707373;
+    font-size: 16px;
+    text-decoration: none;
+    width: 380px;
+    color: #4b4c4f !important;
+    border-radius: 10px;
+    margin: auto;
+    color: white;
+    font-family: "Poppins", "sans-serif";
+    display: block;
+    background-image: linear-gradient(190deg, #c0d996, #b1cc85);}
+
+.go-to-route:hover{
+  text-decoration:none;
+  color: white;
+    background-image: linear-gradient(190deg, #c0d996, #b1cc85);
+  transition: all 0.3s cubic-bezier(0.12, 0.64, 0.25, 1);
+    transform: scale(1.02);
+
+}
