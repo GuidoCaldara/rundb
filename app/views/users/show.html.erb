@@ -3,6 +3,46 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-offset-1 col-sm-10 profile-content">
+    <div class="col-lg-9 col-md-8 col-sm-12">
+      <div>
+        <% if @user.first_name %>
+        <h1> <%= @user.first_name %></h1>
+        <% else %>
+        <%= @user.email %>
+        <% end %>
+        <% if @user.first_name && @user.last_name %>
+        <p class="h1"><%=@user.first_name%> <%=@user.last_name%></p>
+        <% end %>
+        <% if @user.group %>
+        <p class="userlabel"><strong class="h3">Group: </strong><%=@user.group%></p>
+        <% end %>
+        <% if @user.birthday %>
+        <p class="userlabel"><strong class="h3">Date of Birth:  </strong><%=(@user.birthday).strftime(" %b %d, %Y")%></p>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<% if @next_races %>
+<div class="container">
+  <h1 class= "lead-2 my-4"> Your Next Races</h1>
+  <div class="row">
+    <% @next_races.each do |race| %>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+      <div class="card-race">
+        <div class="card-race-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
+          <p class="hit-name card-race-title"><%= race.name %></p>
+          <i class="fas fa-map-marker-alt card-race-marker"></i>
+          <p class="hit-name card-race-location"><%= race.location %></p>
+          <div class="star-container">
+            <% 3.times do %>
+            <i class="fas fa-star card-race-star"></i>
+            <% end %>
+            <% (5 - 3).times do %>
+            <i class="far fa-star card-race-star"></i>
 
 
         <div class="profile-top-part">
@@ -17,6 +57,7 @@
               <!-- else we show normal user avatar -->
                 <div class="avatar-profile-page" style="background-image: url('<%= cl_image_path @user.avatar %>')">
                 </div>
+
             <% end %>
           </div>
           <div class="profile-top-right">
@@ -80,10 +121,37 @@
           </div>
         </div>
       </div>
+
+    </div>
+    <% end %>
+  </div>
+</div>
+<% end %>
+
+
+<% if @old_races %>
+<div class="container">
+  <h1 class= "lead-2 my-4"> Your Old Races</h1>
+  <div class="row">
+    <% @old_races.each do |race| %>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+      <div class="card-race">
+        <div class="card-race-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
+          <p class="hit-name card-race-title"><%= race.name %></p>
+          <i class="fas fa-map-marker-alt card-race-marker"></i>
+          <p class="hit-name card-race-location"><%= race.location %></p>
+          <div class="star-container">
+            <% 3.times do %>
+            <i class="fas fa-star card-race-star"></i>
+            <% end %>
+            <% (5 - 3).times do %>
+            <i class="far fa-star card-race-star"></i>
+            <% end %>
+          </div>
       <% end %>
 
-  <% end %>
 
+  <% end %>
 
   <% if @old_races %>
 
