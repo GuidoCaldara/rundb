@@ -12,6 +12,8 @@
 
 ActiveRecord::Schema.define(version: 20180307094206) do
 
+
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,6 +97,7 @@ ActiveRecord::Schema.define(version: 20180307094206) do
     t.integer "race_avg_rate"
     t.string "video"
     t.string "photo"
+
     t.float "route_rate_avg"
     t.float "organisation_rate_avg"
     t.float "value_for_money_avg"

@@ -1,10 +1,10 @@
 function autocomplete() {
   document.addEventListener("DOMContentLoaded", function() {
-    var raceLocation = document.getElementById('race_location');
+    var location = document.getElementById('location');
 
-    if (raceLocation) {
-      var autocomplete = new google.maps.places.Autocomplete(raceLocation, { types: [ 'geocode' ] });
-      google.maps.event.addDomListener(raceLocation, 'keydown', function(e) {
+    if (location) {
+      var autocomplete = new google.maps.places.Autocomplete(location, { types: [ 'geocode' ] });
+      google.maps.event.addDomListener(location, 'keydown', function(e) {
         if (e.key === "Enter") {
           e.preventDefault(); // Do not submit the form on Enter.
         }
