@@ -89,16 +89,20 @@
                   <p class="hit-name card-race-title">{{{_highlightResult.name.value}}}</p>
                   <i class="fas fa-map-marker-alt card-race-marker"></i>
                   <p class="hit-name card-race-location">{{{_highlightResult.location.value}}}</p>
+                  {{#race_avg_rate}}
                   <div class="star-container">
-                    <p class="hit-name card-race-star">Rating: {{race_avg_rate}} / 10</p>
+
+                      <p class="hit-name card-race-star">Rating: {{race_avg_rate}} / 10</p>
                     <% 0.times do %>
                     <i class="fas fa-star card-race-star"></i>
                     <% end %>
                     <% 0.times do %>
                     <i class="far fa-star card-race-star"></i>
                     <% end %>
-                  </div>
 
+
+                  </div>
+                  {{/race_avg_rate}}
                   <i class="far fa-heart card-race-favorite"></i>
                 </div>
                 <div class="card-race-body">
