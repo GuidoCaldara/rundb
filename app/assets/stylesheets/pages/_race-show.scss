@@ -1,7 +1,9 @@
 
+
 // div {
 //   border: 1px solid #d8d8d8;
 // }
+
 
 
 
@@ -38,7 +40,7 @@
   box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0 2px 0 0 rgba(0, 0, 0, 0.03);
   border-radius: 8px;
   padding: 20px;
-  flex: 1;
+  flex-grow: 1;
 
 }
 
@@ -188,11 +190,26 @@
 // PHOTO CONTAINER
 
 .photo-container {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   position: relative;
-  min-height: 400px;
+  height: 400px;
   background-color: #FBFBFB;
   padding: 0px;
+  flex-grow: 0;
+  overflow: hidden !important;
+}
+.carousel-item.active {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.img-fluid {
+  border-radius: 8px;
+  width: auto !important;
+  max-width: none !important;
+  height: 410px !important;
+  max-height: 410px !important;
+
 }
 
 // PRICING CONTAINER
@@ -374,6 +391,7 @@
   display: flex;
   flex-direction: column;
 
+
   #review_description {
     height: 182px;
     border-radius: 8px;
@@ -439,6 +457,8 @@ border: 1px solid #e2e2e2;
 
 .existing-review-content {
   flex: 1 1 auto;
+  padding-left: 12px;
+  text-align: justify;
 }
 
 

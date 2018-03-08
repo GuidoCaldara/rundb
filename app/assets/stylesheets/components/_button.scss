@@ -130,10 +130,13 @@
   font-weight: 100;
   border-radius: 30px;
   box-shadow: none;
+  transition: all 0.3s cubic-bezier(0.12, 0.64, 0.25, 1);
 }
 .add-review-button:hover {
   text-decoration: none;
-  color: grey;
+  color: #58ACD2;
+  background-color: #e0f5ff;
+  border: 1px solid #58ACD2;
 
 }
 

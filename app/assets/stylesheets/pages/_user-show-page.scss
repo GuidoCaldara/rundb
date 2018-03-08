@@ -7,3 +7,30 @@
   font-size: 15px;
   text-color: red;
 }
+
+.profile-wrapper {
+
+  background-color: #e8e8e8;
+  padding-top: 80px;
+  color: grey;
+
+}
+
+.profile-content {
+  background-color: white;
+  border-radius: 90px;
+}
+
+.profile-top-part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+  .avatar-left-part {
+    flex: 0 0 180px;
+  }
+
+  .profile-top-right {
+    flex: 1 1 auto;
+  }
