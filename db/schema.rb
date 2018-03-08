@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307094206) do
-
-
+ActiveRecord::Schema.define(version: 20180308033819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +53,8 @@ ActiveRecord::Schema.define(version: 20180307094206) do
     t.datetime "updated_at", null: false
     t.string "email"
     t.string "logo"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_organisations_on_user_id"
   end
 
@@ -97,7 +97,6 @@ ActiveRecord::Schema.define(version: 20180307094206) do
     t.integer "race_avg_rate"
     t.string "video"
     t.string "photo"
-
     t.float "route_rate_avg"
     t.float "organisation_rate_avg"
     t.float "value_for_money_avg"

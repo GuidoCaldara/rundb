@@ -101,6 +101,14 @@
               </div>
               <% end %>
               <% end %>
+              <% if @race.video %>
+              <% end %>
+                <div class="carousel-item" style=" text-align:center">
+                  <iframe width="420" height="370"
+                  src=<%= @race.video %>>
+                  </iframe>
+                </div>
+              <% end %>
 
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -210,9 +218,11 @@
   <div class="race-reviews-container">
 
 
-    <hr class="hr-text" data-content="Leave a review">
 
-    <%= render 'reviews/form', race: @race, review: @review unless @race.has_reviewed?(current_user) %>
+<% if user_signed_in? %>
+    <hr class="hr-text" data-content="Leave a review">
+      <%= render 'reviews/form', race: @race, review: @review unless @race.has_reviewed?(current_user) %>
+<% end %>
 
     <hr class="hr-text" data-content="What people say about this race">
 
