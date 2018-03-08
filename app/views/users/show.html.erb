@@ -59,7 +59,7 @@
               <% @next_races.each do |race| %>
               <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                 <div class="card-race">
-                  <div class="card-race-header" style="background-image: url('http://res.cloudinary.com/dxkimzdwk/image/upload/v1519895648/suuntoutmb.jpg')">
+                  <div class="card-race-header" style="background-image: url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
                     <p class="hit-name card-race-title"><%= race.name %></p>
                     <i class="fas fa-map-marker-alt card-race-marker"></i>
                     <p class="hit-name card-race-location"><%= race.location %></p>
@@ -95,7 +95,7 @@
               <% @old_races.each do |race| %>
               <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                 <div class="card-race">
-                  <div class="card-race-header" style="background-image: url('http://res.cloudinary.com/dxkimzdwk/image/upload/v1519895648/suuntoutmb.jpg')">
+                  <div class="card-race-header" style="background-image: url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
                     <p class="hit-name card-race-title"><%= race.name %></p>
                     <i class="fas fa-map-marker-alt card-race-marker"></i>
                     <p class="hit-name card-race-location"><%= race.location %></p>
