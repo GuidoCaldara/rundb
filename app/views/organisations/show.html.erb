@@ -1,3 +1,138 @@
+
+<div class="organisation-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-offset-1 col-sm-10 organisation-content">
+
+
+        <div class="organisation-top-part">
+
+
+          <div class="avatar-left-part">
+            <!-- Organisation logo -->
+            <% if !@organisation.logo %>
+              <img src="http://lorempixel.com/200/200/sports/" class="avatar-org-showpage">
+            <% else %>
+              <%= cl_image_tag @organisation.logo.url, crop: :fill, class: "avatar-org-showpage  float-left"%>
+            <% end %>
+          </div>
+
+
+
+          <div class="organisation-top-right">
+            <h2> <%= @organisation.name %></h2>
+            <p><strong>Address </strong><%=@organisation.address%></p>
+            <p><strong>Phone Number:</strong><%=@organisation.phone_number %></p>
+            <p><strong>Contact Email:  </strong><%=@organisation.email %></p>
+            <p><strong>A brief history: <br> </strong><%=@organisation.description %></p>
+
+
+
+
+            <div class="edit-actions">
+
+              <%= link_to edit_organisation_path(@organisation.id) do %>
+              <p><i class="fas fa-edit"></i> Edit Your Organization</p><% end %>
+
+              <%= link_to organisation_path(@organisation.id), method: :delete, data: {confirm: 'Are you really wanna delete your organisation? If u have some races in the database u will not able to complete the cancellation?'} do %>
+                <p><i class="fas fa-exclamation-triangle"></i>Delete Your organisation</p>
+                <% end %>
+
+                <%= link_to new_race_path do %>
+                <p><i class="fas fa-plus"></i>Add a new race</p>
+                <% end %>
+
+            </div>
+
+          </div> <!-- closing organisation top right page -->
+
+        </div> <!-- closing organisation top page -->
+
+
+
+
+          <hr class="hr-text-organisation-page" data-content="Your Races">
+
+
+            <div class="container">
+              <div class="row">
+
+
+                <% if !@organisation.races.any? %>
+
+                  <h1>You don't have any race yet. Add your first race!</h1>
+
+                <% elsif @organisation.races.any? %>
+
+
+                  <% @races.each do |race| %>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+
+                        <div class="card-race">
+                          <div class="card-race-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
+                            <p class="hit-name card-race-title"><%= race.name %></p>
+                            <i class="fas fa-map-marker-alt card-race-marker"></i>
+                            <p class="hit-name card-race-location"><%= race.location %></p>
+                            <div class="star-container">
+                              <% 3.times do %>
+                              <i class="fas fa-star card-race-star"></i>
+                              <% end %>
+                              <% (5 - 3).times do %>
+                              <i class="far fa-star card-race-star"></i>
+                              <% end %>
+                            </div>
+
+                            <i class="far fa-heart card-race-favorite"></i>
+                          </div>
+                          <div class="card-race-body">
+                            <p class="hit-name element lead"><%= link_to "Manage the race", race_path(race.id), class: "btn btn-primary" %></p>
+
+                            <p class="lead hit-name element last">
+                              <% if race.bookable && race.orders %>
+                              <%= link_to "Subscription list", race_subscriptions_path(race.id), class: "btn btn-primary" %>
+                              <% end %>
+                            </p>
+                          </div>
+                        </div>
+
+
+
+
+                      </div> <!-- closing card race div -->
+                    </div> <!-- closing col -->
+                  <% end %> <!-- closing loop over races -->
+                <% end %> <!-- closing elsif any races -->
+
+
+
+              </div>
+            </div>
+
+
+
+
+
+         </div> <!-- closing organisation races -->
+
+
+       </div> <!-- closing col -->
+    </div> <!-- closing row -->
+  </div> <!-- closing container -->
+</div> <!-- closing organisation wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- OLD CODE -->
+
 <div class="container">
 
   <div class="row pt-5">
@@ -68,7 +203,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="jumbotron text-center">
-       <h1>You didn't add any race yet. Click and ad your first one!</h1>
+       <h1>You don't have any race yet. Add your first race!</h1>
     </div>
   </div>
 </div>
@@ -79,39 +214,46 @@
 <% elsif @organisation.races.any? %>
   <h1 class= "lead-2 my-4"> Your Races</h1>
   <div class="row">
+
+
     <% @races.each do |race| %>
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-      <div class="card-race">
-        <div class="card-race-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
-          <p class="hit-name card-race-title"><%= race.name %></p>
-          <i class="fas fa-map-marker-alt card-race-marker"></i>
-          <p class="hit-name card-race-location"><%= race.location %></p>
-          <div class="star-container">
-            <% 3.times do %>
-            <i class="fas fa-star card-race-star"></i>
-            <% end %>
-            <% (5 - 3).times do %>
-            <i class="far fa-star card-race-star"></i>
-            <% end %>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+        <div class="card-race">
+          <div class="card-race-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
+            <p class="hit-name card-race-title"><%= race.name %></p>
+            <i class="fas fa-map-marker-alt card-race-marker"></i>
+            <p class="hit-name card-race-location"><%= race.location %></p>
+            <div class="star-container">
+              <% 3.times do %>
+              <i class="fas fa-star card-race-star"></i>
+              <% end %>
+              <% (5 - 3).times do %>
+              <i class="far fa-star card-race-star"></i>
+              <% end %>
+            </div>
+
+            <i class="far fa-heart card-race-favorite"></i>
           </div>
+          <div class="card-race-body">
+            <p class="hit-name element lead"><%= link_to "Manage the race", race_path(race.id), class: "btn btn-primary" %></p>
 
-          <i class="far fa-heart card-race-favorite"></i>
+            <p class="lead hit-name element last">
+              <% if race.bookable && race.orders %>
+              <%= link_to "Subscription list", race_subscriptions_path(race.id), class: "btn btn-primary" %>
+              <% end %>
+            </p>
+          </div>
         </div>
-        <div class="card-race-body">
-          <p class="hit-name element lead"><%= link_to "Manage the race", race_path(race.id), class: "btn btn-primary" %></p>
 
-          <p class="lead hit-name element last">
-            <% if race.bookable && race.orders %>
-            <%= link_to "Subscription list", race_subscriptions_path(race.id), class: "btn btn-primary" %>
-            <% end %>
-          </p>
-        </div>
+
       </div>
-    </div>
     <% end %>
+
+
+
   </div>
-</div>
 <% end %>
+</div>
 
 
 
