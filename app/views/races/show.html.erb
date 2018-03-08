@@ -321,15 +321,7 @@
 
 
 
-<%= render 'reviews/form', race: @race, review: @review unless @race.has_reviewed?(current_user) %>
-<div id="reviews">
-  <% @reviews.each do |review| %>
-  <p><%= review.description %></p>
-  <p><%= review.route_rate %></p>
-  <p><%= review.organisation_rate %></p>
-  <p><%= review.value_for_money %></p>
-  <% end %>
-</div>
+
 
 
 <script>

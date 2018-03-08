@@ -52,73 +52,81 @@
 
 
         <div class="user-coming-races">
+          <hr class="hr-text-profile-page" data-content="Your coming Races">
           <% if @next_races %>
+            <div class="container">
+              <div class="row">
 
-            <h1 class= "lead-2 my-4"> Your coming Races</h1>
 
-              <% @next_races.each do |race| %>
-              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                <div class="card-race">
-                  <div class="card-race-header" style="background-image: url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
-                    <p class="hit-name card-race-title"><%= race.name %></p>
-                    <i class="fas fa-map-marker-alt card-race-marker"></i>
-                    <p class="hit-name card-race-location"><%= race.location %></p>
-                    <div class="star-container">
-                      <% 3.times do %>
-                      <i class="fas fa-star card-race-star"></i>
-                      <% end %>
-                      <% (5 - 3).times do %>
-                      <i class="far fa-star card-race-star"></i>
-                      <% end %>
+                  <% @next_races.each do |race| %>
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                    <div class="card-race">
+                      <div class="card-race-header" style="background-image: url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
+                        <p class="hit-name card-race-title"><%= race.name %></p>
+                        <i class="fas fa-map-marker-alt card-race-marker"></i>
+                        <p class="hit-name card-race-location"><%= race.location %></p>
+                        <div class="star-container">
+                          <% 3.times do %>
+                          <i class="fas fa-star card-race-star"></i>
+                          <% end %>
+                          <% (5 - 3).times do %>
+                          <i class="far fa-star card-race-star"></i>
+                          <% end %>
+                        </div>
+
+                        <i class="far fa-heart card-race-favorite"></i>
+                      </div>
+                      <div class="card-race-body">
+                        <p class="hit-name element"><%= race.category %></p>
+                        <p class="hit-name element"><%= race.race_distance %> km</p>
+                        <p class="hit-name element last"><%= race.date %></p>
+                      </div>
                     </div>
-
-                    <i class="far fa-heart card-race-favorite"></i>
                   </div>
-                  <div class="card-race-body">
-                    <p class="hit-name element"><%= race.category %></p>
-                    <p class="hit-name element"><%= race.race_distance %> km</p>
-                    <p class="hit-name element last"><%= race.date %></p>
-                  </div>
-                </div>
+                  <% end %>
               </div>
-              <% end %>
-
+            </div>
           <% end %>
 
         </div> <!-- closing coming races -->
 
-        <div class="user-previous-race"></div>
+        <div class="user-previous-race">
+          <hr class="hr-text-profile-page" data-content="Your previous Races">
           <% if @old_races %>
+            <div class="container">
+                <div class="row">
 
-            <h1 class= "lead-2 my-4"> Your previous Races</h1>
+                  <% @old_races.each do |race| %>
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                    <div class="card-race">
+                      <div class="card-race-header" style="background-image: url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
+                        <p class="hit-name card-race-title"><%= race.name %></p>
+                        <i class="fas fa-map-marker-alt card-race-marker"></i>
+                        <p class="hit-name card-race-location"><%= race.location %></p>
+                        <div class="star-container">
+                          <% 3.times do %>
+                          <i class="fas fa-star card-race-star"></i>
+                          <% end %>
+                          <% (5 - 3).times do %>
+                          <i class="far fa-star card-race-star"></i>
+                          <% end %>
+                        </div>
 
-              <% @old_races.each do |race| %>
-              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                <div class="card-race">
-                  <div class="card-race-header" style="background-image: url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
-                    <p class="hit-name card-race-title"><%= race.name %></p>
-                    <i class="fas fa-map-marker-alt card-race-marker"></i>
-                    <p class="hit-name card-race-location"><%= race.location %></p>
-                    <div class="star-container">
-                      <% 3.times do %>
-                      <i class="fas fa-star card-race-star"></i>
-                      <% end %>
-                      <% (5 - 3).times do %>
-                      <i class="far fa-star card-race-star"></i>
-                      <% end %>
+                        <i class="far fa-heart card-race-favorite"></i>
+                      </div>
+                      <div class="card-race-body">
+                        <p class="hit-name element"><%= race.category %></p>
+                        <p class="hit-name element"><%= race.race_distance %> km</p>
+                        <p class="hit-name element last"><%= race.date %></p>
+                      </div>
                     </div>
-
-                    <i class="far fa-heart card-race-favorite"></i>
                   </div>
-                  <div class="card-race-body">
-                    <p class="hit-name element"><%= race.category %></p>
-                    <p class="hit-name element"><%= race.race_distance %> km</p>
-                    <p class="hit-name element last"><%= race.date %></p>
-                  </div>
+                  <% end %>
                 </div>
               </div>
-              <% end %>
-          <% end %>
+
+            <% end %>
+          </div> <!-- closing previous races -->
          </div> <!-- closing user races -->
 
 
