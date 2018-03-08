@@ -83,7 +83,7 @@
         <div class="photo-container">
 
 
-            <!-- IMPORT HERE PHOTOS CARROUSEL -->
+          <!-- IMPORT HERE PHOTOS CARROUSEL -->
 
 
 
@@ -93,116 +93,120 @@
               <div class="carousel-item active text-center mx-auto">
                 <%= cl_image_tag @race.photo.url, crop: :fill, class: "  img-fluid carousel-img", style: "display: inline-block"%>
               </div>
-            <% if @race.photos %>
-               <% @race.photos.each do |photo| %>
 
+
+              <% if @race.photos %>
+              <% @race.photos.each do |photo| %>
               <div class="carousel-item" style=" text-align:center">
                 <%= cl_image_tag photo.photo.url, crop: :fill, class: " img-fluid carousel-img", style: "display: inline-block"%>
               </div>
               <% end %>
               <% end %>
-              <% if @race.video %>
-              <% end %>
-                <div class="carousel-item" style=" text-align:center">
-                  <iframe width="420" height="370"
-                  src=<%= @race.video %>>
-                  </iframe>
-                </div>
-              <% end %>
 
+             <% if @race.video %>
+             <% @link = @race.video.split("=").last %>
+
+             <% end %>
+              <div class="carousel-item" style=" text-align:center">
+              <iframe width="100%" height="400px"
+              src="https://www.youtube.com/embed/<%= @link %>">
+              </iframe>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
+
+
           </div>
-          <% end %>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-
-
-        <!-- PRICNG -->
-        <div class="pricing-container">
-          <p class="race-fee-logo">Race fee: <%= humanized_money_with_symbol(@race.fee_cents)%></p>
-          <% if @race.discount_fee_cents %>
-          <div class="promo-alert-wrapper">
-            <div class="promo-alert"> Enjoy an early bird fee </div>
-            <div class="promo-alert">subscription rate of </div>
-            <div class="promo-alert"><%= humanized_money_with_symbol(@race.discount_fee_cents)%> until <%= @race.discount_fee_finish %>!</div>
-          </div>
-          <% end %>
-          <p class="price-details">The subscription for <%= @race.name %> are opened from the <span style="font-weight: bolder"><%= @race.subscription_start.strftime("%e %b %Y ") %></span> and will close on the <span style="font-weight: bolder"><%= @race.subscription_end.strftime("%e %b %Y ") %></span>. The maximum race capacity is <span style="font-weight: bolder"><%= @race.capacity %> participants</span></p>
-
-          <% if user_signed_in? %>
-          <%= link_to "Subscribe online", new_race_order_path(@race.id), class: "button-register" %>
-
-          <% else %>
-
-            <button type="button" class="button-register" data-toggle="modal" data-target="#exampleModal">
-            Subscribe online
-            </button>
-          <% end %>
-        </div>
-
+        <% end %>
       </div>
+
+
+      <!-- PRICNG -->
+      <div class="pricing-container">
+        <p class="race-fee-logo">Race fee: <%= humanized_money_with_symbol(@race.fee_cents)%></p>
+        <% if @race.discount_fee_cents %>
+        <div class="promo-alert-wrapper">
+          <div class="promo-alert"> Enjoy an early bird fee </div>
+          <div class="promo-alert">subscription rate of </div>
+          <div class="promo-alert"><%= humanized_money_with_symbol(@race.discount_fee_cents)%> until <%= @race.discount_fee_finish %>!</div>
+        </div>
+        <% end %>
+        <p class="price-details">The subscription for <%= @race.name %> are opened from the <span style="font-weight: bolder"><%= @race.subscription_start.strftime("%e %b %Y ") %></span> and will close on the <span style="font-weight: bolder"><%= @race.subscription_end.strftime("%e %b %Y ") %></span>. The maximum race capacity is <span style="font-weight: bolder"><%= @race.capacity %> participants</span></p>
+
+        <% if user_signed_in? %>
+        <%= link_to "Subscribe online", new_race_order_path(@race.id), class: "button-register" %>
+
+        <% else %>
+
+        <button type="button" class="button-register" data-toggle="modal" data-target="#exampleModal">
+          Subscribe online
+        </button>
+        <% end %>
+      </div>
+
     </div>
-
   </div>
 
-  <!-- Race path map -->
-  <% if @race.route %>
-  <div id="map" style="height:400px; width: 100%;">
-  </div>
-  <% end %>
+</div>
+
+<!-- Race path map -->
+<% if @race.route %>
+<div id="map" style="height:400px; width: 100%;">
+</div>
+<% end %>
 
 <!-- RATES and ROUTE MAP -->
-  <div class="footer-container">
-    <!-- rates container -->
-    <% if @race.reviews %>
+<div class="footer-container">
+  <!-- rates container -->
+  <% if @race.reviews %>
 
-      <div class="rates-container">
-        <div class="race-rating-header">
-            Rating
-        </div>
+  <div class="rates-container">
+    <div class="race-rating-header">
+      Rating
+    </div>
 
-          <div class="rates-wrapper">
-            <% if @race.route_rate_avg && @race.organisation_rate_avg && @race.value_for_money_avg %>
-            <div class="race-rates">Route <br><span class="green-highlight"><%= @race.route_rate_avg.round(1) %> / 10</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width:<%= @race.route_rate_avg*10 %>%">
-              </div>
-            </div>
-
-            <div class="race-rates">Organisation <br><span class="green-highlight"><%= @race.organisation_rate_avg.round(1) %> / 10</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width:<%= @race.organisation_rate_avg*10 %>%">
-              </div>
-            </div>
-
-            <div class="race-rates">Value for money <br><span class="green-highlight"><%= @race.value_for_money_avg.round(1) %> / 10</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width:<%= @race.value_for_money_avg*10 %>%">
-              </div>
-          </div>
-          <% end %>
+    <div class="rates-wrapper">
+      <% if @race.route_rate_avg && @race.organisation_rate_avg && @race.value_for_money_avg %>
+      <div class="race-rates">Route <br><span class="green-highlight"><%= @race.route_rate_avg.round(1) %> / 10</span>
+      </div>
+      <div class="progress">
+        <div class="progress-bar" style="width:<%= @race.route_rate_avg*10 %>%">
         </div>
       </div>
-    <% end %>
 
-    <!-- Race path map -->
-    <div class="map-route">
-      <% if @race.route %>
-        <div id="map" style="height:400px; width: 100%;z-index: 1;">
+      <div class="race-rates">Organisation <br><span class="green-highlight"><%= @race.organisation_rate_avg.round(1) %> / 10</span>
+      </div>
+      <div class="progress">
+        <div class="progress-bar" style="width:<%= @race.organisation_rate_avg*10 %>%">
         </div>
+      </div>
+
+      <div class="race-rates">Value for money <br><span class="green-highlight"><%= @race.value_for_money_avg.round(1) %> / 10</span>
+      </div>
+      <div class="progress">
+        <div class="progress-bar" style="width:<%= @race.value_for_money_avg*10 %>%">
+        </div>
+      </div>
       <% end %>
     </div>
   </div>
+  <% end %>
+
+  <!-- Race path map -->
+  <div class="map-route">
+    <% if @race.route %>
+    <div id="map" style="height:400px; width: 100%;z-index: 1;">
+    </div>
+    <% end %>
+  </div>
+</div>
 
 <!-- ORGANISER ACTIONS -->
 <div class="organizer-actions">
@@ -215,64 +219,68 @@
 
 <!-- REVIEWS -->
 
-  <div class="race-reviews-container">
+<div class="race-reviews-container">
 
 
 
-<% if user_signed_in? %>
-    <hr class="hr-text" data-content="Leave a review">
-      <%= render 'reviews/form', race: @race, review: @review unless @race.has_reviewed?(current_user) %>
-<% end %>
+  <% if user_signed_in? %>
+  <hr class="hr-text" data-content="Leave a review">
+  <%= render 'reviews/form', race: @race, review: @review unless @race.has_reviewed?(current_user) %>
+  <% end %>
 
-    <hr class="hr-text" data-content="What people say about this race">
+  <hr class="hr-text" data-content="What people say about this race">
 
-    <div id="reviews">
-      <% @reviews.each do |review| %>
+  <div id="reviews">
+    <% @reviews.each do |review| %>
 
-      <div class="existing-review">
+    <div class="existing-review">
 
-<!-- AVATAR -->
-        <div class="existing-review-user">
+      <!-- AVATAR -->
+      <div class="existing-review-user">
 
-          <div class="avatar-review" style="background-image: url('<%= image_path "http://res.cloudinary.com/dxkimzdwk/image/upload/v1520413859/fakeprofile#{rand(1..4)}.jpg"%>')">
-          </div>
+        <div class="avatar-review" style="background-image: url('<%= image_path "http://res.cloudinary.com/dxkimzdwk/image/upload/v1520413859/fakeprofile#{rand(1..4)}.jpg"%>')">
+        </div>
 
-
+         <% if review.user.first_name && review.user.last_name %>
           <p><%= review.user.first_name %> <br> <%=  review.user.last_name %></p>
-        </div>
-<!-- RATES  -->
-        <div class="existing-review-rate">
-          <div class="review-rates-wrapper">
+        <% else %>
+          <p><%= review.user.email %>
+         <% end %>
 
-            <div class="race-rates">Route <span class="green-highlight"><%= review.route_rate.round(0) %> / 10</span>
-              </div>
-              <div class="progress">
-                <div class="progress-bar" style="width:<%= review.route_rate*10 %>%">
-                </div>
-              </div>
-              <div class="race-rates">Organisation <span class="green-highlight"><%= review.organisation_rate.round(0) %> / 10</span>
-              </div>
-              <div class="progress">
-                <div class="progress-bar" style="width:<%= review.organisation_rate*10 %>%">
-                </div>
-              </div>
-              <div class="race-rates">Value for money <span class="green-highlight"><%= review.value_for_money.round(0) %> / 10</span>
-              </div>
-              <div class="progress">
-                <div class="progress-bar" style="width:<%= review.value_for_money*10 %>%">
-                </div>
-              </div>
-            </div>
-
-        </div>
-        <div class="existing-review-content">
-          <p><%= review.description %></p>
-        </div>
       </div>
+      <!-- RATES  -->
+      <div class="existing-review-rate">
+        <div class="review-rates-wrapper">
 
-      <% end %>
+          <div class="race-rates">Route <span class="green-highlight"><%= review.route_rate.round(0) %> / 10</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width:<%= review.route_rate*10 %>%">
+            </div>
+          </div>
+          <div class="race-rates">Organisation <span class="green-highlight"><%= review.organisation_rate.round(0) %> / 10</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width:<%= review.organisation_rate*10 %>%">
+            </div>
+          </div>
+          <div class="race-rates">Value for money <span class="green-highlight"><%= review.value_for_money.round(0) %> / 10</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width:<%= review.value_for_money*10 %>%">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="existing-review-content">
+        <p><%= review.description %></p>
+      </div>
     </div>
+
+    <% end %>
   </div>
+</div>
 
 </div>
 
@@ -310,38 +318,38 @@
 
 
 
-  <%= render 'reviews/form', race: @race, review: @review unless @race.has_reviewed?(current_user) %>
-  <div id="reviews">
-    <% @reviews.each do |review| %>
-    <p><%= review.description %></p>
-    <p><%= review.route_rate %></p>
-    <p><%= review.organisation_rate %></p>
-    <p><%= review.value_for_money %></p>
-    <% end %>
-  </div>
+<%= render 'reviews/form', race: @race, review: @review unless @race.has_reviewed?(current_user) %>
+<div id="reviews">
+  <% @reviews.each do |review| %>
+  <p><%= review.description %></p>
+  <p><%= review.route_rate %></p>
+  <p><%= review.organisation_rate %></p>
+  <p><%= review.value_for_money %></p>
+  <% end %>
+</div>
 
 
-  <script>
-    <% if @race.route  %>
-    var data =  <%= raw @race.route.pathfile %>;
-    <% end %>
-    console.log(data);
-    generate_route(data);
+<script>
+  <% if @race.route  %>
+  var data =  <%= raw @race.route.pathfile %>;
+  <% end %>
+  console.log(data);
+  generate_route(data);
 
-    function generate_route(array){
-      var map = L.map('map',{
-        center: [43.64701, -79.39425],
-        zoom: 15
-      });
+  function generate_route(array){
+    var map = L.map('map',{
+      center: [43.64701, -79.39425],
+      zoom: 15
+    });
 
-      var latlngs = array
-      var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
-      map.fitBounds(polyline.getBounds());
-      console.log(array);
+    var latlngs = array
+    var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+    map.fitBounds(polyline.getBounds());
+    console.log(array);
 
-      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-    }
-  </script>
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+  }
+</script>
 

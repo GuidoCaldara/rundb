@@ -342,7 +342,6 @@ orgloc = ["Milan, italy",
         website: "www.amazingrace.it",
         subscription_link: "www.amazingrace.it/subscription",
         starting_point: "Colossemum",
-        remote_photo_url: "http://res.cloudinary.com/guidocld/image/upload/v1520479304/race#{rand(1..9)}.jpg",
         goodies: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab possimus vel, temporibus distinctio magnam, maiores cum unde tempore illum tempora deleniti.",
         video: "https://www.youtube.com/watch?v=gF0rrpMH-Jo"
 
@@ -415,7 +414,6 @@ orgloc = ["Milan, italy",
     starting_time: Date.today,
     website: "http://www.magaskymarathon.it/",
     starting_point: "Serina, Palazzetto dello sport",
-    remote_photo_url: "http://res.cloudinary.com/guidocld/image/upload/v1520479302/maga.jpg",
     goodies: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab possimus vel, temporibus distinctio magnam, maiores cum unde tempore illum tempora deleniti.",
     video: "https://www.youtube.com/watch?v=wbLvK4DCA6Y"
 
