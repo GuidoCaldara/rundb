@@ -43,6 +43,7 @@ end
 
 def update
  if @race.update(race_params)
+    Race.algolia_reindex!
   redirect_to race_path(@race.id)
 else
   render :edit
@@ -60,6 +61,7 @@ else
   @race.destroy!
   end
   end
+  Race.algolia_reindex!
   redirect_to root_path
   flash[:success] = "the race has been successfully deleted from the database"
 end
