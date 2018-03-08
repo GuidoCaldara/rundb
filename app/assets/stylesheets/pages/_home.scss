@@ -9,6 +9,8 @@
   text-align: center;
   color: grey;
   font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 
@@ -39,3 +41,25 @@
     transform: translateY(-4px);
   }
 }
+
+// LINK TO ALL RACES
+
+
+.button-to-races {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 4px 0 !important;
+    text-align: right !important;
+    width: auto !important;
+}
+.button-to-races a:hover {
+  text-decoration: underline;
+  text-decoration-color: #8CC266;
+}
+
+.text-on-button-to-races {
+  color: #8CC266;
+  font-size: 14px;
+}
+
+

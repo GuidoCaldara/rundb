@@ -76,27 +76,21 @@
 //CALL TO ACTION ORGANIZER
 
 .button-orga-start {
-  // box-shadow: 1px 5px 21px #00000078;
-  font-size: 12px;
-  border: 1px solid #96C04D;
-  text-decoration: none;
-  border-radius: 30px;
-  padding: 10px;
-  margin: auto;
-  margin-right: 30px;
-  color: #96C04D;
-  font-family: "Poppins", "sans-serif";
-  display: block;
-  background-color: white;
-  transition: all 0.3s cubic-bezier(0.12, 0.64, 0.25, 1);
+    font-size: 12px;
+    border: 1px solid #ee5f5b;
+    text-decoration: none;
+    border-radius: 30px;
+    padding: 10px;
+    margin: auto;
+    margin-right: 30px;
+    color: #f8f9fa;
+    font-family: "Poppins", "sans-serif";
+    display: block;
+    background-color: #ee5f5b;
+    transition: all 0.3s cubic-bezier(0.12, 0.64, 0.25, 1);
 }
 
-.button-orga-start:hover {
-  text-decoration: none;
-  color: #96C04D;
 
-
-}
 
 
 // ORGANIZER ACTIONS ON RACE SHOW PAGE

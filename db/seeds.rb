@@ -34,24 +34,6 @@ puts "///   #{User.count} users in the database!"
 
 # # CREATING ORGANISATION
 
-puts "///   Creating organisations"
-10.times do
-  organisation = Organisation.new(
-    user_id: User.all.sample.id,
-
-    name: Faker::SiliconValley.company,
-    address: "10 rue Montaigne",
-    email: "organisation@gmail.com",
-    description: "We organize amazing races around the world!")
-  if organisation.save
-    puts organisation.name + " " + " created!"
-  end
-end
-
-puts "///   #{Organisation.count} organisations in the database!"
-
-# # CREATING RACES
-
 category = ["trail", "road", "vertical", "skyrace"]
 location = ["Milan, italy",
   "Naples, italy",
@@ -196,6 +178,25 @@ location = ["Milan, italy",
   "Scafati, italy",
   "Rho, italy",
   "Scandicci, italy"]
+
+
+puts "///   Creating organisations"
+10.times do
+  organisation = Organisation.new(
+    user_id: User.all.sample.id,
+    name: Faker::SiliconValley.company,
+    address: location.sample,
+    email: "organisation@gmail.com",
+    description: "We organize amazing races around the world!")
+  if organisation.save
+    puts organisation.name + " " + " created!"
+  end
+end
+
+puts "///   #{Organisation.count} organisations in the database!"
+
+# # CREATING RACES
+
 
 
   puts "///   Creating races"
