@@ -57,9 +57,11 @@ else
   if @race.photos
   @race.photos.each do |photo|
     photo.destroy!
+  end
+  if @race.route
+    @race.route.destroy!
+  end
   @race.destroy!
-  end
-  end
   redirect_to root_path
   flash[:success] = "the race has been successfully deleted from the database"
 end
