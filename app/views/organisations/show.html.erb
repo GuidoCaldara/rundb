@@ -2,47 +2,60 @@
 <div class="organisation-wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-xs-offset-1 col-sm-10 organisation-content">
+      <div class="col-xs-offset-1 col-xs-10 organisation-content">
+
+
+        <div class="avatar-top-part">
+          <!-- Organisation logo -->
+          <% if !@organisation.logo %>
+
+            <div class="avatar-organisation-page" style="background-image: url('<%= cl_image_path "http://lorempixel.com/200/200/sports/" %>')">
+            </div>
+
+
+          <% else %>
+
+            <div class="avatar-organisation-page" style="background-image: url('<%= cl_image_path @organisation.logo.url %>')">
+            </div>
+
+          <% end %>
+        </div>
 
 
         <div class="organisation-top-part">
 
+          <div class="organisation-details">
+            <div class="organisation-name"> <%= @organisation.name %></div>
 
-          <div class="avatar-left-part">
-            <!-- Organisation logo -->
-            <% if !@organisation.logo %>
-              <img src="http://lorempixel.com/200/200/sports/" class="avatar-org-showpage">
-            <% else %>
-              <%= cl_image_tag @organisation.logo.url, crop: :fill, class: "avatar-org-showpage  float-left"%>
-            <% end %>
-          </div>
+            <div class="orga-details-banner">
 
+              <div class="orga-details-left">
+                <div class="detail-item"><strong>Address</strong><br><%=@organisation.address%></div>
+                <div class="detail-item"><strong>Phone Number</strong><br><%=@organisation.phone_number %></div>
+                <div class="detail-item"><strong>Contact Email</strong><br><%=@organisation.email %></div>
+              </div>
 
-
-          <div class="organisation-top-right">
-            <h2> <%= @organisation.name %></h2>
-            <p><strong>Address </strong><%=@organisation.address%></p>
-            <p><strong>Phone Number:</strong><%=@organisation.phone_number %></p>
-            <p><strong>Contact Email:  </strong><%=@organisation.email %></p>
-            <p><strong>A brief history: <br> </strong><%=@organisation.description %></p>
+              <div class="orga-details-right">
+                <div><strong>A brief history:</strong> <%=@organisation.description %></div>
+              </div>
+            </div>
 
 
+              <div class="orga-edit-actions">
 
-
-            <div class="edit-actions">
-
-              <%= link_to edit_organisation_path(@organisation.id) do %>
-              <p><i class="fas fa-edit"></i> Edit Your Organization</p><% end %>
-
-              <%= link_to organisation_path(@organisation.id), method: :delete, data: {confirm: 'Are you really wanna delete your organisation? If u have some races in the database u will not able to complete the cancellation?'} do %>
-                <p><i class="fas fa-exclamation-triangle"></i>Delete Your organisation</p>
-                <% end %>
+                <%= link_to edit_organisation_path(@organisation.id) do %>
+                <div class="edit-orga-button"> Edit Your Organization</div><% end %>
 
                 <%= link_to new_race_path do %>
-                <p><i class="fas fa-plus"></i>Add a new race</p>
+                <div class="add-orga-button">Add a new race</div>
                 <% end %>
 
-            </div>
+                <%= link_to organisation_path(@organisation.id), method: :delete, data: {confirm: 'Are you really wanna delete your organisation? If u have some races in the database u will not able to complete the cancellation?'} do %>
+                  <div class="delete-orga-button">Delete Your organisation</div>
+                  <% end %>
+
+
+              </div>
 
           </div> <!-- closing organisation top right page -->
 
@@ -82,21 +95,16 @@
                               <% end %>
                             </div>
 
-                            <i class="far fa-heart card-race-favorite"></i>
                           </div>
                           <div class="card-race-body">
-                            <p class="hit-name element lead"><%= link_to "Manage the race", race_path(race.id), class: "btn btn-primary" %></p>
+                            <%= link_to "Manage the race", race_path(race.id), class: "orga-race-action-button" %>
 
-                            <p class="lead hit-name element last">
+
                               <% if race.bookable && race.orders %>
-                              <%= link_to "Subscription list", race_subscriptions_path(race.id), class: "btn btn-primary" %>
+                              <%= link_to "Subscription list", race_subscriptions_path(race.id), class: "orga-race-action-button" %>
                               <% end %>
-                            </p>
+
                           </div>
-                        </div>
-
-
-
 
                       </div> <!-- closing card race div -->
                     </div> <!-- closing col -->
@@ -105,8 +113,8 @@
 
 
 
-              </div>
-            </div>
+              </div> <!-- closing col -->
+            </div> <!-- closing container -->
 
 
 
@@ -122,138 +130,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-<!-- OLD CODE -->
-
-<div class="container">
-
-  <div class="row pt-5">
-  <!-- Column left with logo
-  -->
-  <div class="col-md-3 hide-sm d-flex justify-content-center">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="align-self-start d-block">
-          <% if !@organisation.logo %>
-          <img src="http://lorempixel.com/200/200/sports/" class="avatar-org-showpage">
-          <% else %>
-          <%= cl_image_tag @organisation.logo.url, crop: :fill, class: "avatar-org-showpage  float-left"%>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- Close Column left with logo
--->
-
-<!-- Column right with info
--->
-<div class="col-lg-9 col-md-8 col-sm-12">
-  <div class="jumbotron organisation-info mb-2">
-    <h2> <%= @organisation.name %></h2>
-    <p><strong>Address </strong><%=@organisation.address%></p>
-    <p><strong>Phone Number:</strong><%=@organisation.phone_number %></p>
-    <p><strong>Contact Email:  </strong><%=@organisation.email %></p>
-    <p><strong>A brief history: <br> </strong><%=@organisation.description %></p>
-  </div>
-</div>
-<!-- Column right with info
--->
-
-</div>
-
-<!-- First ROW closed
--->
-
-<!-- Start Second ROW -->
-<div class="row">
-  <div class="col-md-3 hide-sm"></div>
-  <div class="col-lg-9 col-md-8 col-sm-12 d-flex justify-content-start">
-    <div  class="col-md-4">
-      <%= link_to edit_organisation_path(@organisation.id) do %>
-      <p><i class="fas fa-edit"></i> Edit Your Organization</p><% end %>
-    </div>
-    <div class="col-md-4">
-     <%= link_to organisation_path(@organisation.id), method: :delete, data: {confirm: 'Are you really wanna delete your organisation? If u have some races in the database u will not able to complete the cancellation?'} do %>
-     <p><i class="fas fa-exclamation-triangle"></i>Delete Your organisation</p><% end %>
-   </div>
-   <div class="col-md-4">
-    <%= link_to new_race_path do %>
-    <p><i class="fas fa-plus"></i>Add a new race</p>
-    <% end %>
-
-  </div>
-
-</div>
-</div>
-<!-- finish row with link -->
-
-</div>
-
-<div class="container">
-<% if  !@organisation.races.any? %>
-<div class="row">
-  <div class="col-md-12">
-    <div class="jumbotron text-center">
-       <h1>You don't have any race yet. Add your first race!</h1>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- Display all the races of an organizer just if he has some race -->
-<% elsif @organisation.races.any? %>
-  <h1 class= "lead-2 my-4"> Your Races</h1>
-  <div class="row">
-
-
-    <% @races.each do |race| %>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-        <div class="card-race">
-          <div class="card-race-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
-            <p class="hit-name card-race-title"><%= race.name %></p>
-            <i class="fas fa-map-marker-alt card-race-marker"></i>
-            <p class="hit-name card-race-location"><%= race.location %></p>
-            <div class="star-container">
-              <% 3.times do %>
-              <i class="fas fa-star card-race-star"></i>
-              <% end %>
-              <% (5 - 3).times do %>
-              <i class="far fa-star card-race-star"></i>
-              <% end %>
-            </div>
-
-            <i class="far fa-heart card-race-favorite"></i>
-          </div>
-          <div class="card-race-body">
-            <p class="hit-name element lead"><%= link_to "Manage the race", race_path(race.id), class: "btn btn-primary" %></p>
-
-            <p class="lead hit-name element last">
-              <% if race.bookable && race.orders %>
-              <%= link_to "Subscription list", race_subscriptions_path(race.id), class: "btn btn-primary" %>
-              <% end %>
-            </p>
-          </div>
-        </div>
-
-
-      </div>
-    <% end %>
-
-
-
-  </div>
-<% end %>
-</div>
 
 
 
