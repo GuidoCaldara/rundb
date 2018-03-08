@@ -50,7 +50,7 @@ end
 end
 
 def destroy
- if self.has_order?
+ if @race.has_order?
   redirect_to race_path(@race.id)
   flash[:danger] = "You can't destroy a race that have already registration"
 else
