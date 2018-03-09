@@ -94,6 +94,15 @@
                             <%= link_to race_path(race.id), method: :delete, data: {confirm: 'Are you really wanna delete your Race? If u have some subscription for the race u will not able to complete the cancellation'}, class: "card-race-delete" do %> <i class="fas fa-trash"></i>
                               <% end %>
 
+                            <div class="card-middle-orga">
+                              <div class="card-middle-orga-left">
+                                <%= race.orders.size %> <br>participants
+                              </div>
+                              <div class="card-middle-orga-right">
+                                <%= race.orders.size * race.fee_cents / 100 %> ‎€ <br>of income
+                              </div>
+                            </div>
+
                             <div class="card-bottom-orga-button-container">
                               <div class="container">
                                 <div class="row">
