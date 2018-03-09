@@ -83,6 +83,8 @@
 
                 <p class="card-race-location"><%= race.location %></p>
 
+                <br><p class="card-race-date"><i class="fas fa-calendar-alt"></i> <%=race.date%></p>
+
                 <div class="star-container">
                   <% if race.race_avg_rate %>
                     <% (race.race_avg_rate/2).round(0).times do %>

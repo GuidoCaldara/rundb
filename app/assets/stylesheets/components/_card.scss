@@ -70,6 +70,7 @@
   // top: 8px;
   // left: 14px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
+  margin-bottom: 2px;
 }
 
 .card-race-location {
@@ -80,7 +81,20 @@
   // top: 38px;
   // left: 30px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
+  margin-bottom: 2px;
 }
+
+.card-race-date {
+  font-size: 16px;
+  color: #fffffff0;
+  display: inline-block;
+  // position: absolute;
+  // top: 38px;
+  // left: 30px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
+  margin-bottom: 2px;
+}
+
 .card-race-marker {
   font-size: 16px;
   color: #fffffff0;
