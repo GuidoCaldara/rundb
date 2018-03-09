@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
          end
       end
     else
-      @order.amount_cents = @race.fee_cents *100
+      @order.amount_cents = @race.fee_cents * 100
       if @order.save!
         redirect_to new_order_payment_path(@order.id)
       else
