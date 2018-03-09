@@ -13,7 +13,7 @@
               <div class="avatar-profile-page" style="background-image: url('<%= cl_image_path avatar_url %>')">
               </div>
 
-              <% elsif @user.avatar %>
+              <% elsif @user.avatar.url %>
               <!-- else we show normal user avatar -->
 
                 <div class="avatar-profile-page" style="background-image: url('<%= cl_image_path @user.avatar %>')">
