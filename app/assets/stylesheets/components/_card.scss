@@ -53,31 +53,40 @@
   font-weight: 100;
 }
 
+.card-race-top-left-container {
+  position: absolute;
+  top: 2px;
+  left: 12px;
+  max-width: 80%;
+}
+
+
 .card-race-title {
   max-width: 200px;
   font-family: "Poppins", "sans-serif";
   font-size: 20px;
   color: #fffffff0;
-  position: absolute;
-  top: 8px;
-  left: 14px;
+  // position: absolute;
+  // top: 8px;
+  // left: 14px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
 }
 
 .card-race-location {
   font-size: 16px;
   color: #fffffff0;
-  position: absolute;
-  top: 38px;
-  left: 30px;
+  display: inline-block;
+  // position: absolute;
+  // top: 38px;
+  // left: 30px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
 }
 .card-race-marker {
   font-size: 16px;
   color: #fffffff0;
-  position: absolute;
-  top: 40px;
-  left: 14px;
+  // position: absolute;
+  // top: 40px;
+  // left: 14px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
 }
 
@@ -91,9 +100,9 @@
 }
 
 .star-container {
-  position: absolute;
-  top: 64px;
-  left: 14px;
+  // position: absolute;
+  // top: 64px;
+  // left: 14px;
 }
 
 .card-race-star {

@@ -76,23 +76,26 @@
           <div class="card-race">
             <div class="card-race-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
 
-              <p class="card-race-title"><%= race.name %></p>
+              <div class="card-race-top-left-container">
+                <p class="card-race-title"><%= race.name %></p>
 
-              <i class="fas fa-map-marker-alt card-race-marker"></i>
+                <i class="fas fa-map-marker-alt card-race-marker"></i>
 
-              <p class="card-race-location"><%= race.location %></p>
+                <p class="card-race-location"><%= race.location %></p>
 
-              <div class="star-container">
-                <% if race.race_avg_rate %>
-                  <% (race.race_avg_rate/2).round(0).times do %>
-                    <i class="fas fa-star card-race-star"></i>
+                <div class="star-container">
+                  <% if race.race_avg_rate %>
+                    <% (race.race_avg_rate/2).round(0).times do %>
+                      <i class="fas fa-star card-race-star"></i>
+                    <% end %>
+                    <% (5 - race.race_avg_rate/2).round(0).times do %>
+                      <i class="far fa-star card-race-star"></i>
+                    <% end %>
                   <% end %>
-                  <% (5 - race.race_avg_rate/2).round(0).times do %>
-                    <i class="far fa-star card-race-star"></i>
-                  <% end %>
-              <% end %>
 
+                  </div>
                 </div>
+
 
               <i class="far fa-heart card-race-favorite"></i>
 
