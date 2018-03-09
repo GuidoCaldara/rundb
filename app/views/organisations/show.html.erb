@@ -83,18 +83,20 @@
 
                         <div class="card-race">
                           <div class="card-race-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
-                            <p class="hit-name card-race-title"><%= race.name %></p>
-                            <i class="fas fa-map-marker-alt card-race-marker"></i>
-                            <p class="hit-name card-race-location"><%= race.location %></p>
-                            <div class="star-container">
-                              <% 3.times do %>
-                              <i class="fas fa-star card-race-star"></i>
-                              <% end %>
-                              <% (5 - 3).times do %>
-                              <i class="far fa-star card-race-star"></i>
-                              <% end %>
-                            </div>
 
+                            <div class="card-race-top-left-container">
+                              <p class="hit-name card-race-title"><%= race.name %></p>
+                              <i class="fas fa-map-marker-alt card-race-marker"></i>
+                              <p class="hit-name card-race-location"><%= race.location %></p>
+                              <div class="star-container">
+                                <% 3.times do %>
+                                <i class="fas fa-star card-race-star"></i>
+                                <% end %>
+                                <% (5 - 3).times do %>
+                                <i class="far fa-star card-race-star"></i>
+                                <% end %>
+                              </div>
+                            </div>
                           </div>
                           <div class="card-race-body">
                             <%= link_to "Manage the race", race_path(race.id), class: "orga-race-action-button" %>
