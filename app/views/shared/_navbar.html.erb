@@ -9,7 +9,7 @@
 
     <% if user_signed_in? %>
 
-<!--     if user has organisation code -->
+    <!--     if user has organisation code -->
 
 
     <%= link_to "Become race organiser", new_organisation_path, class: "navbar-rundb-link" if !current_user.organisation%>
@@ -42,42 +42,42 @@
         <li><%= link_to "My profile", user_path(current_user.id), class: "" %>
         </li>
 
-          <% if user_signed_in?%>
-          <%= link_to "Logout", destroy_user_session_path,  :method=>'delete', class: "" %>
-          <% end %>
-        </li>
-      </ul>
+        <% if user_signed_in?%>
+        <%= link_to "Logout", destroy_user_session_path,  :method=>'delete', class: "" %>
+        <% end %>
+      </li>
+    </ul>
 
 
-      <% elsif user_signed_in? && !current_user.avatar && current_user.facebook_picture_url %>
-      <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-      <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+    <% elsif user_signed_in? && !current_user.avatar && current_user.facebook_picture_url %>
+    <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+    <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
 
-        <ul class="dropdown-menu dropdown-menu-right navbar-rundb-dropdown-menu">
-        <li><%= link_to "My profile", user_path(current_user.id), class: "" %>
+    <ul class="dropdown-menu dropdown-menu-right navbar-rundb-dropdown-menu">
+      <li><%= link_to "My profile", user_path(current_user.id), class: "" %>
 
-          <% if user_signed_in?%>
-          <%= link_to "Logout", destroy_user_session_path,  :method=>'delete', class: "" %>
-          <% end %>
-        </li>
-      </ul>
+        <% if user_signed_in?%>
+        <%= link_to "Logout", destroy_user_session_path,  :method=>'delete', class: "" %>
+        <% end %>
+      </li>
+    </ul>
 
 
 
-      <% elsif user_signed_in? && current_user.avatar  %>
-      <%= cl_image_tag current_user.avatar.url, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"%>
-      <ul class="dropdown-menu dropdown-menu-right navbar-rundb-dropdown-menu">
-        <li><%= link_to "My profile", user_path(current_user.id), class: "" %>
-        </li>
+    <% elsif user_signed_in? && current_user.avatar  %>
+    <%= cl_image_tag current_user.avatar.url, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"%>
+    <ul class="dropdown-menu dropdown-menu-right navbar-rundb-dropdown-menu">
+      <li><%= link_to "My profile", user_path(current_user.id), class: "" %>
+      </li>
 
-        <li>
-          <% if user_signed_in?%>
-          <%= link_to "Logout", destroy_user_session_path,  :method=>'delete', class: "" %>
-          <% end %>
-        </li>
-      </ul>
-    </div>
-  </li>
+      <li>
+        <% if user_signed_in?%>
+        <%= link_to "Logout", destroy_user_session_path,  :method=>'delete', class: "" %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</li>
 
 </div>
 
@@ -87,7 +87,7 @@
 
 <ul class="dropdown-menu dropdown-menu-right navbar-rundb-dropdown-menu">
   <li><%= link_to "My profile", user_path(current_user.id), class: "" %>
-        </li>
+  </li>
 
   <li>
     <%= link_to "Logout", destroy_user_session_path,  :method=>'delete', class: "" %>
@@ -112,8 +112,6 @@
   <div class="dropdown">
     <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
     <ul class="dropdown-menu dropdown-menu-right navbar-rundb-dropdown-menu">
-      <li><a href="#">Host</a></li>
-      <li><a href="#">Trips</a></li>
       <li><a href="#">Logout</a></li>
     </ul>
   </div>
@@ -129,16 +127,15 @@
 <!-- Modal -->
 
 
-<div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-login" role="document">
+<div class="modal fade pt-0" id="signUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-login modal-position" role="document">
     <div class="modal-content">
-      <div class="modal-header modal-header-custom">
-        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+      <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body">
+
+
         <%= render "devise/registrations/new", resource: User.new %>
       </div>
     </div>
@@ -146,14 +143,13 @@
 </div>
 
 <div class="modal test fade " id="signIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-login " role="document">
+  <div class="modal-dialog modal-login modal-position " role="document">
     <div class="modal-content modal-login">
-      <div class="modal-header modal-header-custom">
+      <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body">
+
         <%= render "devise/sessions/new", resource: User.new %>
       </div>
     </div>

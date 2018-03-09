@@ -25,12 +25,32 @@
 
 // LOGIN BUTTON
 .button-login {
-  margin-top: 25px;
-  width: 112px;
-  margin-bottom: 23px;
-  padding-top: 5px;
-  height: 41px;
-}
+    margin-top: 25px;
+    width: 112px;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    height: 41px;
+    padding-bottom: 6px;
+    font-size: 21px !important;
+    font-family: roboto;
+    font-weight: 400 !important;
+  }
+
+  .button-signup {
+    text-align: center;
+    margin-top: 25px;
+    width: 112px;
+    margin-bottom: 10px;
+    font-size: 21px !important;
+    font-family: roboto;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    padding-right: 22px;
+    padding-left: 21px;
+    font-weight: 400 !important;
+  }
+
+
 
 .fb-login-button{
   margin-left: 10px;
