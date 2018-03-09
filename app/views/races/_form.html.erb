@@ -13,7 +13,7 @@
         <%= f.input :name, label: 'Insert The race Name', error: 'Username is mandatory, please specify one', html: { autocomplete: 'off' } %>
         <%= f.input :category, priority: [ "---" ], collection: [ "Trail", "Road", "Skyrace", "VerticalKM"], label: "Select the race category" %>
         <%= f.input :race_distance, label: "Insert the race distance in Km", input_html: {  min: '0', step: 'any' }%>
-        <%= f.input :elevation, label: "Insert the positive elevation of the race in meters (Not required for road races)", input_html: { min: '0', step: '100' }%>
+        <%= f.input :elevation, label: "Insert the positive elevation of the race in meters (Insert 0 for the road races)", input_html: { min: '0', step: '100' }%>
          <%= f.input :location, input_html: {id: "location"}, label: "Race Location" %>
         <%= f.input :date, label: "Insert the race date", as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year]%>
         <%= f.input :first_edition, label: "Fist edition year", as: :date, start_year: Date.today.year-20, end_year: Date.today.year, order: [:year] %>

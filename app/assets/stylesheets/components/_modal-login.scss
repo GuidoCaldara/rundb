@@ -7,6 +7,20 @@
 border-bottom: none !important;
 }
 
-.test{
- box-shadow: inset 10 20px 20px 20px #00abe3;
+
+.modal-position{
+  margin-top: -80px
+}
+
+
+.modal-position{
+  input{
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 300;
+  }
+  select{
+    border-radius: 8px
+  }
+
 }
