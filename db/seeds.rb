@@ -1,184 +1,184 @@
-puts "///   Creating users"
-100.times do
-  user = User.new(
-    email: Faker::Internet.free_email,
-    password: "password",
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    remote_avatar_url: "http://res.cloudinary.com/guidocld/image/upload/v1520479304/user#{rand(1..6)}.jpg",
+# puts "///   Creating users"
+# 100.times do
+#   user = User.new(
+#     email: Faker::Internet.free_email,
+#     password: "password",
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     remote_avatar_url: "http://res.cloudinary.com/guidocld/image/upload/v1520479304/user#{rand(1..6)}.jpg",
 
-    )
-
-
-  if user.save
-    puts user.first_name + " " + user.last_name + " created!"
-  end
-end
+#     )
 
 
-puts "///   #{User.count} users in the database!"
+#   if user.save
+#     puts user.first_name + " " + user.last_name + " created!"
+#   end
+# end
+
+
+# puts "///   #{User.count} users in the database!"
 
 # # CREATING ORGANISATION
 
-location = ["Milan, italy",
-  "Naples, italy",
-  "Turin, italy",
-  "Palermo, italy",
-  "Genoa, italy",
-  "Bologna, italy",
-  "Florence, italy",
-  "Bari, italy",
-  "Catania, italy",
-  "Venice, italy",
-  "Verona, italy",
-  "Messina, italy",
-  "Padua, italy",
-  "Trieste, italy",
-  "Taranto, italy",
-  "Brescia, italy",
-  "Parma, italy",
-  "Prato, italy",
-  "Modena, italy",
-  "Reggio Calabria, italy",
-  "Reggio Emilia, italy",
-  "Perugia, italy",
-  "Ravenna, italy",
-  "Livorno, italy",
-  "Cagliari, italy",
-  "Foggia, italy",
-  "Rimini, italy",
-  "Salerno, italy",
-  "Ferrara, italy",
-  "Sassari, italy",
-  "Latina, italy",
-  "Giugliano in Campania, italy",
-  "Monza, italy",
-  "Syracuse, italy",
-  "Pescara, italy",
-  "Bergamo, italy",
-  "Forlì, italy",
-  "Trento, italy",
-  "Vicenza, italy",
-  "Terni, italy",
-  "Bolzano, italy",
-  "Novara, italy",
-  "Piacenza, italy",
-  "Ancona, italy",
-  "Andria, italy",
-  "Arezzo, italy",
-  "Udine, italy",
-  "Cesena, italy",
-  "Lecce, italy",
-  "Pesaro, italy",
-  "Barletta, italy",
-  "Alessandria, italy",
-  "La Spezia, italy",
-  "Pisa, italy",
-  "Catanzaro, italy",
-  "Pistoia, italy",
-  "Guidonia Montecelio, italy",
-  "Lucca, italy",
-  "Brindisi, italy",
-  "Torre del Greco, italy",
-  "Como, italy",
-  "Treviso, italy",
-  "Busto Arsizio, italy",
-  "Marsala, italy",
-  "Grosseto, italy",
-  "Sesto San Giovanni, italy",
-  "Pozzuoli, italy",
-  "Varese, italy",
-  "Fiumicino, italy",
-  "Casoria, italy",
-  "Asti, italy",
-  "Caserta, italy",
-  "Cinisello Balsamo, italy",
-  "Gela, italy",
-  "Aprilia, italy",
-  "Ragusa, italy",
-  "Pavia, italy",
-  "Cremona, italy",
-  "Carpi, italy",
-  "Quartu Sant'Elena, italy",
-  "Lamezia Terme, italy",
-  "Altamura, italy",
-  "Imola, italy",
-  "L’Aquila, italy",
-  "Massa, italy",
-  "Trapani, italy",
-  "Cosenza, italy",
-  "Viterbo, italy",
-  "Potenza, italy",
-  "Castellammare di Stabia, italy",
-  "Afragola, italy",
-  "Vittoria, italy",
-  "Vigevano, italy",
-  "Crotone, italy",
-  "Pomezia, italy",
-  "Caltanissetta, italy",
-  "Carrara, italy",
-  "Viareggio, italy",
-  "Savona, italy",
-  "Fano, italy",
-  "Matera, italy",
-  "Legnano, italy",
-  "Olbia, italy",
-  "Benevento, italy",
-  "Marano di Napoli, italy",
-  "Acerra, italy",
-  "Molfetta, italy",
-  "Agrigento, italy",
-  "Faenza, italy",
-  "Cerignola, italy",
-  "Moncalieri, italy",
-  "Foligno, italy",
-  "Manfredonia, italy",
-  "Tivoli, italy",
-  "Cuneo, italy",
-  "Trani, italy",
-  "Bisceglie, italy",
-  "Bagheria, italy",
-  "Bitonto, italy",
-  "Portici, italy",
-  "Sanremo, italy",
-  "Teramo, italy",
-  "Avellino, italy",
-  "Modica, italy",
-  "Anzio, italy",
-  "Montesilvano, italy",
-  "Siena, italy",
-  "Cava de' Tirreni, italy",
-  "San Severo, italy",
-  "Velletri, italy",
-  "Ercolano, italy",
-  "Gallarate, italy",
-  "Aversa, italy",
-  "Civitavecchia, italy",
-  "Acireale, italy",
-  "Rovigo, italy",
-  "Mazara del Vallo, italy",
-  "Chieti, italy",
-  "Pordenone, italy",
-  "Battipaglia, italy",
-  "Scafati, italy",
-  "Rho, italy",
-  "Scandicci, italy"]
+# location = ["Milan, italy",
+#   "Naples, italy",
+#   "Turin, italy",
+#   "Palermo, italy",
+#   "Genoa, italy",
+#   "Bologna, italy",
+#   "Florence, italy",
+#   "Bari, italy",
+#   "Catania, italy",
+#   "Venice, italy",
+#   "Verona, italy",
+#   "Messina, italy",
+#   "Padua, italy",
+#   "Trieste, italy",
+#   "Taranto, italy",
+#   "Brescia, italy",
+#   "Parma, italy",
+#   "Prato, italy",
+#   "Modena, italy",
+#   "Reggio Calabria, italy",
+#   "Reggio Emilia, italy",
+#   "Perugia, italy",
+#   "Ravenna, italy",
+#   "Livorno, italy",
+#   "Cagliari, italy",
+#   "Foggia, italy",
+#   "Rimini, italy",
+#   "Salerno, italy",
+#   "Ferrara, italy",
+#   "Sassari, italy",
+#   "Latina, italy",
+#   "Giugliano in Campania, italy",
+#   "Monza, italy",
+#   "Syracuse, italy",
+#   "Pescara, italy",
+#   "Bergamo, italy",
+#   "Forlì, italy",
+#   "Trento, italy",
+#   "Vicenza, italy",
+#   "Terni, italy",
+#   "Bolzano, italy",
+#   "Novara, italy",
+#   "Piacenza, italy",
+#   "Ancona, italy",
+#   "Andria, italy",
+#   "Arezzo, italy",
+#   "Udine, italy",
+#   "Cesena, italy",
+#   "Lecce, italy",
+#   "Pesaro, italy",
+#   "Barletta, italy",
+#   "Alessandria, italy",
+#   "La Spezia, italy",
+#   "Pisa, italy",
+#   "Catanzaro, italy",
+#   "Pistoia, italy",
+#   "Guidonia Montecelio, italy",
+#   "Lucca, italy",
+#   "Brindisi, italy",
+#   "Torre del Greco, italy",
+#   "Como, italy",
+#   "Treviso, italy",
+#   "Busto Arsizio, italy",
+#   "Marsala, italy",
+#   "Grosseto, italy",
+#   "Sesto San Giovanni, italy",
+#   "Pozzuoli, italy",
+#   "Varese, italy",
+#   "Fiumicino, italy",
+#   "Casoria, italy",
+#   "Asti, italy",
+#   "Caserta, italy",
+#   "Cinisello Balsamo, italy",
+#   "Gela, italy",
+#   "Aprilia, italy",
+#   "Ragusa, italy",
+#   "Pavia, italy",
+#   "Cremona, italy",
+#   "Carpi, italy",
+#   "Quartu Sant'Elena, italy",
+#   "Lamezia Terme, italy",
+#   "Altamura, italy",
+#   "Imola, italy",
+#   "L’Aquila, italy",
+#   "Massa, italy",
+#   "Trapani, italy",
+#   "Cosenza, italy",
+#   "Viterbo, italy",
+#   "Potenza, italy",
+#   "Castellammare di Stabia, italy",
+#   "Afragola, italy",
+#   "Vittoria, italy",
+#   "Vigevano, italy",
+#   "Crotone, italy",
+#   "Pomezia, italy",
+#   "Caltanissetta, italy",
+#   "Carrara, italy",
+#   "Viareggio, italy",
+#   "Savona, italy",
+#   "Fano, italy",
+#   "Matera, italy",
+#   "Legnano, italy",
+#   "Olbia, italy",
+#   "Benevento, italy",
+#   "Marano di Napoli, italy",
+#   "Acerra, italy",
+#   "Molfetta, italy",
+#   "Agrigento, italy",
+#   "Faenza, italy",
+#   "Cerignola, italy",
+#   "Moncalieri, italy",
+#   "Foligno, italy",
+#   "Manfredonia, italy",
+#   "Tivoli, italy",
+#   "Cuneo, italy",
+#   "Trani, italy",
+#   "Bisceglie, italy",
+#   "Bagheria, italy",
+#   "Bitonto, italy",
+#   "Portici, italy",
+#   "Sanremo, italy",
+#   "Teramo, italy",
+#   "Avellino, italy",
+#   "Modica, italy",
+#   "Anzio, italy",
+#   "Montesilvano, italy",
+#   "Siena, italy",
+#   "Cava de' Tirreni, italy",
+#   "San Severo, italy",
+#   "Velletri, italy",
+#   "Ercolano, italy",
+#   "Gallarate, italy",
+#   "Aversa, italy",
+#   "Civitavecchia, italy",
+#   "Acireale, italy",
+#   "Rovigo, italy",
+#   "Mazara del Vallo, italy",
+#   "Chieti, italy",
+#   "Pordenone, italy",
+#   "Battipaglia, italy",
+#   "Scafati, italy",
+#   "Rho, italy",
+#   "Scandicci, italy"]
 
 
-puts "///   Creating organisations"
-20.times do
-  organisation = Organisation.new(
-    user_id: User.all.sample.id,
-    name: Faker::SiliconValley.company,
-    address: location.sample,
-    email: "organisation@gmail.com",
-    description: "We organize amazing races around the world!")
-  if organisation.save
-    puts organisation.name + " " + " created!"
-  end
-end
+# puts "///   Creating organisations"
+# 20.times do
+#   organisation = Organisation.new(
+#     user_id: User.all.sample.id,
+#     name: Faker::SiliconValley.company,
+#     address: location.sample,
+#     email: "organisation@gmail.com",
+#     description: "We organize amazing races around the world!")
+#   if organisation.save
+#     puts organisation.name + " " + " created!"
+#   end
+# end
 
-puts "///   #{Organisation.count} organisations in the database!"
+# puts "///   #{Organisation.count} organisations in the database!"
 
 # CREATING RACES
 
@@ -221,27 +221,30 @@ puts "///   #{Organisation.count} organisations in the database!"
   #   puts race.name + " " + " created!"
   # end
 
-#  puts "///   Creating orders"
+ puts "///   Creating orders"
 
+genderr = ["Man", "Woman"]
 
-#  Race.all.each do |race|
-#   x = rand (10..27)
-#   x.times do
-#     order = Order.new
-#     order.race_id = race.id
-#     order.user_id = User.all.sample.id
-#     order.state = "paid"
-#     order.first_name = Faker::Name.first_name
-#     order.last_name = Faker::Name.last_name
-#     order.gender = "Gender"
-#     if order.save
-#       puts "1 order just created for #{race.name}"
-#     else
-#       puts "!!! order not save"
-#     end
-#   end
-# end
-# puts "///  #{Order.count} order created!"
+ Race.all.each do |race|
+  x = rand (10..27)
+  x.times do
+    order = Order.new
+    order.race_id = race.id
+    order.user_id = User.all.sample.id
+    order.state = "paid"
+    order.amount_cents = race.fee_cents
+    order.first_name = Faker::Name.first_name
+    order.last_name = Faker::Name.last_name
+    order.city = Faker::Address.city
+    order.gender = genderr.sample
+    if order.save
+      puts "1 order just created for #{race.name}"
+    else
+      puts "!!! order not save"
+    end
+  end
+end
+puts "///  #{Order.count} order created!"
 
 
 # # # CREATING REVIEWS
@@ -705,21 +708,21 @@ puts "///   #{Organisation.count} organisations in the database!"
 # puts "///  #{Order.count} order created!"
 
 
-# # # CREATING REVIEWS
-# puts "///   Creating reviews"
+# # CREATING REVIEWS
+puts "///   Creating reviews"
 
-# Order.all.each do |order|
-#   review = Review.new
-#   review.race_id = order.race_id
-#   review.user_id = order.user_id
-#   review.description = Faker::Lorem.sentence(60, true, 20)
-#   review.route_rate = rand(1..10)
-#   review.organisation_rate = rand(1..10)
-#   review.value_for_money = rand(1..10)
-#   review.save
-#   puts "1 review created for race #{Race.find(order.race_id).name}"
-# end
-# puts "///   #{Review.count} reviews created!"
+Order.all.each do |order|
+  review = Review.new
+  review.race_id = order.race_id
+  review.user_id = order.user_id
+  review.description = Faker::Lorem.sentence(60, true, 20)
+  review.route_rate = rand(1..10)
+  review.organisation_rate = rand(1..10)
+  review.value_for_money = rand(1..10)
+  review.save
+  puts "1 review created for race #{Race.find(order.race_id).name}"
+end
+puts "///   #{Review.count} reviews created!"
 
 
 # ## REINDEX ALGOLIA
