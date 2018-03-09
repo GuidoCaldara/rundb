@@ -16,6 +16,9 @@
           <% else %>
           <p><%= review.user.email %>
            <% end %>
+          <% if review.created_at %>
+            <p class="review-date"><%= (review.created_at).strftime("%F") %></p>
+          <% end %>
 
          </div>
          <!-- RATES  -->
