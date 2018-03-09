@@ -84,10 +84,17 @@ end
 include AlgoliaSearch
 
 algoliasearch do
-  attribute :name, :location, :category, :race_distance, :date_stamp, :_geoloc, :id, :reviews, :race_avg_rate, :photo
-  attributesForFaceting [:category, :race_distance, :date_stamp, :_geoloc, :name, :location, :id, :photo]
+  attribute :name, :location, :category, :race_distance, :date_stamp, :_geoloc, :id, :reviews, :race_avg_rate
+  attribute :photo_url do
+    if photo.metadata
+      "#{photo.metadata["secure_url"]}"
+    end
+  end
+  attributesForFaceting [:category, :race_distance, :date_stamp, :_geoloc, :name, :location, :id ]
 
 end
+
+
 
 
 monetize :fee_cents
@@ -181,6 +188,10 @@ def set_race_avg_rate
      self.save
    end
  end
+
+  def photo_url_changed?
+    self.photo.metadata["secure_url"]
+  end
 
 
 end

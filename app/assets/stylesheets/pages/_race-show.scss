@@ -382,7 +382,6 @@
 border: 1px solid #e2e2e2;
 }
 
-
 // EXISTING REVIEW
 
 .existing-review {
@@ -402,6 +401,11 @@ border: 1px solid #e2e2e2;
   }
 }
 
+
+.review-date {
+  font-size: 12px;
+  font-weight: 100 !important;
+}
 .existing-review-rate {
   flex: 0 0 200px;
   padding: 0 16px;

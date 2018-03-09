@@ -1,24 +1,40 @@
-<div class="container py-4 ">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="display-3">Subscriptions list for <%= @race.name %>
-      </div></h1>
-    </div>
 
+<div class="sub-wrapper">
+  <div class="container">
     <div class="row">
+      <div class="col-xs-offset-1 col-xs-10 sub-content">
 
-      <div class="col-lg-12">
+        <div class="sub-top-part">
 
+          <div class="sub-title">Subscriptions list for <%= @race.name %>
+          </div class="sub-title">
+          <% if @orders.size > 0 %>
+            <div class="sub-top-right">
+              <div class="underlined"><%= @orders.size %> participants </div>
+              <div class="underlined"><%= @orders.size * @race.fee_cents / 100 %> ‎€ of income</div>
+            </div>
+          <% end %>
+
+        </div>
+
+        <%= link_to race_path(@race.id) do %>
+         <div class ="go-back-button"> Back to the race page</div>
+          <% end %>
+
+        <%= link_to organisation_path(current_user.organisation.id) do %>
+        <div class ="go-back-button"> Back to dashboard</div>
+        <% end %>
 
         <table class="table subscription-table">
           <thead>
             <tr>
               <th scope="col">#</th>
+              <th scope="col"></th>
               <th scope="col">First Name</th>
               <th scope="col">Last Name</th>
               <th scope="col">Gender</th>
               <th scope="col">Birth date</th>
-              <th scope="col"> Society </th>
+              <th scope="col">Club</th>
             </tr>
           </thead>
           <tbody>
@@ -27,6 +43,11 @@
             <% @orders.each do |order| %>
             <tr>
               <td><%= @count %></th>
+              <td>
+                <%= link_to user_path(order.user_id) do %>
+                 <i class="fas fa-user-circle go-to-profile"></i>
+                  <% end %>
+                </td>
               <td><%= order.first_name%></td>
               <td><%= order.last_name %></td>
               <td><%= order.gender %></td>
@@ -37,14 +58,11 @@
             <% end %>
           </tbody>
         </table>
-          <%= link_to race_path(@race.id) do %>
-           <button class ="go-back-button btn "> Back to the race page</button>
-          <% end %>
 
-      </div>
-    </div>
+      </div> <!-- closing col -->
 
-  </div>
-
+    </div> <!-- closing row -->
+  </div> <!-- closing container -->
+</div> <!-- closing sub wrapper -->
 
 

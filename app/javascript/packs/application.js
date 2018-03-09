@@ -8,29 +8,29 @@ autocomplete();
 
 window.addEventListener('load', function() {
 
-const search = instantsearch({
-  appId: '869L3DD13H',
-  apiKey: '14d7338a984685e0f99ca9b9ffe2e78e',
-  indexName: 'Race',
-  urlSync: true
-});
+  const search = instantsearch({
+    appId: '869L3DD13H',
+    apiKey: '14d7338a984685e0f99ca9b9ffe2e78e',
+    indexName: 'Race',
+    urlSync: true
+  });
 
-search.addWidget(
-  instantsearch.widgets.searchBox({
-    container: '#search-input',
-    placeholder: 'Search for races'
-  })
-);
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-input',
+      placeholder: 'Search for races'
+    })
+    );
 
-search.addWidget(
-  instantsearch.widgets.hits({
-    container: '#hits',
-    templates: {
-      item: document.getElementById('hit-template').innerHTML,
-      empty: "We didn't find any results for the search <em>\"{{query}}\"</em>"
-    }
-  })
-);
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits',
+      templates: {
+        item: document.getElementById('hit-template').innerHTML,
+        empty: "We didn't find any results for the search <em>\"{{query}}\"</em>"
+      }
+    })
+    );
 
   search.addWidget(
     instantsearch.widgets.pagination({
@@ -41,7 +41,7 @@ search.addWidget(
         active: 'active'
       }
     })
-  );
+    );
 
   search.addWidget(
     instantsearch.widgets.refinementList({
@@ -51,38 +51,38 @@ search.addWidget(
       limit: 10,
       sortBy: ['name:asc']
     })
-  );
+    );
 
   const datePicker = instantsearch.connectors.connectRange(
-  (options, isFirstRendering) => {
-    if (!isFirstRendering) return;
+    (options, isFirstRendering) => {
+      if (!isFirstRendering) return;
 
-    const { refine } = options;
+      const { refine } = options;
 
-    new Calendar({
-      element: $('#calendar'),
-      callback: function() {
-        const start = new Date(this.start_date).getTime();
-        const end = new Date(this.end_date).getTime();
+      new Calendar({
+        element: $('#calendar'),
+        callback: function() {
+          const start = new Date(this.start_date).getTime();
+          const end = new Date(this.end_date).getTime();
 
-        refine([start, end]);
-      }
+          refine([start, end]);
+        }
       // Some good parameters based on our dataset:
       // start_date: new Date(),
       // end_date: new Date('01/01/2020'),
       // earliest_date: new Date('01/01/2008'),
       // latest_date: new Date('01/01/2020'),
     });
-  }
-);
+    }
+    );
 
   search.addWidget(
-  datePicker({
-    attributeName: 'date_stamp',
-  })
-);
+    datePicker({
+      attributeName: 'date_stamp',
+    })
+    );
 
-search.addWidget(
+  search.addWidget(
     instantsearch.widgets.rangeSlider({
       container: '#distance',
       attributeName: 'race_distance',
@@ -121,31 +121,29 @@ search.addWidget(
    //  photo = "http://lorempixel.com/400/200/"
    // };
 
-    var infowindow = new google.maps.InfoWindow({
-      content: `
-      <div class="info-popup">
-          <a href="/races/${hit.id}">
-            <div class="card-popup">
-
-
-              <div class="card-body-popup">
-                <p class="title">${hit.name}</p>
-                <p class="location"><i class="fas fa-map-marker-alt"></i>${hit.location}</p>
-                <p class="popup-rate">Rating: ${hit.race_avg_rate} / 10</p>
-                <div class="inlined">
-                <p class="element">${hit.category}</p>
-                <p class="element">${hit.race_distance} km</p>
-                <p class="element last">${hit.reviews.length} reviews</p>
-                </div>
-              </div>
-            </div>
-          </a>
-      </div>`
-    });
+   var infowindow = new google.maps.InfoWindow({
+    content: `
+    <div class="info-popup">
+    <a href="/races/${hit.id}">
+    <div class="card-popup">
+    <div class="card-header-popup" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url(${hit.photo_url})">
+    </div>
+    <div class="card-body-popup">
+    <p class="title">${hit.name}</p>
+    <p class="location"><i class="fas fa-map-marker-alt"></i>${hit.location}</p>
+    <p class="popup-rate">Rating: ${hit.race_avg_rate} / 10</p>
+    <div class="inlined">
+    <p class="element">${hit.category}</p>
+    <p class="element">${hit.race_distance} km</p>
+    <p class="element last">${hit.reviews.length} reviews</p>
+    </div>
+    </div>
+    </div>
+    </a>
+    </div>`
+  });
 
     // PUT THIS BACK WHILE IN PRODUCTION WHERE EVERY RACE HAS A PHOTO
-    // <div class="card-header-popup" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url(${hit.photo.url})">
-    // </div>
 
 
     // Add an info popup when clicking on the marker.
@@ -161,89 +159,89 @@ search.addWidget(
 
     // Initialize the map
     this._map = new google.maps.Map(
-        this._mapContainer,
-        {zoom: 1, center: new google.maps.LatLng(0, 0), styles: [
-    {
-        "featureType": "landscape.natural",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "visibility": "on"
-            },
-            {
-                "color": "#e0efef"
-            }
+      this._mapContainer,
+      {zoom: 1, center: new google.maps.LatLng(0, 0), styles: [
+        {
+          "featureType": "landscape.natural",
+          "elementType": "geometry.fill",
+          "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "color": "#e0efef"
+          }
+          ]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "geometry.fill",
+          "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "hue": "#1900ff"
+          },
+          {
+            "color": "#c0e8e8"
+          }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "geometry",
+          "stylers": [
+          {
+            "lightness": 100
+          },
+          {
+            "visibility": "simplified"
+          }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "labels",
+          "stylers": [
+          {
+            "visibility": "off"
+          }
+          ]
+        },
+        {
+          "featureType": "transit.line",
+          "elementType": "geometry",
+          "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "lightness": 700
+          }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "all",
+          "stylers": [
+          {
+            "color": "#7dcdcd"
+          }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "geometry.fill",
+          "stylers": [
+          {
+            "color": "#30a6cc"
+          }
+          ]
+        }
         ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "visibility": "on"
-            },
-            {
-                "hue": "#1900ff"
-            },
-            {
-                "color": "#c0e8e8"
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": 100
-            },
-            {
-                "visibility": "simplified"
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "transit.line",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "visibility": "on"
-            },
-            {
-                "lightness": 700
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "all",
-        "stylers": [
-            {
-                "color": "#7dcdcd"
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#30a6cc"
-            }
-        ]
-    }
-]
-}
-    );
+      }
+      );
   },
 
   render: function(params) {
