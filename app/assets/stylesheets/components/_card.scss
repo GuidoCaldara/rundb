@@ -147,3 +147,39 @@
   left: 14px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.64);
 }
+
+// FOR ORGANISATOR DASHBOARD
+
+.card-bottom-orga-button-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+
+
+.card-race-header-orga {
+  min-height: 230px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  border-radius: 8px;
+}
+
+.card-race-delete {
+  font-size: 18px;
+  color: #fffffff0;
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
+  margin-bottom: 2px;
+}
+
+.card-race-delete:hover {
+  text-decoration: none;
+  color: white;
+}
