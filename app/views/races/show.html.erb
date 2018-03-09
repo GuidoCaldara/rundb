@@ -103,7 +103,8 @@
             <% end %>
             <% end %>
 
-            <% if @race.video != "" %>
+            <% if  @race.video && @race.video != "" %>
+            <% @link = @race.video.split("=").last %>
 
 
             <div class="carousel-item" style=" text-align:center">
