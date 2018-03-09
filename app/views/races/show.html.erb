@@ -240,9 +240,13 @@
 
         <!-- AVATAR -->
         <div class="existing-review-user">
-
-          <div class="avatar-review" style="background-image: url('<%= image_path "http://res.cloudinary.com/dxkimzdwk/image/upload/v1520413859/fakeprofile#{rand(1..4)}.jpg"%>')">
-          </div>
+          <% if review.user.avatar.url %>
+            <div class="avatar-review" style="background-image: url('<%= cl_image_path review.user.avatar %>')">
+            </div>
+          <% else %>
+            <div class="avatar-review" style="background-image: url('<%= image_path "http://res.cloudinary.com/dxkimzdwk/image/upload/v1520413859/fakeprofile#{rand(1..4)}.jpg"%>')">
+            </div>
+          <% end %>
 
           <% if review.user.first_name && review.user.last_name %>
           <p><%= review.user.first_name %> <br> <%=  review.user.last_name %></p>
