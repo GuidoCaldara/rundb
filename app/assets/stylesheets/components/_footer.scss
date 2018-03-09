@@ -13,7 +13,7 @@
   align-items: center;
 }
 .footer-links a {
-  color: #A9CB6D !important;
+  color: #A9CB6D;
   opacity: 0.70;
   text-decoration: none;
   font-size: 24px;
@@ -28,6 +28,16 @@
   font-size: 14px;
 }
 
-.footer-email a{
+.footer-email {
+
+}
+
+.footer-email a {
+  color: #A9CB6D;
+  opacity: 0.70;
   text-decoration: none;
+}
+
+.footer-email a:hover {
+  opacity: 1;
 }
