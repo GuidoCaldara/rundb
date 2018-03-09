@@ -82,30 +82,52 @@
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
 
                         <div class="card-race">
-                          <div class="card-race-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
-                            <p class="hit-name card-race-title"><%= race.name %></p>
-                            <i class="fas fa-map-marker-alt card-race-marker"></i>
-                            <p class="hit-name card-race-location"><%= race.location %></p>
-                            <div class="star-container">
-                              <% 3.times do %>
-                              <i class="fas fa-star card-race-star"></i>
-                              <% end %>
-                              <% (5 - 3).times do %>
-                              <i class="far fa-star card-race-star"></i>
-                              <% end %>
-                            </div>
+                          <div class="card-race-header-orga" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
 
-                          </div>
-                          <div class="card-race-body">
-                            <%= link_to "Manage the race", race_path(race.id), class: "orga-race-action-button" %>
+                            <div class="card-race-top-left-container">
+                              <p class="hit-name card-race-title"><%= race.name %></p>
+                              <i class="fas fa-map-marker-alt card-race-marker"></i>
+                              <p class="hit-name card-race-location"><%= race.location %></p>
 
+                            </div> <!-- closing top left container -->
 
-                              <% if race.bookable && race.orders %>
-                              <%= link_to "Subscription list", race_subscriptions_path(race.id), class: "orga-race-action-button" %>
+                            <%= link_to race_path(race.id), method: :delete, data: {confirm: 'Are you really wanna delete your Race? If u have some subscription for the race u will not able to complete the cancellation'}, class: "card-race-delete" do %> <i class="fas fa-trash"></i>
                               <% end %>
 
-                          </div>
+                            <div class="card-bottom-orga-button-container">
+                              <div class="container">
+                                <div class="row">
+                                  <div class="col-xs-6 no-padding">
+                                    <div class="orga-race-action-button">
+                                      <%= link_to "See race", race_path(race.id) %>
+                                    </div>
+                                  </div>
+                                  <div class="col-xs-6 no-padding">
 
+                                      <% if race.bookable && race.orders %>
+                                      <div class="orga-race-action-button">
+                                        <%= link_to "Registrations", race_subscriptions_path(race.id) %>
+                                      </div>
+                                      <% end %>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-xs-6 no-padding">
+                                    <div class="orga-race-action-button">
+                                      <%= link_to "Edit race", edit_race_path(race.id) %>
+                                    </div>
+                                  </div>
+                                  <div class="col-xs-6 no-padding">
+                                    <div class="orga-race-action-button">
+                                      <%= link_to "Add Photos", new_race_photo_path(race.id) %>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div> <!-- closing container for bootstrap -->
+
+                            </div> <!-- closing card bottom orga button container -->
+
+                          </div> <!-- closing card race header -->
                       </div> <!-- closing card race div -->
                     </div> <!-- closing col -->
                   <% end %> <!-- closing loop over races -->

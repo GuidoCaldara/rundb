@@ -127,7 +127,7 @@
 
 
 
-        <!-- PRICNG -->
+        <!-- PRICING -->
         <div class="pricing-container">
           <p class="race-fee-logo">Race fee: <%= humanized_money_with_symbol(@race.fee_cents)%></p>
           <% if @race.discount_fee_cents %>
@@ -207,12 +207,7 @@
   <% end %>
 
 
-  <!-- ORGANISER ACTIONS -->
-  <div class="organizer-actions">
-    <%= link_to "Edit your race", edit_race_path(@race.id), class: "organizer-actions-button"  %>
-    <%= link_to "Delete Your Race", race_path(@race.id), method: :delete, data: {confirm: 'Are you really wanna delete your Race? If u have some subscription for the race u will not able to complete the cancellation'}, class: "organizer-actions-button" %>
-    <%= link_to "Manage your photo", new_race_photo_path(@race.id), class: "organizer-actions-button" %>
-  </div>
+
 
 
 

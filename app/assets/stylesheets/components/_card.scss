@@ -53,31 +53,54 @@
   font-weight: 100;
 }
 
+.card-race-top-left-container {
+  position: absolute;
+  top: 2px;
+  left: 12px;
+  max-width: 80%;
+}
+
+
 .card-race-title {
   max-width: 200px;
   font-family: "Poppins", "sans-serif";
   font-size: 20px;
   color: #fffffff0;
-  position: absolute;
-  top: 8px;
-  left: 14px;
+  // position: absolute;
+  // top: 8px;
+  // left: 14px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
+  margin-bottom: 2px;
 }
 
 .card-race-location {
   font-size: 16px;
   color: #fffffff0;
-  position: absolute;
-  top: 38px;
-  left: 30px;
+  display: inline-block;
+  // position: absolute;
+  // top: 38px;
+  // left: 30px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
+  margin-bottom: 2px;
 }
+
+.card-race-date {
+  font-size: 16px;
+  color: #fffffff0;
+  display: inline-block;
+  // position: absolute;
+  // top: 38px;
+  // left: 30px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
+  margin-bottom: 2px;
+}
+
 .card-race-marker {
   font-size: 16px;
   color: #fffffff0;
-  position: absolute;
-  top: 40px;
-  left: 14px;
+  // position: absolute;
+  // top: 40px;
+  // left: 14px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
 }
 
@@ -91,9 +114,9 @@
 }
 
 .star-container {
-  position: absolute;
-  top: 64px;
-  left: 14px;
+  // position: absolute;
+  // top: 64px;
+  // left: 14px;
 }
 
 .card-race-star {
@@ -123,4 +146,40 @@
   top: 4px;
   left: 14px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.64);
+}
+
+// FOR ORGANISATOR DASHBOARD
+
+.card-bottom-orga-button-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+
+
+.card-race-header-orga {
+  min-height: 230px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  border-radius: 8px;
+}
+
+.card-race-delete {
+  font-size: 18px;
+  color: #fffffff0;
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.34);
+  margin-bottom: 2px;
+}
+
+.card-race-delete:hover {
+  text-decoration: none;
+  color: white;
 }
