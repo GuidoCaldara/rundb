@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { render 'race/show' }
+        format.html { render partial: 'race/show' }
         format.js
       end
     end
