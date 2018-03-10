@@ -84,7 +84,7 @@ end
 include AlgoliaSearch
 
 algoliasearch do
-  attribute :name, :location, :category, :race_distance, :date_stamp, :_geoloc, :id, :reviews, :race_avg_rate
+  attribute :name, :location, :category, :race_distance, :date_stamp, :_geoloc, :id, :race_avg_rate
   attribute :photo_url do
     if photo.metadata
       "#{photo.metadata["secure_url"]}"
@@ -184,7 +184,7 @@ def set_race_avg_rate
       self.reviews.each do |review|
        rate_sum += review.avg_rate
      end
-     self.race_avg_rate = (rate_sum / self.reviews.size)
+     self.race_avg_rate = (rate_sum / self.reviews.size).to_i
      self.save
    end
  end
