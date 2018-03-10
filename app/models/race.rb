@@ -84,11 +84,11 @@ end
 include AlgoliaSearch
 
 algoliasearch do
-  attribute :name, :location, :reviews, :category, :race_distance, :date_stamp, :_geoloc, :id, :race_avg_rate
+  attribute :name, :location, :category, :race_distance, :date_stamp, :_geoloc, :id, :race_avg_rate
   attribute :photo_url do
     if photo.metadata
       if photo.metadata["secure_url"]
-      "#{photo.metadata["secure_url"]}"
+        "#{photo.metadata["secure_url"]}"
       end
     end
   end
@@ -160,17 +160,17 @@ end
 # Computation of the value for money average rate
 
 
-  def set_value_for_money_avg
-    if self.reviews.size > 0
-        value_for_money_sum = 0
-        value_for_money_avg = 0
-        self.reviews.each do |review|
-         value_for_money_sum += review.value_for_money
-        end
-        self.value_for_money_avg = (value_for_money_sum.to_f / self.reviews.size.to_f)
-        self.save
-      end
-  end
+def set_value_for_money_avg
+  if self.reviews.size > 0
+    value_for_money_sum = 0
+    value_for_money_avg = 0
+    self.reviews.each do |review|
+     value_for_money_sum += review.value_for_money
+   end
+   self.value_for_money_avg = (value_for_money_sum.to_f / self.reviews.size.to_f)
+   self.save
+ end
+end
 
 
 
