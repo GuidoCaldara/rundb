@@ -87,7 +87,9 @@ algoliasearch do
   attribute :name, :location, :category, :race_distance, :date_stamp, :_geoloc, :id, :race_avg_rate
   attribute :photo_url do
     if photo.metadata
+      if photo.metadata["secure_url"]
       "#{photo.metadata["secure_url"]}"
+      end
     end
   end
   attributesForFaceting [:category, :race_distance, :date_stamp, :_geoloc, :name, :location, :id ]

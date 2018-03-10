@@ -4,7 +4,8 @@
   <div class="row py-4">
     <div class="col-sm-12 text-center">
      <div class="progress" style="height: 25px">
-      <div class="progress-bar" role="progressbar" style=" width: 100%;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"> Step 3/3 - Import The Gps Route of your race  </div>
+      <div class="progress-bar" role="progressbar" style=" width: 100%;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"> Step 3/3 - Import The Gps Route of your race
+      </div>
     </div>
   </div>
 </div>
@@ -15,28 +16,29 @@
     <p class="lead my-4"> This is the gps track of your race!<br> If you want you can <%= link_to "delete it", race_route_path(@race, @race.route), method: :delete %> it and update another one or <%= link_to "go back to the race page", race_path(@race.id) %></p>
   </div>
   <div class="col-md-10 mx-auto mapbox">
-      <div id="map" style="height:400px; width: 100%;" margin-bottom="0px"></div>
- </div>
+    <div id="map" style="height:400px; width: 100%;" margin-bottom="0px">
+    </div>
+  </div>
 </div>
 
-   <script>
+<script>
   var data =  <%= raw @race.route.pathfile %>;
-    generate_route(data);
+  generate_route(data);
 
-    function generate_route(array){
-      var map = L.map('map',{
-        center: [43.64701, -79.39425],
-        zoom: 15
-      });
+  function generate_route(array){
+    var map = L.map('map',{
+      center: [43.64701, -79.39425],
+      zoom: 15
+    });
 
-      var latlngs = array
-      var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
-      map.fitBounds(polyline.getBounds());
+    var latlngs = array
+    var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+    map.fitBounds(polyline.getBounds());
 
-      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-    }
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+  }
 </script>
 
 
@@ -44,7 +46,7 @@
 <div class="row">
   <div class="col-md-8 my-5 mx-auto text-center strava-box">
     <p class="lead my-4">In this page you can upload the gps track of yuor race directly from STRAVA. Please alowed Run-db to acces your STRAVA profile in order to import the data</p>
-    <a href="http://www.strava.com/oauth/authorize?client_id=23523&response_type=code&redirect_uri=http://run-db.com/races/<%=@race.id%>/routes/new/exchange_token&approval_prompt=force&scope=view_private">
+    <a href="http://www.strava.com/oauth/authorize?client_id=23523&response_type=code&redirect_uri=https://www.run-db.com/races/<%= @race.id %>/routes/new/exchange_token&approval_prompt=force&scope=view_private">
       <%= image_tag "strava.png", width: "200"%>
     </a>
   </div>
@@ -54,32 +56,33 @@
 <% elsif @condition %>
 <div class="row">
   <div class="col-md-8 my-5 mx-auto px-5 text-center strava-box">
-           <h3>Copy and paste the link of your ativity as in the image below</h3>
-        <%= image_tag "stravainstruction.gif" %>
-       <input id ="link", class= "ml-5 form-control link-form", placeholder="ex: https://www.strava.com/activities/123456789">
-       </input>
-       <button id="bottone" class ="btn btn-primary mt-4">Generate Route</button> <br>
-       <button id= "send" class ="" style="width: 1px; height: 1px"> </button>
-
+    <h3>Copy and paste the link of your ativity as in the image below</h3>
+    <%= image_tag "stravainstruction.gif" %>
+    <input id ="link", class= "ml-5 form-control link-form", placeholder="ex: https://www.strava.com/activities/123456789">
+    <button id="bottone" class ="btn btn-primary mt-4">Generate Route</button> <br>
+    <button id= "send" class ="" style="width: 1px; height: 1px"> </button>
   </div>
 </div>
-  <div class="col-md-10 mx-auto">
-   <div id="map" style="height:400px; width: 400px;"></div>
- </div>
+
+<div class="col-md-10 mx-auto">
+  <div id="map" style="height:400px; width: 400px;">
+  </div>
 </div>
+
 <% end %>
 
 
+</div>
 
 
 
 
 
 <% if @auth %>
-  <% if @auth.access_token %>
-    <%= content_for(:after_js) do %>
+<% if @auth.access_token %>
+<%= content_for(:after_js) do %>
 
-  <script>
+<script>
   var btn = document.getElementById("bottone")
   var clean = document.getElementById("clean")
   var raceId = <%= @race.id %>
