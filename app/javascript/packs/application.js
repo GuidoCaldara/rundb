@@ -135,7 +135,7 @@ window.addEventListener('load', function() {
     <div class="inlined">
     <p class="element">${hit.category}</p>
     <p class="element">${hit.race_distance} km</p>
-    <p class="element last">${hit.reviews.length} reviews</p>
+
     </div>
     </div>
     </div>
