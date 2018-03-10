@@ -59,33 +59,35 @@
 
 
                   <% @next_races.each do |race| %>
-                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
-                    <div class="card-race">
-                      <div class="card-race-header" style="background-image: url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
-                        <div class="card-race-top-left-container">
-                          <p class="hit-name card-race-title"><%= race.name %></p>
-                          <i class="fas fa-map-marker-alt card-race-marker"></i>
-                          <p class="hit-name card-race-location"><%= race.location %></p>
-                          <div class="star-container">
-                            <% 3.times do %>
-                            <i class="fas fa-star card-race-star"></i>
-                            <% end %>
-                            <% (5 - 3).times do %>
-                            <i class="far fa-star card-race-star"></i>
-                            <% end %>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                      <%= link_to race_path(race.id) do %>
+                        <div class="card-race">
+                          <div class="card-race-header" style="background-image: url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
+                            <div class="card-race-top-left-container">
+                              <p class="hit-name card-race-title"><%= race.name %></p>
+                              <i class="fas fa-map-marker-alt card-race-marker"></i>
+                              <p class="hit-name card-race-location"><%= race.location %></p>
+                              <div class="star-container">
+                                <% 3.times do %>
+                                <i class="fas fa-star card-race-star"></i>
+                                <% end %>
+                                <% (5 - 3).times do %>
+                                <i class="far fa-star card-race-star"></i>
+                                <% end %>
+                              </div>
+                            </div>
+
+                            <i class="far fa-heart card-race-favorite"></i>
+                          </div>
+                          <div class="card-race-body">
+                            <p class="hit-name element"><%= race.category %></p>
+                            <p class="hit-name element"><%= race.race_distance %> km</p>
+                            <p class="hit-name element last"><%= race.date %></p>
                           </div>
                         </div>
-
-                        <i class="far fa-heart card-race-favorite"></i>
-                      </div>
-                      <div class="card-race-body">
-                        <p class="hit-name element"><%= race.category %></p>
-                        <p class="hit-name element"><%= race.race_distance %> km</p>
-                        <p class="hit-name element last"><%= race.date %></p>
-                      </div>
+                      <% end %> <!-- closing hyperlink -->
                     </div>
-                  </div>
-                  <% end %>
+                  <% end %> <!-- closing loop over races -->
               </div>
             </div>
           <% end %>

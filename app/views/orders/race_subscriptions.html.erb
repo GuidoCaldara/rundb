@@ -11,7 +11,7 @@
           <% if @orders.size > 0 %>
             <div class="sub-top-right">
               <div class="underlined"><%= @orders.size %> participants </div>
-              <div class="underlined"><%= @orders.size * @race.fee_cents / 100 %> ‎€ of income</div>
+              <div class="underlined"><%= @orders.size * @race.fee_cents %> ‎€ of income</div>
             </div>
           <% end %>
 
