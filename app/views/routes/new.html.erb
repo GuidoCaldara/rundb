@@ -44,7 +44,7 @@
 <div class="row">
   <div class="col-md-8 my-5 mx-auto text-center strava-box">
     <p class="lead my-4">In this page you can upload the gps track of yuor race directly from STRAVA. Please alowed Run-db to acces your STRAVA profile in order to import the data</p>
-    <a href="http://www.strava.com/oauth/authorize?client_id=23523&response_type=code&redirect_uri=http://run-db.com/races/<%= @race.id  %>/routes/new/exchange_token&approval_prompt=force&scope=view_private">
+    <a href="http://www.strava.com/oauth/authorize?client_id=23523&response_type=code&redirect_uri=http://run-db.com/races/<%=@race.id%>/routes/new/exchange_token&approval_prompt=force&scope=view_private">
       <%= image_tag "strava.png", width: "200"%>
     </a>
   </div>
