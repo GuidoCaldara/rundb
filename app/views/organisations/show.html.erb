@@ -113,7 +113,7 @@
                                   </div>
                                   <div class="col-xs-6 no-padding">
 
-                                      <% if race.bookable && race.orders %>
+                                      <% if race.orders %>
                                       <div class="orga-race-action-button">
                                         <%= link_to "Registrations", race_subscriptions_path(race.id) %>
                                       </div>
