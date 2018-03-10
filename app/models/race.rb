@@ -90,6 +90,8 @@ algoliasearch do
       if photo.metadata["secure_url"]
         "#{photo.metadata["secure_url"]}"
       end
+    elsif !photo.file.nil?
+      self.photo_url
     end
   end
   attributesForFaceting [:category, :race_distance, :date_stamp, :_geoloc, :name, :location, :id ]
