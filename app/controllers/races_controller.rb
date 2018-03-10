@@ -19,10 +19,8 @@ def create
  if @race.save && @race.longitude && @race.latitude
   @race._geoloc = { "lat": @race.latitude, "lng": @race.longitude}
   @race.save
-  # Race.algolia_reindex!
   redirect_to new_race_photo_path(@race.id)
 elsif @race.save
-  Race.algolia_reindex!
   redirect_to new_race_photo_path(@race.id)
   flash[:alert]
 else
@@ -43,7 +41,6 @@ end
 
 def update
  if @race.update(race_params)
-  # Race.algolia_reindex!
   redirect_to race_path(@race.id)
 else
   render action: 'edit'
@@ -63,7 +60,6 @@ else
       @race.route.destroy!
     end
     @race.destroy!
-    # Race.algolia_reindex!
     redirect_to root_path
     flash[:success] = "the race has been successfully deleted from the database"
   end
