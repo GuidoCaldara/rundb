@@ -242,6 +242,7 @@ genderr = ["Man", "Woman"]
     else
       puts "!!! order not save"
     end
+    sleep 0.7
   end
 end
 puts "///  #{Order.count} order created!"
@@ -721,6 +722,7 @@ Order.all.each do |order|
   review.value_for_money = rand(1..10)
   review.save
   puts "1 review created for race #{Race.find(order.race_id).name}"
+  sleep 0.7
 end
 puts "///   #{Review.count} reviews created!"
 
