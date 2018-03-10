@@ -191,10 +191,6 @@ def set_race_avg_rate
    end
  end
 
-  def photo_url_changed?
-    self.photo.metadata["secure_url"]
-  end
-
 
 end
 
