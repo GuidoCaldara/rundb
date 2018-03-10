@@ -1,4 +1,4 @@
-class RacesController < ApplicationController
+2class RacesController < ApplicationController
 
  before_action :set_race, only: [:show, :edit, :update, :destroy]
 
@@ -46,7 +46,7 @@ def update
   # Race.algolia_reindex!
   redirect_to race_path(@race.id)
 else
-  render :edit
+  render action: 'edit'
 end
 end
 
