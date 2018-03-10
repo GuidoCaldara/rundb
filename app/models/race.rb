@@ -84,7 +84,7 @@ end
 include AlgoliaSearch
 
 algoliasearch do
-  attribute :name, :location, :reviews, :category, :race_distance, :date_stamp, :_geoloc, :id, :race_avg_rate,
+  attribute :name, :location, :reviews, :category, :race_distance, :date_stamp, :_geoloc, :id, :race_avg_rate
   attribute :photo_url do
     if photo.metadata
       if photo.metadata["secure_url"]
