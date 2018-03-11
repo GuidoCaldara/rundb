@@ -222,15 +222,18 @@
 
   <div class="race-reviews-container">
 
-
-
-    <% if user_signed_in? && !@race.has_reviewed?(current_user) %>
-    <hr class="hr-text" data-content="Leave a review">
+    <% if !user_signed_in? %>
+      <button type="button" class="button-register button-register-review" data-toggle="modal" data-target="#exampleModal">
+       Log In and add a review!
+      </button>
+    <% elsif user_signed_in? && !@race.has_reviewed?(current_user) %>
+      <hr id = "Leave-a-review" class="hr-text" data-content="Leave a review">
     <%= render 'reviews/form', race: @race, review: @review unless @race.has_reviewed?(current_user) %>
     <% end %>
-
-    <hr class="hr-text" data-content="What people say about this race">
-
+    <% if @race.reviews = [] %>
+      <hr class="hr-text" data-content="No reviews for this race!">
+    <% else %>
+      <hr class="hr-text" data-content="What people say about this race">
     <div id="reviews">
       <% @reviews.reverse.each do |review| %>
 
@@ -238,9 +241,12 @@
       <% end %>
     </div>
   </div>
+  <% end %>
 
 </div>
 
+</div>
+</div>
 
 
 <!-- modal for signup
