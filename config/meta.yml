@@ -1,0 +1,4 @@
+meta_product_name: "Run DB"
+meta_title: "Run DB - Find your next running race"
+meta_description: "The ultimate platform for runners to browse an extensive database of running races around the world. A comprehensive tool for race organisers to manage their races"
+meta_image: "http://res.cloudinary.com/dxkimzdwk/image/upload/v1519974511/pexels-photo-531596.jpg"                       # should exist in `app/assets/images/`
