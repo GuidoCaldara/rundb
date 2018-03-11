@@ -19,7 +19,6 @@ def create
  if @race.save && @race.longitude && @race.latitude
   @race._geoloc = { "lat": @race.latitude, "lng": @race.longitude}
   @race.save
-
   redirect_to new_race_photo_path(@race.id)
 elsif @race.save
   redirect_to new_race_photo_path(@race.id)
@@ -44,7 +43,7 @@ def update
  if @race.update(race_params)
   redirect_to race_path(@race.id)
 else
-  render :edit
+  render action: 'edit'
 end
 end
 

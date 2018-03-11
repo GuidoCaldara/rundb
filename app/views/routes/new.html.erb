@@ -48,10 +48,6 @@
     <p class="lead my-4">In this page you can upload the gps track of yuor race directly from STRAVA. Please alowed Run-db to acces your STRAVA profile in order to import the data</p>
     <a href="http://www.strava.com/oauth/authorize?client_id=23523&response_type=code&redirect_uri=https://www.run-db.com/exchange_token&approval_prompt=force&scope=view_private">
       <%= image_tag "strava.png", width: "200"%>
-
- http://www.strava.com/oauth/authorize?client_id=6414&response_type=code&redirect_uri=http://localhost/exchange_token&approval_prompt=force&scope=write
-
-
     </a>
   </div>
 </div>
@@ -105,6 +101,7 @@
         array.push(element)
       })
       generate_route(array)
+      sendData(array)
 
     });
   })
@@ -122,15 +119,12 @@
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-    var send = document.getElementById("send")
-    send.addEventListener("click", sendData(array))
   }
 
 
 
-
   function sendData(array) {
-    let url = `https://run-db.com/races/${raceId}/routes`
+    let url = `https://www.run-db.com/races/${raceId}/routes`
     fetch(url, {
       method: "POST",
       credentials: 'same-origin',
