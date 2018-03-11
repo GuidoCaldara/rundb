@@ -92,6 +92,23 @@
 
 }
 
+.button-register-review{
+  box-shadow: 0 5px 40px #30b2e473;
+  font-size: 20px;
+  text-decoration: none;
+  width: 330px;
+  border-radius: 32px;
+  padding: 15px 25px 13px;
+  margin: auto;
+  // margin-top: 40px;
+  color: white;
+  font-family: "Poppins", "sans-serif";
+  display: block;
+  background-image: linear-gradient(190deg, #34b0d8, #30a6cc);
+  transition: all 0.3s cubic-bezier(0.12, 0.64, 0.25, 1);
+  border: none !important;
+
+}
 
 //CALL TO ACTION ORGANIZER
 
