@@ -3,7 +3,7 @@ class RacePolicy < ApplicationPolicy
   def initialize(user, record)
      @user = user
      @record = record
-   end
+  end
 
   def index?
      true
@@ -18,7 +18,8 @@ class RacePolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    @organisation = Organisation.find(@record.organisation_id)
+    @user.organisation && @organisation.user_id = @user.id
   end
 
   def edit?

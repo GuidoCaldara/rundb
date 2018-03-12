@@ -42,17 +42,25 @@
 
 
               <div class="orga-edit-actions">
-
+                <% if policy(@organisation).edit? %>
                 <%= link_to edit_organisation_path(@organisation.id) do %>
-                <div class="edit-orga-button"> Edit Your Organization</div><% end %>
+                <div class="edit-orga-button"> Edit Your Organization</div>
+                <% end %>
+                <% end %>
 
+                <% if @organisation.user_id == current_user.id %>
                 <%= link_to new_race_path do %>
                 <div class="add-orga-button">Add a new race</div>
                 <% end %>
+                <% end %>
 
-                <%= link_to organisation_path(@organisation.id), method: :delete, data: {confirm: 'Are you really wanna delete your organisation? If u have some races in the database u will not able to complete the cancellation?'} do %>
+                <% if @organisation.user_id == current_user.id %>
+                   <%= link_to organisation_path(@organisation.id), method: :delete, data: {confirm: 'Are you really wanna delete your organisation? If u have some races in the database u will not able to complete the cancellation?'} do %>
                   <div class="delete-orga-button">Delete Your organisation</div>
                   <% end %>
+
+                <% end %>
+
 
 
               </div>
@@ -63,9 +71,11 @@
 
 
 
-
+          <% if current_user.id == @organisation.user_id %>
           <hr class="hr-text-organisation-page" data-content="Your Races">
-
+          <% else %>
+          <hr class="hr-text-organisation-page" data-content="Organization Races">
+          <% end %>
 
             <div class="container">
               <div class="row">
@@ -91,9 +101,14 @@
 
                             </div> <!-- closing top left container -->
 
+                            <% if current_user == @organisation.user_id %>
                             <%= link_to race_path(race.id), method: :delete, data: {confirm: 'Are you really wanna delete your Race? If u have some subscription for the race u will not able to complete the cancellation'}, class: "card-race-delete" do %> <i class="fas fa-trash"></i>
                               <% end %>
+                            <% end %>
 
+
+
+<!-- Add this line when order managment start
                             <div class="card-middle-orga">
                               <div class="card-middle-orga-left">
                                 <%= race.orders.size %> <br>participants
@@ -101,7 +116,7 @@
                               <div class="card-middle-orga-right">
                                 <%= race.orders.size * race.fee_cents %> ‎€ <br>of income
                               </div>
-                            </div>
+                            </div> -->
 
                             <div class="card-bottom-orga-button-container">
                               <div class="container">
@@ -113,13 +128,16 @@
                                   </div>
                                   <div class="col-xs-6 no-padding">
 
-                                      <% if race.orders %>
+<!--  Add it when registration start   <%if race.orders %>
                                       <div class="orga-race-action-button">
                                         <%= link_to "Registrations", race_subscriptions_path(race.id) %>
                                       </div>
                                       <% end %>
+ -->
+
                                   </div>
                                 </div>
+                            <% if current_user == @organisation.user_id %>
                                 <div class="row">
                                   <div class="col-xs-6 no-padding">
                                     <div class="orga-race-action-button">
@@ -131,10 +149,14 @@
                                       <%= link_to "Add Photos", new_race_photo_path(race.id) %>
                                     </div>
                                   </div>
-                                </div>
-                              </div> <!-- closing container for bootstrap -->
+                                                                  <% end %>
 
-                            </div> <!-- closing card bottom orga button container -->
+                                </div>
+                              </div>
+                              <!-- closing container for bootstrap -->
+
+                            </div>
+                            <!-- closing card bottom orga button container -->
 
                           </div> <!-- closing card race header -->
                       </div> <!-- closing card race div -->

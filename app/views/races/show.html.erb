@@ -132,7 +132,7 @@
         <!-- PRICING -->
         <div class="pricing-container">
           <p class="race-fee-logo">Race fee: <%= humanized_money_with_symbol(@race.fee_cents)%></p>
-          <% if @race.discount_fee_cents %>
+          <% if @race.discount_fee_cents != 0 %>
           <div class="promo-alert-wrapper">
             <div class="promo-alert"> Enjoy an early bird fee </div>
             <div class="promo-alert">subscription rate of </div>
@@ -141,15 +141,16 @@
           <% end %>
           <p class="price-details">The subscription for <%= @race.name %> are opened from the <span style="font-weight: bolder"><%= @race.subscription_start.strftime("%e %b %Y ") %></span> and will close on the <span style="font-weight: bolder"><%= @race.subscription_end.strftime("%e %b %Y ") %></span>. The maximum race capacity is <span style="font-weight: bolder"><%= @race.capacity %> participants</span></p>
 
-          <% if user_signed_in? %>
-          <%= link_to "Subscribe online", new_race_order_path(@race.id), class: "button-register" %>
-
-          <% else %>
-
+          <% if user_signed_in? && @race.bookable %>
+          <%= link_to "Subscribe online", new_race_order_path(@race.id), class: "button-register" do %>
           <button type="button" class="button-register" data-toggle="modal" data-target="#exampleModal">
             Subscribe online
           </button>
+             <% end %>
+          <% elsif @race.subscription_link != ""%>
+           <a class= "button-register" href="<%=@race.subscription_link%>"> Subscription Link </a>
           <% end %>
+
         </div>
 
       </div>

@@ -6,25 +6,25 @@ class RoutePolicy
   end
 
   def new?
-    route
+    route_policy
   end
 
   def create?
-    route
+    route_policy
   end
 
   def manage?
-    route
+    route_policy
   end
 
 
   def destroy?
-    route
+    route_policy
   end
 
 private
 
-  def route
+  def route_policy
     @race = Race.find(@record.race_id)
     @organisation = Organisation.find(@race.organisation_id)
     @user.admin? || @user.id == @organisation.user_id

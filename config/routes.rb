@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   resources :organisations, except: [:index]
   resources :users, only: [:show]
   resources :orders, only: [:show, :create] do
-    resources :payments, only: [:new, :create]
-  end
+  resources :payments, only: [:new, :create]
+   end
 
   get '/races/:race_id/photos/manage', to: 'photos#manage', as: "manage_photo"
   get '/races/:id/subscriptions', to: 'orders#race_subscriptions', as: 'race_subscriptions'

@@ -7,7 +7,8 @@ class RacesController < ApplicationController
   end
 
   def new
-    @race = Race.new
+    @organisation = Organisation.find(current_user.organisation.id)
+    @race = Race.new(organisation_id: @organisation.id)
     authorize @race
   end
 
