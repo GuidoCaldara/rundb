@@ -35,10 +35,13 @@
               <% end %>
 
             <div class="edit-actions">
-              <%= link_to edit_user_registration_path do %>
+              <% if user_signed_in? && current_user.id == @user.id  %>
+                <%= link_to edit_user_registration_path do %>
                 <div class="profil-button"> Edit Your Profile</div>
               <% end %>
-              <% if @user.organisation %>
+            <% end %>
+
+              <% if @user.organisation && user_signed_in? && current_user.id == @user.id  %>
                 <%= link_to organisation_path(@user.organisation.id) do %>
                   <div class="profil-button"></i> Organiser dashboard</div>
                 <% end %>

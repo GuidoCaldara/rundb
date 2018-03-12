@@ -22,14 +22,14 @@ class OrganisationPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.admin? || record.user == user
+   user.admin? || record.user == user
   end
 
   def update?
     user.admin? || record.user == user
   end
 
-  def destroy
+  def destroy?
     user.admin? || record.user == user
   end
 

@@ -1,6 +1,6 @@
 class OrganisationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show ]
+  before_action :authenticate_user!, except: [:show]
 
   def index
     @organisations = Organisation.all
@@ -24,7 +24,10 @@ class OrganisationsController < ApplicationController
   end
 
   def show
+    if @organisation.races
     @races = @organisation.races
+    end
+    @race = Race.new
   end
 
   def edit
@@ -43,6 +46,7 @@ class OrganisationsController < ApplicationController
       redirect_to organisation_path(@organisation.id)
       flash[:danger] = "Seems like your organisation has some race on the database. Before delete your organisation delete all the races!"
     else
+      authorize @organisation
       @organisation.destroy
       redirect_to root_path
       flash[:success] = "Your organisation has been deleted! You can create another one anytime you want!"
