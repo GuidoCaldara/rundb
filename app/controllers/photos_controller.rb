@@ -1,13 +1,17 @@
 class PhotosController < ApplicationController
 
+before_action :authenticate_user!
 
   def new
     @race = Race.find(params[:race_id])
     @photos = Photo.where(race_id: @race.id)
-    @photo = Photo.new
+    @photo = Photo.new(race_id: @race.id)
+    authorize @photo
+
   end
 
   def manage
+    authorize @photo
     @organisation = Organisation.find_by(user_id: current_user.id)
     @race = Race.find(params[:race_id])
     @photos = Photo.where(race_id: @race.id)
@@ -15,11 +19,11 @@ class PhotosController < ApplicationController
   end
 
   def create
-
-    if params[:photo]
+  if params[:photo]
       @photo = Photo.new(photo_params)
       @race = Race.find(params[:race_id])
       @photo.race_id = @race.id
+      authorize @photo
       if @photo.save
         redirect_to new_race_photo_path
       else
@@ -37,6 +41,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:id])
     @race = Race.find(@photo.race_id)
+    authorize @photo
     @photo.delete
     redirect_to new_race_photo_path(@race.id)
   end

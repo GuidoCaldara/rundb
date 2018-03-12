@@ -1,50 +1,53 @@
 class OrganisationsController < ApplicationController
- before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show ]
 
- def index
-  @organisations = Organisation.all
-end
-
-def new
-  @organisation = Organisation.new
-end
-
-def create
-  @organisation = Organisation.new(organisation_params)
-  @organisation.user_id = current_user.id
-  if @organisation.save
-    redirect_to organisation_path(@organisation.id)
-  else
-    render action: 'new'
+  def index
+    @organisations = Organisation.all
+    authorize @organisation
   end
-end
 
-def show
-
-  @races = @organisation.races
-end
-
-def edit
-end
-
-def update
- if @organisation.update(organisation_params)
-  redirect_to organisation_path(@organisation.id)
-else
-  render action: 'edit'
-end
-end
-
-def destroy
-  if has_race?(@organisation)
-    redirect_to organisation_path(@organisation.id)
-    flash[:danger] = "Seems like your organisation has some race on the database. Before delete your organisation delete all the races!"
-  else
-    @organisation.destroy
-    redirect_to root_path
-    flash[:success] = "Your organisation has been deleted! You can create another one anytime you want!"
+  def new
+    @organisation = Organisation.new
+    authorize @organisation
   end
-end
+
+  def create
+    @organisation = Organisation.new(organisation_params)
+    authorize @organisation
+    @organisation.user_id = current_user.id
+    if @organisation.save
+      redirect_to organisation_path(@organisation.id)
+    else
+      render action: 'new'
+    end
+  end
+
+  def show
+    @races = @organisation.races
+  end
+
+  def edit
+  end
+
+  def update
+    if @organisation.update(organisation_params)
+      redirect_to organisation_path(@organisation.id)
+    else
+      render action: 'edit'
+    end
+  end
+
+  def destroy
+    if has_race?(@organisation)
+      redirect_to organisation_path(@organisation.id)
+      flash[:danger] = "Seems like your organisation has some race on the database. Before delete your organisation delete all the races!"
+    else
+      @organisation.destroy
+      redirect_to root_path
+      flash[:success] = "Your organisation has been deleted! You can create another one anytime you want!"
+    end
+  end
 
 private
 
@@ -59,6 +62,7 @@ end
 
 def set_organization
   @organisation = Organisation.find(params[:id])
+  authorize @organisation
 end
 
 def organisation_params

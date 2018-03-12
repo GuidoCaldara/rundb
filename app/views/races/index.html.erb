@@ -81,7 +81,6 @@
 
         <script type="text/html" id="hit-template">
 
-
           <div class="hit">
            <div class="col-xs-12 col-sm-6 col-md-12 col-lg-6 col-xl-4">
             <a href="/races/{{id}}">
@@ -93,6 +92,10 @@
                     <i class="fas fa-map-marker-alt card-race-marker"></i>
                     <p class="hit-name card-race-location">
                     {{{_highlightResult.location.value}}}</p>
+
+                    <p class="hit-name card-race-location">
+                    {{{date_stamp}}}</p>
+
 
 
                     {{#race_avg_rate}}
