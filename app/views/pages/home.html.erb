@@ -5,9 +5,11 @@
   <div class="banner-content">
     <%= image_tag "rundb_logo_white_shad.png", class: "logo-banner" %>
     <div class="fixed-block">
-      <h2>Find your next race</h2>
+      <h2><%= t('pages.home.tagline') %></h2>
     </div>
-    <%= link_to "Start now", races_path, class: "button-start" %>
+    <%= link_to races_path, class: "button-start" do %>
+    <%= t('pages.home.startsearch') %>
+    <% end %>
 
 
     <div id="text-carousel" class="carousel slide" data-ride="carousel">
@@ -18,21 +20,21 @@
                 <div class="item active">
                     <div class="carousel-content">
                         <div>
-                            <p>Browse an extensive races database, and find the one that fits your expectations</p>
+                            <p><%= t('pages.home.carousel1') %></p>
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <div class="carousel-content">
                         <div>
-                            <p> Make sure you don't miss races around you, or while you are traveling</p>
+                            <p> <%= t('pages.home.carousel2') %></p>
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <div class="carousel-content">
                         <div>
-                            <p>Race organiser? List your race on our platform. Rundb also manages race registration for you</p>
+                            <p><%= t('pages.home.carousel3') %></p>
                         </div>
                     </div>
                 </div>
@@ -57,7 +59,7 @@
   </div>
 
 
-<h1 class="discover">Discover popular races near you</h1>
+<h1 class="discover"><%= t('pages.home.discover') %></h1>
 
 <!-- bouncing arrow
 -->
@@ -118,7 +120,7 @@
     </div>
       <div class="button-to-races">
         <a href="races">
-      <p class="text-on-button-to-races">See all races <i class="fas fa-angle-right"></i></p>
+      <p class="text-on-button-to-races"><%= t('pages.home.seeall') %> <i class="fas fa-angle-right"></i></p>
       </a>
     </div>
 

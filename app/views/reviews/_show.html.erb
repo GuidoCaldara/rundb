@@ -25,19 +25,19 @@
          <div class="existing-review-rate">
           <div class="review-rates-wrapper">
 
-            <div class="race-rates">Route <span class="green-highlight"><%= review.route_rate.round(0) %> / 10</span>
+            <div class="race-rates"><%= t('reviews._show.route') %> <span class="green-highlight"><%= review.route_rate.round(0) %> / 10</span>
             </div>
             <div class="progress">
               <div class="progress-bar" style="width:<%= review.route_rate*10 %>%">
               </div>
             </div>
-            <div class="race-rates">Organisation <span class="green-highlight"><%= review.organisation_rate.round(0) %> / 10</span>
+            <div class="race-rates"><%= t('reviews._show.org') %> <span class="green-highlight"><%= review.organisation_rate.round(0) %> / 10</span>
             </div>
             <div class="progress">
               <div class="progress-bar" style="width:<%= review.organisation_rate*10 %>%">
               </div>
             </div>
-            <div class="race-rates">Value for money <span class="green-highlight"><%= review.value_for_money.round(0) %> / 10</span>
+            <div class="race-rates"><%= t('reviews._show.value') %><span class="green-highlight"><%= review.value_for_money.round(0) %> / 10</span>
             </div>
             <div class="progress">
               <div class="progress-bar" style="width:<%= review.value_for_money*10 %>%">

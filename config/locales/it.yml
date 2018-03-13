@@ -1,0 +1,135 @@
+it:
+  pages:
+    home:
+      tagline: "Trova la tua prossima gara!"
+      startsearch: "Inizia!"
+      carousel1: "Sfoglia il database di gare e trova quella che fa per te!"
+      carousel2: "Non perderti le gare della tua zona e scoprine di nuove in tutto il mondo"
+      carousel3: "Organizzi una gara? Inseriscila nel database e falla conoscere a runner da tutto il mondo"
+      discover: "Scopri le gare della tua zona"
+      seeall: "Vedi tutte le gare"
+  shared:
+    _navbar:
+      raceorganizer?: "Sei un organizzatore?"
+      addyourrace: "Inserisci la tua gara!"
+      becomeraceorganizer: "Registra la tua organizzazione!"
+      organisation_dash: "Pannello di controllo organizzazione"
+      my_profile: "Il mio profilo"
+  races:
+    index:
+      distance: "Distanza"
+      date: "Data"
+    new:
+      step1: "Step 1/3 - Compila il form con i dati della gara!"
+      insertyourrace: "Inserisci la tua gara!"
+    _form:
+      informations: "Informazioni generali"
+      race_name: 'Nome della gara'
+      race_category: "Categoria"
+      race_distance: "Distanza in KM"
+      race_elevation: "Dislivello positivo in metri. Per le gare in pianura inserire 0"
+      race_location: "Dove si svolgerà la gara? Puoi specificare più avanti il punto di partenza esatto"
+      race_date: "Inserisci la data della gara"
+      first_edition: "Anno della prima edizione"
+      website: "La tua gara ha un sito web? Inseriscilo qui!"
+      photo: "Per aggiungere una gara è necessario inserire almeno una foto. Potrai aggiungerne altre più avanti"
+      descriptiontitle: "Descrizione della gara"
+      description_field: "Descrivi la tua gara e invoglia gli atleti a parteciparvi. Una descrizione completa e dettagliata può aiutare i runner a scegliere il tuo evento"
+      extra_info: "Informazioni Extra"
+      goodies: "Cosa include il pacco gara?"
+      starting_point: "Quale sarà il punto di partenza della corsa?"
+      starting_time: "A che ora verrà dato il via?"
+      video: "Hai un video della tua corsa su youtube? Copia e incolla il link e mostralo agli atleti!"
+      subsctiption_and_payment: "Iscrizioni e pagamenti"
+      subscription_link: "Inserisci il link che rimanda al sito dove è possibile iscriversi"
+      race_price: "Prezzo della corsa"
+      subscription_start: "Inizio del periodo delle iscrizioni"
+      subscription_end: "Fine del periodo delle iscrizioni"
+      special_price?: "Proponi un prezzo scontato per chi si iscrive con largo anticipo?"
+      special_price: "Se si inserisci il prezzo scontato"
+      special_price_end: "Se hai inserito un prezzo agevolato indica la data ultima per poterne usufruire"
+      max_subscription: "Hai un tetto massimo di iscrizioni? Se si inseriscilo qui"
+      submit_race: "Inserisci la gara!"
+    edit:
+      edit: "Modifica la gara!"
+    show:
+      informations: "Informazioni"
+      organizer: "Organizzatore"
+      website: "Website"
+      starting_time: "Orario di partenza"
+      starting_point: "Luogo di partenza"
+      goodies: "Pacco gara"
+      race_fee: "Prezzo"
+      early_bird: "Approfitta dell'iscrizione agevolata"
+      subscription_rate_of: "al prezzo di"
+      until: "fino al"
+      the_subscription_for: "le iscrizioni per "
+      are_opened_from_the: "sono aperte dal"
+      and_will_close: "e chiudono il"
+      participants: "partecipanti"
+      max_race_capacity: "Il numero massimo di iscritti è di"
+      subscribe: "Iscriviti online"
+      subs_link: "Link per iscriversi"
+      route: "Percorso"
+      org: "Organizzazione"
+      val_money: "Qualità prezzo"
+      log_in_review: "Fai il log in e lascia una recensione!"
+      leave_review: "Lascia una recensione"
+      no_review: "Non ci sono recensioni per questa corsa"
+      opinions: "il parere degli atleti"
+  organisations:
+    _form:
+      name: "Inserisci il nome della tua organizzazione"
+      address: "Dove vi trovate? Inserisci la città o l'indirizzo completo"
+      story: "Racconta qualcosa del tuo gruppo agli atleti"
+      email: "Inserisci la mail di contatto. Gli atleti potranno contattarti qui per informazioni relative alla gara"
+      phone: "Inserisci il numero di telefono"
+      insert: "Completa l'inserimento"
+    edit:
+      edit: "Modifica la tua organizzazione"
+    new:
+      new: "Inserisci la tua organizzazione"
+    show:
+      address: "Dove sono"
+      email: "Email"
+      phone: "Telefono"
+      story: "Chi siamo"
+      edit: "Modifica la tua organizzazione"
+      add: "Aggiungi una gara"
+      confirm_delete: "Sei sicuro di voler eliminare la tua organizzazione? Se hai qualche gara nel database dovrai prima eliminarla per procedere"
+      delete: "Delete Your organisation"
+      your_races: "Le tue gare"
+      organisation_races: "Le gare dell'organizzazione"
+      add_a_race: "Non hai ancora inserito gare! Inizia ora!"
+      see_race: "Vedi la gara"
+      edit_race: "Modifica la gara"
+      add_photo: "Aggiungi foto"
+  photos:
+    manage:
+      back_to_org: "Torna alla pagina dell'organizzazione"
+      back_to_race: "Torna alla pagina della gara"
+      manage_photo: "Gestisci le foto"
+    new:
+      step2: "Step 2/3 - Inserisci le foto della gara"
+      insert: "Inserisci le foto della gara!"
+      come_back: "Puoi tornare in un altro momento e aggiungere le foto più avanti"
+      go_to_route: "Vai all'ultimo step e importa il percorso direttamente da STRAVA"
+      manage_photo: "Gestisci le tue foto"
+      delete: "Elimina!"
+  reviews:
+    _form:
+      leave_a_rew: "Lascia una recensione per questa gara"
+      route: "Voto per il percorso"
+      org: "Vodo per l'organizzazione"
+      value: "Rapporto qualità prezzo"
+    show:
+      route: "Percorso"
+      org: "organizzazione"
+      value: "Rapporto qualità prezzo"
+
+
+
+
+
+
+

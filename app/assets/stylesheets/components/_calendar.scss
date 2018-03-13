@@ -440,7 +440,12 @@
   min-width: 160px;
   width: 100%;
 }
-
+.dr-presets{
+  display: none !important;
+}
+.dr-dates:hover{
+  cursor: pointer !important;
+}
 .daterange--single .dr-input .dr-dates .dr-date {
   width: 100%;
   padding: 0.65625rem 0.75rem;
