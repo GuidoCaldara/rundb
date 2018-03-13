@@ -6,6 +6,7 @@
   <!-- Right Navigation -->
   <div class="navbar-rundb-right hidden-xs hidden-sm">
 
+
     <% if user_signed_in? %>
     <!--     if user has organisation code -->
       <%= link_to new_organisation_path, class: "navbar-rundb-link" if !current_user.organisation do%> <%= t('shared._navbar.becomeraceorganizer') %> <% end %>
