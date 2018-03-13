@@ -1,6 +1,7 @@
 require_relative "../services/strava_auth"
 
 class ApplicationController < ActionController::Base
+  before_action :set_locale
   include Pundit
   protect_from_forgery with: :exception
   # before_action :authenticate_user!
@@ -22,16 +23,30 @@ class ApplicationController < ActionController::Base
   #   redirect_to(root_path)
   # end
 
-  private
+  def set_locale
+     if request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first == 'it'
+      return I18n.locale = :it
+    else
+      return I18n.locale = :en
+    end
+      return I18n.locale
+  end
+
+  def default_url_options
+    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
+  end
+
+private
+
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 
- def user_not_authorized
+  def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
     redirect_to(root_path)
-end
+  end
 
 
 

@@ -3,8 +3,8 @@
   <div class="row py-4">
     <div class="col-sm-12 text-center">
       <h1>Add Photos to "<%= @race.name %>"</h1>
-      <p><%= link_to "Bak to your organisation page", organisation_path(@organisation.id) %></p>
-      <p><%= link_to "Bak the race page", race_path(@race.id) %></p>
+      <p><%= link_to t('organisations.show.back_to_org'), organisation_path(@organisation.id) %></p>
+      <p><%= link_to t('organisations.show.back_to_race'), race_path(@race.id) %></p>
     </div>
   </div>
 
@@ -22,7 +22,7 @@
   <% if @race.photos %>
  <div class="row">
   <div class="col-md-6 mx-auto text-center">
-    <h2 class= "display-4 mb-4"> Manage your photos</h2>
+    <h2 class= "display-4 mb-4"> <%= t('organisations.show.manage_photo') %></h2>
   </div>
 </div>
 <% end %>

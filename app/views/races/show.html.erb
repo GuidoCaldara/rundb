@@ -46,7 +46,7 @@
         <div class="race-info">
 
           <div class="race-info-header">
-            Race info
+            <%= t('races.show.informations') %>
           </div>
           <div class="container-race-descr">
             <p class ="race-text-description"> <%= @race.description%>
@@ -56,15 +56,15 @@
           </div>
 
           <div class="race-organizer">
-            <p >Organizer: <span class="green-highlight"><%= link_to organisation_path(@organizer.id) do%> <%= @organizer.name %> <% end %></span></p>
-            <p>Website <span class="green-highlight"><a href="<%= @race.website %>"> <%=@race.website%></a></span></p>
+            <p ><%= t('races.show.organizer') %>: <span class="green-highlight"><%= link_to organisation_path(@organizer.id) do%> <%= @organizer.name %> <% end %></span></p>
+            <p><%= t('races.show.website') %> <span class="green-highlight"><a href="<%= @race.website %>"> <%=@race.website%></a></span></p>
           </div>
           <div class="race-venue">
-            <p>Starting Point: <span class="green-highlight"> <%= @race.starting_point %></span> </p>
-            <p>Starting time: <span class="green-highlight"><%= @race.starting_time.strftime('%I:%M%p') %></span></p>
+            <p><%= t('races.show.starting_point') %>: <span class="green-highlight"> <%= @race.starting_point %></span> </p>
+            <p><%= t('races.show.starting_time') %>: <span class="green-highlight"><%= @race.starting_time.strftime('%I:%M%p') %></span></p>
           </div>
           <div class="race-goodies">
-            <p class=""><span class="green-highlight">Goodies: </span> <%= @race.goodies %></p>
+            <p class=""><span class="green-highlight"><%= t('races.show.goodies') %>: </span> <%= @race.goodies %></p>
           </div>
         </div>
 
@@ -131,24 +131,30 @@
 
         <!-- PRICING -->
         <div class="pricing-container">
-          <p class="race-fee-logo">Race fee: <%= humanized_money_with_symbol(@race.fee_cents)%></p>
+          <p class="race-fee-logo"><%= t('races.show.race_fee') %>: <%= humanized_money_with_symbol(@race.fee_cents)%></p>
           <% if @race.discount_fee_cents != 0 %>
           <div class="promo-alert-wrapper">
-            <div class="promo-alert"> Enjoy an early bird fee </div>
-            <div class="promo-alert">subscription rate of </div>
-            <div class="promo-alert"><%= humanized_money_with_symbol(@race.discount_fee_cents)%> until <%= @race.discount_fee_finish %>!</div>
+            <div class="promo-alert"> <%= t('races.show.early_bird') %>  </div>
+            <div class="promo-alert"> <%= t('races.show.subscription_rate_of') %></div>
+            <div class="promo-alert"><%= humanized_money_with_symbol(@race.discount_fee_cents)%> <%= t('races.show.until') %> <%= @race.discount_fee_finish %>!</div>
           </div>
           <% end %>
-          <p class="price-details">The subscription for <%= @race.name %> are opened from the <span style="font-weight: bolder"><%= @race.subscription_start.strftime("%e %b %Y ") %></span> and will close on the <span style="font-weight: bolder"><%= @race.subscription_end.strftime("%e %b %Y ") %></span>. The maximum race capacity is <span style="font-weight: bolder"><%= @race.capacity %> participants</span></p>
+          <p class="price-details"><%= t('races.show.the_subscription_for') %> <%= @race.name %> <%= t('races.show.are_opened_from_the') %> <span style="font-weight: bolder"><%= @race.subscription_start.strftime("%e %b %Y ") %></span> <%= t('races.show.and_will_close') %> <span style="font-weight: bolder"><%= @race.subscription_end.strftime("%e %b %Y ") %></span>.
+            <% if @race.capacity %>
+               <%= t('races.show.max_race_capacity')%><span style="font-weight: bolder">
+                <%= @race.capacity %> <%= t('races.show.participants') %></span>
+            <% end %>
+            </p>
 
           <% if user_signed_in? && @race.bookable %>
-          <%= link_to "Subscribe online", new_race_order_path(@race.id), class: "button-register" do %>
-          <button type="button" class="button-register" data-toggle="modal" data-target="#exampleModal">
-            Subscribe online
-          </button>
-             <% end %>
+            <%= link_to new_race_order_path(@race.id) do %>
+            <button type="button" class="button-register" data-toggle="modal" data-target="#exampleModal">
+            <%= t('races.show.subscribe')%>
+            </button>
+            <% end %>
           <% elsif @race.subscription_link != ""%>
-           <a class= "button-register" href="<%=@race.subscription_link%>"> Subscription Link </a>
+           <a class= "button-register" href="<%=@race.subscription_link%>">
+            <%= t('races.show.subs_link')%> </a>
           <% end %>
 
         </div>
@@ -172,21 +178,21 @@
 
       <div class="rates-wrapper">
         <% if @race.route_rate_avg && @race.organisation_rate_avg && @race.value_for_money_avg %>
-        <div class="race-rates">Route <br><span class="green-highlight"><%= @race.route_rate_avg.round(1) %> / 10</span>
+        <div class="race-rates"><%= t('races.show.route')%> <br><span class="green-highlight"><%= @race.route_rate_avg.round(1) %> / 10</span>
         </div>
         <div class="progress">
           <div class="progress-bar" style="width:<%= @race.route_rate_avg*10 %>%">
           </div>
         </div>
 
-        <div class="race-rates">Organisation <br><span class="green-highlight"><%= @race.organisation_rate_avg.round(1) %> / 10</span>
+        <div class="race-rates"><%= t('races.show.org')%> <br><span class="green-highlight"><%= @race.organisation_rate_avg.round(1) %> / 10</span>
         </div>
         <div class="progress">
           <div class="progress-bar" style="width:<%= @race.organisation_rate_avg*10 %>%">
           </div>
         </div>
 
-        <div class="race-rates">Value for money <br><span class="green-highlight"><%= @race.value_for_money_avg.round(1) %> / 10</span>
+        <div class="race-rates"><%= t('races.show.val_money')%> <br><span class="green-highlight"><%= @race.value_for_money_avg.round(1) %> / 10</span>
         </div>
         <div class="progress">
           <div class="progress-bar" style="width:<%= @race.value_for_money_avg*10 %>%">
@@ -225,16 +231,16 @@
 
     <% if !user_signed_in? %>
       <button type="button" class="button-register button-register-review" data-toggle="modal" data-target="#exampleModal">
-       Log In and add a review!
+       <%= t('races.show.log_in_review')%>
       </button>
     <% elsif user_signed_in? && !@race.has_reviewed?(current_user) %>
-      <hr id = "Leave-a-review" class="hr-text" data-content="Leave a review">
+      <hr id = "Leave-a-review" class="hr-text" data-content="<%= t('races.show.leave_review')%>">
     <%= render 'reviews/form', race: @race, review: @review unless @race.has_reviewed?(current_user) %>
     <% end %>
     <% if @race.reviews = [] %>
-      <hr class="hr-text" data-content="No reviews for this race!">
+      <hr class="hr-text" data-content="<%= t('races.show.no_review')%>">
     <% else %>
-      <hr class="hr-text" data-content="What people say about this race">
+      <hr class="hr-text" data-content="<%= t('races.show.opinions')%>">
     <div id="reviews">
       <% @reviews.reverse.each do |review| %>
 

@@ -2,13 +2,13 @@
 
   <div class="new-review-container">
     <div class="new-review-description">
-      <%= f.input :description, as: :text, label: "Please leave a review for this race" %>
+      <%= f.input :description, as: :text, label: t('reviews._form.leave_a_rew') %>
     </div>
 
     <div class="new-review-rates">
-      <%= f.input :route_rate, collection: 1..10 %>
-      <%= f.input :organisation_rate, collection: 1..10 %>
-      <%= f.input :value_for_money, collection: 1..10 %>
+      <%= f.input :route_rate, collection: 1..10, label: t('reviews._form.route') %>
+      <%= f.input :organisation_rate, collection: 1..10, label: t('reviews._form.org')%>
+      <%= f.input :value_for_money, collection: 1..10, label: t('reviews._form.value')%>
     </div>
 
     <div class="new-review-button-container">

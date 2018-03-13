@@ -6,19 +6,21 @@
   <!-- Right Navigation -->
   <div class="navbar-rundb-right hidden-xs hidden-sm">
 
-
     <% if user_signed_in? %>
-
     <!--     if user has organisation code -->
-
-
-    <%= link_to "Become race organiser", new_organisation_path, class: "navbar-rundb-link" if !current_user.organisation%>
-    <%= link_to "Organisation dashbord", organisation_path(current_user.organisation.id), class: "navbar-rundb-link" if current_user.organisation%>
-    <%= link_to "My profile", user_path(current_user.id), class: "navbar-rundb-link" %>
-
+      <%= link_to new_organisation_path, class: "navbar-rundb-link" if !current_user.organisation do%> <%= t('shared._navbar.becomeraceorganizer') %> <% end %>
+      <% if current_user.organisation  %>
+        <%= link_to organisation_path(current_user.organisation.id), class: "navbar-rundb-link" do%>
+        <%= t('shared._navbar.organisation_dash') %>
+        <% end %>
+      <% end %>
+      <%= link_to user_path(current_user.id), class: "navbar-rundb-link" do %>
+      <%= t('shared._navbar.my_profile') %>  <% end %>
     <% else %>
-    <div class="orga-call">Race Organizer? </div>
-    <%= link_to "Add your Race", new_user_registration_path , class: "button-orga-start" %>
+    <div class="orga-call"><%= t('shared._navbar.raceorganizer?') %> </div>
+    <%= link_to new_user_registration_path , class: "button-orga-start" do %>
+    <%= t('shared._navbar.addyourrace') %>
+    <% end %>
     <% end %>
 
 
@@ -36,9 +38,9 @@
 
 
       <% elsif user_signed_in? && !current_user.avatar && !current_user.facebook_picture_url%>
-      <img src="http://res.cloudinary.com/dxkimzdwk/image/upload/v1519720241/w2m3mpadakagaim0uf30.jpg" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+      <img src="http://placehold.it/30x30" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
       <ul class="dropdown-menu dropdown-menu-right navbar-rundb-dropdown-menu">
-        <li><%= link_to "My profile", user_path(current_user.id), class: "" %>
+        <li><%= link_to user_path(current_user.id) do %> <%= t('shared._navbar.my_profile') %> <% end %>
         </li>
 
         <% if user_signed_in?%>
@@ -53,7 +55,7 @@
     <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
 
     <ul class="dropdown-menu dropdown-menu-right navbar-rundb-dropdown-menu">
-      <li><%= link_to "My profile", user_path(current_user.id), class: "" %>
+      <li><%= link_to  user_path(current_user.id) do %>  <%= t('shared._navbar.my_profile') %> <% end %>
 
         <% if user_signed_in?%>
         <%= link_to "Logout", destroy_user_session_path,  :method=>'delete', class: "" %>
@@ -85,7 +87,7 @@
 
 
 <ul class="dropdown-menu dropdown-menu-right navbar-rundb-dropdown-menu">
-  <li><%= link_to "My profile", user_path(current_user.id), class: "" %>
+  <li><%= link_to user_path(current_user.id) do %> <%= t('shared._navbar.my_profile') %> <% end %>
   </li>
 
   <li>
