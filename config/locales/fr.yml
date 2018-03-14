@@ -51,6 +51,7 @@ fr:
       special_price_end: "Si oui, jusqu'à quand souhaitez-vous proposer ce prix ?"
       max_subscription: "Avez-vous un nombre maximum d'inscriptions ? Si oui, combien ?"
       submit_race: "Ajoutez votre course !"
+      pathimg: "You have an image with the route and profile?"
     edit:
       edit: "Éditez votre course"
     show:

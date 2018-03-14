@@ -9,7 +9,7 @@
 
     <% if user_signed_in? %>
     <!--     if user has organisation code -->
-      <%= link_to new_organisation_path, class: "navbar-rundb-link" if !current_user.organisation do%> <%= t('shared._navbar.becomeraceorganizer') %> <% end %>
+      <%= link_to t('shared._navbar.becomeraceorganizer'), new_organisation_path, class: "navbar-rundb-link" if !current_user.organisation %>
       <% if current_user.organisation  %>
         <%= link_to organisation_path(current_user.organisation.id), class: "navbar-rundb-link" do%>
         <%= t('shared._navbar.organisation_dash') %>
