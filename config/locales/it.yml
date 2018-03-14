@@ -50,6 +50,7 @@ it:
       special_price_end: "Se hai inserito un prezzo agevolato indica la data ultima per poterne usufruire"
       max_subscription: "Hai un tetto massimo di iscrizioni? Se si inseriscilo qui"
       submit_race: "Inserisci la gara!"
+      pathimg: "Hai un immagne con il profilo altimetrico o il percorso della corsa??"
     edit:
       edit: "Modifica la gara!"
     show:

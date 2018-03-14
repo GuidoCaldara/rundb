@@ -50,6 +50,7 @@ en:
       special_price_end: "If yes, untill wich date u wana propose the special price?"
       max_subscription: "You have a maximum number of subscription? If yes, how many?"
       submit_race: "Insert the race!"
+      pathimg: "You have an image with the route and profile?"
     edit:
       edit: "Edit your race!"
     show:

@@ -10,7 +10,7 @@ class OrganisationPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    user.admin? || record.user == user
   end
 
   def new?
