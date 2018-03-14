@@ -7,14 +7,14 @@
             <div class="avatar-review" style="background-image: url('<%= image_path review.user.avatar.url %>')">
             </div>
           <% else %>
-            <div class="avatar-review" style="background-image: url('<%= image_path "http://res.cloudinary.com/dxkimzdwk/image/upload/v1520413859/fakeprofile#{rand(1..4)}.jpg"%>')">
+            <div class="avatar-review" style="background-image: url(<%= asset_path 'nophoto.png' %>)">
             </div>
           <% end %>
 
           <% if review.user.first_name && review.user.last_name %>
           <p><%= review.user.first_name %> <br> <%=  review.user.last_name %></p>
           <% else %>
-          <p><%= review.user.email %>
+          <p> Runner <%= review.user.id %>
            <% end %>
           <% if review.created_at %>
             <p class="review-date"><%= (review.created_at).strftime("%F") %></p>

@@ -37,4 +37,15 @@
   position: relative;
   top: -50px;
   box-shadow: 0 25px 49px #00000052;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.avatar-organisation-page{
+  div{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
 }

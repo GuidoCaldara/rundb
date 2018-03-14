@@ -7,15 +7,31 @@
 
         <div class="avatar-top-part">
           <!-- Organisation logo -->
-          <% if !@organisation.logo.url %>
-
-            <div class="avatar-organisation-page" style="background-image: url('<%= cl_image_path "http://lorempixel.com/200/200/sports/" %>')">
+          <% if !@organisation.logo.url && user_signed_in? && current_user.id == @organisation.user_id %>
+          <%= link_to edit_organisation_path(@organisation.id) do%>
+          <div class="avatar-organisation-page">
+            <div>
+              <div> <i class="fas fa-image" style="font-size: 50px"></i>
+              </div>
+            <div>
+             <p style="font-size: 15px; text-align:center"><%= t('organisations.show.add_logo') %></p>
             </div>
+          </div>
+        </div>
+        <% end %>
+        <% elsif !@organisation.logo.url %>
+          <div class="avatar-organisation-page">
+            <div>
+              <div> <i class="fas fa-image" style="font-size: 50px"></i>
+              </div>
+          </div>
+        </div>
+
 
 
           <% else %>
 
-            <div class="avatar-organisation-page" style="background-image: url('<%= cl_image_path @organisation.logo.url %>')">
+            <div class="avatar-organisation-page" style="background-image: url('<%= cl_image_path @organisation.logo.url(:avatar) %>')">
             </div>
 
           <% end %>
@@ -92,7 +108,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
 
                         <div class="card-race">
-                          <div class="card-race-header-orga" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url('<%= cl_image_path race.photo, height: 300, width: 400, crop: :fill if race.photo.url %>')">
+                          <div class="card-race-header-orga" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url('<%= cl_image_path race.photo.url, height: 300, width: 400, crop: :fill if race.photo %>')">
 
                             <div class="card-race-top-left-container">
                               <p class="hit-name card-race-title"><%= race.name %></p>
@@ -128,16 +144,10 @@
                                   </div>
                                   <div class="col-xs-6 no-padding">
 
-<!--  Add it when registration start   <%if race.orders %>
-                                      <div class="orga-race-action-button">
-                                        <%= link_to "Registrations", race_subscriptions_path(race.id) %>
-                                      </div>
-                                      <% end %>
- -->
 
                                   </div>
                                 </div>
-                            <% if current_user == @organisation.user_id %>
+                            <% if current_user.id == @organisation.user_id %>
                                 <div class="row">
                                   <div class="col-xs-6 no-padding">
                                     <div class="orga-race-action-button">
@@ -149,10 +159,11 @@
                                       <%= link_to t('organisations.show.add_photo'), new_race_photo_path(race.id) %>
                                     </div>
                                   </div>
-                                                                  <% end %>
+                                  <% end %>
+                                </div>
 
                                 </div>
-                              </div>
+<!--                               </div> -->
                               <!-- closing container for bootstrap -->
 
                             </div>

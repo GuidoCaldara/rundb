@@ -19,6 +19,14 @@
                 <div class="avatar-profile-page" style="background-image: url('<%= cl_image_path @user.avatar %>')">
                 </div>
 
+              <% else %>
+                <div class="avatar-organisation-page">
+                  <div>
+                    <div> <i class="fas fa-image" style="font-size: 50px"></i>
+                    </div>
+                  </div>
+                </div>
+
             <% end %>
           </div>
 
@@ -31,19 +39,19 @@
               <% end %>
 
               <% if @user.group %>
-                <p class="user-group">Running club: <%=@user.group%></p>
+                <p class="user-group"><%= t('users.show.team')%><%=@user.group%></p>
               <% end %>
 
             <div class="edit-actions">
               <% if user_signed_in? && current_user.id == @user.id  %>
                 <%= link_to edit_user_registration_path do %>
-                <div class="profil-button"> Edit Your Profile</div>
+                <div class="profil-button"> <%= t('users.show.edit')%></div>
               <% end %>
             <% end %>
 
               <% if @user.organisation && user_signed_in? && current_user.id == @user.id  %>
                 <%= link_to organisation_path(@user.organisation.id) do %>
-                  <div class="profil-button"></i> Organiser dashboard</div>
+                  <div class="profil-button"></i> <%= t('users.show.dashbord')%></div>
                 <% end %>
               <% end %>
             </div>
@@ -55,7 +63,7 @@
 
 
         <div class="user-coming-races">
-          <hr class="hr-text-profile-page" data-content="Your coming Races">
+          <hr class="hr-text-profile-page" data-content="<%= t('users.show.coming_races')%>">
           <% if @next_races %>
             <div class="container">
               <div class="row">
@@ -98,7 +106,7 @@
         </div> <!-- closing coming races -->
 
         <div class="user-previous-race">
-          <hr class="hr-text-profile-page" data-content="Your previous Races">
+          <hr class="hr-text-profile-page" data-content= "<%= t('users.show.previous_races')%>">
           <% if @old_races %>
             <div class="container">
                 <div class="row">
