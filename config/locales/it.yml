@@ -96,8 +96,9 @@ it:
       story: "Chi siamo"
       edit: "Modifica la tua organizzazione"
       add: "Aggiungi una gara"
+      add_logo: "Aggiungi il tuo logo!"
       confirm_delete: "Sei sicuro di voler eliminare la tua organizzazione? Se hai qualche gara nel database dovrai prima eliminarla per procedere"
-      delete: "Delete Your organisation"
+      delete: "Elimina la tua organizzazione"
       your_races: "Le tue gare"
       organisation_races: "Le gare dell'organizzazione"
       add_a_race: "Non hai ancora inserito gare! Inizia ora!"
@@ -126,8 +127,13 @@ it:
       route: "Percorso"
       org: "organizzazione"
       value: "Rapporto qualità prezzo"
-
-
+  users:
+    show:
+      team: "La tua squadra"
+      edit: "Modifica il tuo profilo"
+      dashbord: "La tua organizzazione"
+      coming_races: Prossime gare
+      previous_races: "Ultime gare"
 
 
 

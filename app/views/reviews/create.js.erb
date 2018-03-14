@@ -3,22 +3,21 @@ function refreshForm(innerHTML) {
   newReviewForm.innerHTML = innerHTML;
 }
 
+
 function addReview(reviewHTML) {
   const reviews = document.getElementById('reviews');
 
   reviews.insertAdjacentHTML('beforebegin', reviewHTML );
   document.getElementById("Leave-a-review").style.display = "none";
 
-
 }
 
 <% if @review.errors.any? %>
+console.log("kljlkjlkjljljkj")
 refreshForm('<%= j render "reviews/form", race: @race, review: @review %>');
 <% else %>
 addReview('<%= j render "reviews/show", review: @review %>');
 document.getElementById('new_review').hidden = true;
 <% end %>
-
-
 
 

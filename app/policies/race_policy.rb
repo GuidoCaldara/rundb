@@ -23,15 +23,18 @@ class RacePolicy < ApplicationPolicy
   end
 
   def edit?
-    user.admin? || record.user == user
+    @organisation = Organisation.find(@record.organisation_id)
+    @user.admin? || record.organisation_id == @user.organisation.id
   end
 
   def update?
-    user.admin? || record.user == user
+    @organisation = Organisation.find(@record.organisation_id)
+    @user.admin? || record.organisation_id == @user.organisation.id
   end
 
   def destroy?
-    user.admin? || record.user == user
+    @organisation = Organisation.find(@record.organisation_id)
+    @user.admin? || record.organisation_id == @user.organisation.id
   end
 
 

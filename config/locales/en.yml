@@ -96,6 +96,7 @@ en:
       story: "Who we are"
       edit: "Edit Your Organization"
       add: "Add a new race"
+      add_logo: "Add your Logo"
       confirm_delete: "Are you really wanna delete your organisation? If u have some races in the database u will not able to complete the cancellation?"
       delete: "Delete Your organisation"
       your_races: "Your races"
@@ -126,6 +127,13 @@ en:
       route: "Route"
       org: "Organisation"
       value: "Value for money"
+  users:
+    show:
+      team: "Your team"
+      edit: "Edit your profile"
+      dashbord: "Organiser dashboard"
+      coming_races: "Coming Races"
+      previous_races: "Previous Races"
 
 
 

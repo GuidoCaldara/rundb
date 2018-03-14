@@ -97,6 +97,7 @@ fr:
       story: "Qui sommes-nous ?"
       edit: "Éditez votre organisation"
       add: "Ajoutez une nouvelle course"
+      add_logo: "Add your Logo"
       confirm_delete: "Voulez-vous vraiment supprimer votre organisation ? Si vous avez des courses en cours dans votre base de données, vous ne pourrez pas confirmer la suppression de votre organisation."
       delete: "Supprimez votre organisation"
       your_races: "Vos courses"
@@ -127,3 +128,11 @@ fr:
       route: "Parcours"
       org: "Organisation"
       value: "Rapport qualité-prix"
+  users:
+    show:
+      team: "Your team"
+      edit: "Edit your profile"
+      dashbord: "Organiser dashboard"
+      coming_races: "Coming Races"
+      previous_races: "Previous Races"
+

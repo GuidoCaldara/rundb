@@ -92,7 +92,7 @@
           <div class="carousel-inner" style=" text-align:center">
 
             <div class="carousel-item active text-center mx-auto">
-              <%= cl_image_tag @race.photo.url, crop: :fill, class: "  img-fluid carousel-img", style: "display: inline-block"%>
+              <%= cl_image_tag @race.photo.url(:carousel), crop: :fill, class: "  img-fluid carousel-img", style: "display: inline-block"%>
             </div>
             <% if @race.photos %>
             <% @race.photos.each do |photo| %>
@@ -237,10 +237,11 @@
       <hr id = "Leave-a-review" class="hr-text" data-content="<%= t('races.show.leave_review')%>">
     <%= render 'reviews/form', race: @race, review: @review unless @race.has_reviewed?(current_user) %>
     <% end %>
-    <% if @race.reviews = [] %>
-      <hr class="hr-text" data-content="<%= t('races.show.no_review')%>">
-    <% else %>
+    <% if Review.where(race_id: @race.id) %>
       <hr class="hr-text" data-content="<%= t('races.show.opinions')%>">
+    <% else %>
+      <hr class="hr-text" data-content="<%= t('races.show.no_review')%>">
+    <% end %>
     <div id="reviews">
       <% @reviews.reverse.each do |review| %>
 
@@ -248,7 +249,6 @@
       <% end %>
     </div>
   </div>
-  <% end %>
 
 </div>
 

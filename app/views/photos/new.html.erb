@@ -38,7 +38,7 @@
   <div class="card-deck">
     <% @photos.each do |photo| %>
     <div class="card card-photo">
-      <%= cl_image_tag photo.photo.url(:preview), crop: :fill, class: "card-img-top mb-3", width: "170", height: "170"%>
+      <%= cl_image_tag photo.photo.url(:avatar), crop: :fill, class: "card-img-top mb-3", width: "170", height: "170"%>
       <div class="card-block">
         <%= link_to race_photo_path(@race.id, photo.id), method: :delete, class: "mt-4" do%>
         <button class="delete-button btn btn-small btn-danger mb-0">    <i class="fas fa-trash mt-0 mr-3" style= "font-size: 20px"> </i><%= t('photos.new.delete') %></button>

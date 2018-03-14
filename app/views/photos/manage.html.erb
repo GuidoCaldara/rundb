@@ -30,7 +30,7 @@
 <div class="row d-flex justify-content-start">
     <% @photos.each do |photo| %>
     <div class= "p-2 mb-3">
-      <%= cl_image_tag photo.photo.url(:preview), crop: :fill, class: "img-fluid"%>
+      <%= cl_image_tag photo.photo.url(:avatar), crop: :fill, class: "img-fluid"%>
       <%= link_to race_photo_path(@race.id, photo.id), method: :delete, class: "d-block" do%>
       <i class="fas fa-trash mt-3" style= "font-size: 20px"></i>
           <% end %>
