@@ -19,6 +19,12 @@ class RoutesController < ApplicationController
     render :new
   end
 
+  def show
+    @race = Race.find(params[:race_id])
+    @route = Route.find_by(race_id: @race.id)
+    authorize @route
+  end
+
   def create
     @race = Race.find(params[:race_id])
     @route = Route.new(race_id: @race.id)

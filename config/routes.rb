@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     # resources :orders, except: [:edit, :update]
     # resources :favorites, only: [:create]
     resources :photos, only: [:new, :create, :destroy]
-    resources :routes, only: [:new, :create, :destroy]
+    resources :routes, only: [:new, :create, :destroy, :show]
     end
   resources :favorites, only: [:destroy]
   resources :reviews, only: [:destroy, :edit, :update]

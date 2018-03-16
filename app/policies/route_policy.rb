@@ -9,6 +9,14 @@ class RoutePolicy
     route_policy
   end
 
+  def callback?
+   route_policy
+  end
+
+  def show?
+    route_policy
+  end
+
   def create?
     route_policy
   end

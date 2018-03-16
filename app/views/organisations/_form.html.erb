@@ -8,6 +8,11 @@
     <%= f.input :description, label: t('organisations._form.story'), :input_html => { 'rows' => 9, autocomplete: 'off'}%>
     <%= f.input :email, label: t('organisations._form.email')%>
     <%= f.input :phone_number, label: t('organisations._form.phone') %>
+    <p class="lead custom-label"> <%= t('organisations._form.warning') %> </p>
+    <%= f.input :first_name, label: t('organisations._form.first_name')%>
+    <%= f.input :last_name, label: t('organisations._form.last_name')%>
+    <p class="lead custom-label"> <%= t('organisations._form.logo') %> </p>
+
     <%= f.input :logo, class: "form-control-file mx-auto", style: "margin: 0 auto;" %>
      <%= f.button :submit, label: t('organisations._form.insert'), class: "btn btn-primary" %>
     <% end %>

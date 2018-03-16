@@ -47,10 +47,22 @@
   <div class="row">
     <div class="col-md-8 my-5 mx-auto text-center strava-box">
       <p class="lead my-4">In this page you can upload the gps track of yuor race directly from STRAVA. Please alowed Run-db to acces your STRAVA profile in order to import the data</p>
-      <a href="http://www.strava.com/oauth/authorize?client_id=23523&response_type=code&redirect_uri=https://www.run-db.com/exchange_token&approval_prompt=force&scope=view_private">
+<!--       <a href="http://www.strava.com/oauth/authorize?client_id=23523&response_type=code&redirect_uri=https://www.run-db.com/exchange_token&approval_prompt=force&scope=view_private">
       <%= image_tag "strava.png", width: "200"%>
+ -->      <a href="http://www.strava.com/oauth/authorize?client_id=23523&response_type=code&redirect_uri=http://localhost:3000/exchange_token&approval_prompt=force&scope=view_private">
+      <%= image_tag "strava.png", width: "200"%>
+
       </a>
     </div>
+  </div>
+  <div class="row">
+      <div class="col-md-6 mx-center">
+       <%= simple_form_for @race do |f| %>
+       <%= f.input :pathimg, class: "form-control-file mx-auto", style: "margin: 0 auto;" %>
+       <%= f.submit "Upload!", class: "btn upload-button" %>
+       <% end %>
+  </div>
+
   </div>
 </div>
 
@@ -70,6 +82,7 @@
     </div>
   </div>
 </div>
+
 
 <% end %>
 
@@ -125,7 +138,8 @@
 
 
   function sendData(array) {
-    let url = `https://www.run-db.com/races/${raceId}/routes`
+    let url = `http://localhost:3000/races/${raceId}/routes`
+    // let url = `https://www.run-db.com/races/${raceId}/routes`
     fetch(url, {
       method: "POST",
       credentials: 'same-origin',
@@ -139,7 +153,7 @@
       console.log(data.hits); // Look at local_names.default
       // after you get a return, change the button!
     });
-    window.location = "/races/<%=@race.id%>/routes/new";
+    window.location = "/races/<%=@race.id%>/routes/show";
 
   }
 

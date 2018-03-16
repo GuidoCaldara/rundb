@@ -137,16 +137,19 @@
                             <div class="card-bottom-orga-button-container">
                               <div class="container">
                                 <div class="row">
+                                  <% if race.route || race.pathimg %>
                                   <div class="col-xs-6 no-padding">
                                     <div class="orga-race-action-button">
                                       <%= link_to t('organisations.show.see_race'), race_path(race.id) %>
                                     </div>
                                   </div>
+
                                   <div class="col-xs-6 no-padding">
-
-
+                                    <div class="orga-race-action-button">
+                                      <%= link_to t('organisations.show.see_path'), race_route_path(race.id) %>
+                                    </div>
                                   </div>
-                                </div>
+                                  </div>
                             <% if current_user.id == @organisation.user_id %>
                                 <div class="row">
                                   <div class="col-xs-6 no-padding">
@@ -180,7 +183,7 @@
               </div> <!-- closing col -->
             </div> <!-- closing container -->
 
-
+<% end %>
 
 
 

@@ -28,7 +28,7 @@
  </div>
 
 
- <% if @race.photos %>
+ <% if @race.photos.any? %>
  <div class="row">
   <div class="col-md-6 mx-auto text-center">
     <h1 class="step-title"><%= t('photos.new.manage_photo') %></h1>

@@ -1,0 +1,50 @@
+<div class="container" style="min-height: calc(100vh - 130px)">
+  <% if @race.route %>
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+    <div class="map-route">
+      <div id="map" style="height:400px; width: 100%;z-index: 1;">
+     </div>
+    </div>
+  </div>
+ </div>
+ <% end %>
+ <% if @race.pathimg %>
+   <div class="row">
+    <div class="col-md-10 mx-auto">
+    <div class="map-route">
+      <div style="height:400px; width: 100%;z-index: 1;">
+              <%= cl_image_tag @race.pathimg.url(:carousel), crop: :fill, style: "height:400px; width: 80%;z-index: 1"%>
+
+     </div>
+    </div>
+  </div>
+ </div>
+   <% end %>
+
+</div>
+
+
+<script>
+  <% if @race.route  %>
+  var data =  <%= raw @race.route.pathfile %>;
+  <% end %>
+  console.log(data);
+  generate_route(data);
+
+  function generate_route(array){
+    var map = L.map('map',{
+      center: [43.64701, -79.39425],
+      zoom: 15
+    });
+
+    var latlngs = array
+    var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+    map.fitBounds(polyline.getBounds());
+    console.log(array);
+
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+  }
+</script>
