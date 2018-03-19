@@ -122,6 +122,8 @@ it:
       go_to_route: "Vai all'ultimo step e importa il percorso direttamente da STRAVA"
       manage_photo: "Gestisci le tue foto"
       delete: "Elimina!"
+      back-to-race: "Vai alla pagina della gara"
+      or: "o"
   reviews:
     _form:
       leave_a_rew: "Lascia una recensione per questa gara"

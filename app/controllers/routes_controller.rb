@@ -21,7 +21,7 @@ class RoutesController < ApplicationController
 
   def show
     @race = Race.find(params[:race_id])
-    @route = Route.find_by(race_id: @race.id)
+    @route = Route.find_by(race_id: @race)
     authorize @route
   end
 
@@ -32,7 +32,7 @@ class RoutesController < ApplicationController
     @route.pathfile = params[:array]
     @route.save
     alert[:success] ="The track has been successfully uploaded!"
-    redirect_to race_path(@race.id)
+    redirect_to race_path(@race)
   end
 
   def destroy

@@ -409,6 +409,11 @@ border: 1px solid #e2e2e2;
 .existing-review-rate {
   flex: 0 0 200px;
   padding: 0 16px;
+  font-size: 15px;
+  font-weight: 200;
+  border-right: 1px #808080 solid;
+  color: #808080;
+
 }
 
 .review-rates-wrapper {
@@ -427,6 +432,9 @@ border: 1px solid #e2e2e2;
   flex: 1 1 auto;
   padding-left: 12px;
   text-align: justify;
+  font-size: 15px;
+  font-weight: 200;
+  color: #808080;
 }
 
 

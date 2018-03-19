@@ -123,6 +123,8 @@ en:
       go_to_route: "Go to the last step And Upload your route"
       manage_photo: "Manage your photos"
       delete: "Delete it!"
+      back-to-race: "Go back to race page"
+      or: "o"
   reviews:
     _form:
       leave_a_rew: "Please leave a review for this race"

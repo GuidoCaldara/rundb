@@ -124,6 +124,8 @@ fr:
       go_to_route: "Allez à la dernière étape et publiez votre parcours"
       manage_photo: "Gérez vos photos"
       delete: "Supprimez-la"
+      back-to-race: "Vai alla pagina della gara"
+      or: "o"
   reviews:
     _form:
       leave_a_rew: "Laissez un commentaire à propos de cette course"

@@ -47,7 +47,11 @@
             <i class="fas fa-angle-down"></i>
           </div>
           <div class="race-organizer">
+          <% if @organizer.id == 1 %>
+            <p ><%= t('races.show.organizer') %>: <span class="green-highlight"> <%= @race.orga %> </span></p>
+          <% else %>
             <p ><%= t('races.show.organizer') %>: <span class="green-highlight"><%= link_to organisation_path(@organizer.id) do%> <%= @organizer.name %> <% end %></span></p>
+          <% end %>
             <p><%= t('races.show.website') %> <span class="green-highlight"><a href="<%= @race.website %>"> <%=@race.website%></a></span></p>
           </div>
           <div class="race-venue">
@@ -150,33 +154,35 @@
 <% elsif (@race.reviews.any? && @race.route) || (@race.reviews.any? && @race.pathimg) %>
   <div class="footer-container">
     <!-- rates container -->
-<% if @race.route_rate_avg && @race.organisation_rate_avg && @race.value_for_money_avg %>
-    <div class="rates-container">
-      <div class="race-rating-header">
-      Rating
+  <% if @race.route_rate_avg && @race.organisation_rate_avg && @race.value_for_money_avg %>
+      <div class="rates-container">
+        <div class="race-rating-header">
+        Rating
+        </div>
+        <div class="rates-wrapper">
+            <div class="race-rates"><%= t('races.show.route')%> <br><span class="green-highlight"><%= @race.route_rate_avg.round(1) %> / 10</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width:<%= @race.route_rate_avg*10 %>%">
+              </div>
+            </div>
+            <div class="race-rates"><%= t('races.show.org')%> <br><span class="green-highlight"><%= @race.organisation_rate_avg.round(1) %> / 10</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width:<%= @race.organisation_rate_avg*10 %>%">
+              </div>
+            </div>
+            <div class="race-rates"><%= t('races.show.val_money')%> <br><span class="green-highlight"><%= @race.value_for_money_avg.round(1) %> / 10</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width:<%= @race.value_for_money_avg*10 %>%">
+              </div>
+            </div>
+        </div>
       </div>
-      <div class="rates-wrapper">
-          <div class="race-rates"><%= t('races.show.route')%> <br><span class="green-highlight"><%= @race.route_rate_avg.round(1) %> / 10</span>
           </div>
-          <div class="progress">
-            <div class="progress-bar" style="width:<%= @race.route_rate_avg*10 %>%">
-            </div>
-          </div>
-          <div class="race-rates"><%= t('races.show.org')%> <br><span class="green-highlight"><%= @race.organisation_rate_avg.round(1) %> / 10</span>
-          </div>
-          <div class="progress">
-            <div class="progress-bar" style="width:<%= @race.organisation_rate_avg*10 %>%">
-            </div>
-          </div>
-          <div class="race-rates"><%= t('races.show.val_money')%> <br><span class="green-highlight"><%= @race.value_for_money_avg.round(1) %> / 10</span>
-          </div>
-          <div class="progress">
-            <div class="progress-bar" style="width:<%= @race.value_for_money_avg*10 %>%">
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
+
+  <% end %>
     <div class="map-route">
       <% if @race.route %>
         <div id="map" style="height:400px; width: 100%;z-index: 1;">
@@ -191,7 +197,7 @@
 
 
   <% end %> <!-- End If line 133 -->
-</div>
+  </div>
 </div> <!-- End Container map -->
 
 
@@ -218,12 +224,11 @@
     <% end %>
     <% if Review.where(race_id: @race.id).any? %>
       <hr class="hr-text" data-content="<%= t('races.show.opinions')%>">
-    <% else %>
+    <% elsif !Review.where(race_id: @race.id).any? %>
       <hr class="hr-text" data-content="<%= t('races.show.no_review')%>">
     <% end %>
     <div id="reviews">
       <% @reviews.reverse.each do |review| %>
-
       <%= render "reviews/show", review: review %>
       <% end %>
     </div>
@@ -264,6 +269,7 @@
   <% if @race.route  %>
   var data =  <%= raw @race.route.pathfile %>;
   <% end %>
+  console.log(data);
   generate_route(data);
 
   function generate_route(array){
@@ -275,9 +281,10 @@
     var latlngs = array
     var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
     map.fitBounds(polyline.getBounds());
+    console.log(array);
+
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
   }
 </script>
-

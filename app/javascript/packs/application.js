@@ -12,8 +12,8 @@ autocomplete();
 window.addEventListener('load', function() {
 
   const search = instantsearch({
-    appId: '869L3DD13H',
-    apiKey: '14d7338a984685e0f99ca9b9ffe2e78e',
+    appId: "869L3DD13H",
+    apiKey: "14d7338a984685e0f99ca9b9ffe2e78e",
     indexName: 'Race',
     urlSync: true
   });
@@ -84,6 +84,11 @@ window.addEventListener('load', function() {
       attributeName: 'date_stamp',
     })
     );
+
+
+
+
+
 
   search.addWidget(
     instantsearch.widgets.rangeSlider({
