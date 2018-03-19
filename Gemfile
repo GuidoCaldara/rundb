@@ -28,6 +28,7 @@ gem 'carrierwave', '~> 1.2'
 gem 'gmaps-autocomplete-rails'
 gem 'coffee-rails'
 gem "pundit"
+gem "letter_opener", group: :development
 
 
 gem "algoliasearch-rails"
