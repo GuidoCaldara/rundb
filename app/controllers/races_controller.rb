@@ -80,6 +80,7 @@ class RacesController < ApplicationController
   end
 
 
+
 private
 
   def set_race
@@ -88,7 +89,7 @@ private
   end
 
   def race_params
-    params.require(:race).permit(:photo, :pathimg, :starting_point, :name, :race_distance, :elevation, :date, :category, :location, :latitude, :longitude, :starting_time, :discount_fee_cents, :fee_cents, :discount_fee_finish, :subscription_start, :subscription_end, :photos, :goodies, :capacity, :description, :bookable,:website, :subscription_link, :organisation_id, :first_edition, :video)
+    params.require(:race).permit(:org, :photo, :pathimg, :starting_point, :name, :race_distance, :elevation, :date, :category, :location, :latitude, :longitude, :starting_time, :discount_fee_cents, :fee_cents, :discount_fee_finish, :subscription_start, :subscription_end, :photos, :goodies, :capacity, :description, :bookable,:website, :subscription_link, :organisation_id, :first_edition, :video)
   end
 
 end

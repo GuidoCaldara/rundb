@@ -1,203 +1,157 @@
-
 <div class="organisation-wrapper">
   <div class="container">
     <div class="row">
       <div class="col-xs-offset-1 col-xs-10 organisation-content">
-
-
         <div class="avatar-top-part">
           <!-- Organisation logo -->
           <% if !@organisation.logo.url && user_signed_in? && current_user.id == @organisation.user_id %>
-          <%= link_to edit_organisation_path(@organisation.id) do%>
-          <div class="avatar-organisation-page">
-            <div>
-              <div> <i class="fas fa-image" style="font-size: 50px"></i>
+            <%= link_to edit_organisation_path(@organisation.id) do%>
+            <div class="avatar-organisation-page">
+              <div>
+                <div>
+                  <i class="fas fa-image" style="font-size: 50px"></i>
+                </div>
+                <div>
+                  <p style="font-size: 15px; text-align:center"><%= t('organisations.show.add_logo') %></p>
+                </div>
               </div>
-            <div>
-             <p style="font-size: 15px; text-align:center"><%= t('organisations.show.add_logo') %></p>
             </div>
-          </div>
-        </div>
-        <% end %>
-        <% elsif !@organisation.logo.url %>
-          <div class="avatar-organisation-page">
-            <div>
-              <div> <i class="fas fa-image" style="font-size: 50px"></i>
-              </div>
-          </div>
-        </div>
-
-
-
-          <% else %>
-
-            <div class="avatar-organisation-page" style="background-image: url('<%= cl_image_path @organisation.logo.url(:avatar) %>')">
-            </div>
-
           <% end %>
-        </div>
-
-
-        <div class="organisation-top-part">
-
-          <div class="organisation-details">
-            <div class="organisation-name"> <%= @organisation.name %></div>
-
-            <div class="orga-details-banner">
-
-              <div class="orga-details-left">
-                <div class="detail-item"><strong><%= t('organisations.show.address') %></strong><br><%=@organisation.address%></div>
-                <div class="detail-item"><strong><%= t('organisations.show.phone') %></strong><br><%=@organisation.phone_number %></div>
-                <div class="detail-item"><strong><%= t('organisations.show.email') %></strong><br><%=@organisation.email %></div>
-              </div>
-
-              <div class="orga-details-right">
-                <div><strong><%= t('organisations.show.story') %></strong> <%=@organisation.description %></div>
+          <% elsif !@organisation.logo.url %>
+            <div class="avatar-organisation-page">
+              <div>
+                <div>
+                  <i class="fas fa-image" style="font-size: 50px"></i>
+                </div>
               </div>
             </div>
-
-
+            <% else %>
+              <div class="avatar-organisation-page" style="background-image: url('<%= cl_image_path @organisation.logo.url(:avatar) %>')"></div>
+            <% end %>
+          </div>
+          <div class="organisation-top-part">
+            <div class="organisation-details">
+              <div class="organisation-name">
+                <%= @organisation.name %></div>
+              <div class="orga-details-banner">
+                <div class="orga-details-left">
+                  <div class="detail-item">
+                    <strong><%= t('organisations.show.address') %></strong><br><%=@organisation.address%></div>
+                  <div class="detail-item">
+                    <strong><%= t('organisations.show.phone') %></strong><br><%=@organisation.phone_number %></div>
+                  <div class="detail-item">
+                    <strong><%= t('organisations.show.email') %></strong><br><%=@organisation.email %></div>
+                </div>
+                <div class="orga-details-right">
+                  <div>
+                    <strong><%= t('organisations.show.story') %></strong>
+                    <%=@organisation.description %></div>
+                </div>
+              </div>
               <div class="orga-edit-actions">
                 <% if policy(@organisation).edit? %>
-                <%= link_to edit_organisation_path(@organisation.id) do %>
-                <div class="edit-orga-button"><%= t('organisations.show.edit')%></div>
+                  <%= link_to edit_organisation_path(@organisation.id) do %>
+                  <div class="edit-orga-button"><%= t('organisations.show.edit')%></div>
                 <% end %>
-                <% end %>
-
-                <% if @organisation.user_id == current_user.id %>
+              <% end %>
+              <% if @organisation.user_id == current_user.id %>
                 <%= link_to new_race_path do %>
                 <div class="add-orga-button"><%= t('organisations.show.add')%></div>
-                <% end %>
-                <% end %>
-
-                <% if @organisation.user_id == current_user.id %>
-                   <%= link_to organisation_path(@organisation.id), method: :delete, data: {confirm: t('organisations.show.confirm_delete') } do %>
-                  <div class="delete-orga-button"><%= t('organisations.show.delete')%></div>
-                  <% end %>
-
-                <% end %>
-
-
-
-              </div>
-
-          </div> <!-- closing organisation top right page -->
-
-        </div> <!-- closing organisation top page -->
-
-
-
-          <% if current_user.id == @organisation.user_id %>
-          <hr class="hr-text-organisation-page" data-content="<%= t('organisations.show.your_races')%>">
-          <% else %>
-          <hr class="hr-text-organisation-page" data-content="<%= t('organisations.show.organisation_races')%>">
+              <% end %>
+            <% end %>
+            <% if @organisation.user_id == current_user.id %>
+              <%= link_to organisation_path(@organisation.id), method: :delete, data: {confirm: t('organisations.show.confirm_delete') } do %>
+              <div class="delete-orga-button"><%= t('organisations.show.delete')%></div>
+            <% end %>
           <% end %>
-
-            <div class="container">
-              <div class="row">
-
-
-                <% if !@organisation.races.any? %>
-
-                  <h1><%= t('organisations.show.add_a_race')%></h1>
-
-                <% elsif @organisation.races.any? %>
-
-
-                  <% @races.each do |race| %>
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
-
-                        <div class="card-race">
-                          <div class="card-race-header-orga" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url('<%= cl_image_path race.photo.url, height: 300, width: 400, crop: :fill if race.photo %>')">
-
-                            <div class="card-race-top-left-container">
-                              <p class="hit-name card-race-title"><%= race.name %></p>
-                              <i class="fas fa-map-marker-alt card-race-marker"></i>
-                              <p class="hit-name card-race-location"><%= race.location %></p>
-
-                            </div> <!-- closing top left container -->
-
-                            <% if current_user == @organisation.user_id %>
-                            <%= link_to race_path(race.id), method: :delete, data: {confirm: t('organisations.show.confirm_delete')}, class: "card-race-delete" do %> <i class="fas fa-trash"></i>
-                              <% end %>
-                            <% end %>
-
-
-
-<!-- Add this line when order managment start
-                            <div class="card-middle-orga">
-                              <div class="card-middle-orga-left">
-                                <%= race.orders.size %> <br>participants
-                              </div>
-                              <div class="card-middle-orga-right">
-                                <%= race.orders.size * race.fee_cents %> ‎€ <br>of income
-                              </div>
-                            </div> -->
-
-                            <div class="card-bottom-orga-button-container">
-                              <div class="container">
-                                <div class="row">
-                                  <div class="col-xs-6 no-padding">
-                                    <div class="orga-race-action-button">
-                                      <%= link_to t('organisations.show.see_race'), race_path(race.id) %>
-                                    </div>
-                                  </div>
-                                  <div class="col-xs-6 no-padding">
-
-
-                                  </div>
-                                </div>
-                            <% if current_user.id == @organisation.user_id %>
-                                <div class="row">
-                                  <div class="col-xs-6 no-padding">
-                                    <div class="orga-race-action-button">
-                                      <%= link_to t('organisations.show.edit_race'), edit_race_path(race.id) %>
-                                    </div>
-                                  </div>
-                                  <div class="col-xs-6 no-padding">
-                                    <div class="orga-race-action-button">
-                                      <%= link_to t('organisations.show.add_photo'), new_race_photo_path(race.id) %>
-                                    </div>
-                                  </div>
-                                  <% end %>
-                                </div>
-
-                                </div>
-<!--                               </div> -->
-                              <!-- closing container for bootstrap -->
-
+        </div>
+      </div>
+      <!-- closing organisation top right page -->
+    </div>
+    <!-- closing organisation top page -->
+    <% if current_user.id == @organisation.user_id %>
+      <hr class="hr-text-organisation-page" data-content="<%= t('organisations.show.your_races')%>">
+    <% else %>
+      <hr class="hr-text-organisation-page" data-content="<%= t('organisations.show.organisation_races')%>">
+    <% end %>
+    <div class="container">
+      <div class="row">
+        <% if !@organisation.races.any? %>
+          <h1><%= t('organisations.show.add_a_race')%></h1>
+          <% elsif @organisation.races.any? %>
+            <% @races.each do |race| %>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                <div class="card-race">
+                  <div class="card-race-header-orga" style="background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0)), url('<%= cl_image_path race.photo.url, height: 300, width: 400, crop: :fill if race.photo %>')">
+                    <div class="card-race-top-left-container">
+                      <p class="hit-name card-race-title"><%= race.name %></p>
+                      <i class="fas fa-map-marker-alt card-race-marker"></i>
+                      <p class="hit-name card-race-location"><%= race.location %></p>
+                    </div>
+                    <!-- closing top left container -->
+                    <% if current_user == @organisation.user_id %>
+                      <%= link_to race_path(race.id), method: :delete, data: {confirm: t('organisations.show.confirm_delete')}, class: "card-race-delete" do %>
+                      <i class="fas fa-trash"></i>
+                    <% end %>
+                  <% end %>
+                  <!-- Add this line when order managment start <div class="card-middle-orga"> <div class="card-middle-orga-left"> <%= race.orders.size %> <br>participants </div> <div class="card-middle-orga-right"> <%= race.orders.size * race.fee_cents %> ‎€ <br>of
+                  income </div> </div> -->
+                  <div class="card-bottom-orga-button-container">
+                    <div class="container">
+                      <div class="row">
+                        <% if race.route || race.pathimg %>
+                          <div class="col-xs-6 no-padding">
+                            <div class="orga-race-action-button">
+                              <%= link_to t('organisations.show.see_race'), race_path(race.id) %>
                             </div>
-                            <!-- closing card bottom orga button container -->
-
-                          </div> <!-- closing card race header -->
-                      </div> <!-- closing card race div -->
-                    </div> <!-- closing col -->
-                  <% end %> <!-- closing loop over races -->
-                <% end %> <!-- closing elsif any races -->
-
-
-
-              </div> <!-- closing col -->
-            </div> <!-- closing container -->
-
-
-
-
-
-         </div> <!-- closing organisation races -->
-
-
-       </div> <!-- closing col -->
-    </div> <!-- closing row -->
-  </div> <!-- closing container -->
-</div> <!-- closing organisation wrapper -->
-
-
-
-
-
-
-
-
-
-
+                          </div>
+                          <div class="col-xs-6 no-padding">
+                            <div class="orga-race-action-button">
+                              <%= link_to t('organisations.show.see_path'), race_route_path(race.id) %>
+                            </div>
+                          </div>
+                        </div>
+                        <% if current_user.id == @organisation.user_id %>
+                          <div class="row">
+                            <div class="col-xs-6 no-padding">
+                              <div class="orga-race-action-button">
+                                <%= link_to t('organisations.show.edit_race'), edit_race_path(race.id) %>
+                              </div>
+                            </div>
+                            <div class="col-xs-6 no-padding">
+                              <div class="orga-race-action-button">
+                                <%= link_to t('organisations.show.add_photo'), new_race_photo_path(race.id) %>
+                              </div>
+                            </div>
+                          <% end %>
+                        </div>
+                      </div>
+                      <!-- </div> -->
+                      <!-- closing container for bootstrap -->
+                    </div>
+                    <!-- closing card bottom orga button container -->
+                  </div>
+                  <!-- closing card race header -->
+                </div>
+                <!-- closing card race div -->
+              </div>
+              <!-- closing col -->
+            <% end %>
+            <!-- closing loop over races -->
+          <% end %>
+          <!-- closing elsif any races -->
+        </div>
+        <!-- closing col -->
+      </div>
+      <!-- closing container -->
+    <% end %>
+  </div>
+  <!-- closing organisation races -->
+</div>
+<!-- closing col -->
+</div>
+<!-- closing row -->
+</div>
+<!-- closing container -->
+</div>
+<!-- closing organisation wrapper -->

@@ -1,6 +1,6 @@
 
 
-<div class="container" style="height: calc(100vh - 130px)">
+<div class="container" style="min-height: calc(100vh - 130px)">
   <div class="row py-4">
     <div class="col-sm-12 text-center">
       <div class="progress" style="height: 25px">
@@ -10,17 +10,41 @@
     </div>
   </div>
 
+<!--   If Race route Strava or img is present-->
 <% if @race.route %>
   <div class="row">
     <div class="col-md-8 my-5 mx-auto text-center strava-box">
       <p class="lead my-4"> This is the gps track of your race!<br> If you want you can <%= link_to "delete it", race_route_path(@race, @race.route), method: :delete %> it and update another one or <%= link_to "go back to the race page", race_path(@race.id) %></p>
     </div>
     <div class="col-md-10 mx-auto mapbox">
-      <div id="map" style="height:400px; width: 100%;" margin-bottom="0px">
+      <div id="map" style="height:400px; width: 100%;z-index: 0;" margin-bottom="0px">
       </div>
     </div>
   </div>
+ <% if @race.pathimg %>
+  <div class="row mb-5">
+    <div class="col-md-8 my-5 mx-auto text-center strava-box">
+      <p class="lead my-4"> This is the route's image of your race!<br> If you want you can update it and update ></p>
+       <div class="row">
+          <div class="col-md-6 mx-auto text-center">
+            <%= simple_form_for @race do |f| %>
+              <%= f.input :pathimg, class: "form-control-file mx-auto", style: "margin: 0 auto;", label: "Choose the image" %>
+              <%= f.submit "Upload!", class: "btn upload-button" %>
+            <% end %>
+          </div>
+       </div>
+    </div>
+    <div class="col-md-10 mx-auto mapbox">
+      <div class="map-route">
+        <div style="height:400px; width: 100%;z-index: 1;">
+           <%= cl_image_tag @race.pathimg.url(:carousel), crop: :fill, style: "height:400px; width: 80%; z-index: 1"%>
+         </div>
+       </div>
+    </div>
+  <% end %>
+  </div>
 </div>
+<!--  END If Race route Strava or img is present-->
 
 <script>
   var data =  <%= raw @race.route.pathfile %>;
@@ -42,14 +66,26 @@
   }
 </script>
 
-
+<!--  If Race route Strava is not present-->
   <% elsif !@condition %>
   <div class="row">
     <div class="col-md-8 my-5 mx-auto text-center strava-box">
-      <p class="lead my-4">In this page you can upload the gps track of yuor race directly from STRAVA. Please alowed Run-db to acces your STRAVA profile in order to import the data</p>
+      <p class="lead my-4">In this page you can upload the route of the race. Run-db allow you to import the route directly from your STRAVA profile. In order to do that please alowed Run-db to acces your STRAVA profile</p>
       <a href="http://www.strava.com/oauth/authorize?client_id=23523&response_type=code&redirect_uri=https://www.run-db.com/exchange_token&approval_prompt=force&scope=view_private">
       <%= image_tag "strava.png", width: "200"%>
-      </a>
+
+      <!-- <a href="http://www.strava.com/oauth/authorize?client_id=23523&response_type=code&redirect_uri=http://localhost:3000/exchange_token&approval_prompt=force&scope=view_private">
+      <%= image_tag "strava.png", width: "200"%>
+      </a> -->
+      <p class="lead my-4">If you don't have the route on strava you can also upload an image of the route or of the altimetry</p>
+      <div class="row">
+        <div class="col-md-6 mx-auto text-center">
+          <%= simple_form_for @race do |f| %>
+            <%= f.input :pathimg, class: "form-control-file mx-auto", style: "margin: 0 auto;", label: "Choose the image" %>
+            <%= f.submit "Upload!", class: "btn upload-button" %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -70,6 +106,7 @@
     </div>
   </div>
 </div>
+
 
 <% end %>
 
@@ -125,6 +162,7 @@
 
 
   function sendData(array) {
+    // let url = `http://localhost:3000/races/${raceId}/routes`
     let url = `https://www.run-db.com/races/${raceId}/routes`
     fetch(url, {
       method: "POST",
@@ -139,7 +177,7 @@
       console.log(data.hits); // Look at local_names.default
       // after you get a return, change the button!
     });
-    window.location = "/races/<%=@race.id%>/routes/new";
+    window.location = "/races/<%=@race.id%>";
 
   }
 
@@ -152,5 +190,3 @@
 <% end %>
 <% end %>
 <% end %>
-
-

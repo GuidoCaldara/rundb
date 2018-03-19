@@ -33,11 +33,27 @@
   p{
     font-weight: 300;
     font-size: 20px
-
+  }
+  textarea{
+    color: #4B4C4F !important;
+    font-weight: 300;
+    font-size: 14px;
+    max-height: 350px;
+    min-height: 350px;
+    border-radius: 8px;
+  }
+  select{
+    color: #4B4C4F !important;
+    font-weight: 300;
+    font-size: 14px;
   }
 }
 
+#race_goodies{
+    max-height: 100px;
+    min-height: 100px;
 
+}
 .form-title:hover{
   color:#424141 !important;
   text-decoration: none !important;

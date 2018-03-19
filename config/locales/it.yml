@@ -50,7 +50,7 @@ it:
       special_price_end: "Se hai inserito un prezzo agevolato indica la data ultima per poterne usufruire"
       max_subscription: "Hai un tetto massimo di iscrizioni? Se si inseriscilo qui"
       submit_race: "Inserisci la gara!"
-      pathimg: "Hai un immagne con il profilo altimetrico o il percorso della corsa??"
+      pathimg: "Hai un immagne con il profilo altimetrico o il percorso della corsa?"
     edit:
       edit: "Modifica la gara!"
     show:
@@ -77,7 +77,7 @@ it:
       log_in_review: "Fai il log in e lascia una recensione!"
       leave_review: "Lascia una recensione"
       no_review: "Non ci sono recensioni per questa corsa"
-      opinions: "il parere degli atleti"
+      opinions: "Il parere degli atleti"
   organisations:
     _form:
       name: "Inserisci il nome della tua organizzazione"
@@ -86,12 +86,15 @@ it:
       email: "Inserisci la mail di contatto. Gli atleti potranno contattarti qui per informazioni relative alla gara"
       phone: "Inserisci il numero di telefono"
       insert: "Completa l'inserimento"
-    edit:
+      warning: "Inserisci il nome e cognome del referente dell'organizzazione. Questi non verranno condivisi con gli atleti e resi pubblici"
+      first_name: "First name"
+      last_name: "Last name"
+      logo: "Qui puoi inserire il logo della tua organizzazione. Potrai aggiungerlo o modificarlo anche successivamente"
       edit: "Modifica la tua organizzazione"
     new:
       new: "Inserisci la tua organizzazione"
     show:
-      address: "Dove sono"
+      address: "Dove siamo"
       email: "Email"
       phone: "Telefono"
       story: "Chi siamo"
@@ -103,9 +106,10 @@ it:
       your_races: "Le tue gare"
       organisation_races: "Le gare dell'organizzazione"
       add_a_race: "Non hai ancora inserito gare! Inizia ora!"
-      see_race: "Vedi la gara"
-      edit_race: "Modifica la gara"
-      add_photo: "Aggiungi foto"
+      see_race: "Gara"
+      edit_race: "Modifica"
+      add_photo: "Foto"
+      see_path: "Percorso"
   photos:
     manage:
       back_to_org: "Torna alla pagina dell'organizzazione"
@@ -118,6 +122,8 @@ it:
       go_to_route: "Vai all'ultimo step e importa il percorso direttamente da STRAVA"
       manage_photo: "Gestisci le tue foto"
       delete: "Elimina!"
+      back-to-race: "Vai alla pagina della gara"
+      or: "o"
   reviews:
     _form:
       leave_a_rew: "Lascia una recensione per questa gara"

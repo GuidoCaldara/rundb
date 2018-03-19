@@ -87,6 +87,10 @@ fr:
       email: "Ajoutez l'adresse email à laquelle les utilisateurs peuvent vous contacter à propos de votre course"
       phone: "Ajoutez le numéro de téléphone"
       insert: "Ajoutez votre organisation"
+      warning: "Inserisci il nome e cognome del referente dell'organizzazione. Questi non verranno condivisi con gli atleti e resi pubblici"
+      first_name: "First name"
+      last_name: "Last name"
+      logo: "You can insert the logo of your organisation. You can add it or update it later"
     edit:
       edit: "Éditez votre organisation"
     new:
@@ -107,6 +111,7 @@ fr:
       see_race: "Voir la course"
       edit_race: "Éditez la course"
       add_photo: "Ajoutez des photos"
+      see_path: "Route"
   photos:
     manage:
       back_to_org: "Revenir à la page de votre organisation"
@@ -119,6 +124,8 @@ fr:
       go_to_route: "Allez à la dernière étape et publiez votre parcours"
       manage_photo: "Gérez vos photos"
       delete: "Supprimez-la"
+      back-to-race: "Vai alla pagina della gara"
+      or: "o"
   reviews:
     _form:
       leave_a_rew: "Laissez un commentaire à propos de cette course"
