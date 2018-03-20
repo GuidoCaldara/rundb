@@ -43,7 +43,7 @@ en:
       subsctiption_and_payment: "Subscription and payment"
       subscription_link: "Insert the link of the site who manage your subscriptions"
       race_price: "Insert the race price in €"
-      subscription_start: "When the subscription period start? If the subscriptions are opened insert the date of today"
+      subscription_start: "When the subscription period start? If the online subscriptions are opened insert the date of today"
       subscription_end: "When the subscription period end?"
       special_price?: "Do you want to propose a discount price for the early subscription?"
       special_price: "If yes, insert the secial price in €, if not leave this field blank"
@@ -142,10 +142,3 @@ en:
       dashbord: "Organiser dashboard"
       coming_races: "Coming Races"
       previous_races: "Previous Races"
-
-
-
-
-
-
-

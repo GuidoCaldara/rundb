@@ -10,7 +10,7 @@
       </div>
       <div class="card-block py-4 px-5 ">
         <%= f.input :name, label: t('races._form.race_name'), error: 'Username is mandatory, please specify one', html: { autocomplete: 'off' } %>
-        <%= f.input :category, priority: [ "---" ], collection: [ "Trail", "Road", "Skyrace", "VerticalKM"], label: t('races._form.race_category') %>
+        <%= f.input :category, priority: [ "---" ], collection: [ "Trail", "Road", "Skyrace", "Vertical"], label: t('races._form.race_category') %>
         <%= f.input :race_distance, label: t('races._form.race_distance'), input_html: { min: '0', step: 'any' }%>
         <%= f.input :elevation, label: t('races._form.race_elevation'), input_html: { min: '0', step: '100' }%>
         <%= f.input :location, input_html: {id: "location"}, label: t('races._form.race_location') %>
@@ -39,7 +39,7 @@
       <div class="card-block py-4 px-5">
         <%= f.input :goodies, label: t('races._form.goodies'), as: :text, html: { autocomplete: 'off' }%>
         <%= f.input :starting_point, label: t('races._form.starting_point')%>
-        <%= f.input :starting_time, as: :time, minute_step: 30, label: t('races._form.starting_time'), html: { autocomplete: 'off' }%>
+        <%= f.input :starting_time, as: :time, minute_step: 15, label: t('races._form.starting_time'), html: { autocomplete: 'off' }%>
         <%= f.input :video, label: t('races._form.video'), placeholder: 'ex: https://www.youtube.com/embed/tgbNymZ7vqY'%>
         <% if current_user.id == 1 %>
         <%= f.input :pathimg, class: "form-control-file mx-auto", style: "margin: 0 auto;", label: t('races._form.pathimg')%>

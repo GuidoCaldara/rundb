@@ -43,7 +43,7 @@ it:
       subsctiption_and_payment: "Iscrizioni e pagamenti"
       subscription_link: "Inserisci il link che rimanda al sito dove è possibile iscriversi"
       race_price: "Prezzo della corsa"
-      subscription_start: "Inizio del periodo delle iscrizioni"
+      subscription_start: "Inizio del periodo delle iscrizioni online"
       subscription_end: "Fine del periodo delle iscrizioni"
       special_price?: "Proponi un prezzo scontato per chi si iscrive con largo anticipo?"
       special_price: "Se si inserisci il prezzo scontato"
@@ -141,8 +141,3 @@ it:
       dashbord: "La tua organizzazione"
       coming_races: Prossime gare
       previous_races: "Ultime gare"
-
-
-
-
-

@@ -86,6 +86,15 @@ window.addEventListener('load', function() {
     );
 
 
+    search.addWidget(
+      instantsearch.widgets.clearAll({
+        container: '#clear-all',
+        templates: {
+          link: 'Reset everything'
+        },
+        autoHideContainer: false
+      })
+    );
 
 
 
@@ -278,5 +287,3 @@ search.addWidget(customMapWidget);
 
 search.start();
 });
-
-

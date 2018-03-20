@@ -52,7 +52,7 @@
           <% else %>
             <p ><%= t('races.show.organizer') %>: <span class="green-highlight"><%= link_to organisation_path(@organizer.id) do%> <%= @organizer.name %> <% end %></span></p>
           <% end %>
-            <p><%= t('races.show.website') %> <span class="green-highlight"><a href="<%= @race.website %>"> <%=@race.website%></a></span></p>
+            <p><span class="green-highlight"><a href="<%= @race.website%>"><%= t('races.show.website') %></a></span></p>
           </div>
           <div class="race-venue">
             <p><%= t('races.show.starting_point') %>: <span class="green-highlight"> <%= @race.starting_point %></span> </p>
