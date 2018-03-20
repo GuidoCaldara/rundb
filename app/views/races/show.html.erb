@@ -48,7 +48,7 @@
           </div>
           <div class="race-organizer">
           <% if @organizer.id == 1 %>
-            <p ><%= t('races.show.organizer') %>: <span class="green-highlight"> <%= @race.orga %> </span></p>
+            <p ><%= t('races.show.organizer') %>: <span class="green-highlight"> <%= @race.org %> </span></p>
           <% else %>
             <p ><%= t('races.show.organizer') %>: <span class="green-highlight"><%= link_to organisation_path(@organizer.id) do%> <%= @organizer.name %> <% end %></span></p>
           <% end %>
