@@ -1,8 +1,8 @@
-
 <div class="container">
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <h2>Edit <%= resource_name.to_s.humanize %></h2>
+      <h2>Edit
+        <%= resource_name.to_s.humanize %></h2>
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.error_notification %>
@@ -16,10 +16,9 @@
         <%= f.collection_radio_buttons :gender, [["M", "Male"] ,["W", 'Woman']], :second, :last %>
         <%= f.input :group, label: "Run Society", autofocus: true %>
 
-
-
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <p>Currently waiting confirmation for:
+            <%= resource.unconfirmed_email %></p>
         <% end %>
 
         <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
@@ -32,18 +31,19 @@
       <div class="form-actions">
         <%= f.button :submit, "Update" %>
       </div>
-      <% end %>
+    <% end %>
 
-      <h3>Cancel my account</h3>
+    <h3>Cancel my account</h3>
 
-      <p>Unhappy?
-        <% if current_user.organisation %>
-         You can delete your account. But before you have to delete your organisation at this <%= link_to "link", organisation_path(current_user.organisation.id) %>
-         <% else %>
+    <p>Unhappy?
+      <% if current_user.organisation %>
+        You can delete your account. But before you have to delete your organisation at this
+        <%= link_to "link", organisation_path(current_user.organisation.id) %>
+      <% else %>
         <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-         <% end %>
-      <%= link_to "Back", :back %>
+    <% end %>
+    <%= link_to "Back", :back %>
 
-    </div>
   </div>
+</div>
 </div>
