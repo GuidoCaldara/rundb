@@ -61,13 +61,14 @@ private
   end
 
 
-  def after_sign_in_path_for(resource_or_scope)
-    if  URI.parse(request.referer).path == "/users" ||  URI.parse(request.referer).path == "/users/sign_in" || URI.parse(request.referer).path == "/users/password/edit"
-      root_path
-    else
-      URI.parse(request.referer).path if request.referer
-    end
-  end
+  # def after_sign_in_path_for(resource_or_scope)
+  #   if  URI.parse(request.referer).path == "/users" ||  URI.parse(request.referer).path == "/users/sign_in" || URI.parse(request.referer).path == "/users/password/edit" ||
+  #   URI.parse(request.referer).path == "/users/sign_up"
+  #   root_path
+  #   else
+  #     URI.parse(request.referer).path if request.referer
+  #   end
+  # end
 
 
 end
