@@ -1,5 +1,4 @@
-<!--   impossible to import style. here for the moment after ticket
--->
+<!-- impossible to import style. here for the moment after ticket -->
 <div class="col-md-7 mx-auto">
   <div class="form-container" id="accordion" role="tablist" aria-multiselectable="true">
     <div class="card form-wrap">
@@ -12,12 +11,12 @@
       <div class="card-block py-4 px-5 ">
         <%= f.input :name, label: t('races._form.race_name'), error: 'Username is mandatory, please specify one', html: { autocomplete: 'off' } %>
         <%= f.input :category, priority: [ "---" ], collection: [ "Trail", "Road", "Skyrace", "VerticalKM"], label: t('races._form.race_category') %>
-        <%= f.input :race_distance, label: t('races._form.race_distance'), input_html: {  min: '0', step: 'any' }%>
+        <%= f.input :race_distance, label: t('races._form.race_distance'), input_html: { min: '0', step: 'any' }%>
         <%= f.input :elevation, label: t('races._form.race_elevation'), input_html: { min: '0', step: '100' }%>
-         <%= f.input :location, input_html: {id: "location"}, label: t('races._form.race_location') %>
+        <%= f.input :location, input_html: {id: "location"}, label: t('races._form.race_location') %>
         <%= f.input :date, label: t('races._form.race_date'), as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year]%>
         <%= f.input :first_edition, label: t('races._form.first_edition'), as: :date, start_year: Date.today.year-20, end_year: Date.today.year, order: [:year] %>
-        <%= f.input :website, label: t('races._form.website'), placeholder: 'ex: https://yoursite.com', html: { autocomplete: 'off' }  %>
+        <%= f.input :website, label: t('races._form.website'), placeholder: 'ex: https://yoursite.com', html: { autocomplete: 'off' } %>
         <%= f.input :photo, class: "form-control-file mx-auto", style: "margin: 0 auto;", label: t('races._form.photo')%>
       </div>
     </div>
@@ -28,7 +27,7 @@
         </h5>
       </div>
       <div class="card-block py-4 px-5">
-        <%=  f.input :description, label: t('races._form.description_field'), as: :text, :input_html => { 'rows' => 9, autocomplete: 'off'} %>
+        <%= f.input :description, label: t('races._form.description_field'), as: :text, :input_html => { 'rows' => 9, autocomplete: 'off'} %>
       </div>
     </div>
     <div class="card form-wrap race-form-box">
@@ -38,42 +37,38 @@
         </h5>
       </div>
       <div class="card-block py-4 px-5">
-        <%=  f.input :goodies, label: t('races._form.goodies'), as: :text, html: { autocomplete: 'off' }%>
+        <%= f.input :goodies, label: t('races._form.goodies'), as: :text, html: { autocomplete: 'off' }%>
         <%= f.input :starting_point, label: t('races._form.starting_point')%>
         <%= f.input :starting_time, as: :time, minute_step: 30, label: t('races._form.starting_time'), html: { autocomplete: 'off' }%>
-        <%=  f.input :video, label: t('races._form.video'), placeholder: 'ex: https://www.youtube.com/embed/tgbNymZ7vqY', as: :string%>
-        <%= f.input :pathimg, class: "form-control-file mx-auto", style: "margin: 0 auto;", label: t('races._form.pathimg')%>
+        <%= f.input :video, label: t('races._form.video'), placeholder: 'ex: https://www.youtube.com/embed/tgbNymZ7vqY'%>
+        <!-- <%= f.input :pathimg, class: "form-control-file mx-auto", style: "margin: 0 auto;", label: t('races._form.pathimg')%> -->
         <% if current_user.id == 1 %>
-          <%= f.input :org, class: "form-control-file mx-auto", style: "margin: 0 auto;", label: "Insert Organisation Name"%>
+          <%= f.input :org %>
         <% end %>
       </div>
     </div>
     <div class="card form-wrap race-form-box">
-     <div class="card-header form-title" role="tab" id="headingOne">
-      <h5 class="mb-0">
-       <%= t('races._form.subsctiption_and_payment')  %>
-      </h5>
-    </div>
-    <div class="card-block py-4 px-5">
-<!--       <% if !@race.orders || !@race.bookable %>
-      <h2> Do you wana Run Db manage your subscription sistem? </h2>
-      <%= f.input :bookable, as: :radio_buttons, item_wrapper_class: 'inline', label: false%>
-      <p> If not, please provide a link to redirect the user to subscription page. If you don't have it yet dont'worry, you can insert it later or choose to let Run-db manage your subscription</p>
-      <% end %>
- -->      <%=  f.input :subscription_link, label: t('races._form.subscription_link'),  placeholder: 'ex: https://yoursite.com/subsctiption' %>
-      <%= f.input :fee_cents, label: t('races._form.race_price'), input_html: {step: 'any', autocomplete: "off" }%>
-      <%= f.input :subscription_start, label:  t('races._form.subscription_start'), as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year] %>
-      <%= f.input :subscription_end, label: t('races._form.subscription_end'), as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year] %>
-      <h2> <%= t('races._form.special_price?') %></h2>
-      <%= f.input :discount_fee_cents, label: t('races._form.special_price'), input_html: {  step: 'any' } %>
-      <%= f.input :discount_fee_finish, as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year], label: t('races._form.special_price_end')  %>
-      <%= f.input :capacity, label: t('races._form.max_subscription') %>
-      <%= f.button :submit, class: "btn race-button py-2 px-2", label: t('races._form.submit_race')%>
+      <div class="card-header form-title" role="tab" id="headingOne">
+        <h5 class="mb-0">
+          <%= t('races._form.subsctiption_and_payment') %>
+        </h5>
+      </div>
+      <div class="card-block py-4 px-5">
+        <!-- <% if !@race.orders || !@race.bookable %> <h2> Do you wana Run Db manage your subscription sistem? </h2> <%= f.input :bookable, as: :radio_buttons, item_wrapper_class: 'inline', label: false%> <p> If not, please provide a link to redirect the
+        user to subscription page. If you don't have it yet dont'worry, you can insert it later or choose to let Run-db manage your subscription</p> <% end %> -->
+        <%= f.input :subscription_link, label: t('races._form.subscription_link'), placeholder: 'ex: https://yoursite.com/subsctiption' %>
+        <%= f.input :fee_cents, label: t('races._form.race_price'), input_html: {step: 'any', autocomplete: "off" }%>
+        <%= f.input :subscription_start, label: t('races._form.subscription_start'), as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year] %>
+        <%= f.input :subscription_end, label: t('races._form.subscription_end'), as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year] %>
+        <h2>
+          <%= t('races._form.special_price?') %></h2>
+        <%= f.input :discount_fee_cents, label: t('races._form.special_price'), input_html: { step: 'any' } %>
+        <%= f.input :discount_fee_finish, as: :date, start_year: Date.today.year, end_year: Date.today.year + 2, order: [:day, :month, :year], label: t('races._form.special_price_end') %>
+        <%= f.input :capacity, label: t('races._form.max_subscription') %>
+        <%= f.button :submit, class: "btn race-button py-2 px-2", label: t('races._form.submit_race')%>
+      </div>
     </div>
   </div>
 </div>
 </div>
-</div>
 <% end %>
-
-
