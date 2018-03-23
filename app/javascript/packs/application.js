@@ -1,13 +1,12 @@
 import "bootstrap";
-import { autocomplete } from '../components/autocomplete';
+import {autocomplete} from '../components/autocomplete';
 import GMaps from 'gmaps/gmaps.js';
 
 
+
+
+
 autocomplete();
-
-
-
-
 
 window.addEventListener('load', function() {
 
@@ -15,89 +14,85 @@ window.addEventListener('load', function() {
     appId: "869L3DD13H",
     apiKey: "14d7338a984685e0f99ca9b9ffe2e78e",
     indexName: 'Race',
-    urlSync: true
-  });
+    urlSync: true,
+});
 
-  search.addWidget(
-    instantsearch.widgets.searchBox({
-      container: '#search-input',
-      placeholder: 'Search for races'
-    })
-    );
 
-  search.addWidget(
-    instantsearch.widgets.hits({
-      container: '#hits',
-      templates: {
-        item: document.getElementById('hit-template').innerHTML,
-        empty: "We didn't find any results for the search <em>\"{{query}}\"</em>"
+
+  search.addWidget(instantsearch.widgets.searchBox({
+    container: '#search-input',
+    placeholder: 'Search for races',
+    poweredBy: true,
+  }));
+
+
+  search.addWidget(instantsearch.widgets.hits({
+    container: '#hits',
+    templates: {
+      item: document.getElementById('hit-template').innerHTML,
+      empty: "We didn't find any results for the search <em>\"{{query}}\"</em>",
+    },
+
+    transformData: {
+      item: function(hits) {
+        const date = new Date(hits.date_stamp);
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const year = date.getFullYear();
+        const d =  `${day}/${month}/${year}`
+        hits.date_stamp = d
+        console.log(hits)
+        return hits
       }
-    })
-    );
+    }
+  }));
 
-  search.addWidget(
-    instantsearch.widgets.pagination({
-      container: '#pagination',
-      scrollTo: '#results',
-      cssClasses: {
-        root: 'pagination',
-        active: 'active'
+
+  search.addWidget(instantsearch.widgets.pagination({
+    container: '#pagination',
+    scrollTo: '#results',
+    cssClasses: {
+      root: 'pagination',
+      active: 'active'
+    }
+  }));
+
+  search.addWidget(instantsearch.widgets.refinementList({container: '#race_categories', attributeName: 'category', operator: 'or', limit: 10, sortBy: ['name:asc']}));
+
+  const datePicker = instantsearch.connectors.connectRange((options, isFirstRendering) => {
+    if (!isFirstRendering)
+      return;
+
+    const {refine} = options;
+
+    new Calendar({
+      element: $('#calendar'),
+      callback: function() {
+        const start = new Date(this.start_date).getTime();
+        const end = new Date(this.end_date).getTime();
+
+        refine([start, end]);
       }
-    })
-    );
-
-  search.addWidget(
-    instantsearch.widgets.refinementList({
-      container: '#race_categories',
-      attributeName: 'category',
-      operator: 'or',
-      limit: 10,
-      sortBy: ['name:asc']
-    })
-    );
-
-  const datePicker = instantsearch.connectors.connectRange(
-    (options, isFirstRendering) => {
-      if (!isFirstRendering) return;
-
-      const { refine } = options;
-
-      new Calendar({
-        element: $('#calendar'),
-        callback: function() {
-          const start = new Date(this.start_date).getTime();
-          const end = new Date(this.end_date).getTime();
-
-          refine([start, end]);
-        }
       // Some good parameters based on our dataset:
       // start_date: new Date(),
       // end_date: new Date('01/01/2020'),
       // earliest_date: new Date('01/01/2008'),
       // latest_date: new Date('01/01/2020'),
     });
+  });
+
+  search.addWidget(datePicker({attributeName: 'date_stamp'}));
+
+  search.addWidget(instantsearch.widgets.rangeSlider({
+    container: '#distance',
+    attributeName: 'race_distance',
+    pips: false,
+    tooltips: {
+      format: function(rawValue) {
+        return 'km' + parseInt(rawValue)
+      }
     }
-    );
-
-  search.addWidget(
-    datePicker({
-      attributeName: 'date_stamp',
-    })
-    );
-
-
-
-
-
-
-  search.addWidget(
-    instantsearch.widgets.rangeSlider({
-      container: '#distance',
-      attributeName: 'race_distance',
-      pips: false,
-      tooltips: {format: function(rawValue) {return 'km' + parseInt(rawValue)}}
-    })
-    );
+  }));
 
   // search.addWidget(
   //   instantsearch.widgets.googleMaps({
@@ -111,26 +106,28 @@ window.addEventListener('load', function() {
   // );
 
   var customMapWidget = {
-  // _autocompleteContainer: document.querySelector('#places'),
-  _mapContainer: document.querySelector('#map'),
-  markers: [],
+    // _autocompleteContainer: document.querySelector('#places'),
+    _mapContainer: document.querySelector('#map'),
+    markers: [],
 
-  // Transform one hit to a Google Maps marker
-  _hitToMarker: function(hit) {
-    var marker = new google.maps.Marker({
-      position: {lat: hit._geoloc.lat, lng: hit._geoloc.lng},
-      map: this._map,
-      title: hit.name
-    });
+    // Transform one hit to a Google Maps marker
+    _hitToMarker: function(hit) {
+      var marker = new google.maps.Marker({
+        position: {
+          lat: hit._geoloc.lat,
+          lng: hit._geoloc.lng
+        },
+        map: this._map,
+        title: hit.name
+      });
 
-   // if (hit.extra_attr.photo.url) {
-   // var photo = hit.extra_attr.photo.url
-   // } else {
-   //  photo = "http://lorempixel.com/400/200/"
-   // };
+      // if (hit.extra_attr.photo.url) {
+      // var photo = hit.extra_attr.photo.url
+      // } else {
+      //  photo = "http://lorempixel.com/400/200/"
+      // };
 
-   var infowindow = new google.maps.InfoWindow({
-    content: `
+      var infowindow = new google.maps.InfoWindow({content: `
     <div class="info-popup">
     <a href="/races/${hit.id}">
     <div class="card-popup">
@@ -148,133 +145,118 @@ window.addEventListener('load', function() {
     </div>
     </div>
     </a>
-    </div>`
-  });
+    </div>`});
 
-    // PUT THIS BACK WHILE IN PRODUCTION WHERE EVERY RACE HAS A PHOTO
+      // PUT THIS BACK WHILE IN PRODUCTION WHERE EVERY RACE HAS A PHOTO
 
+      // Add an info popup when clicking on the marker.
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
 
-    // Add an info popup when clicking on the marker.
-    marker.addListener('click', function() {
-      infowindow.open(map, marker);
-    });
+      return marker;
+    },
 
-    return marker;
-  },
+    init: function(params) {
+      this._helper = params.helper;
 
-  init: function(params) {
-    this._helper = params.helper;
-
-    // Initialize the map
-    this._map = new google.maps.Map(
-      this._mapContainer,
-      {zoom: 1, center: new google.maps.LatLng(0, 0), styles: [
-        {
-          "featureType": "landscape.natural",
-          "elementType": "geometry.fill",
-          "stylers": [
+      // Initialize the map
+      this._map = new google.maps.Map(this._mapContainer, {
+        zoom: 1,
+        center: new google.maps.LatLng(0, 0),
+        styles: [
           {
-            "visibility": "on"
-          },
-          {
-            "color": "#e0efef"
+            "featureType": "landscape.natural",
+            "elementType": "geometry.fill",
+            "stylers": [
+              {
+                "visibility": "on"
+              }, {
+                "color": "#e0efef"
+              }
+            ]
+          }, {
+            "featureType": "poi",
+            "elementType": "geometry.fill",
+            "stylers": [
+              {
+                "visibility": "on"
+              }, {
+                "hue": "#1900ff"
+              }, {
+                "color": "#c0e8e8"
+              }
+            ]
+          }, {
+            "featureType": "road",
+            "elementType": "geometry",
+            "stylers": [
+              {
+                "lightness": 100
+              }, {
+                "visibility": "simplified"
+              }
+            ]
+          }, {
+            "featureType": "road",
+            "elementType": "labels",
+            "stylers": [
+              {
+                "visibility": "off"
+              }
+            ]
+          }, {
+            "featureType": "transit.line",
+            "elementType": "geometry",
+            "stylers": [
+              {
+                "visibility": "on"
+              }, {
+                "lightness": 700
+              }
+            ]
+          }, {
+            "featureType": "water",
+            "elementType": "all",
+            "stylers": [
+              {
+                "color": "#7dcdcd"
+              }
+            ]
+          }, {
+            "featureType": "water",
+            "elementType": "geometry.fill",
+            "stylers": [
+              {
+                "color": "#30a6cc"
+              }
+            ]
           }
-          ]
-        },
-        {
-          "featureType": "poi",
-          "elementType": "geometry.fill",
-          "stylers": [
-          {
-            "visibility": "on"
-          },
-          {
-            "hue": "#1900ff"
-          },
-          {
-            "color": "#c0e8e8"
-          }
-          ]
-        },
-        {
-          "featureType": "road",
-          "elementType": "geometry",
-          "stylers": [
-          {
-            "lightness": 100
-          },
-          {
-            "visibility": "simplified"
-          }
-          ]
-        },
-        {
-          "featureType": "road",
-          "elementType": "labels",
-          "stylers": [
-          {
-            "visibility": "off"
-          }
-          ]
-        },
-        {
-          "featureType": "transit.line",
-          "elementType": "geometry",
-          "stylers": [
-          {
-            "visibility": "on"
-          },
-          {
-            "lightness": 700
-          }
-          ]
-        },
-        {
-          "featureType": "water",
-          "elementType": "all",
-          "stylers": [
-          {
-            "color": "#7dcdcd"
-          }
-          ]
-        },
-        {
-          "featureType": "water",
-          "elementType": "geometry.fill",
-          "stylers": [
-          {
-            "color": "#30a6cc"
-          }
-          ]
-        }
         ]
-      }
-      );
-  },
+      });
+    },
 
-  render: function(params) {
-    // Clear markers
-    this.markers.forEach(function (marker) {
-      marker.setMap(null)
-    });
+    render: function(params) {
+      // Clear markers
+      this.markers.forEach(function(marker) {
+        marker.setMap(null)
+      });
 
-    // Transform hits to Google Maps markers
-    this.markers = params.results.hits.map(this._hitToMarker.bind(this));
+      // Transform hits to Google Maps markers
+      this.markers = params.results.hits.map(this._hitToMarker.bind(this));
 
-    var bounds = new google.maps.LatLngBounds();
+      var bounds = new google.maps.LatLngBounds();
 
-    // Make sure we display the good part of the maps
-    this.markers.forEach(function(marker) {
-      bounds.extend(marker.getPosition());
-    });
+      // Make sure we display the good part of the maps
+      this.markers.forEach(function(marker) {
+        bounds.extend(marker.getPosition());
+      });
 
-    this._map.fitBounds(bounds);
-  }
-};
+      this._map.fitBounds(bounds);
+    }
+  };
 
+  search.addWidget(customMapWidget);
 
-
-search.addWidget(customMapWidget);
-
-search.start();
+  search.start();
 });

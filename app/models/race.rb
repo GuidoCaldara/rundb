@@ -195,5 +195,3 @@ def set_race_avg_rate
 
 
 end
-
-
