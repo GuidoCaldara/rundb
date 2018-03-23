@@ -10,6 +10,10 @@
   box-sizing: border-box;
 }
 
+#refinement-list{
+  width: 330px;
+}
+
 .daterange div,
 .daterange li,
 .daterange span,
@@ -21,7 +25,9 @@
 
 .daterange ul {
   list-style: none;
+
 }
+
 
 .daterange.dr-active {
   z-index: 10;
@@ -38,6 +44,7 @@
   z-index: 5;
   overflow: hidden;
   height: 46px;
+  width: 100%
 }
 
 .daterange .dr-input:hover {
@@ -60,12 +67,12 @@
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-  padding: 0 1.5rem 0 0.75rem;
+  padding: 21px;
   min-width: calc(100% - 35px);
 }
 
 .daterange .dr-input .dr-dates .dr-date {
-  font-size: 0.9375rem;
+  font-size: 15px !important;
   padding: 0.65625rem 0;
   text-align: center;
   white-space: nowrap;
@@ -166,6 +173,7 @@
   -webkit-transition: width 0.2s;
   transition: width 0.2s;
   min-width: 210px;
+  width: 315px !important;
 }
 
 .daterange .dr-selections .dr-calendar .dr-range-switcher {
@@ -191,7 +199,9 @@
   align-items: center;
   border: 1px solid rgba(195, 202, 205, 0.5);
   border-radius: 5px;
-  height: 1.5625rem;
+  height: 28px;
+  font-weight: 500;
+  color: black;
 }
 
 .daterange .dr-selections .dr-calendar .dr-range-switcher .dr-switcher i {
@@ -452,4 +462,3 @@
   text-align: left;
   color: #4f565c;
 }
-

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "/exchange_token", to: "routes#callback"
 
 
-  scope '(:locale)', locale: /en|it/ do
+  scope '(:locale)', locale: /en|it|fr/ do
 
   root to: 'pages#home'
 
@@ -29,5 +29,3 @@ Rails.application.routes.draw do
  end
 
 end
-
-

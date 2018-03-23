@@ -3,11 +3,13 @@
 
 <div class="search-container">
 
-  <div class="container">
+
+
+  <div class="container container mx-5 mt-5">
     <div class="row">
 
 
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
         <!-- Right search input form -->
         <div class="main-search-container">
           <input id="search-input" placeholder="Search for races">
@@ -31,7 +33,7 @@
 
 
 
-<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-5 px-0">
   <!-- Search by distance -->
   <div class="distance-search-container">
     <div class="row aisdemo-filter">
@@ -91,10 +93,9 @@
                     <p class="hit-name card-race-title">{{{_highlightResult.name.value}}}</p>
                     <i class="fas fa-map-marker-alt card-race-marker"></i>
                     <p class="hit-name card-race-location">
-                    {{{_highlightResult.location.value}}}</p>
+                    {{{_highlightResult.location.value}}}</p> <br>
 
-                    <p>{{hit.date_stamp}}</p>
-
+                    <p class="card-race-location">{{date_stamp}} </p>
                     {{#race_avg_rate}}
                     <div class="star-container">
 
@@ -117,7 +118,15 @@
                 <div class="card-race-body">
                   <p class="hit-name element">{{category}}</p>
                   <p class="hit-name element">{{race_distance}} km</p>
-                  <p class="hit-name element last">{{reviews.length}} reviews</p>
+                  {{#reviews}}
+                  <p class="hit-name element last">{{reviews.length}}
+                   reviews</p>
+                  {{/reviews}}
+                  {{^value}}
+                  <p class="hit-name element last">
+                   No reviews</p>
+                  {{/value}}
+
                 </div>
               </div>
             </a>
