@@ -22,7 +22,7 @@
         <div  class="star-route"><i class="fas fa-star route-star"></i></div>
         <div  class="star-route"><i class="fas fa-star route-star"></i></div>
         <div  class="star-route"><i class="fas fa-star route-star"></i></div>
-        <p id="route-vote" class="total-vote"><%= f.input :route_rate, label: false, disabled: true, :input_html => { type: "string", class: "form-input-small"} %></p>
+        <p id="route-vote" class="total-vote"><%= f.input :route_rate, label: false, :input_html => { type: "string", class: "form-input-small"} %></p>
       </div>
       <label for="route"><%= t('reviews._form.org') %></label>
       <div class="rating-box">
@@ -36,7 +36,7 @@
         <div  class="star-route"><i class="fas fa-star organisation-star"></i></div>
         <div  class="star-route"><i class="fas fa-star organisation-star"></i></div>
         <div  class="star-route"><i class="fas fa-star organisation-star"></i></div>
-        <p id="route-vote" class="total-vote"><%= f.input :organisation_rate, class:"form-input-small", label: false, disabled: true, :input_html => { type: "string", class: "form-input-small"} %></p>
+        <p id="route-vote" class="total-vote"><%= f.input :organisation_rate, class:"form-input-small", label: false, :input_html => { type: "string", class: "form-input-small"} %></p>
       </div>
       <label for="route"><%= t('reviews._form.value') %></label>
       <div class="rating-box">
@@ -50,7 +50,7 @@
         <div  class="star-route"><i class="fas fa-star value-for-money-star"></i></div>
         <div  class="star-route"><i class="fas fa-star value-for-money-star"></i></div>
         <div  class="star-route"><i class="fas fa-star value-for-money-star"></i></div>
-        <p id="route-vote" class="total-vote"><%= f.input :value_for_money, class:"form-input-small", label: false, disabled: true, :input_html => { type: "string", class: "form-input-small"} %></p>
+        <p id="route-vote" class="total-vote"><%= f.input :value_for_money, class:"form-input-small", label: false, :input_html => { type: "string", class: "form-input-small"} %></p>
       </div>
     </div>
 
