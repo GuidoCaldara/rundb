@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+<%= simple_form_for([race, review], remote: true) do |f| %>
+
+  <div class="new-review-container">
+    <div class="new-review-description">
+      <%= f.input :description, as: :text, label: t('reviews._form.leave_a_rew') %>
+    </div>
+
+    <div class="new-review-rates">
+      <%= f.input :route_rate, collection: 1..10, label: t('reviews._form.route') %>
+      <%= f.input :organisation_rate, collection: 1..10, label: t('reviews._form.org')%>
+      <%= f.input :value_for_money, collection: 1..10, label: t('reviews._form.value')%>
+    </div>
+
+    <div class="new-review-button-container">
+      <%= f.button :submit, class: "add-review-button", id: "add-review-btn" %>
+    </div>
+  </div>
+
+<% end %>
+</div>
+</div>
+</div>

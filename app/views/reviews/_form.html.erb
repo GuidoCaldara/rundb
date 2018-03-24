@@ -9,9 +9,49 @@
     </div>
 
     <div class="new-review-rates">
-      <%= f.input :route_rate, collection: 1..10, label: t('reviews._form.route') %>
-      <%= f.input :organisation_rate, collection: 1..10, label: t('reviews._form.org')%>
-      <%= f.input :value_for_money, collection: 1..10, label: t('reviews._form.value')%>
+      <!-- <%= f.input :route_rate, collection: 1..10, label: t('reviews._form.route') %> -->
+      <label for="route"><%= t('reviews._form.route') %></label>
+      <div class="rating-box">
+        <div  class="star-route"><i class="fas fa-star route-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star route-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star route-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star route-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star route-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star route-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star route-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star route-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star route-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star route-star"></i></div>
+        <p id="route-vote" class="total-vote"><%= f.input :route_rate, label: false, disabled: true, :input_html => { type: "string", class: "form-input-small"} %></p>
+      </div>
+      <label for="route"><%= t('reviews._form.org') %></label>
+      <div class="rating-box">
+        <div  class="star-route"><i class="fas fa-star organisation-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star organisation-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star organisation-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star organisation-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star organisation-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star organisation-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star organisation-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star organisation-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star organisation-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star organisation-star"></i></div>
+        <p id="route-vote" class="total-vote"><%= f.input :organisation_rate, class:"form-input-small", label: false, disabled: true, :input_html => { type: "string", class: "form-input-small"} %></p>
+      </div>
+      <label for="route"><%= t('reviews._form.value') %></label>
+      <div class="rating-box">
+        <div  class="star-route"><i class="fas fa-star value-for-money-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star value-for-money-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star value-for-money-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star value-for-money-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star value-for-money-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star value-for-money-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star value-for-money-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star value-for-money-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star value-for-money-star"></i></div>
+        <div  class="star-route"><i class="fas fa-star value-for-money-star"></i></div>
+        <p id="route-vote" class="total-vote"><%= f.input :value_for_money, class:"form-input-small", label: false, disabled: true, :input_html => { type: "string", class: "form-input-small"} %></p>
+      </div>
     </div>
 
     <div class="new-review-button-container">
@@ -23,3 +63,64 @@
 </div>
 </div>
 </div>
+
+
+
+
+<script type="text/javascript">
+
+function whiteStar(array){
+  array.forEach(function(element){
+    element.style.color = "#808080"
+  })
+}
+const routeStars = Array.from(document.querySelectorAll(".route-star"))
+const routeRateInput = document.getElementById('review_route_rate')
+
+const organisationStars = Array.from(document.querySelectorAll(".organisation-star"))
+const organisationRateInput = document.getElementById('review_organisation_rate')
+
+const valueForMoneyStars = Array.from(document.querySelectorAll(".value-for-money-star"))
+const valueForMoneyRateInput = document.getElementById('review_value_for_money')
+
+
+routeStars.forEach(function(star) {
+  star.addEventListener('click', function () {
+    whiteStar(routeStars)
+    rate = routeStars.indexOf(star) + 1
+    shortArray = routeStars.slice(0, rate)
+    shortArray.forEach(function(element){
+      element.style.color = "#97BF54"
+      routeRateInput.value = `${rate}`
+  })
+});
+});
+
+organisationStars.forEach(function(star) {
+  star.addEventListener('click', function () {
+    whiteStar(organisationStars)
+    rate = organisationStars.indexOf(star) + 1
+    shortArray = organisationStars.slice(0, rate)
+    shortArray.forEach(function(element){
+      element.style.color = "#97BF54"
+      organisationRateInput.value = `${rate}`
+  })
+});
+});
+
+valueForMoneyStars.forEach(function(star) {
+  star.addEventListener('click', function () {
+    whiteStar(valueForMoneyStars)
+    rate = valueForMoneyStars.indexOf(star) + 1
+    shortArray = valueForMoneyStars.slice(0, rate)
+    shortArray.forEach(function(element){
+      element.style.color = "#97BF54"
+      valueForMoneyRateInput.value = `${rate}`
+  })
+});
+});
+
+
+
+
+</script>
