@@ -1,0 +1,26 @@
+.rating-box {
+  display: flex;
+  justify-content: space-around;
+  background-color: #e2e2e2a8;
+  border-radius: 4px;
+  padding-bottom: 1px;
+  padding-top: 7px;
+  padding-bottom: 14px
+}
+
+.fa-star {
+  border-radius: 50%;
+  color: #808080;
+}
+
+.fa-star:hover {
+  cursor: pointer;
+}
+
+
+.form-input-small{
+width: 39px;
+border-radius: 50%;
+background-color: #e2e2e2;
+text-align: center;
+}

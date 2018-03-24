@@ -189,7 +189,7 @@
         </div>
       <% else %>
         <div class="text-center">
-          <%= cl_image_tag @race.pathimg.url(:carousel), crop: :fill, style: "height:400px; width: 80%;z-index: 1"%>
+          <%= cl_image_tag @race.pathimg.url(:carousel), crop: :fill, style: "min-height:400px; max-height: 600px; width: 80%;z-index: 1"%>
         </div>
       <% end %>
     </div>

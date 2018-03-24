@@ -109,7 +109,6 @@ window.addEventListener('load', function() {
     // _autocompleteContainer: document.querySelector('#places'),
     _mapContainer: document.querySelector('#map'),
     markers: [],
-
     // Transform one hit to a Google Maps marker
     _hitToMarker: function(hit) {
       var marker = new google.maps.Marker({
