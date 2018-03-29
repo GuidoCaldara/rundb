@@ -5,7 +5,7 @@ import starRating from '../components/reviews';
 
 
 
-starRating()
+starRating();
 autocomplete();
 
 window.addEventListener('load', function() {
