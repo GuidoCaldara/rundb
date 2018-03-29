@@ -130,7 +130,6 @@
     arr = link.split("/")
     route_id = arr[4];
     var linkdata = `https://www.strava.com/api/v3/activities/${route_id}/streams/latlng?access_token=<%=@auth.access_token%>`;
-    console.log(linkdata)
     fetch(linkdata)
     .then(response => response.json())
     .then((data) => {

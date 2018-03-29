@@ -1,7 +1,7 @@
 import "bootstrap";
 import {autocomplete} from '../components/autocomplete';
-import GMaps from 'gmaps/gmaps.js';
-import starRating from '../components/reviews';
+import {GMaps} from 'gmaps/gmaps.js';
+import {starRating} from '../components/reviews';
 
 
 
@@ -41,7 +41,6 @@ window.addEventListener('load', function() {
         const year = date.getFullYear();
         const d =  `${day}/${month}/${year}`
         hits.date_stamp = d
-        console.log(hits)
         return hits
       }
     }

@@ -269,7 +269,6 @@
   <% if @race.route  %>
   var data =  <%= raw @race.route.pathfile %>;
   <% end %>
-  console.log(data);
   generate_route(data);
 
   function generate_route(array){
@@ -281,7 +280,6 @@
     var latlngs = array
     var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
     map.fitBounds(polyline.getBounds());
-    console.log(array);
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
