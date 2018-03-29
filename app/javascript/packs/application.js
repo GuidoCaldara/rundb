@@ -1,11 +1,11 @@
 import "bootstrap";
 import {autocomplete} from '../components/autocomplete';
 import GMaps from 'gmaps/gmaps.js';
+import starRating from '../components/reviews';
 
 
 
-
-
+starRating()
 autocomplete();
 
 window.addEventListener('load', function() {
