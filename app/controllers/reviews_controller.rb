@@ -10,7 +10,6 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
     @review.race_id = @race.id
     authorize @review
-    byebug
      if @review.save
       respond_to do |format|
         format.html { redirect_to race_path(@race) }
