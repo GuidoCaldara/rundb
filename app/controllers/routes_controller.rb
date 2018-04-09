@@ -21,7 +21,11 @@ class RoutesController < ApplicationController
 
   def show
     @race = Race.find(params[:race_id])
-    @route = Route.find_by(race_id: @race)
+    if Route.find_by(race_id: @race)
+      @route = Route.find_by(race_id: @race)
+    else
+      @route = @race
+    end
     authorize @route
   end
 
