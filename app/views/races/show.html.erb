@@ -140,13 +140,13 @@
   <div class="map-route">
   <!-- NO REVIEW + GPS  -->
   <% if @race.route %>
-    <div id="map" style="height:400px; width: 100%;z-index: 1;">
+    <div id="map" style="height:auto; width: 100%;z-index: 1;">
     </div>
   </div>
   <!-- NO REVIEW + PHOTO PATH -->
   <% elsif @race.pathimg.url %>
     <div class="text-center">
-    <%= cl_image_tag @race.pathimg.url(:carousel), crop: :fill, style: "height:400px; width: 80%;z-index: 1"%>
+    <%= cl_image_tag @race.pathimg.url(:carousel), crop: :fill, style: "height:auto; width: 80%;z-index: 1"%>
     </div>
   <% end %>
 <!-- Case YES REVIEW  -->
@@ -160,19 +160,19 @@
         Rating
         </div>
         <div class="rates-wrapper">
-            <div class="race-rates"><%= t('races.show.route')%> <br><span class="green-highlight"><%= @race.route_rate_avg.round(1) %> / 10</span>
+            <div class="race-rates"><%= t('races.show.route')%> <br><span class="green-highlight"><%= @race.route_rate_avg.round %> / 10</span>
             </div>
             <div class="progress">
               <div class="progress-bar" style="width:<%= @race.route_rate_avg*10 %>%">
               </div>
             </div>
-            <div class="race-rates"><%= t('races.show.org')%> <br><span class="green-highlight"><%= @race.organisation_rate_avg.round(1) %> / 10</span>
+            <div class="race-rates"><%= t('races.show.org')%> <br><span class="green-highlight"><%= @race.organisation_rate_avg.round %> / 10</span>
             </div>
             <div class="progress">
               <div class="progress-bar" style="width:<%= @race.organisation_rate_avg*10 %>%">
               </div>
             </div>
-            <div class="race-rates"><%= t('races.show.val_money')%> <br><span class="green-highlight"><%= @race.value_for_money_avg.round(1) %> / 10</span>
+            <div class="race-rates"><%= t('races.show.val_money')%> <br><span class="green-highlight"><%= @race.value_for_money_avg.round %> / 10</span>
             </div>
             <div class="progress">
               <div class="progress-bar" style="width:<%= @race.value_for_money_avg*10 %>%">
@@ -185,7 +185,7 @@
   <% end %>
     <div class="map-route">
       <% if @race.route %>
-        <div id="map" style="height:400px; width: 100%;z-index: 1;">
+        <div id="map" style="height:auto; width: 100%;z-index: 1;">
         </div>
       <% else %>
         <div class="text-center">
