@@ -42,6 +42,8 @@
        </div>
     </div>
   <% end %>
+  <%= link_to "Back to the race", race_path(@race.id) %>
+
   </div>
 </div>
 <!--  END If Race route Strava or img is present-->
@@ -86,6 +88,7 @@
           <% end %>
         </div>
       </div>
+      <%= link_to "Back to the race page", race_path(@race.id) %>
     </div>
   </div>
 </div>

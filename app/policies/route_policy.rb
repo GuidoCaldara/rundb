@@ -14,7 +14,10 @@ class RoutePolicy
   end
 
   def show?
-    route_policy
+    @race = Race.find(@record.race_id)
+    if @race.route != nil
+      route_policy
+    end
   end
 
   def create?

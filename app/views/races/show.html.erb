@@ -137,7 +137,7 @@
   <div class="row">
   <!-- Case NO REVIEW  -->
 <% if (!@race.reviews.any? && @race.route) || (!@race.reviews.any? && @race.pathimg.url) %>
-  <div class="map-route">
+  <div class="map-route col-lg-10">
   <!-- NO REVIEW + GPS  -->
   <% if @race.route %>
     <div id="map" style="height:auto; width: 100%;z-index: 1;">
@@ -152,7 +152,7 @@
 <!-- Case YES REVIEW  -->
 
 <% elsif (@race.reviews.any? && @race.route) || (@race.reviews.any? && @race.pathimg) %>
-  <div class="footer-container">
+  <div class="footer-container col-lg-2">
     <!-- rates container -->
   <% if @race.route_rate_avg && @race.organisation_rate_avg && @race.value_for_money_avg %>
       <div class="rates-container">
@@ -183,7 +183,7 @@
           </div>
 
   <% end %>
-    <div class="map-route">
+    <div class="map-route col-lg-10">
       <% if @race.route %>
         <div id="map" style="height:auto; width: 100%;z-index: 1;">
         </div>
