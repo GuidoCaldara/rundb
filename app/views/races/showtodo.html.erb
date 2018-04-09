@@ -1,0 +1,37 @@
+<div class="container" style="min-height: calc(100vh - 140px) ">
+  <div class="row mt-5">
+    <div class="col-lg-12">
+      <h1><%= @race.name %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+        <div class="col-xs-12 col-sm-12 col-md-4 no-padding">
+      <div class="header-element">
+        <span class="cat-icon">cat</span>
+        <%=@race.category.upcase%>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 no-padding">
+      <div class="header-element">
+        <%= @race.race_distance%> km
+        <% if @race.elevation != 0%>
+        <i class="fas fa-map"></i>
+        <%= @race.elevation%>D+
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 no-padding">
+      <div class="header-element last">
+        <i class="fas fa-map-marker-alt"></i>
+        <%=@race.location%>
+      </div>
+    </div>
+    <!-- <div class="race-date-header">
+      <i class="fas fa-calendar-alt"></i> <%=@race.date%>
+    </div> -->
+  </div>
+</div>
+
+
+</div>

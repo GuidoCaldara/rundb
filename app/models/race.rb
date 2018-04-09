@@ -13,7 +13,7 @@ class Race < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
   #validation form
-
+  validates :name, :race_distance, :category, :date, :location, presence: true
   validates :name, uniqueness: true
   validates :name, :location, :category , :website, :subscription_link, :starting_point, :video, length: { maximum: 100 }
   validates :description, :goodies, length: {maximum: 1200}
@@ -105,18 +105,9 @@ monetize :fee_cents
 monetize :discount_fee_cents
 
 
-  # validates :name, :race_distance, :category, :date, :location, presence: true
   def has_reviewed?(current_user)
     self.reviews.where(user: current_user).any?
   end
-
-  # def define_fee
-  #   self.fee_cents = self.fee_cents * 100
-  #   if self.discount_fee_cents
-  #     self.discount_fee_cents = self.discount_fee_cents * 100
-  # end
-
-  # end
 
   def has_order?
    Order.where(race_id:self.id).any?
@@ -131,7 +122,6 @@ end
 
 
 # Computation of the route average rate
-
 def set_route_rate_avg
   if self.reviews.size > 0
     route_rate_sum = 0
